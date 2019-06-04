@@ -2,12 +2,18 @@
 ## Le groupement de pharmaciens indépendants
 
 ### Démarrer le projet
-Créer un fichier .env  puis y coller le contenu du fichier .env.dist  en y renseignant les données de connexion à la base de données.
-
+Créer un fichier .env.local  puis y coller le contenu du fichier .env.dist  en y renseignant les données de connexion à la base de données.
 
 ### Terminal:
 - Aller dans le répertoire du projet et taper:
 ```composer install```
+
+- Créer la base de donnée :
+```bin/console doctrine:database:create```
+```bin/console doctrine:migrations:migrate```
+
+- Remplir la base de donnée à partir des fixtures :
+```bin/console doctrine:fixtures:load```
 
 - Ouvrir un nouvel onglet:
 ```php bin/console server:run```
