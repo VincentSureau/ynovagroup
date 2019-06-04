@@ -1,21 +1,67 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{% block title %}Ynovagroup - Votre groupement de pharmaciens indépendants
+{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <!-- Container -->
+    <div class="container-fluid">
+        <!-- Header Section -->
+        <header class="header">
+            <!-- Navigation with a burger menu -->
+            <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-white">
+                <a class="navbar-brand" href="#">
+                    <img src="{{ asset('images/ynovagroup_logo.png') }}" width="200" height="70" alt="">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/var/www/html/pro/Ynovagroup/src/Controller/HomeController.php'|file_link(0) }}">src/Controller/HomeController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/var/www/html/pro/Ynovagroup/templates/home/index.html.twig'|file_link(0) }}">templates/home/index.html.twig</a></code></li>
-    </ul>
-</div>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#accueil">Accueil <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#valeurs">Nos valeurs</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#differences">Notre différence</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#objectifs">Nos objectifs</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#contact">Contact</a>
+                        </li>
+                        {# <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Dropdown
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="#">Action</a>
+                                <a class="dropdown-item" href="#">Another action</a>
+                            <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">Something else here</a>
+                            </div>
+                        </li> #}
+                    </ul>
+                    <form class="form-inline my-2 my-lg-0">
+                        <input class="form-control mr-sm-2" type="search" placeholder="" aria-label="Search">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Rechercher</button>
+                    </form>
+                </div>
+            </nav>
+            <!-- Hero Section -->
+            <div class="jumbotron">
+                <h1 class="display-4">Ynovagroup</h1>
+                <p class="lead">Nous sommes un groupement de pharmaciens indépendants à votre service.</p>
+                <p class="lead">
+                    <a class="btn btn-success btn-sm" href="#" role="button">En savoir plus</a>
+                </p>
+            </div>
+        </header>
+    </div>
 
 {% endblock %}
