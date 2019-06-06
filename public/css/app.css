@@ -96,3 +96,24 @@ footer > div > .h6 {
 #plaquette > i:hover {
     color: var(--black);
 }
+
+/* Page Back-Office */
+
+.navbackoffice {
+    display: flex;
+    align-content: space-around;
+}
+
+.backoffice {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.container-fluid  {
+    width: unset;
+}
+
+.wrapper-backoffice {
+    display: flex;
+
+}

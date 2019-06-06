@@ -3,11 +3,116 @@
 {% block title %}Hello UserController!{% endblock %}
 
 {% block body %}
-    <ul>
-        <li>{{ user.firstname }}</li>
-        <li>{{ user.lastname }}</li>
-        <li>{{ user.email }}</li>
-        <li>{{ user.company.name }}</li>
-    </ul>
+     <!-- Container -->
+    <div class="container-fluid p-0">
+            <!-- Header Section -->
+            <header class="header">
+                <!-- Navigation with a burger menu -->
+                <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-white navbackoffice">
+                    <a class="navbar-brand" href="#">
+                        <img src="ynovagroup_logo.png" width="200" height="70" alt="">
+                    </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+    
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link btn btn-light" href="www.ynovagroup.com">Retourner sur le site Ynovagroup ?</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </header>
+            <!-- Main Back-office Adhérents -->
+            <section class="backoffice m-5">
+                <!-- Profil de l'adhérent -->
+                <div class="container-fluid profil text-center">
+                    <h5 class="card-title">Mon profil adhérent</h5>
+                    <div class="card" style="width: 18rem;">
+                        <img src="https://via.placeholder.com/468x200?text=Image+de+la+pharmacie" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Mon profil adhérent</h5>
+                            <p class="card-text"><strong>Nom : </strong>Thibaud</p>
+                            <p class="card-text"><strong>Prénom : </strong>Éléonore</p>
+                            <p class="card-text"><strong>Adresse</strong></p>
+                            <p class="card-text">19, rue des Nations Unies
+                                <br> 93200 SAINT-DENIS</p>
+                            <p class="card-text"><strong>E-Mail : </strong>eleonore@thibaud.fr</p>
+                            <p class="card-text"><strong>Téléphone : </strong>06 89 18 95 56</p>
+                            <h5 class="card-title">Mon commercial</h5>
+                            <p class="card-text"><strong>Jean Dupont</strong></p>
+                            <button type="button" class="btn btn-danger">
+                                    <a href="#" class="btn btn-danger">
+                                        Déconnexion 
+                                        <i class="fas fa-times"></i>
+                                    </a>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Section de téléchargement + tableau de fichiers -->
+                <div class="container-fluid upload">
+                    <h5 class="card-title text-center">Mon espace document</h5>
+                    <form class="container-fluid">
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">Quel est le type de votre document ?</label>
+                            <select class="form-control" id="exampleFormControlSelect1">
+                                <option>Facture</option>
+                                <option>Compte rendu</option>
+                                <option>Publicité</option>
+                                <option>Autre</option>
+                            </select>
+                        </div>
+                        <label for="exampleFormControlSelect1">Téléchargement de mon document</label>
+                        <div class="wrapper-backoffice">
+                            <div class="form-group">
+                                    <label for="exampleFormControlFile1"><strong>Formats autorisés :</strong> pdf, doc, docx, jpg, xls, ppt, pptx</label>
+                                    <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                            </div>   
+                            <button type="submit" class="btn btn-primary mb-2">
+                                Envoyer
+                                <i class="fas fa-file-upload"></i>
+                            </button> 
+                        </div>
+                    </form>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                            <th scope="col">Nom du document</th>
+                            <th scope="col">Type</th>
+                            <th scope="col">Format</th>
+                            <th scope="col">Date d'ajout</th>
+                            <th scope="col">Télécharger</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">Compte rendu réunion</th>
+                                <td>CR</td>
+                                <td>.pdf</td>
+                                <td>01/06/2019</td>
+                                <td>*</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Facture achats</th>
+                                <td>Facture</td>
+                                <td>.pdf</td>
+                                <td>25/04/2019</td>
+                                <td>*</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Plaquette publicitaire</th>
+                                <td>Publicité</td>
+                                <td>.pdf</td>
+                                <td>08/03/2019</td>
+                                <td>*</td>
+                                </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
 
 {% endblock %}
