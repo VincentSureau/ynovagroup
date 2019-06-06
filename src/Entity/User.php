@@ -95,6 +95,9 @@ class User implements UserInterface
         $this->managedFiles = new ArrayCollection();
         $this->files = new ArrayCollection();
         $this->managedCompanies = new ArrayCollection();
+        $this->isActive = true;
+        $this->createdAt = new \DateTime();
+        $this->updatedAt = new \DateTime();
     }
 
     public function getId(): ?int

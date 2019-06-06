@@ -88,6 +88,13 @@ class Company
      */
     private $commercial;
 
+    public function __construct()
+    {
+        $this->isActive = true;
+        $this->createdAt = new \DateTime();
+        $this->updatedAt = new \DateTime();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
