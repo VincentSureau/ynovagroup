@@ -12,4 +12,6 @@ easy_admin:
             class: App\Entity\Files
         Utilisateurs:
             class: App\Entity\User
+        Rôles:
+            class: App\Entity\Role
 
