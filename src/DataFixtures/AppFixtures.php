@@ -2,12 +2,8 @@
 
 namespace App\DataFixtures;
 
-use Faker;
-use Faker\Factory;
 use App\Entity\Company;
-use App\Entity\Files;
 use App\Entity\User;
-use App\Entity\Role;
 
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
@@ -26,26 +22,26 @@ class AppFixtures extends Fixture
     public function load(ObjectManager $manager)
     {
         // Roles
-        $roleAdmin = new Role();
-        $roleAdmin->setCode('ROLE_ADMIN');
-        $roleAdmin->setName('Admin');
+        // $roleAdmin = new Role();
+        // $roleAdmin->setCode('ROLE_ADMIN');
+        // $roleAdmin->setName('Admin');
 
-        $roleUser = new Role();
-        $roleUser->setCode('ROLE_MEMBER');
-        $roleUser->setName('Membre');
+        // $roleUser = new Role();
+        // $roleUser->setCode('ROLE_MEMBER');
+        // $roleUser->setName('Membre');
 
-        $roleDeveloper = new Role();
-        $roleDeveloper->setCode('ROLE_DEVELOPER');
-        $roleDeveloper->setName('Chargé de développement');
+        // $roleDeveloper = new Role();
+        // $roleDeveloper->setCode('ROLE_DEVELOPER');
+        // $roleDeveloper->setName('Chargé de développement');
 
-        $roleCommercial = new Role();
-        $roleCommercial->setCode('ROLE_BUSINESS');
-        $roleCommercial->setName('Commercial');
+        // $roleCommercial = new Role();
+        // $roleCommercial->setCode('ROLE_BUSINESS');
+        // $roleCommercial->setName('Commercial');
 
-        $manager->persist($roleAdmin);
-        $manager->persist($roleUser);
-        $manager->persist($roleDeveloper);
-        $manager->persist($roleCommercial);
+        // $manager->persist($roleAdmin);
+        // $manager->persist($roleUser);
+        // $manager->persist($roleDeveloper);
+        // $manager->persist($roleCommercial);
         
 
         // Pharmacies
@@ -92,10 +88,12 @@ class AppFixtures extends Fixture
         $manager->persist($company4);
         // $manager->flush();
 
+
+
         // Utilisateurs
         $admin = new User();
         $admin->setEmail('admin@ynovagroup.fr');
-        $admin->setRole(1);
+        $admin->setRoles(['ROLE_ADMIN']);
         $encodedPassword = $this->passwordEncoder->encodePassword($admin, 'admin');
         $admin->setPassword($encodedPassword);
         $admin->setFirstname('admin');
@@ -104,7 +102,7 @@ class AppFixtures extends Fixture
 
         $user = new User();
         $user->setEmail('user@ynovagroup.fr');
-        $user->setRole(2);
+        $user->setRoles(['ROLE_MEMBER']);
         $encodedPassword = $this->passwordEncoder->encodePassword($user, 'user');
         $user->setPassword($encodedPassword);
         $user->setFirstname('user');
@@ -113,7 +111,7 @@ class AppFixtures extends Fixture
 
         $developer = new User();
         $developer->setEmail('developer@ynovagroup.fr');
-        $developer->setRole(3);
+        $developer->setRoles(['ROLE_DEVELOPER']);
         $encodedPassword = $this->passwordEncoder->encodePassword($developer, 'developer');
         $developer->setPassword($encodedPassword);
         $developer->setFirstname('developer');
@@ -122,7 +120,7 @@ class AppFixtures extends Fixture
 
         $commercial = new User();
         $commercial->setEmail('commercial@ynovagroup.fr');
-        $commercial->setRole(4);
+        $commercial->setRoles(['ROLE_BUSINESS']);
         $encodedPassword = $this->passwordEncoder->encodePassword($commercial, 'commercial');
         $commercial->setPassword($encodedPassword);
         $commercial->setFirstname('commercial');
