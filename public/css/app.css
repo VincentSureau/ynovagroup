@@ -93,15 +93,29 @@ section {
 /* Notre différence */
 .panel {
     display: flex;
-    /* flex-wrap: wrap; */
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .panel-box {
     /* width: 50%; */
     display: flex;
-    justify-content: baseline;
+    justify-content: center;
 }
 
+.panel-box-text {
+
+}
+
+/* Nos objectifs */
+#objectifs {
+
+}
+
+.fa-check-square {
+    color: var(--green);
+    margin: 0 15px;
+}
 
 /* Footer Section */
 footer {
