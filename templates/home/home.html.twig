@@ -5,29 +5,31 @@
 
 {% block body %}
 
-    <!-- Container -->
+    <!-- Bootstrap Container -->
     <div class="container-fluid p-0">
-        <!-- Header Section -->
+        <!-- H E A D E R  S E C T I O N -->
         <header class="header">
             <!-- Navigation with a burger menu -->
-            <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-white">
+            <nav class="navbar sticky-top navbar-expand-xl navbar-light bg-white">
                 <a class="navbar-brand" href="#">
                     <img src="{{ asset('images/ynovagroup_logo.png') }}" width="200" height="70" alt="">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav mr-auto">
+                    <ul id="nav" class="navbar-nav">
                         <li class="nav-item active">
-                            <a class="nav-link" href="#accueil">Accueil <span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="#accueil">Accueil</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#about">Qui sommes-nous ?</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#valeurs">Nos valeurs</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#differences">Notre différence</a>
+                            <a class="nav-link" href="#difference">Notre différence</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#objectifs">Nos objectifs</a>
@@ -35,25 +37,16 @@
                         <li class="nav-item">
                             <a class="nav-link" href="#contact">Contact</a>
                         </li>
-                        {# <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Dropdown
+                        <li class="nav-item adherent">
+                            <a class="nav-link btn btn-success adherent-btn btn-sm" href="">
+                                <i></i>
+                                Espace Adhérent
                             </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">Action</a>
-                                <a class="dropdown-item" href="#">Another action</a>
-                            <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">Something else here</a>
-                            </div>
-                        </li> #}
+                        </li>
                     </ul>
-                    <form class="form-inline my-2 my-lg-0">
-                        <input class="form-control mr-sm-2" type="search" placeholder="" aria-label="Search">
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Rechercher</button>
-                    </form>
                 </div>
             </nav>
-            <!-- Hero Section -->
+            <!-- H E R O  S E C T I O N -->
             <section id="hero" src="{{ asset('images/ynovagroup_hero.jpg') }}" class="jumbotron-fluid container-fluid text-center img-fluid">
                 <div class="jumbotron-fluid container-fluid text-center">
                     <h1 class="display-4 text-uppercase">Ynovagroup</h1>
@@ -64,27 +57,231 @@
                 </div>
             </section>
         </header>
-        <!-- Main Section -->
+        <!-- M A I N  S E C T I O N -->
         <main class="main container-fluid p-0">
             <!-- Citation Section -->
-            <section class="container-fluid p-0">
-            
+            <section id="#about" class="container-fluid p-0 text-center my-5">
+                <!-- Section heading -->
+                <h2 class="titre h1-responsive font-weight-bold my-5">Qui sommes-nous ?</h2>
+                <div class="wrapper-carousel-fix">
+                    <!-- Carousel Wrapper -->
+                    <div id="carousel-example-1" class="carousel no-flex testimonial-carousel slide carousel-fade" data-ride="carousel"
+                    data-interval="false">
+                    <!--Slides-->
+                    <div class="carousel-inner" role="listbox">
+                        <!--First slide-->
+                        <div class="carousel-item active">
+                            <div class="testimonial">
+                                <!--Content-->
+                                <p class="m-5 font-weight-lighter font-italic">
+                                <i class="fas fa-quote-left"></i>  Ynovagroup est un groupement créé par des pharmaciens de votre région qui connaissent vos problématiques et les rencrontrent tous les jours.
+                                </p>
+                                <p class="m-5 font-weight-lighter font-italic">
+                                Nous sommes composés d'une équipe pluridisciplinaire de pharmaciens et de professionnels du secteur pharmaceutique.
+                                <br>
+                                Notre souhait : être présents à vos côtés au quotidien pour relever les défis de l'office.
+                                </p>
+                                <p class="m-5 font-weight-lighter font-italic">
+                                Notre souhait : être présents à vos côtés au quotidien pour relever les défis de l'office.
+                                </p>
+                            <!--Avatar-->
+                                <div class="avatar mx-auto mb-4">
+                                <img src="{{ asset('images/ynovagroup_logo.png') }}" class="rounded-circle img-fluid"
+                                    alt="Ynovagroup Logo" width="300" height="100">
+                                </div>
+                                {# <h5 class="font-weight-bold text-uppercase">Ynovagroup</h5> #}
+                                <h6 class="font-weight-lighter">Votre groupement de pharmaciens indépendants</h6>
+                            </div>
+                        </div>
             </section>
-            <!-- Nos Valeurs Section -->
-            <section class="container-fluid p-0">
-            
+            <!-- N O S  V A L E U R S -->
+            <section id="valeurs">
+            <!-- Respect -->
+            <div class="container-fluid p-0 text-center my-5">
+                <h2 class="titre h1-responsive font-weight-bold my-5">Nos valeurs</h2>
+                <div class="valeurs">
+                    <img class="valeurs-img" src="{{ asset('images/respect.png') }}" alt="" width="250" height="250">
+                    <div class="valeurs-text m-5">
+                        <h3 class="valeurs-text-title text-uppercase">Respect</h3>
+                            <p class="m-5 font-weight-lighter font-italic">
+                            Vous préservez votre indépendance professionnelle
+                        </p>
+                    </div>
+                </div>
+            </div>  
+            <!-- Satisfaction -->
+            <div class="container-fluid p-0 text-center my-5">
+                <div class="valeurs">
+                <img class="valeurs-img" src="{{ asset('images/smile.png') }}" alt="" width="250" height="250">
+                    <div class="valeurs-text m-5">
+                        <h3 class="valeurs-text-title text-uppercase">Satisfaction</h3>
+                            <p class="m-5 font-weight-lighter font-italic">
+                            Votre confiance est notre préoccupation
+                        </p>
+                    </div>
+                </div>
+            </div>  
+            <!-- Soutien -->
+            <div class="container-fluid p-0 text-center my-5">
+                <div class="valeurs">
+                    <img class="valeurs-img" src="{{ asset('images/information.png') }}" alt="" width="250" height="250">
+                    <div class="valeurs-text m-5">
+                        <h3 class="valeurs-text-title text-uppercase">Soutien</h3>
+                            <p class="m-5 font-weight-lighter font-italic">
+                            Toujours à vos côtés pour une relation pérenne
+                        </p>
+                    </div>
+                </div>
+            </div>  
+            <!-- Engagement -->
+            <div class="container-fluid p-0 text-center my-5">
+                <div class="valeurs">
+                    <img class="valeurs-img" src="{{ asset('images/network.png') }}" alt="" width="250" height="250">
+                    <div class="valeurs-text m-5">
+                        <h3 class="valeurs-text-title text-uppercase">Engagement</h3>
+                            <p class="m-5 font-weight-lighter font-italic">
+                            Notre équipe s'engage dans une démarche proactive axée sur la qualité
+                        </p>
+                    </div>
+                </div>
+            </div> 
+            <!-- Partage -->
+            <div class="container-fluid p-0 text-center my-5">
+                <div class="valeurs">
+                    <img class="valeurs-img" src="{{ asset('images/share.png') }}" alt="" width="250" height="250">
+                    <div class="valeurs-text m-5">
+                        <h3 class="valeurs-text-title text-uppercase">Partage</h3>
+                            <p class="m-5 font-weight-lighter font-italic">
+                            Échange et communication, facteurs clés de synergie
+                        </p>
+                    </div>
+                </div>
+            </div>  
+            <!-- Excellence -->
+            <div class="container-fluid p-0 text-center my-5">
+                <div class="valeurs">
+                    <img class="valeurs-img" src="{{ asset('images/review.png') }}" alt="" width="250" height="250">
+                    <div class="valeurs-text m-5">
+                        <h3 class="valeurs-text-title text-uppercase">Excellence</h3>
+                            <p class="m-5 font-weight-lighter font-italic">
+                            L'expertise de professionnel entièrement à votre service
+                        </p>
+                    </div>
+                </div>
+            </div>
             </section>
-            <!-- Notre Différence Section -->
-            <section class="container-fluid p-0">
-            
+            <!-- N O T R E  D I F F E R E N C E -->
+            <section id="difference">
+                <div class="container-fluid p-0 text-center m-5">
+                <h2 class="titre h1-responsive font-weight-bold m-5">Notre différence</h2>
+                    <div class="panel">
+                        <div class="panel-box">
+                            <div class="panel-box-text m-3">
+                                <h4 class="h4-responsive font-weight-bold">
+                                    <i class="fas fa-angle-double-right fa-1x"></i>
+                                    Écoute et disponibilité
+                                </h4>
+                                <p class="font-weight-lighter m-5">Un interlocuteur proche de vous pour pérenniser le dynamisme de votre officine</p>
+                            </div>
+                            <div class="panel-box-text m-3">
+                                <h4 class="h4-responsive font-weight-bold">
+                                    <i class="fas fa-angle-double-right fa-1x"></i>
+                                    Une offre complète
+                                </h4>
+                                <p class="font-weight-lighter m-5">Une intervention sur les 4 dimensions clé de l'officine</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel">
+                        <div class="panel-box">
+                            <div class="panel-box-text m-3">
+                                <h4 class="h4-responsive font-weight-bold">
+                                    <i class="fas fa-angle-double-right fa-1x"></i>
+                                    Répondre à vos problématiques spécifiques
+                                </h4>
+                                <p class="font-weight-lighter m-5">Votre conseiller vous accompagne pour mettre en place un plan d'action personnalisé</p>
+                            </div>
+                            <div class="panel-box-text m-3">
+                                <h4 class="h4-responsive font-weight-bold">
+                                    <i class="fas fa-angle-double-right fa-1x"></i>
+                                    Toute votre équipe au ceur de nos préoccupations
+                                </h4>
+                                <p class="font-weight-lighter m-5">Une approche innovante de la formation et des supports techniques éprouvés</p>
+                            </div>
+                        </div>
+                    </div>    
+                </div>  
             </section>
-            <!-- Nos Objectifs Section -->
-            <section class="container-fluid p-0">
-            
+            <!-- I N T E R L U D E -->
+            <section>
+             <div class="container-fluid p-0 text-center m-5">
+                <h3 class="h3-responsive font-weight-bold m-5">Nous intervenons sur les 4 dimensions clés de l'officine</h3>
+                <p>Chez Ynovagroup, nous disposons de techniques professionnelles et d'outils testés sur-mesure pour vous proposer un accompagnement quotidien sur les 4 dimensions clés de l'officine</p>
+            </div>
             </section>
-            <!-- Contact Section -->
-            <section class="container-fluid p-0">
-            
+            <!-- N O S  O B J E C T I F S -->
+            <section id="objectifs">
+                <div class="container-fluid p-0 text-center m-5">
+                <h2 class="titre h1-responsive font-weight-bold m-5">Nos objectifs</h2>
+                    <div class="panel">
+                        <div class="panel-box">
+                            <div class="panel-box-text m-3">
+                                <h4 class="h4-responsive font-weight-bold">
+                                    <i class="fas fa-angle-double-right fa-1x"></i>
+                                    Écoute et disponibilité
+                                </h4>
+                                <p class="font-weight-lighter m-5">Un interlocuteur proche de vous pour pérenniser le dynamisme de votre officine</p>
+                            </div>
+                            <div class="panel-box-text m-3">
+                                <h4 class="h4-responsive font-weight-bold">
+                                    <i class="fas fa-angle-double-right fa-1x"></i>
+                                    Une offre complète
+                                </h4>
+                                <p class="font-weight-lighter m-5">Une intervention sur les 4 dimensions clé de l'officine</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel">
+                        <div class="panel-box">
+                            <div class="panel-box-text m-3">
+                                <h4 class="h4-responsive font-weight-bold">
+                                    <i class="fas fa-angle-double-right fa-1x"></i>
+                                    Répondre à vos problématiques spécifiques
+                                </h4>
+                                <p class="font-weight-lighter m-5">Votre conseiller vous accompagne pour mettre en place un plan d'action personnalisé</p>
+                            </div>
+                            <div class="panel-box-text m-3">
+                                <h4 class="h4-responsive font-weight-bold">
+                                    <i class="fas fa-angle-double-right fa-1x"></i>
+                                    Toute votre équipe au ceur de nos préoccupations
+                                </h4>
+                                <p class="font-weight-lighter m-5">Une approche innovante de la formation et des supports techniques éprouvés</p>
+                            </div>
+                        </div>
+                    </div>    
+                </div>  
+            </section>
+            <!-- C O N T A C T -->
+            <section id="#contact "class="container-fluid p-0 text-center m-5">
+             <h2 class="titre h1-responsive font-weight-bold my-5">Contact</h2>
+                <form class="m-5">
+                    <div class="form-group">
+                        <label for="formGroupExampleInput2">NOM Prénom</label>
+                        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Veuillez renseigner votre identité" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Adresse e-mail</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Entrer votre adresse e-mail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlTextarea1">Message</label>
+                        <textarea type="textarea" class="form-control" id="exampleFormControlTextarea1" placeholder="Veuillez écrire ici votre message..." required rows="10"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-success">
+                        Envoyer
+                        <i></i>
+                    </button>
+                </form>
             </section>
         </main>
         <!-- Footer -->
