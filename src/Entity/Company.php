@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\CompanyRepository")
@@ -53,6 +55,11 @@ class Company
     private $description;
 
     /**
+     * @Assert\File(
+     * maxSize = "1024k", 
+     * mimeTypes={"image/jpeg", "image/png" },
+     * mimeTypesMessage = "Merci de fournir un format valide : png, jpeg"
+     * )
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $picture;
