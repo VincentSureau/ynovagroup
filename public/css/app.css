@@ -13,9 +13,10 @@ body {
     --white: white;
     --black: black;
 }
-/* Sizes */
-:root {
-   
+
+/* STYLE GENERAL */
+.titre {
+    color: var(--green);
 }
 
 /* Header Section */
@@ -29,11 +30,12 @@ body {
     /* filter: blur(8px);
     -webkit-filter: blur(8px); */
     backdrop-filter: blur(5px);
-    height: 500px;
+    height: 900px;
     margin: 0 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    background
 }
 
 #hero > div > h1 {
@@ -50,6 +52,69 @@ body {
 #hero > div > p > .btn {
     font-weight: bold;
     color: var(--white);
+}
+
+/* Navigation Adhérents Button */
+#nav {
+    display: flex;
+    justify-content: center;
+}
+
+.navbar-nav > .adherent {
+    justify-self: flex-end;
+}
+
+.nav-item {
+    margin: 0 5px;
+}
+
+/* Navigation Underline Hover effect */
+
+/* --- SECTIONS --- */
+section {
+    margin: 200px 0;
+}
+
+/* Nos valeurs */
+
+.valeurs {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.valeurs-img {
+}
+
+.valeurs-text {
+    min-width: 200px;
+}
+
+/* Notre différence */
+.panel {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.panel-box {
+    /* width: 50%; */
+    display: flex;
+    justify-content: center;
+}
+
+.panel-box-text {
+
+}
+
+/* Nos objectifs */
+#objectifs {
+
+}
+
+.fa-check-square {
+    color: var(--green);
+    margin: 0 15px;
 }
 
 /* Footer Section */
