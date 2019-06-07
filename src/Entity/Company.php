@@ -5,10 +5,12 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Validator\Constraints as Assert;
-
+use ApiPlatform\Core\Annotation\ApiResource;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\CompanyRepository")
+ * 
+ * @ApiResource
  */
 class Company
 {
