@@ -16,6 +16,10 @@ security:
             security: false
         main:
             anonymous: true
+            logout:
+                path:   app_logout
+            form_login: true
+    
             guard:
                 authenticators:
                     - App\Security\AppAuthenticator

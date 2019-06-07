@@ -21,29 +21,6 @@ class AppFixtures extends Fixture
 
     public function load(ObjectManager $manager)
     {
-        // Roles
-        // $roleAdmin = new Role();
-        // $roleAdmin->setCode('ROLE_ADMIN');
-        // $roleAdmin->setName('Admin');
-
-        // $roleUser = new Role();
-        // $roleUser->setCode('ROLE_MEMBER');
-        // $roleUser->setName('Membre');
-
-        // $roleDeveloper = new Role();
-        // $roleDeveloper->setCode('ROLE_DEVELOPER');
-        // $roleDeveloper->setName('Chargé de développement');
-
-        // $roleCommercial = new Role();
-        // $roleCommercial->setCode('ROLE_BUSINESS');
-        // $roleCommercial->setName('Commercial');
-
-        // $manager->persist($roleAdmin);
-        // $manager->persist($roleUser);
-        // $manager->persist($roleDeveloper);
-        // $manager->persist($roleCommercial);
-        
-
         // Pharmacies
         $company1 = new Company();
         $company1->setName('Pharmacie de Paris');
@@ -92,7 +69,7 @@ class AppFixtures extends Fixture
 
         // Utilisateurs
         $admin = new User();
-        $admin->setEmail('admin@ynovagroup.fr');
+        $admin->setEmail('admin@admin.fr');
         $admin->setRoles(['ROLE_ADMIN']);
         $encodedPassword = $this->passwordEncoder->encodePassword($admin, 'admin');
         $admin->setPassword($encodedPassword);
@@ -101,7 +78,7 @@ class AppFixtures extends Fixture
         $admin->setCompany($company1);
 
         $user = new User();
-        $user->setEmail('user@ynovagroup.fr');
+        $user->setEmail('user@user.fr');
         $user->setRoles(['ROLE_MEMBER']);
         $encodedPassword = $this->passwordEncoder->encodePassword($user, 'user');
         $user->setPassword($encodedPassword);
@@ -110,7 +87,7 @@ class AppFixtures extends Fixture
         $user->setCompany($company2);
 
         $developer = new User();
-        $developer->setEmail('developer@ynovagroup.fr');
+        $developer->setEmail('developer@developer.fr');
         $developer->setRoles(['ROLE_DEVELOPER']);
         $encodedPassword = $this->passwordEncoder->encodePassword($developer, 'developer');
         $developer->setPassword($encodedPassword);
@@ -119,7 +96,7 @@ class AppFixtures extends Fixture
         $developer->setCompany($company3);
 
         $commercial = new User();
-        $commercial->setEmail('commercial@ynovagroup.fr');
+        $commercial->setEmail('commercial@commercial.fr');
         $commercial->setRoles(['ROLE_BUSINESS']);
         $encodedPassword = $this->passwordEncoder->encodePassword($commercial, 'commercial');
         $commercial->setPassword($encodedPassword);
