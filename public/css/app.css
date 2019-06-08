@@ -39,7 +39,7 @@ body {
 }
 
 #hero > div > h1 {
-    font-weight: bolder;
+    font-weight: bold;
     letter-spacing: 3px;
     color: var(--green);
 }
