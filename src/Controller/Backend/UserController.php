@@ -12,12 +12,12 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 /**
- * @Route("/user", name="backend_")
+ * @Route("/user", name="user_")
  */
 class UserController extends AbstractController
 {
     /**
-     * @Route("/", name="user_index", methods={"GET"})
+     * @Route("/", name="index", methods={"GET"})
      */
     public function index(UserRepository $userRepository): Response
     {
@@ -27,7 +27,7 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="user_show", methods={"GET"})
+     * @Route("/{id}", name="show", methods={"GET"})
      */
     public function show(User $user): Response
     {
@@ -37,7 +37,7 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="user_edit", methods={"GET","POST"})
+     * @Route("/{id}/edit", name="edit", methods={"GET","POST"})
      */
     public function edit(Request $request, User $user, UserPasswordEncoderInterface $passwordEncoder): Response
     {
@@ -71,7 +71,7 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="user_delete", methods={"DELETE"})
+     * @Route("/{id}", name="delete", methods={"DELETE"})
      */
     public function delete(Request $request, User $user): Response
     {

@@ -1,3 +1,10 @@
 controllers:
     resource: ../../src/Controller/
     type: annotation
+
+
+backend:
+    resource: ../../src/Controller/Backend/
+    prefix: /backend
+    name_prefix: backend_
+    type: annotation

@@ -6,7 +6,7 @@
     <h1>Liste des sociétés</h1>
 
 <div class="card p-4">
-    <table id="companyTable" class="table table-hover table-striped w-100">
+    <table id="companyTable" class="table table-hover table-striped table-responsive w-100">
         <thead>
             <tr>
                 <th>#</th>
@@ -30,6 +30,8 @@
     <a href="">retour</a>
 </p>
 
+{% include('backend/company/_editModal.html.twig') %}
+
     {# <a href="{{ path('backend_user_new') }}">Create new</a> #}
 {% endblock %}
 
@@ -44,7 +46,23 @@
                 dataSrc: ''
             },
             columns: [
-                { data: 'id' },
+                {
+                    data: 'id',
+                    render: function (data, index, row) {
+                        var button = `
+                        <btn class="btn btn-success btn-sm edit-modal"
+                            data-id="${data}"
+                            data-name="${row.name}"
+                            data-adress1="${row.firstAdressField}"
+                            data-adress2="${row.secondAdressField}"
+                            data-postalcode="${row.postalCode}"
+                            data-city="${row.city}"
+                        >
+                            <i class="fas fa-plus-circle"></i>
+                        </btn>`
+                        return button
+                    }
+                },
                 { data: 'name' },
                 { data: 'firstAdressField' },
                 { data: 'secondAdressField' },
@@ -59,7 +77,21 @@
                         return (data === true) ? 'oui' : 'non'
                     }
                 }
-            ]
+            ],
+            initComplete: function() {
+                $('.edit-modal').click(function() {
+                    var data = $(this).data()
+
+                    $('#companyName').val(data.name)
+                    $('#companyAdress1').val(data.adress1)
+                    $('#companyAdress2').val(data.adress2)
+                    $('#companyPostCode').val(data.postalcode)
+                    $('#companyCity').val(data.city)
+
+                    $('#editModal').modal()
+
+                })
+            }
         })
     </script>
 {% endblock %}
