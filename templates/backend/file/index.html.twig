@@ -1,23 +1,18 @@
 {% extends 'backend/backend_layout.html.twig' %}
 
-{% block title %}Liste des sociétés{% endblock %}
+{% block title %}Liste des documents{% endblock %}
 
 {% block body %}
-    <h1>Liste des sociétés</h1>
+    <h1>Liste des documents</h1>
 
 <div class="card p-4">
-    <table id="companyTable" class="table table-hover table-striped table-responsive w-100">
+    <table id="filesTable" class="table table-hover table-striped table-responsive w-100">
         <thead>
             <tr>
                 <th>#</th>
                 <th>Nom</th>
-                <th>Adresse</th>
-                <th>Complément d'adresse</th>
-                <th>Code postal</th>
-                <th>Ville</th>
-                <th>Photo de la pharmacie</th>
-                <th>Utilisateur</th>
-                <th>Commercial</th>
+                <th>Type</th>
+                <th>Description</th>
                 <th>Actif</th>
             </tr>
         </thead>
@@ -30,18 +25,18 @@
     <a href="">retour</a>
 </p>
 
-{% include('backend/company/_editModal.html.twig') %}
+{% include('backend/file/_editModal.html.twig') %}
 
 {% endblock %}
 
 {% block javascripts %}
     <script>
-        $('#companyTable').DataTable({
+        $('#fileTable').DataTable({
             language: {
                 url: '/json/fr_FR.json'
             },
             ajax: {
-                url: '/api/companies',
+                url: '/api/files',
                 dataSrc: ''
             },
             columns: [
@@ -52,10 +47,10 @@
                         <btn class="btn btn-success btn-sm edit-modal"
                             data-id="${data}"
                             data-name="${row.name}"
-                            data-adress1="${row.firstAdressField}"
-                            data-adress2="${row.secondAdressField}"
-                            data-postalcode="${row.postalCode}"
-                            data-city="${row.city}"
+                            data-type="${row.type}"
+                            data-description="${row.description}"
+                            data-commercial="${row.commercial}"
+                            data-users="${row.users}"
                         >
                             <i class="fas fa-plus-circle"></i>
                         </btn>`
@@ -63,13 +58,10 @@
                     }
                 },
                 { data: 'name' },
-                { data: 'firstAdressField' },
-                { data: 'secondAdressField' },
-                { data: 'postalCode' },
-                { data: 'city' },
-                { data: 'picture' },
-                { data: 'user' },
+                { data: 'type' },
+                { data: 'description' },
                 { data: 'commercial' },
+                { data: 'users' },
                 { 
                     data: 'isActive',
                     render: function (data) {
@@ -81,11 +73,11 @@
                 $('.edit-modal').click(function() {
                     var data = $(this).data()
 
-                    $('#companyName').val(data.name)
-                    $('#companyAdress1').val(data.adress1)
-                    $('#companyAdress2').val(data.adress2)
-                    $('#companyPostCode').val(data.postalcode)
-                    $('#companyCity').val(data.city)
+                    $('#fileName').val(data.name)
+                    $('#fileType').val(data.type)
+                    $('#fileDescription').val(data.description)
+                    $('#fileCommercial').val(data.commercial)
+                    $('#fileUsers').val(data.users)
 
                     $('#editModal').modal()
 

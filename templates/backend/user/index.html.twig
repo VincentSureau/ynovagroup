@@ -5,38 +5,83 @@
 {% block body %}
     <h1>Liste des utilisateurs</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Prénom</th>
-                <th>Nom</th>
-                <th>Société</th>
-                <th>Email</th>
-                <th>Utilisateur actif</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for user in users %}
-            <tr>
-                <td>{{ user.id }}</td>
-                <td>{{ user.firstname }}</td>
-                <td>{{ user.lastname }}</td>
-                <td>{{ user.company.name }}</td>
-                <td>{{ user.email }}</td>
-                <td>{{ user.isActive ? 'Yes' : 'No' }}</td>
-                <td>
-                    <a href="{{ path('backend_user_show', {'id': user.id}) }}">show</a>
-                    <a href="{{ path('backend_user_edit', {'id': user.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="6">Aucune donnée</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+    <div class="card p-4">
+        <table id="userTable" class="table table-hover table-striped table-responsive w-100">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Prénom</th>
+                    <th>Nom</th>
+                    <th>Société</th>
+                    <th>Email</th>
+                    <th>Utilisateur actif</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
 
-    {# <a href="{{ path('backend_user_new') }}">Create new</a> #}
+    <p class="text-left">
+        <a href="">retour</a>
+    </p>
+
+{% include('backend/user/_editModal.html.twig') %}
+
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        $('#userTable').DataTable({
+            language: {
+                url: '/json/fr_FR.json'
+            },
+            ajax: {
+                url: '/api/users',
+                dataSrc: ''
+            },
+            columns: [
+                {
+                    data: 'id',
+                    render: function (data, index, row) {
+                        var button = `
+                        <btn class="btn btn-success btn-sm edit-modal"
+                            data-id="${data}"
+                            data-firstname="${row.firstname}"
+                            data-lastname="${row.lastname}"
+                            data-email="${row.email}"
+                            data-company="${row.company}"
+                        >
+                            <i class="fas fa-plus-circle"></i>
+                        </btn>`
+                        return button
+                    }
+                },
+                { data: 'firstname' },
+                { data: 'lastname' },
+                { data: 'company' },
+                { data: 'email' },
+                { 
+                    data: 'isActive',
+                    render: function (data) {
+                        return (data === true) ? 'oui' : 'non'
+                    }
+                }
+            ],
+            initComplete: function() {
+                $('.edit-modal').click(function() {
+                    var data = $(this).data()
+
+                    $('#firstname').val(data.firstname)
+                    $('#lastname').val(data.lastname)
+                    $('#email').val(data.email)
+                    $('#company').val(data.company)
+
+                    $('#editModal').modal()
+
+                })
+            }
+            
+        })
+    </script>
 {% endblock %}

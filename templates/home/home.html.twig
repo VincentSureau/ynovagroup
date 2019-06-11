@@ -37,12 +37,23 @@
                         <li class="nav-item">
                             <a class="nav-link" href="#contact">Contact</a>
                         </li>
+                        
+                        {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                            <li class="nav-item adherent">
+                            <a class="nav-link btn btn-danger adherent-btn btn-sm" href="{{ path('app_logout') }}">Déconnexion</a>
+                        </li> 
+                        {% else %}
                         <li class="nav-item adherent">
-                            <a class="nav-link btn btn-success adherent-btn btn-sm" href="">
+                            <a class="nav-link btn btn-success adherent-btn btn-sm" href="{{ path('app_login') }}">Connexion</a>
+                        </li> 
+                        {% endif %}
+
+                        {# <li class="nav-item adherent">
+                            <a class="nav-link btn btn-success adherent-btn btn-sm" href="{{ path('app_login') }}">
                                 <i></i>
                                 Espace Adhérent
                             </a>
-                        </li>
+                        </li> #}
                     </ul>
                 </div>
             </nav>
