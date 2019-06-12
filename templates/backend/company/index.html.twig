@@ -1,0 +1,55 @@
+{% extends 'backend/backend_layout.html.twig' %}
+
+{% block title %}User index{% endblock %}
+
+{% block body %}
+    <h1>Liste des sociétés</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Premier champ d'adresse</th>
+                <th>Second champ d'adresse</th>
+                <th>Ville</th>
+                <th>Code postal</th>
+                <th>Pays</th>
+                <th>Description</th>
+                <th>Photo de la pharmacie</th>
+                <th>Utilisateur rattaché</th>
+                {# <th>Commercial rattaché</th> #}
+                <th>Société active</th>
+
+            </tr>
+        </thead>
+        <tbody>
+        {% for company in companys %}
+            <tr>
+                <td>{{ company.id }}</td>
+                <td>{{ company.name }}</td>
+                <td>{{ company.firstAdressField }}</td>
+                <td>{{ company.secondAdressField }}</td>
+                <td>{{ company.city }}</td>
+                <td>{{ company.postalCode }}</td>
+                <td>{{ company.country }}</td>
+                <td>{{ company.description }}</td>
+                <td>{{ company.picture }}</td>
+                <td>{{ company.user.firstname }} {{ company.user.lastname }}</td>
+                {# <td>{{ company.commercial.name }}</td> #} 
+                <td>{{ company.isActive ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('backend_company_show', {'id': company.id}) }}">show</a>
+                    <a href="{{ path('backend_company_edit', {'id': company.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">Aucune donnée</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    {# <a href="{{ path('backend_user_new') }}">Create new</a> #}
+{% endblock %}
