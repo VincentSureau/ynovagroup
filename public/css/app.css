@@ -15,6 +15,18 @@ body {
 }
 
 /* STYLE GENERAL */
+html {
+    scroll-behavior: smooth;
+}
+
+h2 {
+    font-size: 4rem;
+}
+
+li {
+    list-style-type: none;
+}
+
 .titre {
     color: var(--green);
 }
@@ -68,6 +80,12 @@ body {
     margin: 0 5px;
 }
 
+a.login-btn:hover {
+    color: #28A645;
+    background-color: white;
+}
+  
+
 /* Navigation Underline Hover effect */
 
 /* --- SECTIONS --- */
@@ -100,11 +118,13 @@ section {
 .panel-box {
     /* width: 50%; */
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
 }
 
 .panel-box-text {
-
+    /* flex-wrap: wrap; */
+    min-width: 250px;
 }
 
 /* Nos objectifs */
@@ -117,10 +137,27 @@ section {
     margin: 0 15px;
 }
 
+/* Form Section */
+.form-group {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.form-btn {
+    margin: 2rem;
+}
+
+button.form-btn:hover {
+    color: #28A645;
+    background-color: white;
+    border-color: #28A645;
+}
+
+
 /* Footer Section */
 footer {
     background-color: var(--green);
-    display: flex;
+    display: flex !important;
     justify-content: space-around;
     align-content: space-around;
 }
@@ -161,6 +198,37 @@ footer > div > .h6 {
 #plaquette > i:hover {
     color: var(--black);
 }
+
+/* Footer Scroll Top Button */
+/* #myBtn {
+    display: flex;
+    align-self: center;
+}
+
+.scrolltop {
+    margin: 0 auto;
+} */
+
+#myBtn {
+    display: none; /* Hidden by default */
+    position: fixed; /* Fixed/sticky position */
+    bottom: 150px; /* Place the button at the bottom of the page */
+    right: 95px; /* Place the button 30px from the right */
+    z-index: 99; /* Make sure it does not overlap */
+    border: none; /* Remove borders */
+    outline: none; /* Remove outline */
+    background-color: #28A645; /* Set a background color */
+    color: white; /* Text color */
+    cursor: pointer; /* Add a mouse pointer on hover */
+    padding: 15px; /* Some padding */
+    border-radius: 10px; /* Rounded corners */
+    font-size: 18px; /* Increase font size */
+  }
+  
+  #myBtn:hover {
+    background-color: var(--white); /* Add a dark-grey background on hover */
+    color: #28A645; /* Set a background color */
+  }
 
 /* Page Back-Office */
 
