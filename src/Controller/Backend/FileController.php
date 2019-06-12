@@ -3,7 +3,6 @@
 namespace App\Controller\Backend;
 
 use App\Entity\Files;
-use App\Form\FilesType;
 use App\Repository\FilesRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,7 +17,7 @@ class FileController extends AbstractController
     /**
      * @Route("/", name="index", methods={"GET"})
      */
-    public function index(FilesRepository $filesRepository)
+    public function index(FilesRepository $filesRepository): Response
     {
         return $this->render('backend/file/index.html.twig', [
         ]);

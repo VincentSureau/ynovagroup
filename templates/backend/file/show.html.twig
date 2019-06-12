@@ -1,0 +1,42 @@
+{% extends 'backend/backend_layout.html.twig' %}
+
+{% block title %}Document{% endblock %}
+
+{% block body %}
+    <h1>Document: {{ files.name }}</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ files.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom du fichier</th>
+                <td>{{ files.name }}</td>
+            </tr>
+            <tr>
+                <th>Type</th>
+                <td>{{ files.type }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ files.description }}</td>
+            </tr>
+            <tr>
+                <th>Commercial</th>
+                <td>{{ files.commercial }}</td>
+            </tr>
+            <tr>
+                <th>Utilisateurs</th>
+                <td>{{ files.user }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('backend_file_index') }}">back to list</a>
+
+    <a href="{{ path('backend_file_edit', {'id': files.id}) }}">edit</a>
+
+    {# {{ include('backend/company/_delete_form.html.twig') }} #}
+{% endblock %}
