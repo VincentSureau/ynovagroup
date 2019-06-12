@@ -10,6 +10,9 @@ body {
 /* Colors */
 :root {
     --green: #28A645;
+    --bamboo: #A2E384;
+    --aqua: #33d8c3;
+    --ocean: #02717a;
     --white: white;
     --black: black;
 }
@@ -19,17 +22,35 @@ html {
     scroll-behavior: smooth;
 }
 
+h1 {
+    font-size: 6rem;
+}
+
 h2 {
     font-size: 4rem;
 }
 
 li {
     list-style-type: none;
+    padding: 0 0 5px 0;
 }
 
 .titre {
+    color: var(--black);
+}
+.titre-valeurs {
     color: var(--green);
 }
+.titre-difference {
+    color: var(--bamboo);
+}
+.titre-objectifs {
+    color: var(--aqua);
+}
+.titre-contact {
+    color: var(--ocean);
+}
+
 
 /* Header Section */
 
@@ -81,7 +102,7 @@ li {
 }
 
 a.login-btn:hover {
-    color: #28A645;
+    color: var(--green);
     background-color: white;
 }
   
@@ -160,6 +181,7 @@ footer {
     display: flex !important;
     justify-content: space-around;
     align-content: space-around;
+    flex-wrap: wrap-reverse;
 }
 
 footer > div > .h6 {
@@ -200,20 +222,12 @@ footer > div > .h6 {
 }
 
 /* Footer Scroll Top Button */
-/* #myBtn {
-    display: flex;
-    align-self: center;
-}
-
-.scrolltop {
-    margin: 0 auto;
-} */
 
 #myBtn {
     display: none; /* Hidden by default */
     position: fixed; /* Fixed/sticky position */
-    bottom: 150px; /* Place the button at the bottom of the page */
-    right: 95px; /* Place the button 30px from the right */
+    bottom: 120px; /* Place the button at the bottom of the page */
+    right: 30px; /* Place the button 30px from the right */
     z-index: 99; /* Make sure it does not overlap */
     border: none; /* Remove borders */
     outline: none; /* Remove outline */
@@ -228,6 +242,11 @@ footer > div > .h6 {
   #myBtn:hover {
     background-color: var(--white); /* Add a dark-grey background on hover */
     color: #28A645; /* Set a background color */
+  }
+
+  /* RGPD Modal */
+  .modal-dialog {
+    top: calc(100% - 300px); 
   }
 
 /* Page Back-Office */
