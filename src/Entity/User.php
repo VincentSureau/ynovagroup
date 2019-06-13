@@ -11,8 +11,6 @@ use Gedmo\Mapping\Annotation as Gedmo;
 use ApiPlatform\Core\Annotation\ApiResource;
 
 use Symfony\Component\Serializer\Annotation\Groups;
-use ApiPlatform\Core\Annotation\ApiProperty;
-use ApiPlatform\Core\Annotation\ApiFilter;
 
 
 /**
@@ -20,20 +18,20 @@ use ApiPlatform\Core\Annotation\ApiFilter;
  * @UniqueEntity(fields={"email"}, message="Il existe déjà un compte avec cet email.")
  * 
  * @ApiResource(
- *     normalizationContext={"groups"={"company"}},
- *     denormalizationContext={"groups"={"companyWrite"}},
+ *     normalizationContext={"groups"={"user"}},
+ *     denormalizationContext={"groups"={"userWrite"}},
  *     collectionOperations={
  *         "get"={
- *             "normalization_context"={"groups"={"company"}},
+ *             "normalization_context"={"groups"={"user"}},
  *         },
  *         "post",
  *      },
  *     itemOperations={
  *         "get"={
- *             "normalization_context"={"groups"={"company"}}
+ *             "normalization_context"={"groups"={"user"}}
  *         },
  *         "put"={
- *             "normalization_context"={"groups"={"companyWrite"}},
+ *             "normalization_context"={"groups"={"userWrite"}},
  *             "access_control"="is_granted('ROLE_USER') and object == user.getCompany() or is_granted('ROLE_ADMIN')", "access_control_message"="Désolé mais tu ne peux modifier que ton projet !"
  *         },
  *         "delete"={"access_control"="is_granted('ROLE_ADMIN')", "access_control_message"="Désolé mais mais seuls les administrateurs peuvent supprimer un projet"}
@@ -46,11 +44,13 @@ class User implements UserInterface
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups({"user", "userWrite"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
+     * @Groups({"user", "userWrite"})
      */
     private $email;
 
@@ -67,27 +67,32 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"user", "userWrite"})
      */
     private $firstname;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"user", "userWrite"})
      */
     private $lastname;
 
     /**
      * @ORM\Column(type="string", length=255, unique=true)
      * @Gedmo\Slug(fields={"firstname", "lastname"})
+     * @Groups({"user", "userWrite"})
      */
     private $slug;
 
     /**
      * @ORM\Column(type="boolean")
+     * @Groups({"user"})
      */
     private $isActive;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Groups({"user"})
      */
     private $createdAt;
 
@@ -109,6 +114,7 @@ class User implements UserInterface
     /**
      * @ORM\OneToOne(targetEntity="App\Entity\Company", inversedBy="user", cascade={"persist", "remove"})
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"user", "userWrite"})
      */
     private $company;
 

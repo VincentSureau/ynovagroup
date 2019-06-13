@@ -50,7 +50,7 @@
                             data-firstname="${row.firstname}"
                             data-lastname="${row.lastname}"
                             data-email="${row.email}"
-                            data-company="${row.company}"
+                            data-company="${row.company.name}"
                         >
                             <i class="fas fa-plus-circle"></i>
                         </btn>`
@@ -75,7 +75,7 @@
                     $('#firstname').val(data.firstname)
                     $('#lastname').val(data.lastname)
                     $('#email').val(data.email)
-                    $('#company').val(data.company)
+                    $('#company').val(data.company.name)
 
                     $('#editModal').modal()
 

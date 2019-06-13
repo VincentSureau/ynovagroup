@@ -8,8 +8,6 @@ use Symfony\Component\Validator\Constraints as Assert;
 use ApiPlatform\Core\Annotation\ApiResource;
 
 use Symfony\Component\Serializer\Annotation\Groups;
-use ApiPlatform\Core\Annotation\ApiProperty;
-use ApiPlatform\Core\Annotation\ApiFilter;
 
 
 /**
@@ -28,7 +26,7 @@ class Company
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"company","companyWrite"})
+     * @Groups({"user","userWrite"})
      */
     private $name;
 
