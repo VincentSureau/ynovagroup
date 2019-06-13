@@ -1,0 +1,86 @@
+{% extends 'backend/backend_layout.html.twig' %}
+
+{% block title %}Liste des posts{% endblock %}
+
+{% block body %}
+    <h1>Liste des posts</h1>
+
+<div class="card p-4">
+    <table id="postTable" class="table table-hover table-striped table-responsive w-100">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Titre</th>
+                <th>Contenu</th>
+                <th>Auteur du post</th>
+                <th>Image/document</th>
+                <th>Actif</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+</div>
+
+<p class="text-left">
+    <a href="">retour</a>
+</p>
+
+{% include('backend/post/_editModal.html.twig') %}
+
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        $('#postTable').DataTable({
+            language: {
+                url: '/json/fr_FR.json'
+            },
+            ajax: {
+                url: '/api/posts',
+                dataSrc: ''
+            },
+            columns: [
+                {
+                    data: 'id',
+                    render: function (data, index, row) {
+                        var button = `
+                        <btn class="btn btn-success btn-sm edit-modal"
+                            data-id="${data}"
+                            data-title="${row.title}"
+                            data-content="${row.content}"
+                            data-author="${row.author}"
+                            data-picture="${row.picture}"
+                        >
+                            <i class="fas fa-plus-circle"></i>
+                        </btn>`
+                        return button
+                    }
+                },
+                { data: 'title' },
+                { data: 'content' },
+                { data: 'author' },
+                { data: 'picture' },
+                { 
+                    data: 'isActive',
+                    render: function (data) {
+                        return (data === true) ? 'oui' : 'non'
+                    }
+                }
+            ],
+            initComplete: function() {
+                $('.edit-modal').click(function() {
+                    var data = $(this).data()
+
+                    $('#title').val(data.title)
+                    $('#content').val(data.content)
+                    $('#author').val(data.author)
+                    $('#picture').val(data.picture)
+
+                    $('#editModal').modal()
+
+                })
+            }
+        })
+    </script>
+{% endblock %}

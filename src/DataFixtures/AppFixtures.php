@@ -4,6 +4,7 @@ namespace App\DataFixtures;
 
 use App\Entity\Company;
 use App\Entity\User;
+use App\Entity\Post;
 
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
@@ -108,6 +109,33 @@ class AppFixtures extends Fixture
         $manager->persist($user);
         $manager->persist($developer);
         $manager->persist($commercial);
+
+
+        // Posts
+        $post1 = new Post();
+        $post1->setTitle('Titre du post 1');
+        $post1->setContent('Contenu du post 1');
+        $post1->setAuthor($admin);
+
+        $post2 = new Post();
+        $post2->setTitle('Titre du post 2');
+        $post2->setContent('Contenu du post 2');
+        $post2->setAuthor($user);
+
+        $post3 = new Post();
+        $post3->setTitle('Titre du post 3');
+        $post3->setContent('Contenu du post 3');
+        $post3->setAuthor($developer);
+
+        $post4 = new Post();
+        $post4->setTitle('Titre du post 4');
+        $post4->setContent('Contenu du post 4');
+        $post4->setAuthor($commercial);
+
+        $manager->persist($post1);
+        $manager->persist($post2);
+        $manager->persist($post3);
+        $manager->persist($post4);
 
         $manager->flush();
     }
