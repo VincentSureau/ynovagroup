@@ -59,7 +59,11 @@
                 },
                 { data: 'firstname' },
                 { data: 'lastname' },
-                { data: 'company' },
+                { data: 'company',
+                  render: function (data, index, row) {
+                    return row.company.name || '-'
+                  } 
+                },
                 { data: 'email' },
                 { 
                     data: 'isActive',
