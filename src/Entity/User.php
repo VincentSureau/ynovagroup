@@ -10,11 +10,35 @@ use Symfony\Component\Security\Core\User\UserInterface;
 use Gedmo\Mapping\Annotation as Gedmo;
 use ApiPlatform\Core\Annotation\ApiResource;
 
+use Symfony\Component\Serializer\Annotation\Groups;
+use ApiPlatform\Core\Annotation\ApiProperty;
+use ApiPlatform\Core\Annotation\ApiFilter;
+
+
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
- * @UniqueEntity(fields={"email"}, message="There is already an account with this email")
+ * @UniqueEntity(fields={"email"}, message="Il existe déjà un compte avec cet email.")
  * 
- * @ApiResource
+ * @ApiResource(
+ *     normalizationContext={"groups"={"company"}},
+ *     denormalizationContext={"groups"={"companyWrite"}},
+ *     collectionOperations={
+ *         "get"={
+ *             "normalization_context"={"groups"={"company"}},
+ *         },
+ *         "post",
+ *      },
+ *     itemOperations={
+ *         "get"={
+ *             "normalization_context"={"groups"={"company"}}
+ *         },
+ *         "put"={
+ *             "normalization_context"={"groups"={"companyWrite"}},
+ *             "access_control"="is_granted('ROLE_USER') and object == user.getCompany() or is_granted('ROLE_ADMIN')", "access_control_message"="Désolé mais tu ne peux modifier que ton projet !"
+ *         },
+ *         "delete"={"access_control"="is_granted('ROLE_ADMIN')", "access_control_message"="Désolé mais mais seuls les administrateurs peuvent supprimer un projet"}
+ *     },
+ * )
  */
 class User implements UserInterface
 {
