@@ -1,12 +1,12 @@
 {% extends 'backend/backend_layout.html.twig' %}
 
-{% block title %}Liste des posts{% endblock %}
+{% block title %}Liste des articles{% endblock %}
 {% block stylesheets %}
     <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.css" rel="stylesheet">
 {% endblock %}
 
 {% block body %}
-    <h1>Liste des posts</h1>
+    <h1>Liste des articles</h1>
 
 <div class="card p-4">
     <table id="postTable" class="table table-hover table-striped table-responsive w-100">
@@ -15,7 +15,7 @@
                 <th>#</th>
                 <th>Titre</th>
                 <th>Contenu</th>
-                <th>Auteur du post</th>
+                <th>Auteur</th>
                 <th>Image/document</th>
                 <th>Actif</th>
             </tr>
@@ -63,7 +63,11 @@
                 },
                 { data: 'title' },
                 { data: 'content' },
-                { data: 'author' },
+                { data: 'author' ,
+                  render: function (data, index, row) {
+                    return (row.author.firstname + ' ' + row.author.lastname) || '-'
+                  } 
+                },
                 { data: 'picture' },
                 { 
                     data: 'isActive',

@@ -1,9 +1,9 @@
 {% extends 'backend/backend_layout.html.twig' %}
 
-{% block title %}Post{% endblock %}
+{% block title %}Article{% endblock %}
 
 {% block body %}
-    <h1>Post: {{ post.title }}</h1>
+    <h1>Article: {{ post.title }}</h1>
 
     <table class="table">
         <tbody>
@@ -24,11 +24,11 @@
                 <td>{{ post.picture }}</td>
             </tr>
             <tr>
-                <th>Créateur du post</th>
+                <th>Auteur</th>
                 <td><a href="{{ path('backend_user_show', {'id': post.author.id}) }}">{{ post.author.firstname }} {{ post.author.lastname }}</a></td>
             </tr>
             <tr>
-                <th>Post actif</th>
+                <th>Article actif</th>
                 <td>{{ post.isActive ? 'Yes' : 'No' }}</td>
             </tr>
         </tbody>
