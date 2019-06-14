@@ -14,10 +14,9 @@
             <tr>
                 <th>#</th>
                 <th>Titre</th>
-                <th>Contenu</th>
                 <th>Auteur</th>
-                <th>Image/document</th>
-                <th>Actif</th>
+                <th>Image</th>
+                <th>Publié</th>
             </tr>
         </thead>
         <tbody>
@@ -52,7 +51,6 @@
                         <btn class="btn btn-success btn-sm edit-modal"
                             data-id="${data}"
                             data-title="${row.title}"
-                            data-content="${row.content}"
                             data-author="${(row.author.firstname + ' ' + row.author.lastname)}"
                             data-picture="${row.picture}"
                         >
@@ -62,7 +60,6 @@
                     }
                 },
                 { data: 'title' },
-                { data: 'content' },
                 { data: 'author' ,
                   render: function (data, index, row) {
                     return (row.author.firstname + ' ' + row.author.lastname) || '-'

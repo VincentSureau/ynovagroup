@@ -5,6 +5,8 @@ namespace App\DataFixtures;
 use App\Entity\Company;
 use App\Entity\User;
 use App\Entity\Post;
+use App\Entity\Files;
+use Faker\Factory;
 
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
@@ -22,120 +24,125 @@ class AppFixtures extends Fixture
 
     public function load(ObjectManager $manager)
     {
+        $faker = Factory::create('fr_FR');
+
+        $developper = new User();
+        $developper
+            ->setFirstname($faker->firstname)
+            ->setLastname($faker->name)
+            ->setEmail('dev@exemple.fr')
+            ->setRoles(['ROLE_DEVELOPER'])
+            ->setPassword($this->passwordEncoder->encodePassword($developper, 'admin'));
+        
+        $manager->persist($developper);
+        
+
+
+        $commercial = new User();
+        $commercial
+            ->setEmail('commercial@commercial.fr')
+            ->setRoles(['ROLE_BUSINESS'])
+            ->setPassword($this->passwordEncoder->encodePassword($commercial, 'commercial'))
+            ->setFirstname($faker->firstName)
+            ->setLastname($faker->lastName);
+        
+        $manager->persist($commercial);
+
         // Pharmacies
-        $company1 = new Company();
-        $company1->setName('Pharmacie de Paris');
-        $company1->setFirstAdressField('5 rue de pourquoi pas');
-        $company1->setsecondAdressField('Second champ vide');
-        $company1->setPostalCode('75000');
-        $company1->setCity('Paris');
-        $company1->setCountry('France');
-        $company1->setDescription('Description factice');
-        // $company->setCommercial('3');
+        $pharmacies = [];
+        for($i = 0; $i <= 40; $i++) {
+            $company = new Company();
+            $company
+                ->setName($faker->company)
+                ->setFirstAdressField($faker->streetAddress)
+                ->setsecondAdressField($faker->streetName)
+                ->setPostalCode($faker->postcode)
+                ->setCity($faker->city)
+                ->setCountry('France')
+                ->setDescription('Description factice')
+                ->setCommercial($commercial)
+                ->setIsActive(true)
+                ->setCreatedAt(new \Datetime)
+                ->setUpdatedAt(new \Datetime)
+                ;
+            $manager->persist($company);
+            $pharmacies[] = $company;
+        }
 
-        $company2 = new Company();
-        $company2->setName('Pharmacie de Rennes');
-        $company2->setFirstAdressField('5 rue de pourquoi pas');
-        $company2->setsecondAdressField('Second champ vide');
-        $company2->setPostalCode('35000');
-        $company2->setCity('Rennes');
-        $company2->setCountry('France');
-        $company2->setDescription('Description factice');
+        $users = [];
+        foreach($pharmacies as $pharma) {
+            $user = new User();
+            $user
+                ->setEmail($faker->unique()->email)
+                ->setRoles(['ROLE_MEMBER'])
+                ->setPassword($this->passwordEncoder->encodePassword($user, 'user'))
+                ->setFirstname($faker->firstName)
+                ->setLastname($faker->lastName)
+                ->setCompany($pharma)
+                ->setIsActive(true)
+                ->setCreatedAt(new \Datetime)
+                ->setUpdatedAt(new \Datetime)
+            ;
 
-        $company3 = new Company();
-        $company3->setName('Pharmacie de Nice');
-        $company3->setFirstAdressField('5 rue de pourquoi pas');
-        $company3->setsecondAdressField('Second champ vide');
-        $company3->setPostalCode('06000');
-        $company3->setCity('Nice');
-        $company3->setCountry('France');
-        $company3->setDescription('Description factice');
-
-        $company4 = new Company();
-        $company4->setName('Pharmacie de Toulon');
-        $company4->setFirstAdressField('5 rue de pourquoi pas');
-        $company4->setsecondAdressField('Second champ vide');
-        $company4->setPostalCode('83000');
-        $company4->setCity('Toulon');
-        $company4->setCountry('France');
-        $company4->setDescription('Description factice');
-
-        $manager->persist($company1);
-        $manager->persist($company2);
-        $manager->persist($company3);
-        $manager->persist($company4);
-        // $manager->flush();
-
+            $manager->persist($user);
+            $users[] = $user;
+        }
 
 
         // Utilisateurs
         $admin = new User();
-        $admin->setEmail('admin@admin.fr');
-        $admin->setRoles(['ROLE_ADMIN']);
-        $encodedPassword = $this->passwordEncoder->encodePassword($admin, 'admin');
-        $admin->setPassword($encodedPassword);
-        $admin->setFirstname('admin');
-        $admin->setLastname('admine');
-        $admin->setCompany($company1);
-
-        $user = new User();
-        $user->setEmail('user@user.fr');
-        $user->setRoles(['ROLE_MEMBER']);
-        $encodedPassword = $this->passwordEncoder->encodePassword($user, 'user');
-        $user->setPassword($encodedPassword);
-        $user->setFirstname('user');
-        $user->setLastname('usere');
-        $user->setCompany($company2);
-
-        $developer = new User();
-        $developer->setEmail('developer@developer.fr');
-        $developer->setRoles(['ROLE_DEVELOPER']);
-        $encodedPassword = $this->passwordEncoder->encodePassword($developer, 'developer');
-        $developer->setPassword($encodedPassword);
-        $developer->setFirstname('developer');
-        $developer->setLastname('developere');
-        $developer->setCompany($company3);
-
-        $commercial = new User();
-        $commercial->setEmail('commercial@commercial.fr');
-        $commercial->setRoles(['ROLE_BUSINESS']);
-        $encodedPassword = $this->passwordEncoder->encodePassword($commercial, 'commercial');
-        $commercial->setPassword($encodedPassword);
-        $commercial->setFirstname('commercial');
-        $commercial->setLastname('commerciale');
-        $commercial->setCompany($company4);
+        $admin
+            ->setEmail('admin@admin.fr')
+            ->setRoles(['ROLE_ADMIN'])
+            ->setPassword($this->passwordEncoder->encodePassword($admin, 'admin'))
+            ->setFirstname($faker->firstName)
+            ->setLastname($faker->lastName)
+            ->setIsActive(true)
+            ->setCreatedAt(new \Datetime)
+            ->setUpdatedAt(new \Datetime)
+            ;
 
         $manager->persist($admin);
-        $manager->persist($user);
-        $manager->persist($developer);
-        $manager->persist($commercial);
-
-
+        
         // Posts
-        $post1 = new Post();
-        $post1->setTitle('Titre du post 1');
-        $post1->setContent('Contenu du post 1');
-        $post1->setAuthor($admin);
+        $posts = [];
+        for($i = 0; $i <= 30; $i++) {
+            $post = new Post();
+            $post
+                ->setTitle($faker->word(5, true))
+                ->setContent($faker->paragraphs(6, true))
+                ->setIsActive(true)
+                ->setCreatedAt(new \Datetime)
+                ->setUpdatedAt(new \Datetime)
+                ->setAuthor($admin)
+                ->setPicture($faker->imageUrl($width = 640, $height = 480))
+                ;
+            $manager->persist($post);
+            $posts[] = $post;
+        }
 
-        $post2 = new Post();
-        $post2->setTitle('Titre du post 2');
-        $post2->setContent('Contenu du post 2');
-        $post2->setAuthor($user);
+        $files = [];
+        for($i = 0; $i <= 50; $i++) {
+            $file = new Files();
+            $file
+                ->setName($faker->words(4, true))
+                ->setDescription($faker->word(30))
+                ->setType($faker->fileExtension)
+                ->setPath($faker->image)
+                ->setCommercial($commercial)
+                ->setCreatedAt(new \Datetime)
+                ->setUpdatedAt(new \Datetime)
+                ->setIsActive(true)
+                ;
+            $manager->persist($file);
+            $files[] = $file;
+        }
 
-        $post3 = new Post();
-        $post3->setTitle('Titre du post 3');
-        $post3->setContent('Contenu du post 3');
-        $post3->setAuthor($developer);
-
-        $post4 = new Post();
-        $post4->setTitle('Titre du post 4');
-        $post4->setContent('Contenu du post 4');
-        $post4->setAuthor($commercial);
-
-        $manager->persist($post1);
-        $manager->persist($post2);
-        $manager->persist($post3);
-        $manager->persist($post4);
+        foreach($files as $file) {
+            for($i = 0; $i <= 6; $i++) {
+                $file->addUser($users[array_rand($users)]);
+            }
+        }
 
         $manager->flush();
     }

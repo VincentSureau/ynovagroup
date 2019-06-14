@@ -9,9 +9,9 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Gedmo\Mapping\Annotation as Gedmo;
 use ApiPlatform\Core\Annotation\ApiResource;
-
+Use App\Controller\Api\GetUserController;
 use Symfony\Component\Serializer\Annotation\Groups;
-
+use Symfony\Component\Serializer\Annotation\MaxDepth;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
@@ -23,6 +23,9 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *     collectionOperations={
  *         "get"={
  *             "normalization_context"={"groups"={"user"}},
+ *             "method"="GET",
+ *             "path"="/users/",
+ *             "controller"=GetUserController::class,
  *         },
  *         "post",
  *      },
@@ -113,7 +116,7 @@ class User implements UserInterface
 
     /**
      * @ORM\OneToOne(targetEntity="App\Entity\Company", inversedBy="user", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      * @Groups({"user", "userWrite"})
      */
     private $company;

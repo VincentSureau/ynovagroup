@@ -12,9 +12,9 @@
                     <th>#</th>
                     <th>Prénom</th>
                     <th>Nom</th>
-                    <th>Société</th>
+                    <th>Pharmacie</th>
                     <th>Email</th>
-                    <th>Utilisateur actif</th>
+                    {# <th>Actif</th> #}
                 </tr>
             </thead>
             <tbody>
@@ -65,12 +65,12 @@
                   } 
                 },
                 { data: 'email' },
-                { 
+                {# { 
                     data: 'isActive',
                     render: function (data) {
                         return (data === true) ? 'oui' : 'non'
                     }
-                }
+                } #}
             ],
             initComplete: function() {
                 $('.edit-modal').click(function() {
