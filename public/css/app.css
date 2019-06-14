@@ -269,3 +269,29 @@ footer > div > .h6 {
     display: flex;
 
 }
+
+/*Page RGPD*/
+.rgpd {
+    margin: 1rem 2rem 4rem 2rem;
+}
+.rgpd > h1 {
+    color: var(--green);
+    font-size: 3em;
+    text-align: center;
+}
+
+.rgpd > h2 {
+    font-size: 1.5em;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.rgpd > h3 {
+    font-size: 1.5em;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.rgpd > p {
+    margin: 2rem 4rem;
+}
