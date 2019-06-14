@@ -68,8 +68,24 @@
                 { data: 'postalCode' },
                 { data: 'city' },
                 { data: 'picture' },
-                { data: 'user' },
-                { data: 'commercial' },
+                { 
+                    data: 'user' ,
+                    render: function(data, index, row) {
+                        if(null !== data) {
+                            return data.firstname + ' ' + data.lastname
+                        }
+                    }
+                },
+                { 
+                    data: 'commercial' ,
+                    render: function(data, index, row) {
+                        console.log(data)
+                        if(data) {
+                            return data.firstname + ' ' + data.lastname
+                        }
+                        return '-'
+                    }
+                },
                 { 
                     data: 'isActive',
                     render: function (data) {

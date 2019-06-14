@@ -6,14 +6,32 @@ use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Validator\Constraints as Assert;
 use ApiPlatform\Core\Annotation\ApiResource;
-
 use Symfony\Component\Serializer\Annotation\Groups;
 
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\CompanyRepository")
  * 
- * @ApiResource
+ * @ApiResource(
+ *     normalizationContext={"groups"={"company"}},
+ *     denormalizationContext={"groups"={"companyWrite"}},
+ *     collectionOperations={
+ *         "get"={
+ *             "normalization_context"={"groups"={"company"}},
+ *         },
+ *         "post",
+ *      },
+ *     itemOperations={
+ *         "get"={
+ *             "normalization_context"={"groups"={"company"}}
+ *         },
+ *         "put"={
+ *             "normalization_context"={"groups"={"companyWrite"}},
+ *             "access_control"="is_granted('ROLE_USER') and object == user.getCompany() or is_granted('ROLE_ADMIN')", "access_control_message"="Désolé, vous ne pouvez pas modifier une autre pharmacie"
+ *         },
+ *         "delete"={"access_control"="is_granted('ROLE_ADMIN')", "access_control_message"="Désolé mais mais seuls les administrateurs peuvent supprimer une pharmacie"}
+ *     },
+ * )
  */
 class Company
 {
@@ -21,63 +39,73 @@ class Company
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups({"company"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"user","userWrite"})
+     * @Groups({"user","company"})
      */
     private $name;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"company"})
      */
     private $firstAdressField;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"company"})
      */
     private $secondAdressField;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"company"})
      */
     private $postalCode;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"company"})
      */
     private $city;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"company"})
      */
     private $country;
 
     /**
      * @ORM\Column(type="text", nullable=true)
+     * @Groups({"company"})
      */
     private $description;
 
     /**
      * @Assert\File(
-     * maxSize = "1024k", 
-     * mimeTypes={"image/jpeg", "image/png" },
-     * mimeTypesMessage = "Merci de fournir un format valide : png, jpeg"
+     *      maxSize = "1024k", 
+     *      mimeTypes={"image/jpeg", "image/png" },
+     *      mimeTypesMessage = "Merci de fournir un format valide : png, jpeg"
      * )
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"company"})
      */
     private $picture;
 
     /**
      * @ORM\Column(type="string", length=255, unique=true)
      * @Gedmo\Slug(fields={"name"})
+     * @Groups({"company"})
      */
     private $slug;
 
     /**
      * @ORM\Column(type="boolean")
+     * @Groups({"company"})
      */
     private $isActive;
 
@@ -93,11 +121,13 @@ class Company
 
     /**
      * @ORM\OneToOne(targetEntity="App\Entity\User", mappedBy="company", cascade={"persist", "remove"})
+     * @Groups({"company"})
      */
     private $user;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="managedCompanies")
+     * @Groups({"company"})
      */
     private $commercial;
 

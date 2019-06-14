@@ -32,9 +32,9 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *         },
  *         "put"={
  *             "normalization_context"={"groups"={"userWrite"}},
- *             "access_control"="is_granted('ROLE_USER') and object == user.getCompany() or is_granted('ROLE_ADMIN')", "access_control_message"="Désolé mais tu ne peux modifier que ton projet !"
+ *             "access_control"="is_granted('ROLE_USER') and object == user or is_granted('ROLE_ADMIN')", "access_control_message"="Désolé, vous ne pouvez modifier que votre propre profil"
  *         },
- *         "delete"={"access_control"="is_granted('ROLE_ADMIN')", "access_control_message"="Désolé mais mais seuls les administrateurs peuvent supprimer un projet"}
+ *         "delete"={"access_control"="is_granted('ROLE_ADMIN')", "access_control_message"="Désolé mais mais seuls les administrateurs peuvent supprimer un utilisateur"}
  *     },
  * )
  */
@@ -67,13 +67,13 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups({"user", "userWrite"})
+     * @Groups({"user", "userWrite", "company"})
      */
     private $firstname;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups({"user", "userWrite"})
+     * @Groups({"user", "userWrite", "company"})
      */
     private $lastname;
 
