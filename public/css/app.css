@@ -68,7 +68,6 @@ li {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background
 }
 
 #hero > div > h1 {
@@ -122,8 +121,8 @@ section {
     flex-wrap: wrap;
 }
 
-.valeurs-img {
-}
+/* .valeurs-img {
+} */
 
 .valeurs-text {
     min-width: 200px;
@@ -149,9 +148,9 @@ section {
 }
 
 /* Nos objectifs */
-#objectifs {
+/* #objectifs {
 
-}
+} */
 
 .fa-check-square {
     color: var(--green);
