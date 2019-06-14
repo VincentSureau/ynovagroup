@@ -38,6 +38,13 @@
                             <a class="nav-link" href="#contact">Contact</a>
                         </li>
                         <li class="nav-item adherent">
+                            <a class="nav-link login-btn btn btn-primary adherent-btn btn-sm" href="">
+                                <i></i>
+                                Mon Espace
+                                <i class="far fa-user"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item adherent">
                             <a class="nav-link login-btn btn btn-success adherent-btn btn-sm" href="">
                                 <i></i>
                                 Espace Adhérent
@@ -304,23 +311,40 @@
             </section>
         </main>
         <!-- Footer -->
-        <footer class="footer">
+        <footer class="footer container-fluid">
             <div class="footer-dl m-5 text-center">
-                <h6 class="h6 text-uppercase">Téléchargez notre plaquette</h6>
+                <h6 class="h6 text-uppercase mb-2">Téléchargez notre plaquette</h6>
                 <a href="http://www.ynovagroup.com/Plaquette/Plaquette_YnovaGroup.pdf" class="m-3" id="plaquette">
                     <i class="fa fa-download fa-3x m-4" aria-hidden="true"></i>
                 </a>
             </div>
             <div class="footer-infos m-5 text-center">
-                <h6 class="h6 text-uppercase">Contact</h6>
+                <h6 class="h6 text-uppercase mb-2">Contactez Ynovagroup</h6>
                 <div class="footer-infos-element">
                     <a id="mail" href="mailto:contact@ynovagroup.com" class="p-3">contact@ynovagroup.com</a>
                     <a id="tel" href="tel:+33134205268" class="p-3">+33 (0)1 34 20 52 68</a>
                 </div>    
+
+                <h6 class="h6 text-uppercase mt-4 mb-2">Informations générales</h6>
+                <div class="footer-infos-element">
+                    <a id="rgpd" href="www.ynovagroup.com/rgpd" class="p-3">Politique de confidentialité</a>
+                </div>    
             </div>
-                  <i onclick="topFunction() " id="myBtn" class="fas fa-level-up-alt"></i>            
+            <i onclick="topFunction() " id="myBtn" class="fas fa-level-up-alt fa-3x"></i>
         </footer>
-        
+        {# <div class="modal fade" id="myModal">
+            <div class="modal-header">
+                <a class="close" data-dismiss="modal">×</a>
+                <h3>Modal header</h3>
+            </div>
+            <div class="modal-body">
+                <p>One fine body…</p>
+            </div>
+            <div class="modal-footer">
+                <a href="#" class="btn">Close</a>
+                <a href="#" class="btn btn-primary">Save changes</a>
+            </div>
+        </div>         #}
 
     <script>
         // When the user scrolls down 20px from the top of the document, show the button
@@ -338,6 +362,8 @@
         function topFunction() {
         window.scrollTo(0,0);
         }
+
+        // Modals
 
     </script>
 
