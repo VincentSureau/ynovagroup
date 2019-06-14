@@ -1,9 +1,9 @@
 {% extends 'backend/backend_layout.html.twig' %}
 
-{% block title %}Société{% endblock %}
+{% block title %}Pharmacie{% endblock %}
 
 {% block body %}
-    <h1>Société: {{ company.name }}</h1>
+    <h1>Pharmacie: {{ company.name }}</h1>
 
     <table class="table">
         <tbody>
@@ -52,7 +52,7 @@
                 <td><a href="{{ path('backend_user_show', {'id': company.commercial.id}) }}">{{ company.commercial.firstname }} {{ company.commercial.lastname }}</a></td>
             </tr>
             <tr>
-                <th>Société active</th>
+                <th>Pharmacie active</th>
                 <td>{{ company.isActive ? 'Yes' : 'No' }}</td>
             </tr>
         </tbody>

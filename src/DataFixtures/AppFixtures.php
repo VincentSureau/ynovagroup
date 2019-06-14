@@ -75,7 +75,7 @@ class AppFixtures extends Fixture
         $encodedPassword = $this->passwordEncoder->encodePassword($admin, 'admin');
         $admin->setPassword($encodedPassword);
         $admin->setFirstname('admin');
-        $admin->setLastname('admin');
+        $admin->setLastname('admine');
         $admin->setCompany($company1);
 
         $user = new User();
@@ -84,7 +84,7 @@ class AppFixtures extends Fixture
         $encodedPassword = $this->passwordEncoder->encodePassword($user, 'user');
         $user->setPassword($encodedPassword);
         $user->setFirstname('user');
-        $user->setLastname('user');
+        $user->setLastname('usere');
         $user->setCompany($company2);
 
         $developer = new User();
@@ -93,7 +93,7 @@ class AppFixtures extends Fixture
         $encodedPassword = $this->passwordEncoder->encodePassword($developer, 'developer');
         $developer->setPassword($encodedPassword);
         $developer->setFirstname('developer');
-        $developer->setLastname('developer');
+        $developer->setLastname('developere');
         $developer->setCompany($company3);
 
         $commercial = new User();
@@ -102,7 +102,7 @@ class AppFixtures extends Fixture
         $encodedPassword = $this->passwordEncoder->encodePassword($commercial, 'commercial');
         $commercial->setPassword($encodedPassword);
         $commercial->setFirstname('commercial');
-        $commercial->setLastname('commercial');
+        $commercial->setLastname('commerciale');
         $commercial->setCompany($company4);
 
         $manager->persist($admin);

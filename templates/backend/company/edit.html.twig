@@ -1,13 +1,13 @@
 {% extends 'backend/backend_layout.html.twig' %}
 
-{% block title %}Edition d'une société{% endblock %}
+{% block title %}Edition d'une pharmacie{% endblock %}
 
 {% block body %}
-    <h1>Edition d'une société</h1>
+    <h1>Edition d'une pharmacie</h1>
 
     {{ include('backend/company/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('backend_company_index') }}">back to list</a>
+    <a href="{{ path('backend_company_index') }}">Retour à la liste des pharmacies</a>
 
     {# {{ include('backend/company/_delete_form.html.twig') }} #}
 {% endblock %}

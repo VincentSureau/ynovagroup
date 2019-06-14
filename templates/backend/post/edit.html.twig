@@ -1,13 +1,13 @@
 {% extends 'backend/backend_layout.html.twig' %}
 
-{% block title %}Edition d'un post{% endblock %}
+{% block title %}Edition d'un article{% endblock %}
 
 {% block body %}
-    <h1>Edition d'un post</h1>
+    <h1>Edition d'un article</h1>
 
     {{ include('backend/post/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('backend_post_index') }}">back to list</a>
+    <a href="{{ path('backend_post_index') }}">Retour à la liste des articles</a>
 
     {# {{ include('backend/post/_delete_form.html.twig') }} #}
 {% endblock %}
