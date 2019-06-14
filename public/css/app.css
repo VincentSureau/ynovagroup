@@ -98,6 +98,7 @@ li {
 
 .nav-item {
     margin: 0 5px;
+    text-align: center;
 }
 
 a.login-btn:hover {
@@ -178,7 +179,7 @@ button.form-btn:hover {
 footer {
     background-color: var(--green);
     display: flex !important;
-    justify-content: space-around;
+    justify-content: center;
     align-content: space-around;
     flex-wrap: wrap-reverse;
 }
@@ -225,7 +226,7 @@ footer > div > .h6 {
 #myBtn {
     display: none; /* Hidden by default */
     position: fixed; /* Fixed/sticky position */
-    bottom: 120px; /* Place the button at the bottom of the page */
+    bottom: 220px; /* Place the button at the bottom of the page */
     right: 30px; /* Place the button 30px from the right */
     z-index: 99; /* Make sure it does not overlap */
     border: none; /* Remove borders */
@@ -269,6 +270,22 @@ footer > div > .h6 {
 
 }
 
+.label {
+    padding: 1rem 0;
+    text-align: center;
+}
+
+.select {
+    padding: 0 0 1rem 0;
+}
+.table {
+    margin: 3rem 0;
+}
+
+#bo-h5 {
+
+}
+
 /*Page RGPD*/
 .rgpd {
     margin: 1rem 2rem 4rem 2rem;
@@ -294,3 +311,20 @@ footer > div > .h6 {
 .rgpd > p {
     margin: 2rem 4rem;
 }
+
+/*Page Blog*/
+.blog {
+    display: flex;
+    justify-content: space-between;
+}
+
+.blog-date {
+    display: flex;
+    align-self: center;
+}
+
+.blog-post {
+    text-align: justify;
+    text-justify: inter-word;
+}
+
