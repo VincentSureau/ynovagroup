@@ -1,6 +1,9 @@
 {% extends 'backend/backend_layout.html.twig' %}
 
 {% block title %}Liste des posts{% endblock %}
+{% block stylesheets %}
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.css" rel="stylesheet">
+{% endblock %}
 
 {% block body %}
     <h1>Liste des posts</h1>
@@ -31,6 +34,7 @@
 {% endblock %}
 
 {% block javascripts %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.js"></script>
     <script>
         $('#postTable').DataTable({
             language: {
@@ -82,5 +86,10 @@
                 })
             }
         })
+        $('#content').summernote({
+            placeholder: 'Contenu du post ici',
+            tabsize: 2,
+            height: 150
+        });
     </script>
 {% endblock %}
