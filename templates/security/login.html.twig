@@ -5,10 +5,23 @@
 {% block body %}
     <div class="container py-5 d-flex justify-content-center">
 
-    <div class="card col-12 col-sm-9 col-md-6 col-lg-5 my-5"> 
+    <div class="card col-12 col-sm-9 col-md-6 col-lg-5 my-5 py-3"> 
         <article class="card-body"> 
+        <div class="text-center">
             <h4 class="card-title text-center mb-4 mt-1">Connexion</h4> 
+            <p>Merci de vous identifier pour accéder à votre espace</p>
+        </div>
             <hr> 
+                {% for label, messages in app.flashes %}
+                    {% for message in messages %}
+                        <div class="alert alert-{{ label }}" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endfor %}
                 {% if error %}
                     <p class="alert alert-danger text-center">{{ error.messageKey|trans(error.messageData, 'security') }}</p>
                 {% endif %}
@@ -53,7 +66,7 @@
                     <button type="submit" class="btn btn-primary btn-block"> Connexion </button> 
                 </div> <!-- form-group// --> 
                 <p class="text-center">
-                    <a href="#" class="btn">Mot de passe oublié?</a>
+                    <a href="{{ path('app_forgotten_pasword') }}" class="btn">Mot de passe oublié?</a>
                 </p> 
             </form> 
         </article> 
