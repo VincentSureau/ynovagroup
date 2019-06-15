@@ -6,61 +6,10 @@
 {% block body %}
 
     <!-- Bootstrap Container -->
-    <div class="container-fluid p-0">
+    <div class="container-fluid p-0 bg-white">
         <!-- H E A D E R  S E C T I O N -->
         <header class="header">
-            <!-- Navigation with a burger menu -->
-            <nav class="navbar sticky-top navbar-expand-xl navbar-light bg-white ">
-                <a class="navbar-brand" href="#hero">
-                    <img src="{{ asset('images/ynovagroup_logo.png') }}" width="200" height="70" alt="">
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul id="nav" class="navbar-nav mx-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="#">Accueil</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#about">Qui sommes-nous ?</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#valeurs">Nos valeurs</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#difference">Notre différence</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#objectifs">Nos objectifs</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#contact">Contact</a>
-                        </li>
-                        
-                        {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
-                            <li class="nav-item adherent">
-                            <a class="nav-link btn btn-danger adherent-btn btn-sm" href="{{ path('app_logout') }}">Déconnexion</a>
-                        </li> 
-                        <li class="nav-item adherent">
-                            <a class="nav-link login-btn btn btn-primary adherent-btn btn-sm" href="">
-                                <i></i>
-                                Mon Espace
-                                <i class="far fa-user"></i>
-                            </a>
-                        </li>
-                        {% else %}
-                        <li class="nav-item adherent">
-                            <a class="nav-link login-btn btn btn-success adherent-btn btn-sm" href="{{ path('app_login') }}">
-                                <i></i>
-                                Espace Adhérent
-                                <i class="fas fa-sign-in-alt"></i>
-                            </a>
-                        </li>
-                        {% endif %}
-                    </ul>
-                </div>
-            </nav>
+        {% include('partials/_navbar.html.twig') %}
             <!-- H E R O  S E C T I O N -->
             <section id="hero" src="{{ asset('images/ynovagroup_hero.jpg') }}" class="jumbotron-fluid container-fluid text-center img-fluid">
                 <div class="jumbotron-fluid container-fluid text-center">
@@ -73,7 +22,7 @@
             </section>
         </header>
         <!-- M A I N  S E C T I O N -->
-        <main class="main container-fluid p-0">
+        <main class="main container p-0">
             <!-- Citation Section -->
             <section id="about" class="container-fluid p-0 text-center my-5">
                 <!-- Section heading -->

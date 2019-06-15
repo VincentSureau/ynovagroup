@@ -10,12 +10,13 @@ use Symfony\Component\Routing\Annotation\Route;
 class UserController extends AbstractController
 {
     /**
-     * @Route("/profil/{id}", name="profil", methods={"GET"})
+     * @Route("/profil/{slug}", name="profil", methods={"GET"})
      */
     public function profil(User $user): Response
     {
         return $this->render('user/profil.html.twig', [
             'user' => $user,
+            'current' => 'profil'
         ]);
     }
 }

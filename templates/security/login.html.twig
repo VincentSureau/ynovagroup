@@ -3,34 +3,62 @@
 {% block title %}Log in!{% endblock %}
 
 {% block body %}
-<form method="post">
-    {% if error %}
-        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-    {% endif %}
+    {% include('partials/_navbar.html.twig') %}
+    <div class="container pt-5 d-flex justify-content-center">
 
-    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-    <label for="inputEmail" class="sr-only">Email</label>
-    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" placeholder="Email" required autofocus>
-    <label for="inputPassword" class="sr-only">Password</label>
-    <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
+    <div class="card col-12 col-sm-9 col-md-6 col-lg-5"> 
+        <article class="card-body"> 
+            <h4 class="card-title text-center mb-4 mt-1">Connexion</h4> 
+            <hr> 
+                {% if error %}
+                    <p class="alert alert-danger text-center">{{ error.messageKey|trans(error.messageData, 'security') }}</p>
+                {% endif %}
+            <form method="post"> 
+                <div class="form-group"> 
+                    <label for="inputEmail">Votre email</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend"> 
+                            <span class="input-group-text"> 
+                                <i class="fa fa-user"></i> 
+                            </span> 
+                        </div> 
+                        <input id="inputEmail" name="email" class="form-control" placeholder="Email" type="email"> 
+                    </div> <!-- input-group.// --> 
+                </div> <!-- form-group// --> 
+                <div class="form-group pt-2"> 
+                    <label for="inputPassword">Votre mot de passe</label>
+                    <div class="input-group"> 
+                        <div class="input-group-prepend"> 
+                            <span class="input-group-text"> 
+                            <i class="fa fa-lock"></i> 
+                            </span> 
+                        </div> 
+                        <input class="form-control" placeholder="******" type="password" id="inputPassword" name="password" class="sr-only"> 
+                    </div> <!-- input-group.// --> 
+                </div> <!-- form-group// --> 
 
-    <input type="hidden" name="_csrf_token"
-           value="{{ csrf_token('authenticate') }}"
-    >
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
-    {#
-        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
-        See https://symfony.com/doc/current/security/remember_me.html
+                <div class="form-group pt-2"> 
+                    <div class="checkbox">
+                        <label><input type="checkbox" name="_remember_me" class="mr-1">Se souvenir de moi</label>
+                    </div> <!-- checkbox .// -->
+                </div>
+                {#
+                    Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+                    See https://symfony.com/doc/current/security/remember_me.html
 
-        <div class="checkbox mb-3">
-            <label>
-                <input type="checkbox" name="_remember_me"> Remember me
-            </label>
-        </div>
-    #}
+                #}
 
-    <button class="btn btn-lg btn-primary" type="submit">
-        Sign in
-    </button>
-</form>
+                <div class="form-group pt-2"> 
+                    <button type="submit" class="btn btn-primary btn-block"> Connexion </button> 
+                </div> <!-- form-group// --> 
+                <p class="text-center">
+                    <a href="#" class="btn">Mot de passe oublié?</a>
+                </p> 
+            </form> 
+        </article> 
+    </div> 
+    <!-- card.// -->
+
 {% endblock %}

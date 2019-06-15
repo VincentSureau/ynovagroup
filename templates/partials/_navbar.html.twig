@@ -1,0 +1,58 @@
+<!-- Navigation with a burger menu -->
+<nav class="navbar sticky-top navbar-expand-xl navbar-light bg-white ">
+    <a class="navbar-brand" href="{{ current == 'home'? '#hero' : path('home') }}">
+        <img src="{{ asset('images/ynovagroup_logo.png') }}" width="200" height="70" alt="">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul id="nav" class="navbar-nav mx-auto">
+            {% if current == 'home' %}
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Accueil</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#about">Qui sommes-nous ?</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#valeurs">Nos valeurs</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#difference">Notre différence</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#objectifs">Nos objectifs</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#contact">Contact</a>
+                </li>
+            {% else %}
+                <li class="nav-item active">
+                    <a class="nav-link" href="{{ path('home') }}">Accueil</a>
+                </li>
+            {% endif %}
+
+            {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+            <li class="nav-item adherent">
+                <a class="nav-link login-btn btn btn-primary adherent-btn btn-sm text-white" href="{{ path('profil', {'slug': app.user.slug}) }}">
+                    <i></i>
+                    Mon Espace
+                    <i class="far fa-user"></i>
+                </a>
+            </li>
+            <li class="nav-item adherent">
+                <a class="nav-link btn btn-danger adherent-btn btn-sm text-white" href="{{ path('app_logout') }}">Déconnexion</a>
+            </li>
+            {% else %}
+            <li class="nav-item adherent">
+                <a class="nav-link login-btn btn btn-success adherent-btn btn-sm text-white" href="{{ path('app_login') }}">
+                    <i></i>
+                    Espace Adhérent
+                    <i class="fas fa-sign-in-alt"></i>
+                </a>
+            </li>
+            {% endif %}
+        </ul>
+    </div>
+</nav>
