@@ -10,14 +10,47 @@ body {
 /* Colors */
 :root {
     --green: #28A645;
+    --bamboo: #A2E384;
+    --aqua: #33d8c3;
+    --ocean: #02717a;
     --white: white;
     --black: black;
 }
 
 /* STYLE GENERAL */
+html {
+    scroll-behavior: smooth;
+}
+
+h1 {
+    font-size: 6rem;
+}
+
+h2 {
+    font-size: 4rem;
+}
+
+li {
+    list-style-type: none;
+    padding: 0 0 5px 0;
+}
+
 .titre {
+    color: var(--black);
+}
+.titre-valeurs {
     color: var(--green);
 }
+.titre-difference {
+    color: var(--bamboo);
+}
+.titre-objectifs {
+    color: var(--aqua);
+}
+.titre-contact {
+    color: var(--ocean);
+}
+
 
 /* Header Section */
 
@@ -35,7 +68,6 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background
 }
 
 #hero > div > h1 {
@@ -66,7 +98,14 @@ body {
 
 .nav-item {
     margin: 0 5px;
+    text-align: center;
 }
+
+a.login-btn:hover {
+    color: var(--green);
+    background-color: white;
+}
+  
 
 /* Navigation Underline Hover effect */
 
@@ -83,8 +122,8 @@ section {
     flex-wrap: wrap;
 }
 
-.valeurs-img {
-}
+/* .valeurs-img {
+} */
 
 .valeurs-text {
     min-width: 200px;
@@ -100,29 +139,49 @@ section {
 .panel-box {
     /* width: 50%; */
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
 }
 
 .panel-box-text {
-
+    /* flex-wrap: wrap; */
+    min-width: 250px;
 }
 
 /* Nos objectifs */
-#objectifs {
+/* #objectifs {
 
-}
+} */
 
 .fa-check-square {
     color: var(--green);
     margin: 0 15px;
 }
 
+/* Form Section */
+.form-group {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.form-btn {
+    margin: 2rem;
+}
+
+button.form-btn:hover {
+    color: #28A645;
+    background-color: white;
+    border-color: #28A645;
+}
+
+
 /* Footer Section */
 footer {
     background-color: var(--green);
-    display: flex;
-    justify-content: space-around;
+    display: flex !important;
+    justify-content: center;
     align-content: space-around;
+    flex-wrap: wrap-reverse;
 }
 
 footer > div > .h6 {
@@ -162,6 +221,34 @@ footer > div > .h6 {
     color: var(--black);
 }
 
+/* Footer Scroll Top Button */
+
+#myBtn {
+    display: none; /* Hidden by default */
+    position: fixed; /* Fixed/sticky position */
+    bottom: 220px; /* Place the button at the bottom of the page */
+    right: 30px; /* Place the button 30px from the right */
+    z-index: 99; /* Make sure it does not overlap */
+    border: none; /* Remove borders */
+    outline: none; /* Remove outline */
+    background-color: #28A645; /* Set a background color */
+    color: white; /* Text color */
+    cursor: pointer; /* Add a mouse pointer on hover */
+    padding: 15px; /* Some padding */
+    border-radius: 10px; /* Rounded corners */
+    font-size: 18px; /* Increase font size */
+  }
+  
+  #myBtn:hover {
+    background-color: var(--white); /* Add a dark-grey background on hover */
+    color: #28A645; /* Set a background color */
+  }
+
+  /* RGPD Modal */
+  .modal-dialog {
+    top: calc(100% - 300px); 
+  }
+
 /* Page Back-Office */
 
 .navbackoffice {
@@ -182,3 +269,62 @@ footer > div > .h6 {
     display: flex;
 
 }
+
+.label {
+    padding: 1rem 0;
+    text-align: center;
+}
+
+.select {
+    padding: 0 0 1rem 0;
+}
+.table {
+    margin: 3rem 0;
+}
+
+#bo-h5 {
+
+}
+
+/*Page RGPD*/
+.rgpd {
+    margin: 1rem 2rem 4rem 2rem;
+}
+.rgpd > h1 {
+    color: var(--green);
+    font-size: 3em;
+    text-align: center;
+}
+
+.rgpd > h2 {
+    font-size: 1.5em;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.rgpd > h3 {
+    font-size: 1.5em;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.rgpd > p {
+    margin: 2rem 4rem;
+}
+
+/*Page Blog*/
+.blog {
+    display: flex;
+    justify-content: space-between;
+}
+
+.blog-date {
+    display: flex;
+    align-self: center;
+}
+
+.blog-post {
+    text-align: justify;
+    text-justify: inter-word;
+}
+

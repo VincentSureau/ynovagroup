@@ -28,19 +28,17 @@
             <!-- Main Back-office Adhérents -->
             <section class="backoffice m-5">
                 <!-- Profil de l'adhérent -->
-                <div class="container-fluid profil text-center">
-                    <h5 class="card-title">Mon profil adhérent</h5>
-                    <div class="card" style="width: 18rem;">
+                <div class="container-fluid profil text-center mb-5">
+                    <div class="card" style="width: 20rem;">
                         <img src="https://via.placeholder.com/468x200?text=Image+de+la+pharmacie" class="card-img-top" alt="...">
                         <div class="card-body">
-                            <h5 class="card-title">Mon profil adhérent</h5>
-                            <p class="card-text"><strong>Nom : </strong>Thibaud</p>
-                            <p class="card-text"><strong>Prénom : </strong>Éléonore</p>
-                            <p class="card-text"><strong>Adresse</strong></p>
-                            <p class="card-text">19, rue des Nations Unies
+                            <h5 id="bo-h5" class="card-title text-uppercase">Mon profil adhérent</h5>                            
+                            <p class="card-text"><strong>Nom <br></strong>Thibaud</p>
+                            <p class="card-text"><strong>Prénom<br></strong>Éléonore</p>
+                            <p class="card-text"><strong>Adresse<br></strong>19, rue des Nations Unies
                                 <br> 93200 SAINT-DENIS</p>
-                            <p class="card-text"><strong>E-Mail : </strong>eleonore@thibaud.fr</p>
-                            <p class="card-text"><strong>Téléphone : </strong>06 89 18 95 56</p>
+                            <p class="card-text"><strong>E-mail<br></strong>eleonore@thibaud.fr</p>
+                            <p class="card-text"><strong>Téléphone<br></strong>06 89 18 95 56</p>
                             <h5 class="card-title">Mon commercial</h5>
                             <p class="card-text"><strong>Jean Dupont</strong></p>
                             <button type="button" class="btn btn-danger">
@@ -53,19 +51,23 @@
                     </div>
                 </div>
                 <!-- Section de téléchargement + tableau de fichiers -->
-                <div class="container-fluid upload">
-                    <h5 class="card-title text-center">Mon espace document</h5>
-                    <form class="container-fluid">
+                <div class="container-fluid upload mb-5 text-center ">
+                    <h5 class="card-title text-center text-uppercase">Mon espace document</h5>
+                    <form class="container-fluid mx-auto">
                         <div class="form-group">
-                            <label for="exampleFormControlSelect1">Quel est le type de votre document ?</label>
-                            <select class="form-control" id="exampleFormControlSelect1">
+                            <label for="exampleFormControlSelect1">
+                                <p  class="label text-center">Quel est le type de votre document ?</p>
+                            </label>
+                            <select class="select form-control" id="exampleFormControlSelect1">
                                 <option>Facture</option>
                                 <option>Compte rendu</option>
                                 <option>Publicité</option>
                                 <option>Autre</option>
                             </select>
                         </div>
-                        <label for="exampleFormControlSelect1">Téléchargement de mon document</label>
+                        <label for="exampleFormControlSelect1">
+                            <p class="label text-center">Téléchargement de mon document</p>
+                        </label>
                         <div class="wrapper-backoffice">
                             <div class="form-group">
                                     <label for="exampleFormControlFile1"><strong>Formats autorisés :</strong> pdf, doc, docx, jpg, xls, ppt, pptx</label>
