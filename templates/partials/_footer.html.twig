@@ -1,0 +1,44 @@
+<!-- Footer -->
+<footer class="footer">
+    <div class="footer-dl m-5 text-center">
+        <h6 class="h6 text-uppercase">Téléchargez notre plaquette</h6>
+        <a href="http://www.ynovagroup.com/Plaquette/Plaquette_YnovaGroup.pdf" class="m-3" id="plaquette">
+            <i class="fa fa-download fa-3x m-4" aria-hidden="true"></i>
+        </a>
+    </div>
+    <div class="footer-infos m-5 text-center">
+        <h6 class="h6 text-uppercase">Contact</h6>
+        <div class="footer-infos-element">
+            <a id="mail" href="mailto:contact@ynovagroup.com" class="p-3">contact@ynovagroup.com</a>
+            <a id="tel" href="tel:+33134205268" class="p-3">+33 (0)1 34 20 52 68</a>
+        </div>
+    </div>
+    <div class="footer-infos m-5 text-center">
+        <h6 class="h6 text-uppercase">Informations générales</h6>
+        <div class="footer-infos-element">
+            <a id="rgpd" href="{{ path('rgpd') }}" class="p-3">Politique de confidentialité</a>
+            <a id="rgpd" href="{{ path('rgpd') }}" class="p-3">Mentions légales</a>
+        </div>    
+    </div>
+            <i onclick="topFunction() " id="myBtn" class="fas fa-level-up-alt"></i>            
+</footer>
+    
+
+<script>
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function() {scrollFunction()};
+
+    function scrollFunction() {
+    if (document.body.scrollTop > 1800 || document.documentElement.scrollTop > 1800) {
+    document.getElementById("myBtn").style.display = "block";
+    } else {
+    document.getElementById("myBtn").style.display = "none";
+    }
+    }
+
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+    window.scrollTo(0,0);
+    }
+
+</script>
