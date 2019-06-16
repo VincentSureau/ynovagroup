@@ -119,12 +119,6 @@ li {
     text-align: center;
 }
 
-a.login-btn:hover {
-    color: var(--green);
-    background-color: white;
-}
-  
-
 /* Navigation Underline Hover effect */
 
 /* --- SECTIONS --- */
