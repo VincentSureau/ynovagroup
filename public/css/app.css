@@ -105,6 +105,11 @@ li {
 }
 
 /* Navigation Adhérents Button */
+.navbar-fixed-width {
+    position: fixed;
+    top:0;
+}
+
 #nav {
     display: flex;
     justify-content: center;
@@ -117,6 +122,7 @@ li {
 .nav-item {
     margin: 0 5px;
     text-align: center;
+    font-size: 0.9em;
 }
 
 /* Navigation Underline Hover effect */
