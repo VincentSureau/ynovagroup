@@ -242,8 +242,16 @@
                     </div>    
                 </div>  
             </section>
+            {# <div id="parallax" src="{{ asset('images/ynovagroup_hero.jpg') }}" class="container-fluid" data-type="background" data-speed="3">
+                
+            </div> #}
+            <section 
+                id="parallax" 
+                class="img-fluid"
+            >
+            </section>
             <!-- C O N T A C T -->
-            <section id="contact"class="container-fluid p-0 text-center py-5 m-0">
+            <section id="contact" class="container-fluid p-0 text-center py-5 m-0">
              <h2 class="titre-contact h1-responsive font-weight-bold my-5">Contact</h2>
                 <form class="p-5">
                     <div class="form-group">
@@ -297,6 +305,22 @@
         }
 
         // Modals
+
+        // Parallax
+        function parallax() {
+        var $slider = document.getElementById("parallax");
+
+        var yPos = window.pageYOffset / $slider.dataset.speed;
+        yPos = -yPos;
+        
+        var coords = '0% '+ yPos + 'px';
+        
+        $slider.style.backgroundPosition = coords;
+    }
+
+    window.addEventListener("scroll", function(){
+        parallax();	
+    });
 
     </script>
 

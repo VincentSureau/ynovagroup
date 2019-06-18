@@ -54,19 +54,19 @@ li {
 }
 
 .titre {
-    color: var(--black);
+    color: var(--green);
 }
 .titre-valeurs {
     color: var(--green);
 }
 .titre-difference {
-    color: var(--bamboo);
+    color: var(--green);
 }
 .titre-objectifs {
-    color: var(--aqua);
+    color: var(--green);
 }
 .titre-contact {
-    color: var(--ocean);
+    color: var(--green);
 }
 
 
@@ -346,3 +346,23 @@ footer > div > .h6 {
     text-justify: inter-word;
 }
 
+
+/* Parallax */
+/* #parallax { */
+	/* background-image: url('../images/ynovagroup_hero.jpg'); */
+	/* background-repeat: no-repeat;
+	height: 400px;
+	width: 800px;
+	max-width: 95%;
+	margin: 40px auto 0; */
+
+#parallax {
+    background-image: url('/images/ynovagroup_hero.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    width: 100%;
+    height: 750px;
+    margin: 0;
+    padding: 0;
+    z-index: 100;
+}
