@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello UserController!{% endblock %}
+{% block title %}Mon profil{% endblock %}
 
 {% block body %}
      <!-- Container -->
@@ -13,20 +13,22 @@
                         <div class="card" style="width: 20rem;">
                             <img src="https://via.placeholder.com/468x200?text=Image+de+la+pharmacie" class="card-img-top" alt="...">
                             <div class="card-body">
-                                <h5 id="bo-h5" class="card-title text-uppercase"><strong>Mon profil adhérent</strong></h5>                            
-                                <p class="card-text"><strong>Nom <br></strong>{{ user.firstname }}</p>
-                                <p class="card-text"><strong>Prénom<br></strong>{{ user.lastname }}</p>
+                                <h5 id="bo-h5" class="card-title text-uppercase"><strong>Mon profil adhérent</strong></h5>       
+                                <p>{{ user.firstname }} {{ user.lastname }}</p>                     
+                                {# <p class="card-text"><strong>Nom <br></strong>{{ user.firstname }}</p>
+                                <p class="card-text"><strong>Prénom<br></strong>{{ user.lastname }}</p> #}
 
-                                <p class="card-text"><strong>Adresse<br></strong>
+                                <p class="card-text"><strong>Adresse de la société<br></strong>
                                 {{ app.user.company.firstadressfield|default('-') }} {{ app.user.company.secondadressfield|default('') }}
                                 <br>{{ app.user.company.postalcode|default('') }} {{ app.user.company.city|default('') }}</p>
 
-                                <p class="card-text"><strong>E-mail<br></strong>{{ user.email }}</p>
+                                {# <p class="card-text"><strong>E-mail<br></strong>{{ user.email }}</p> #}
                                 
-                                <h6 class="card-title"><strong>Mon commercial</strong></h6>
-                                <p class="card-text">{{ app.user.company.commercial.firstname|default('') }} {{ app.user.company.commercial.lastname|default('') }}</p>
-                                <p><strong>contact: </strong>{{ app.user.company.commercial.email|default('') }}</p>
-                                
+                                <h6 class="card-title"><strong>Mon commercial référent</strong></h6>
+                                <p class="card-text">{{ app.user.company.commercial.firstname|default('-') }} {{ app.user.company.commercial.lastname|default('') }}</p>
+                                <p><strong>contact: </strong></p>
+                                <p>{{ app.user.company.commercial.email|default('-') }}</p>
+
                                 <button type="button" class="btn btn-danger">
                                         <a href="#" class="btn btn-danger">
                                             Déconnexion 
