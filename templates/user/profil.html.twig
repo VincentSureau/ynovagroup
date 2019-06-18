@@ -13,15 +13,20 @@
                         <div class="card" style="width: 20rem;">
                             <img src="https://via.placeholder.com/468x200?text=Image+de+la+pharmacie" class="card-img-top" alt="...">
                             <div class="card-body">
-                                <h5 id="bo-h5" class="card-title text-uppercase">Mon profil adhérent</h5>                            
-                                <p class="card-text"><strong>Nom <br></strong>Thibaud</p>
-                                <p class="card-text"><strong>Prénom<br></strong>Éléonore</p>
-                                <p class="card-text"><strong>Adresse<br></strong>19, rue des Nations Unies
-                                    <br> 93200 SAINT-DENIS</p>
-                                <p class="card-text"><strong>E-mail<br></strong>eleonore@thibaud.fr</p>
-                                <p class="card-text"><strong>Téléphone<br></strong>06 89 18 95 56</p>
-                                <h5 class="card-title">Mon commercial</h5>
-                                <p class="card-text"><strong>Jean Dupont</strong></p>
+                                <h5 id="bo-h5" class="card-title text-uppercase"><strong>Mon profil adhérent</strong></h5>                            
+                                <p class="card-text"><strong>Nom <br></strong>{{ user.firstname }}</p>
+                                <p class="card-text"><strong>Prénom<br></strong>{{ user.lastname }}</p>
+
+                                <p class="card-text"><strong>Adresse<br></strong>
+                                {{ app.user.company.firstadressfield|default('-') }} {{ app.user.company.secondadressfield|default('') }}
+                                <br>{{ app.user.company.postalcode|default('') }} {{ app.user.company.city|default('') }}</p>
+
+                                <p class="card-text"><strong>E-mail<br></strong>{{ user.email }}</p>
+                                
+                                <h6 class="card-title"><strong>Mon commercial</strong></h6>
+                                <p class="card-text">{{ app.user.company.commercial.firstname|default('') }} {{ app.user.company.commercial.lastname|default('') }}</p>
+                                <p><strong>contact: </strong>{{ app.user.company.commercial.email|default('') }}</p>
+                                
                                 <button type="button" class="btn btn-danger">
                                         <a href="#" class="btn btn-danger">
                                             Déconnexion 
