@@ -11,7 +11,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/post", name="post_")
+ * @Route("/articles", name="post_")
  */
 class PostController extends AbstractController
 {
@@ -35,7 +35,7 @@ class PostController extends AbstractController
     }
     
     /**
-     * @Route("/{id}/edit", name="edit", methods={"GET","POST"})
+     * @Route("/{id}/edition", name="edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Post $post): Response
     {

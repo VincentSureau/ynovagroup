@@ -22,3 +22,14 @@ Créer un fichier .env.local  puis y coller le contenu du fichier .env.dist  en 
 Si problème d'actualisation suite à modification html/css:
 - Effectuer cette commande dans l'onglet principal:
 ```php bin/console cache:clear```
+
+
+messages
+<i class="fas fa-envelope-open-text"></i>
+
+fichiers 
+<i class="fas fa-file-alt"></i>
+
+articles
+<i class="far fa-newspaper"></i>
+

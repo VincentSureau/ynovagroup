@@ -10,7 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/file", name="file_")
+ * @Route("/documents", name="file_")
  */
 class FileController extends AbstractController
 {

@@ -11,7 +11,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/company", name="company_")
+ * @Route("/pharmacies", name="company_")
  */
 class CompanyController extends AbstractController
 {
@@ -35,7 +35,7 @@ class CompanyController extends AbstractController
     }
     
     /**
-     * @Route("/{id}/edit", name="edit", methods={"GET","POST"})
+     * @Route("/{id}/edition", name="edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Company $company): Response
     {

@@ -14,7 +14,7 @@
                     <th>Nom</th>
                     <th>Pharmacie</th>
                     <th>Email</th>
-                    {# <th>Actif</th> #}
+                    <th>Actif</th>
                 </tr>
             </thead>
             <tbody>
@@ -49,8 +49,9 @@
                             data-id="${data}"
                             data-firstname="${row.firstname}"
                             data-lastname="${row.lastname}"
-                            data-email="${row.email}"
                             data-company="${row.company.name}"
+                            data-email="${row.email}"
+                            data-isActive="${row.isActive}"
                         >
                             <i class="fas fa-plus-circle"></i>
                         </btn>`
@@ -65,12 +66,12 @@
                   } 
                 },
                 { data: 'email' },
-                {# { 
+                { 
                     data: 'isActive',
                     render: function (data) {
                         return (data === true) ? 'oui' : 'non'
                     }
-                } #}
+                }
             ],
             initComplete: function() {
                 $('.edit-modal').click(function() {
@@ -80,6 +81,7 @@
                     $('#lastname').val(data.lastname)
                     $('#email').val(data.email)
                     $('#company').val(data.company)
+                    $('#isActive').val(data.isActive)
 
                     $('#editModal').modal()
 
