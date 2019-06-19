@@ -28,20 +28,21 @@
             </div> #}
             {# /vianney je t'ai fais 2 alertes au dessus, est-ce bien ça que tu souhaitais? avec des données dynamiques à l'avenir #}
             {# non, je voulais une vraie route avec un controller dédié pour afficher aux commerciaux leur notifications et messages #}
-            
+            {# et aussi les glyhicon était dans l'exemple que je t'ai envoyé mais c'est du bootstrap 3 #} 
+            {# il me semble que m'a dit avoir mis les icones dans le readme mais c'est pour ta culture perso car je sais pas si tu le savais #}       
             <ul class="nav flex-column mb-2">
               <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="{{ path('backend_notification') }}">
                     <i class="fas fa-file-import"></i>
                     Documents reçus
-                    <span class="badge badge-pill badge-primary">5</span>
+                    <span class="badge badge-pill badge-success">5</span>
                 </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">
                     <i class="far fa-envelope"></i>
                     Messages reçus
-                    <span class="badge badge-pill badge-primary">2</span>
+                    <span class="badge badge-pill badge-success">2</span>
                 </a>
               </li>
             </ul>

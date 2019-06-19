@@ -1,4 +1,10 @@
 /* Navigation Adhérents Button */
+
+* {
+    --green-color : #28a645 ;
+    --green-hover-color : #218838 ;
+}
+
 #nav {
     display: flex;
     justify-content: center;
@@ -10,6 +16,16 @@
 
 .nav-item {
     margin: 0 5px;
+}
+
+.nav-link,
+.nav-link:visited {
+    color: black!important;
+}
+
+.nav-link:hover,
+.nav-link:active {
+    color: var(--green-hover-color)!important;
 }
 
 /* Navigation Underline Hover effect */
