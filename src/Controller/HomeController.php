@@ -12,6 +12,7 @@ class HomeController extends AbstractController
      */
     public function index()
     {
+        dump($this->getUser());
         return $this->render('home/home.html.twig', [
             'current' => 'home',
         ]);
