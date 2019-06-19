@@ -53,6 +53,7 @@
                             data-title="${row.title}"
                             data-author="${(row.author.firstname + ' ' + row.author.lastname)}"
                             data-picture="${row.picture}"
+                            data-isActive="${row.isActive}"
                         >
                             <i class="fas fa-plus-circle"></i>
                         </btn>`
@@ -73,7 +74,7 @@
                     }
                 }
             ],
-            initComplete: function() {
+            'drawCallback': function() {
                 $('.edit-modal').click(function() {
                     var data = $(this).data()
 
@@ -81,8 +82,16 @@
                     $('#content').val(data.content)
                     $('#author').val(data.author)
                     $('#picture').val(data.picture)
-                    $('#isActive').val(data.isActive) 
+                    //$('#picture').val(data.picture)
                     {# /vianney je souhaite récupérer le oui ou non de isActive afin dafficher et de modifier ou non sa publication #}
+                    // ce que tu as fait n'est pas faux, mais tu as remarqué ce $(this).data() ?
+                    // avec jquery, $(this) représente l'élément sur lequel je clique: le boutton
+                    // .data représentent tous les data-quelquechose de l'élément, et data-isActive n'existe pas
+                    //$('#isActive').val(isActive) 
+                    $('#isActive').val(data.isactive)
+                    // nécessaire car même si la valeur du select est bonne
+                    // l'option à l'intérieur ne s'affichera pas si elle n'est pas selected
+                    $('option[value="'+data.isactive+'"]').attr('selected', true)
 
                     $('#editModal').modal()
 
@@ -90,7 +99,7 @@
             }
         })
         $('#content').summernote({
-            placeholder: 'Contenu du post ici',
+            placeholder: 'Contenu de l\'article',
             tabsize: 2,
             height: 150
         });

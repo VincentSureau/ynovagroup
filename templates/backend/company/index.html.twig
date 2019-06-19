@@ -12,6 +12,10 @@
                 <th>#</th>
                 <th>Nom</th>   
                 {# /vianney je voudrais faire en sorte d'avoir un lien href afin de rediriger vers la page de la pharmacie via backend_company_show  #}
+                {# la route backend community show n'existe pas#}
+                {# si tu as une idée de template qui va apporter quelque chose pour le commercial #}
+                {# c'est ok, sinon la route show n'est pas prévu puisqu'on montre les données dans les modal #}
+                {# je te met quand même la façon de procéder pour faire ça #}
                 <th>Adresse</th>
                 <th>Complément</th>
                 <th>Code postal</th>
@@ -66,6 +70,17 @@
                     }
                 },
                 { data: 'name' },
+                {# { 
+                    data: 'name',
+                    render: function(data, index, row) {
+                        var link = "{{ path('backend_company_show', {'id': '0'})|escape('js') }}"
+                        // escape js est obligatoire sinon il y a une erreur javascript d'encodage
+                        // je suis obligé de tricher en mettant un id fictif pour générer la route
+                        // je le remplace ensuite pas la donnée du tableau
+                        link = link.replace('0', row.id)
+                        return '<a href="'+ link +'">'+ data +'</a>'
+                    }
+                }, #}
                 { data: 'firstAdressField' },
                 { data: 'secondAdressField' },
                 { data: 'postalCode' },
@@ -95,7 +110,7 @@
                     }
                 } #}
             ],
-            initComplete: function() {
+            'drawCallback': function() {
                 $('.edit-modal').click(function() {
                     var data = $(this).data()
 

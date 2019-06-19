@@ -9,6 +9,11 @@ use Gedmo\Mapping\Annotation as Gedmo;
 use ApiPlatform\Core\Annotation\ApiResource;
 
 // /vianney que souhaites-tu serializer ici? peux-tu voir pour l'upload des fichiers afin d'avoir quelques données et travailler dessus? Comment sécurises-tu les accès à l'API? je veux bien un exemple de la façon dont tu le fais, ainsi que les données à sécuriser
+// je veux tout sérialiser sauf les updated at
+// pour le controller, tu peux prendre exemple sur le getUserController
+// il faut refaire un controller de ce type, comme ça tu peux faire toutes les vérification
+// dedans, du style $repositiry->findByCommercial($this->getUser())
+// car de base api platform ne permet pas de faire ça
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\FilesRepository")

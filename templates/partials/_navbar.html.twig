@@ -35,6 +35,15 @@
                 {% endif %}
 
                     {# /vianney la différence avec is_granted('IS_AUTHENTICATED_FULLY') ?
+                    => IS_AUTHENTICATED_REMEMBERED = je suis connecté depuis la session,
+                    même si j'ai fermé le site et que je rouvre le lendemain, je peux être toujours connecté tant que le cookie de session est bon
+                    (le cookie a une durée de validité, mais si je coche laz case: se souvenir de moi, il n'est pas détruit quand je ferme le navigateur)
+                    => IS_AUTHENTICATED_FULLY => je suis connecté depuis la session courante, c'est à dire: je viens de me connecter,
+                    si je me suios connecté hier, on me demandera quand même de m'identifier à nouveau pour une meilleur sécurité,
+                    c'est intéressant pour des infos sensibles, et ça évite que quelqu'un qui rouvre le pc qui avait toujours la page ouverte puisse accéder à des partie privée
+                    sensible par exemple.
+                    je pense que pour ce site, ce n'est pas nécessaire et remembered suffit,
+                    par contre ça vérifié si tu es connecté mais pas le rôle, donc s'il faut un role admin, ça n'empêche pas de le vérifier aussi
                     le but sera de faire apparaître également le bouton vers le backoffice aux admins notamment #}
                 {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
                 <li class="nav-item adherent">

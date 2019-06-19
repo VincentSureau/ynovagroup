@@ -23,18 +23,16 @@
                 <label for="author">Auteur de l'article</label>
                 <input class="form-control" type="text" name="author" id="author">
             </div>
-            <div class="input-group">
-              <div class="form-group mr-1">
-                  <label for="picture">Image/document de l'article</label>
-                  <input class="form-control" type="text" name="picture" id="picture">
-              </div>
+            <div class="form-group">
+                <label for="picture">Image de l'article</label>
+                <input class="form-control" type="text" name="picture" id="picture">
             </div>
-
-            <div class="input-group">
-              <div class="form-group mr-1">
-                  <label for="isActive">Article publié</label>
-                  <input class="form-control" type="text" name="isActive" id="isActive">
-              </div>
+            <div class="form-group">
+                <label for="isActive">Article publié</label>
+                <select name="isActive" id="isActive" class="form-control">
+                  <option value="true">oui</option>
+                  <option value="false">non</option>
+                </select>
             </div>
         </form>
       </div>
