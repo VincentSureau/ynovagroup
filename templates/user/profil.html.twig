@@ -30,7 +30,7 @@
                                 <p>{{ app.user.company.commercial.email|default('-') }}</p>
 
                                 <button type="button" class="btn btn-danger">
-                                        <a href="#" class="btn btn-danger">
+                                        <a href="{{ path('app_logout') }}" class="btn btn-danger">
                                             Déconnexion 
                                             <i class="fas fa-times"></i>
                                         </a>

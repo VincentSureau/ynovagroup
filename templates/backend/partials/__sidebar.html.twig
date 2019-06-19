@@ -1,12 +1,34 @@
         <nav class="col-md-2 pr-0 d-none d-md-block bg-light sidebar">
           <div class="sidebar-sticky">
 
-            <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+            <h4 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
               <span>Notifications</span>
               <a class="d-flex align-items-center text-muted" href="#">
               </a>
-            </h6>
-            <ul class="nav flex-column mb-2">
+            </h4>
+
+            <div class="">
+                <div class="alert alert-success">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                        ×</button>
+                <span class="glyphicon glyphicon-ok"></span><i class="fas fa-envelope-open-text"></i> <strong>Messages</strong>
+                    <hr class="message-inner-separator">
+                    <p>Vous avez "4" nouveaux messages en attente.</p>
+                </div>
+            </div>
+
+            <div class="">
+                <div class="alert alert-info">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                        ×</button>
+                <span class="glyphicon glyphicon-ok"></span><i class="fas fa-file-alt"></i> <strong>Documents</strong>
+                    <hr class="message-inner-separator">
+                    <p>Vous avez "5"" nouveaux documents en attente.</p>
+                </div>
+            </div>
+            {# /vianney je t'ai fais 2 alertes au dessus, est-ce bien ça que tu souhaitais? avec des données dynamiques à l'avenir #}
+            
+            {# <ul class="nav flex-column mb-2">
               <li class="nav-item">
                 <a class="nav-link" href="#">
                     <i class="fas fa-file-import"></i>
@@ -21,13 +43,13 @@
                     <span class="badge badge-pill badge-primary">2</span>
                 </a>
               </li>
-            </ul>
+            </ul> #}
 
-            <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+            <h4 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
               <span>Dashboard</span>
               <a class="d-flex align-items-center text-muted" href="#">
               </a>
-            </h6>
+            </h4>
             <ul class="nav flex-column">
               <li class="nav-item">
                 <a class="nav-link" href="{{ path('company_index') }}">

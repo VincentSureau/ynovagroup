@@ -37,5 +37,12 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-        # - { path: ^/admin, roles: ROLE_ADMIN }
-        # - { path: ^/profile, roles: ROLE_USER }
+        # - { path: '^\/gestionnaires', roles: ROLE_DEVELOPER } 
+        # - { path: '^\/pharmacies', roles: ROLE_DEVELOPER } 
+        # - { path: '^\/documents', roles: ROLE_DEVELOPER } 
+        # - { path: '^\/articles', roles: ROLE_DEVELOPER } 
+        # /vianney je veux bien que tu vérifies si la hiérarchie est bien faite, et bonne. Ensuite, savoir qui a le droit d'accéder à telle ou telle page
+    role_hierarchy:
+        ROLE_ADMIN: ROLE_DEVELOPER
+        ROLE_DEVELOPER: ROLE_BUSINESS
+        ROLE_BUSINESS: ROLE_USER

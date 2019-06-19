@@ -8,6 +8,8 @@ use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use ApiPlatform\Core\Annotation\ApiResource;
 
+// /vianney que souhaites-tu serializer ici? peux-tu voir pour l'upload des fichiers afin d'avoir quelques données et travailler dessus? Comment sécurises-tu les accès à l'API? je veux bien un exemple de la façon dont tu le fais, ainsi que les données à sécuriser
+
 /**
  * @ORM\Entity(repositoryClass="App\Repository\FilesRepository")
  * 

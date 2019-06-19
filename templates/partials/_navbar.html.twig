@@ -34,6 +34,8 @@
                     </li>
                 {% endif %}
 
+                    {# /vianney la différence avec is_granted('IS_AUTHENTICATED_FULLY') ?
+                    le but sera de faire apparaître également le bouton vers le backoffice aux admins notamment #}
                 {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
                 <li class="nav-item adherent">
                     <a class="nav-link login-btn btn btn-primary adherent-btn btn-sm text-white" href="{{ path('profil', {'slug': app.user.slug}) }}">
