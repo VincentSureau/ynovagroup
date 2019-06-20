@@ -70,13 +70,13 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups({"user", "userWrite", "company", "post"})
+     * @Groups({"user", "userWrite", "company", "post", "file"})
      */
     private $firstname;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups({"user", "userWrite", "company", "post"})
+     * @Groups({"user", "userWrite", "company", "post", "file"})
      */
     private $lastname;
 

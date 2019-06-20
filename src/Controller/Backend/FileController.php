@@ -22,4 +22,14 @@ class FileController extends AbstractController
         return $this->render('backend/file/index.html.twig', [
         ]);
     }
+
+    /**
+     * @Route("/{id}", name="show", methods={"GET"})
+     */
+    public function show(Files $files): Response
+    {
+        return $this->render('backend/file/show.html.twig', [
+            'files' => $files,
+        ]);
+    }
 }

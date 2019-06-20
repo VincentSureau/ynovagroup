@@ -37,10 +37,13 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-        # - { path: '^\/gestionnaires', roles: ROLE_DEVELOPER } 
-        # - { path: '^\/pharmacies', roles: ROLE_DEVELOPER } 
-        # - { path: '^\/documents', roles: ROLE_DEVELOPER } 
-        # - { path: '^\/articles', roles: ROLE_DEVELOPER } 
+        # - { path: '^\/admin', roles: ROLE_DEVELOPER } 
+        
+        # - { path: '^\/gestionnaires', roles: ROLE_ADMIN } 
+        # - { path: '^\/pharmacies', roles: ROLE_ADMIN } 
+        # - { path: '^\/documents', roles: ROLE_ADMIN } 
+        # - { path: '^\/articles', roles: ROLE_ADMIN } 
+
         # /vianney je veux bien que tu vérifies si la hiérarchie est bien faite, et bonne. Ensuite, savoir qui a le droit d'accéder à telle ou telle page
         # pour moi dev est au dessus de admin du coup je le change
         # developpeur : a accès tout

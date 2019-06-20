@@ -11,19 +11,12 @@
             <tr>
                 <th>#</th>
                 <th>Nom</th>   
-                {# /vianney je voudrais faire en sorte d'avoir un lien href afin de rediriger vers la page de la pharmacie via backend_company_show  #}
-                {# la route backend community show n'existe pas#}
-                {# si tu as une idée de template qui va apporter quelque chose pour le commercial #}
-                {# c'est ok, sinon la route show n'est pas prévu puisqu'on montre les données dans les modal #}
-                {# je te met quand même la façon de procéder pour faire ça #}
                 <th>Adresse</th>
                 <th>Complément</th>
                 <th>Code postal</th>
                 <th>Ville</th>
-                {# <th>Photo de la pharmacie</th> #}
                 <th>Gestionnaire</th>
                 <th>Commercial</th>
-                {# <th>Active</th> #}
             </tr>
         </thead>
         <tbody>
@@ -85,7 +78,6 @@
                 { data: 'secondAdressField' },
                 { data: 'postalCode' },
                 { data: 'city' },
-                {# { data: 'picture' }, #}
                 { 
                     data: 'user' ,
                     render: function(data, index, row) {

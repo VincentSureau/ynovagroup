@@ -35,6 +35,7 @@
                 {% endif %}
 
                     {# /vianney la différence avec is_granted('IS_AUTHENTICATED_FULLY') ?
+
                     => IS_AUTHENTICATED_REMEMBERED = je suis connecté depuis la session,
                     même si j'ai fermé le site et que je rouvre le lendemain, je peux être toujours connecté tant que le cookie de session est bon
                     (le cookie a une durée de validité, mais si je coche laz case: se souvenir de moi, il n'est pas détruit quand je ferme le navigateur)
@@ -45,25 +46,42 @@
                     je pense que pour ce site, ce n'est pas nécessaire et remembered suffit,
                     par contre ça vérifié si tu es connecté mais pas le rôle, donc s'il faut un role admin, ça n'empêche pas de le vérifier aussi
                     le but sera de faire apparaître également le bouton vers le backoffice aux admins notamment #}
-                {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
-                <li class="nav-item adherent">
-                    <a class="nav-link login-btn btn btn-primary adherent-btn btn-sm text-white" href="{{ path('profil', {'slug': app.user.slug}) }}">
-                        <i></i>
-                        Mon Espace
-                        <i class="far fa-user"></i>
-                    </a>
+
+
+                {% if is_granted('ROLE_BUSINESS')%}
+                    <li class="nav-item adherent">
+                        <a class="nav-link login-btn btn btn-primary adherent-btn btn-sm text-white" href="{{ path('profil', {'slug': app.user.slug}) }}">
+                            <i></i>
+                            Mon Espace
+                            <i class="far fa-user"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item adherent">
+                        <a class="nav-link btn btn-danger adherent-btn btn-sm text-white" href="{{ path('app_logout') }}">Déconnexion</a>
+                    </li>
+                    <li class="nav-item adherent">
+                        <a class="nav-link btn btn-danger adherent-btn btn-sm text-white" href="{{ path('backend_notification') }}">Administration du site</a>
+                    </li>
+                {% elseif is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                    <li class="nav-item adherent">
+                        <a class="nav-link login-btn btn btn-primary adherent-btn btn-sm text-white" href="{{ path('profil', {'slug': app.user.slug}) }}">
+                            <i></i>
+                            Mon Espace
+                            <i class="far fa-user"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item adherent">
+                        <a class="nav-link btn btn-danger adherent-btn btn-sm text-white" href="{{ path('app_logout') }}">Déconnexion</a>
                 </li>
-                <li class="nav-item adherent">
-                    <a class="nav-link btn btn-danger adherent-btn btn-sm text-white" href="{{ path('app_logout') }}">Déconnexion</a>
-                </li>
+
                 {% else %}
-                <li class="nav-item adherent">
-                    <a class="nav-link login-btn btn btn-success adherent-btn btn-sm text-white" href="{{ path('app_login') }}">
-                        <i></i>
-                        Espace Adhérent
-                        <i class="fas fa-sign-in-alt"></i>
-                    </a>
-                </li>
+                    <li class="nav-item adherent">
+                        <a class="nav-link login-btn btn btn-success adherent-btn btn-sm text-white" href="{{ path('app_login') }}">
+                            <i></i>
+                            Espace Adhérent
+                            <i class="fas fa-sign-in-alt"></i>
+                        </a>
+                    </li>
                 {% endif %}
             </ul>
         </div>

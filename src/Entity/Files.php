@@ -7,8 +7,11 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\Serializer\Annotation\Groups;
+
 
 // /vianney que souhaites-tu serializer ici? peux-tu voir pour l'upload des fichiers afin d'avoir quelques données et travailler dessus? Comment sécurises-tu les accès à l'API? je veux bien un exemple de la façon dont tu le fais, ainsi que les données à sécuriser
+
 // je veux tout sérialiser sauf les updated at
 // pour le controller, tu peux prendre exemple sur le getUserController
 // il faut refaire un controller de ce type, comme ça tu peux faire toutes les vérification
@@ -18,7 +21,25 @@ use ApiPlatform\Core\Annotation\ApiResource;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\FilesRepository")
  * 
- * @ApiResource
+ *  @ApiResource(
+ *     normalizationContext={"groups"={"file"}},
+ *     denormalizationContext={"groups"={"fileWrite"}},
+ *     collectionOperations={
+ *         "get"={
+ *             "normalization_context"={"groups"={"file"}},
+ *         },
+ *         "post",
+ *      },
+ *     itemOperations={
+ *         "get"={
+ *             "normalization_context"={"groups"={"file"}}
+ *         },
+ *         "put"={
+ *             "normalization_context"={"groups"={"fileWrite"}},
+ *             "access_control"="is_granted('ROLE_USER') and object == user.getFile() or is_granted('ROLE_BUSINESS')"},
+ *         "delete"={"access_control"="is_granted('ROLE_BUSINESS')"}
+ *     },
+ * )
  */
 class Files
 {
@@ -26,42 +47,50 @@ class Files
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups({"file"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"user","file"})
      */
     private $name;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"user","file"})
      */
     private $type;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"file"})
      */
     private $path;
 
     /**
      * @ORM\Column(type="text")
+     * @Groups({"file"})
      */
     private $description;
 
     /**
      * @ORM\Column(type="string", length=255, unique=true)
      * @Gedmo\Slug(fields={"name"})
+     * @Groups({"file"})
      */
     private $slug;
 
     /**
      * @ORM\Column(type="boolean")
+     * @Groups({"file"})
      */
     private $isActive;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Groups({"file"})
      */
     private $createdAt;
 
@@ -78,11 +107,13 @@ class Files
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="managedFiles")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"file"})
      */
     private $commercial;
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\User", mappedBy="files")
+     * @Groups({"file"})
      */
     private $users;
 

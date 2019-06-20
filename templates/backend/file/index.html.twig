@@ -6,7 +6,7 @@
     <h1>Liste des documents</h1>
 
 <div class="card p-4">
-    <table id="filesTable" class="table table-hover table-striped table-responsive w-100">
+    <table id="filesTable" class="table table-hover table-striped w-100">
         <thead>
             <tr>
                 <th>#</th>
@@ -14,6 +14,7 @@
                 <th>Type</th>
                 <th>Description</th>
                 <th>Actif</th>
+                <th>Commercial</th>
             </tr>
         </thead>
         <tbody>
@@ -31,7 +32,7 @@
 
 {% block javascripts %}
     <script>
-        $('#fileTable').DataTable({
+        $('#filesTable').DataTable({
             language: {
                 url: '/json/fr_FR.json'
             },
@@ -49,8 +50,8 @@
                             data-name="${row.name}"
                             data-type="${row.type}"
                             data-description="${row.description}"
-                            data-commercial="${row.commercial}"
-                            data-users="${row.users}"
+                            data-isActive="${row.isActive}"
+                            data-commercial="${row.commercial.firstname + ' ' + row.commercial.lastname}"
                         >
                             <i class="fas fa-plus-circle"></i>
                         </btn>`
@@ -60,14 +61,22 @@
                 { data: 'name' },
                 { data: 'type' },
                 { data: 'description' },
-                { data: 'commercial' },
-                { data: 'users' },
+
                 { 
                     data: 'isActive',
                     render: function (data) {
                         return (data === true) ? 'oui' : 'non'
                     }
-                }
+                },
+                { 
+                    data: 'commercial' ,
+                    render: function(data, index, row) {
+                        if(data) {
+                            return data.firstname + ' ' + data.lastname
+                        }
+                        return '-'
+                    }
+                },
             ],
             'drawCallback': function() {
                 $('.edit-modal').click(function() {
@@ -77,8 +86,8 @@
                     $('#fileType').val(data.type)
                     $('#fileDescription').val(data.description)
                     $('#fileCommercial').val(data.commercial)
-                    $('#fileUsers').val(data.users)
-
+                    $('#isActive').val(data.isactive)
+                    $('option[value="'+data.isactive+'"]').attr('selected', true)
                     $('#editModal').modal()
 
                 })
