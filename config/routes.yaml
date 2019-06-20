@@ -4,7 +4,3 @@
 
 app_logout:
     path: /logout
-
-new_password:
-    path: /mot-de-passe-oublie/{email}
-    controller: App\Controller\PasswordCustomController::newPassword
