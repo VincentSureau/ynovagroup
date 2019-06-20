@@ -25,20 +25,38 @@
     
 
 <script>
-    // When the user scrolls down 20px from the top of the document, show the button
+    // MODAL DISPLAY ON PAGE LOAD
+    window.addEventListener('DOMContentLoaded', function() {
+        let popup = document.getElementById('popup');
+        popup.style.display = "block";
+    });
+
+    // SCROLL TOP BUTTON
     window.onscroll = function() {scrollFunction()};
 
     function scrollFunction() {
-    if (document.body.scrollTop > 1800 || document.documentElement.scrollTop > 1800) {
-    document.getElementById("myBtn").style.display = "block";
-    } else {
-    document.getElementById("myBtn").style.display = "none";
-    }
+        if (document.body.scrollTop > 1800 || document.documentElement.scrollTop > 1800) {
+        document.getElementById("myBtn").style.display = "block";
+        } else {
+        document.getElementById("myBtn").style.display = "none";
+        }
     }
 
-    // When the user clicks on the button, scroll to the top of the document
     function topFunction() {
-    window.scrollTo(0,0);
-    }
+        window.scrollTo(0,0);
+    };
 
+    // PARALLAX IMAGE ON HOMEPAGE
+    function parallax() {
+        var $slider = document.getElementById("parallax");
+        var yPos = window.pageYOffset / $slider.dataset.speed;
+        yPos = -yPos;
+        var coords = '0% '+ yPos + 'px';
+        $slider.style.backgroundPosition = coords;
+    }
+    window.addEventListener("scroll", function(){
+        parallax();	
+    });
 </script>
+
+   
