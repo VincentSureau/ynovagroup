@@ -368,3 +368,11 @@ footer > div > .h6 {
 }
 
 /*Modal*/
+.a-rgpd {
+    color: var(--green);
+}
+
+.a-rgpd:hover {
+    color: black;
+    text-decoration: none;
+}
