@@ -345,14 +345,6 @@ footer > div > .h6 {
 
 
 /* Parallax */
-/* #parallax { */
-	/* background-image: url('../images/ynovagroup_hero.jpg'); */
-	/* background-repeat: no-repeat;
-	height: 400px;
-	width: 800px;
-	max-width: 95%;
-	margin: 40px auto 0; */
-
 #parallax {
     background-image: url('/images/ynovagroup_hero.jpg');
     background-size: cover;
@@ -365,11 +357,20 @@ footer > div > .h6 {
 }
 
 /*Modal*/
-/* .a-rgpd {
+.a-rgpd {
     color: var(--green);
 }
 
 .a-rgpd:hover {
     color: black;
     text-decoration: none;
+}
+
+/* .modal-backdrop {
+    display: none !important;
 } */
+
+/* .modal-open .modal {
+    width: 300px;
+    margin: 0 auto;
+}  */
