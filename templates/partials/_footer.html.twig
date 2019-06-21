@@ -20,19 +20,18 @@
             <a id="mentions" href="{{ path('rgpd') }}" class="p-3">Mentions légales</a>
         </div>    
     </div>
-            <i onclick="topFunction() " id="myBtn" class="fas fa-level-up-alt"></i>            
+    <i onclick="topFunction()" id="myBtn" class="fas fa-level-up-alt"></i>            
 </footer>
     
 
 <script>
-    // MODAL DISPLAY ON PAGE LOAD
-    window.addEventListener('DOMContentLoaded', function() {
-        let popup = document.getElementById('popup');
-        popup.style.display = "block";
-    });
-
     // SCROLL TOP BUTTON
     window.onscroll = function() {scrollFunction()};
+
+     function topFunction() {
+        window.scrollTo(0,0);
+    };
+
 
     function scrollFunction() {
         if (document.body.scrollTop > 1800 || document.documentElement.scrollTop > 1800) {
@@ -42,10 +41,7 @@
         }
     }
 
-    function topFunction() {
-        window.scrollTo(0,0);
-    };
-
+   
     // PARALLAX IMAGE ON HOMEPAGE
     function parallax() {
         var $slider = document.getElementById("parallax");
@@ -56,6 +52,12 @@
     }
     window.addEventListener("scroll", function(){
         parallax();	
+    });
+    
+    // MODAL DISPLAY ON PAGE LOAD
+    window.addEventListener('DOMContentLoaded', function() {
+        let popup = document.getElementById('popup');
+        popup.style.display = "block";
     });
 </script>
 
