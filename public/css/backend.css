@@ -1,8 +1,12 @@
+/* Fonts */
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,700&display=swap');
+
 /* Navigation Adhérents Button */
 
 * {
     --green-color : #28a645 ;
     --green-hover-color : #218838 ;
+    font-family: 'Montserrat', sans-serif;
 }
 
 #nav {
@@ -18,13 +22,8 @@
     margin: 0 5px;
 }
 
-.nav-link,
-.nav-link:visited {
-    color: black!important;
-}
-
-.nav-link:hover,
-.nav-link:active {
+.nav-link:hover:not(.adherent-btn) ,
+.nav-link:active:not(.adherent-btn)  {
     color: var(--green-hover-color)!important;
 }
 
@@ -35,6 +34,21 @@ body {
     background-color: rgb(248, 249, 250);
 }
 
-table {
-    width: 14px;
+.table {
+    width: auto;
+}
+
+
+.transition-fade {
+  transition: 0.4s;
+  opacity: 1;
+}
+
+html.is-animating .transition-fade {
+  opacity: 0;
+}
+
+:root {
+    --ck-z-default: 100;
+    --ck-z-modal: calc( var(--ck-z-default) + 999 );
 }
