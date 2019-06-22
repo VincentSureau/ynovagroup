@@ -244,7 +244,7 @@ footer > div > .h6 {
 #myBtn {
     display: none; /* Hidden by default */
     position: fixed; /* Fixed/sticky position */
-    bottom: 220px; /* Place the button at the bottom of the page */
+    bottom: 120px; /* Place the button at the bottom of the page */
     right: 30px; /* Place the button 30px from the right */
     z-index: 99; /* Make sure it does not overlap */
     border: none; /* Remove borders */
@@ -258,7 +258,7 @@ footer > div > .h6 {
   }
   
   #myBtn:hover {
-    background-color: var(--white); /* Add a dark-grey background on hover */
+    background-color: var(--white); /* Add a white background on hover */
     color: #28A645; /* Set a background color */
   }
 
@@ -300,9 +300,6 @@ footer > div > .h6 {
     margin: 3rem 0;
 }
 
-#bo-h5 {
-
-}
 
 /*Page RGPD*/
 .rgpd {
@@ -348,14 +345,6 @@ footer > div > .h6 {
 
 
 /* Parallax */
-/* #parallax { */
-	/* background-image: url('../images/ynovagroup_hero.jpg'); */
-	/* background-repeat: no-repeat;
-	height: 400px;
-	width: 800px;
-	max-width: 95%;
-	margin: 40px auto 0; */
-
 #parallax {
     background-image: url('/images/ynovagroup_hero.jpg');
     background-size: cover;
@@ -366,3 +355,22 @@ footer > div > .h6 {
     padding: 0;
     z-index: 100;
 }
+
+/*Modal*/
+.a-rgpd {
+    color: var(--green);
+}
+
+.a-rgpd:hover {
+    color: black;
+    text-decoration: none;
+}
+
+/* .modal-backdrop {
+    display: none !important;
+} */
+
+/* .modal-open .modal {
+    width: 300px;
+    margin: 0 auto;
+}  */

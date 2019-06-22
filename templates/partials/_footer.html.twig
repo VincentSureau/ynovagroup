@@ -17,28 +17,12 @@
         <h6 class="h6 text-uppercase">Informations générales</h6>
         <div class="footer-infos-element">
             <a id="rgpd" href="{{ path('rgpd') }}" class="p-3">Politique de confidentialité</a>
-            <a id="mentions" href="{{ path('rgpd') }}" class="p-3">Mentions légales</a>
+            <a id="mentions" href="{{ path('mentionslegales') }}" class="p-3">Mentions légales</a>
         </div>    
     </div>
-            <i onclick="topFunction() " id="myBtn" class="fas fa-level-up-alt"></i>            
+    <i onclick="topFunction()" id="myBtn" class="fas fa-level-up-alt"></i>            
 </footer>
     
 
-<script>
-    // When the user scrolls down 20px from the top of the document, show the button
-    window.onscroll = function() {scrollFunction()};
 
-    function scrollFunction() {
-    if (document.body.scrollTop > 1800 || document.documentElement.scrollTop > 1800) {
-    document.getElementById("myBtn").style.display = "block";
-    } else {
-    document.getElementById("myBtn").style.display = "none";
-    }
-    }
-
-    // When the user clicks on the button, scroll to the top of the document
-    function topFunction() {
-    window.scrollTo(0,0);
-    }
-
-</script>
+   

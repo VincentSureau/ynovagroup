@@ -27,5 +27,15 @@ class HomeController extends AbstractController
             'current' => 'rgpd'
         ]);
     }
+
+    /**
+     * @Route("/mentionslegales", name="mentionslegales")
+     */
+    public function mentionslegales()
+    {
+        return $this->render('home/mentionslegales.html.twig', [
+            'current' => 'mentionslegales'
+        ]);
+    }
     
 }
