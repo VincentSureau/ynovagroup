@@ -11,6 +11,48 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul id="nav" class="navbar-nav w-100 d-flex justify-content-lg-between">
+
+                    <!-- sidebar items display sm and md only -->
+                    <li class="nav-item text-center d-lg-none">
+                        <a class="nav-link" href="{{ path('backend_notification') }}">
+                            <i class="fas fa-file-import"></i>
+                            Documents reçus
+                            <span class="badge badge-pill badge-success">5</span>
+                        </a>
+                    </li>
+                    <li class="nav-item text-center d-lg-none">
+                        <a class="nav-link" href="#">
+                            <i class="far fa-envelope"></i>
+                            Messages reçus
+                            <span class="badge badge-pill badge-success">2</span>
+                        </a>
+                    </li>
+                    <li class="nav-item text-center d-lg-none">
+                        <a class="nav-link" href="{{ path('company_index') }}">
+                            <i class="far fa-hospital"></i>
+                            Pharmacies
+                        </a>
+                    </li>
+                    <li class="nav-item text-center d-lg-none">
+                        <a class="nav-link" href="{{ path('user_index') }}">
+                            <i class="far fa-user"></i>
+                            Gestionnaires
+                        </a>
+                    </li>
+                    <li class="nav-item text-center d-lg-none">
+                        <a class="nav-link" href="{{ path('file_index') }}">
+                            <i class="far fa-file-alt"></i>
+                            Documents
+                        </a>
+                    </li>
+                    <li class="nav-item text-center d-lg-none">
+                        <a class="nav-link" href="{{ path('post_index') }}">
+                            <i class="far fa-newspaper"></i>
+                            Articles
+                        </a>
+                    </li>
+                    <!-- sidebar items end -->
+
                     <li class="nav-item text-center">
                         <a class="nav-link" href="{{ path('home') }}">Accueil</a>
                     </li>
@@ -23,4 +65,6 @@
                 </ul>
             </div>
         </nav>
+    </header>
+</div>
 <div class="container-fluid p-0">
