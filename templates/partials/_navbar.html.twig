@@ -1,5 +1,5 @@
 <!-- Navigation with a burger menu -->
-<header class="header">
+<header class="header py-5">
     <nav class="navbar fixed-top navbar-expand-xl navbar-light bg-white ">
         <a class="navbar-brand" href="{{ current == 'home'? '#hero' : path('home') }}">
             <img src="{{ asset('images/ynovagroup_logo.png') }}" width="200" height="70" alt="">
@@ -50,21 +50,14 @@
 
                 {% if is_granted('ROLE_BUSINESS')%}
                     <li class="nav-item adherent">
-                        <a class="nav-link login-btn btn btn-primary adherent-btn btn-sm text-white" href="{{ path('profil', {'slug': app.user.slug}) }}">
-                            <i></i>
-                            Mon Espace
-                            <i class="far fa-user"></i>
-                        </a>
+                        <a class="nav-link btn btn-danger adherent-btn btn-sm text-white" href="{{ path('backend_notification') }}">Accès back office</a>
                     </li>
                     <li class="nav-item adherent">
                         <a class="nav-link btn btn-danger adherent-btn btn-sm text-white" href="{{ path('app_logout') }}">Déconnexion</a>
-                    </li>
-                    <li class="nav-item adherent">
-                        <a class="nav-link btn btn-danger adherent-btn btn-sm text-white" href="{{ path('backend_notification') }}">Administration du site</a>
                     </li>
                 {% elseif is_granted('IS_AUTHENTICATED_REMEMBERED') %}
                     <li class="nav-item adherent">
-                        <a class="nav-link login-btn btn btn-primary adherent-btn btn-sm text-white" href="{{ path('profil', {'slug': app.user.slug}) }}">
+                        <a class="nav-link login-btn btn btn-primary adherent-btn btn-sm text-white" href="{{ path('profil') }}">
                             <i></i>
                             Mon Espace
                             <i class="far fa-user"></i>
@@ -72,8 +65,7 @@
                     </li>
                     <li class="nav-item adherent">
                         <a class="nav-link btn btn-danger adherent-btn btn-sm text-white" href="{{ path('app_logout') }}">Déconnexion</a>
-                </li>
-
+                    </li>
                 {% else %}
                     <li class="nav-item adherent">
                         <a class="nav-link login-btn btn btn-success adherent-btn btn-sm text-white" href="{{ path('app_login') }}">

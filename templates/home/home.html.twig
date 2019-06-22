@@ -1,7 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Ynovagroup - Votre groupement de pharmaciens indépendants
-{% endblock %}
+{% block title %}Ynovagroup - Votre groupement de pharmaciens indépendants{% endblock %}
 
 {% block body %}
 {% dump(app.user) %}
@@ -290,7 +289,7 @@
                             OK
                             <i class="fas fa-check"></i>
                         </button>
-                        <button type="button" class="btn btn-light" data-dismiss="modal"><a href="{{ path('rgpd') }}" class="a-rgpd">En savoir plus</a></button>
+                        <a href="{{ path('rgpd') }}" class="a-rgpd btn btn-light">En savoir plus</a>
                     </div>
                     </div>
                 </div>
