@@ -12,6 +12,7 @@ class HomeController extends AbstractController
      */
     public function index()
     {
+        dump($this->getUser());
         return $this->render('home/home.html.twig', [
             'current' => 'home',
         ]);
@@ -24,6 +25,16 @@ class HomeController extends AbstractController
     {
         return $this->render('home/rgpd.html.twig', [
             'current' => 'rgpd'
+        ]);
+    }
+
+    /**
+     * @Route("/mentionslegales", name="mentionslegales")
+     */
+    public function mentionslegales()
+    {
+        return $this->render('home/mentionslegales.html.twig', [
+            'current' => 'mentionslegales'
         ]);
     }
     

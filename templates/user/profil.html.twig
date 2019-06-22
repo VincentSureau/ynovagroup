@@ -4,31 +4,27 @@
 
 {% block body %}
      <!-- Container -->
-    <div class="container-fluid px-0 py-5 bg-white">
-            <div class="container">
+    {# <div class="container-fluid px-0 py-5 bg-white"> #}
+            <div class="container-fluid bg-white bo">
                             <!-- Main Back-office Adhérents -->
-                <section class="backoffice my-3 py-0">
+                <section class="backoffice bg-white p-5 py-0">
                     <!-- Profil de l'adhérent -->
                     <div class="container-fluid profil text-center mb-5 ">
                         <div class="card" style="width: 20rem;">
                             <img src="https://via.placeholder.com/468x200?text=Image+de+la+pharmacie" class="card-img-top" alt="...">
                             <div class="card-body">
-                                <h5 id="bo-h5" class="card-title text-uppercase"><strong>Mon profil adhérent</strong></h5>       
-                                <p>{{ user.firstname }} {{ user.lastname }}</p>                     
-                                {# <p class="card-text"><strong>Nom <br></strong>{{ user.firstname }}</p>
-                                <p class="card-text"><strong>Prénom<br></strong>{{ user.lastname }}</p> #}
-
-                                <p class="card-text"><strong>Adresse de la société<br></strong>
-                                {{ app.user.company.firstadressfield|default('-') }} {{ app.user.company.secondadressfield|default('') }}
-                                <br>{{ app.user.company.postalcode|default('') }} {{ app.user.company.city|default('') }}</p>
-
-                                {# <p class="card-text"><strong>E-mail<br></strong>{{ user.email }}</p> #}
-                                
-                                <h6 class="card-title"><strong>Mon commercial référent</strong></h6>
-                                <p class="card-text">{{ app.user.company.commercial.firstname|default('-') }} {{ app.user.company.commercial.lastname|default('') }}</p>
-                                <p><strong>contact: </strong></p>
-                                <p>{{ app.user.company.commercial.email|default('-') }}</p>
-
+                                <h5 id="bo-h5" class="card-title text-uppercase font-weight-bold">Mon profil adhérent</h5>
+                                <p class="card-text"><strong>Nom <br></strong>{{ user.lastname }}</p>
+                                <p class="card-text"><strong>Prénom<br></strong>{{ user.firstname }} </p>
+                                <p class="card-text"><strong>Adresse<br></strong>{{ app.user.company.firstadressfield|default('-') }} {{ app.user.company.secondadressfield|default('') }}
+                                    <br> 93200 SAINT-DENIS</p>
+                                <p class="card-text"><strong>E-mail<br></strong>eleonore@thibaud.fr</p>
+                                <p class="card-text"><strong>Téléphone<br></strong>06 89 18 95 56</p>
+                                <h5 class="card-title">Mon commercial</h5>
+                                <p class="card-text"><strong>{{ app.user.company.commercial.firstname|default('-') }} {{ app.user.company.commercial.lastname|default('') }}</strong></p>
+                                <p><strong>contact<br></strong>
+                                {{ app.user.company.commercial.email|default('-') }}
+                                </p>
                                 <button type="button" class="btn btn-danger">
                                         <a href="{{ path('app_logout') }}" class="btn btn-danger">
                                             Déconnexion 
@@ -40,7 +36,8 @@
                     </div>
                     <!-- Section de téléchargement + tableau de fichiers -->
                     <div class="container-fluid upload mb-5 text-center ">
-                        <h5 class="card-title text-center text-uppercase">Mon espace document</h5>
+                        <h5 class="card-title text-center text-uppercase font-weight-bold">Mon espace document</h5>
+                         <h6 class="card-title text-center">Envoyer un document à mon conseiller</h6>
                         <form class="container-fluid mx-auto">
                             <div class="form-group">
                                 <label for="exampleFormControlSelect1">
@@ -104,6 +101,6 @@
                     </div>
                 </section>
             </div>
-    </div>
+    {# </div> #}
 
 {% endblock %}

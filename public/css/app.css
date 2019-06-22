@@ -54,19 +54,19 @@ li {
 }
 
 .titre {
-    color: var(--black);
+    color: var(--green);
 }
 .titre-valeurs {
     color: var(--green);
 }
 .titre-difference {
-    color: var(--bamboo);
+    color: var(--green);
 }
 .titre-objectifs {
-    color: var(--aqua);
+    color: var(--green);
 }
 .titre-contact {
-    color: var(--ocean);
+    color: var(--green);
 }
 
 
@@ -105,6 +105,11 @@ li {
 }
 
 /* Navigation Adhérents Button */
+.navbar-fixed-width {
+    position: fixed;
+    top:0;
+}
+
 #nav {
     display: flex;
     justify-content: center;
@@ -117,13 +122,8 @@ li {
 .nav-item {
     margin: 0 5px;
     text-align: center;
+    font-size: 0.9em;
 }
-
-a.login-btn:hover {
-    color: var(--green);
-    background-color: white;
-}
-  
 
 /* Navigation Underline Hover effect */
 
@@ -244,7 +244,7 @@ footer > div > .h6 {
 #myBtn {
     display: none; /* Hidden by default */
     position: fixed; /* Fixed/sticky position */
-    bottom: 220px; /* Place the button at the bottom of the page */
+    bottom: 120px; /* Place the button at the bottom of the page */
     right: 30px; /* Place the button 30px from the right */
     z-index: 99; /* Make sure it does not overlap */
     border: none; /* Remove borders */
@@ -258,7 +258,7 @@ footer > div > .h6 {
   }
   
   #myBtn:hover {
-    background-color: var(--white); /* Add a dark-grey background on hover */
+    background-color: var(--white); /* Add a white background on hover */
     color: #28A645; /* Set a background color */
   }
 
@@ -300,9 +300,6 @@ footer > div > .h6 {
     margin: 3rem 0;
 }
 
-#bo-h5 {
-
-}
 
 /*Page RGPD*/
 .rgpd {
@@ -346,3 +343,34 @@ footer > div > .h6 {
     text-justify: inter-word;
 }
 
+
+/* Parallax */
+#parallax {
+    background-image: url('/images/ynovagroup_hero.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    width: 100%;
+    height: 750px;
+    margin: 0;
+    padding: 0;
+    z-index: 100;
+}
+
+/*Modal*/
+.a-rgpd {
+    color: var(--green);
+}
+
+.a-rgpd:hover {
+    color: black;
+    text-decoration: none;
+}
+
+/* .modal-backdrop {
+    display: none !important;
+} */
+
+/* .modal-open .modal {
+    width: 300px;
+    margin: 0 auto;
+}  */

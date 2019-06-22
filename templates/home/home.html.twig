@@ -4,7 +4,7 @@
 {% endblock %}
 
 {% block body %}
-
+{% dump(app.user) %}
     <!-- Bootstrap Container -->
     <div class="container-fluid p-0 bg-white">
         <!-- H E A D E R  S E C T I O N -->
@@ -242,8 +242,16 @@
                     </div>    
                 </div>  
             </section>
+            {# <div id="parallax" src="{{ asset('images/ynovagroup_hero.jpg') }}" class="container-fluid" data-type="background" data-speed="3">
+                
+            </div> #}
+            <section 
+                id="parallax" 
+                class="img-fluid"
+            >
+            </section>
             <!-- C O N T A C T -->
-            <section id="contact"class="container-fluid p-0 text-center py-5 m-0">
+            <section id="contact" class="container-fluid p-0 text-center py-5 m-0">
              <h2 class="titre-contact h1-responsive font-weight-bold my-5">Contact</h2>
                 <form class="p-5">
                     <div class="form-group">
@@ -264,40 +272,43 @@
                     </button>
                 </form>
             </section>
+            <!--Modal v.1-->
+            <div class="modal hide fade bd-example-modal-lg" tabindex="-1" role="dialog" id="myModal" >
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Politique de confidentialité</h5>
+                            <button type="button" id="popupClose" class="close" data-dismiss="modal" aria-label="Close" onclick="this.parentElement.parentElement.style.display='none';">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <p>Nous utilisons des cookies pour vous garantir la meilleure expérience sur notre site web. La navigation sur ce site implique leur acceptation.</p>
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-success" id="popupOK" onclick="this.parentElement.parentElement.style.display='none';">
+                            OK
+                            <i class="fas fa-check"></i>
+                        </button>
+                        <button type="button" class="btn btn-light" data-dismiss="modal"><a href="{{ path('rgpd') }}" class="a-rgpd">En savoir plus</a></button>
+                    </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--Modal v.2-->
+            {# <div class="modal hide fade" id="myModal">
+                <div class="modal-header">
+                    <a class="close" data-dismiss="modal">×</a>
+                    <h3>Modal header</h3>
+                </div>
+                <div class="modal-body">
+                    <p>One fine body…</p>
+                </div>
+                <div class="modal-footer">
+                    <a href="#" class="btn">Close</a>
+                    <a href="#" class="btn btn-primary">Save changes</a>
+                </div>
+            </div> #}
         </main>
-        {# <div class="modal fade" id="myModal">
-            <div class="modal-header">
-                <a class="close" data-dismiss="modal">×</a>
-                <h3>Modal header</h3>
-            </div>
-            <div class="modal-body">
-                <p>One fine body…</p>
-            </div>
-            <div class="modal-footer">
-                <a href="#" class="btn">Close</a>
-                <a href="#" class="btn btn-primary">Save changes</a>
-            </div>
-        </div>         #}
-
-    <script>
-        // When the user scrolls down 20px from the top of the document, show the button
-        window.onscroll = function() {scrollFunction()};
-
-        function scrollFunction() {
-        if (document.body.scrollTop > 1800 || document.documentElement.scrollTop > 1800) {
-        document.getElementById("myBtn").style.display = "block";
-        } else {
-        document.getElementById("myBtn").style.display = "none";
-        }
-        }
-
-        // When the user clicks on the button, scroll to the top of the document
-        function topFunction() {
-        window.scrollTo(0,0);
-        }
-
-        // Modals
-
-    </script>
-
 {% endblock %}
