@@ -44,37 +44,37 @@ class Company
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=190)
+     * @ORM\Column(type="string", length=255)
      * @Groups({"user","company"})
      */
     private $name;
 
     /**
-     * @ORM\Column(type="string", length=190, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true)
      * @Groups({"company"})
      */
     private $firstAdressField;
 
     /**
-     * @ORM\Column(type="string", length=190, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true)
      * @Groups({"company"})
      */
     private $secondAdressField;
 
     /**
-     * @ORM\Column(type="string", length=190, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true)
      * @Groups({"company"})
      */
     private $postalCode;
 
     /**
-     * @ORM\Column(type="string", length=190, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true)
      * @Groups({"company"})
      */
     private $city;
 
     /**
-     * @ORM\Column(type="string", length=190, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true)
      * @Groups({"company"})
      */
     private $country;
@@ -91,13 +91,13 @@ class Company
      *      mimeTypes={"image/jpeg", "image/png" },
      *      mimeTypesMessage = "Merci de fournir un format valide : png, jpeg"
      * )
-     * @ORM\Column(type="string", length=190, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true)
      * @Groups({"company"})
      */
     private $picture;
 
     /**
-     * @ORM\Column(type="string", length=190, unique=true)
+     * @ORM\Column(type="string", length=255, unique=true)
      * @Gedmo\Slug(fields={"name"})
      */
     private $slug;
