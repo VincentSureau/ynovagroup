@@ -69,19 +69,19 @@ class User implements UserInterface
     private $password;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=190, nullable=true)
      * @Groups({"user", "userWrite", "company", "post", "file"})
      */
     private $firstname;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=190, nullable=true)
      * @Groups({"user", "userWrite", "company", "post", "file"})
      */
     private $lastname;
 
     /**
-     * @ORM\Column(type="string", length=255, unique=true)
+     * @ORM\Column(type="string", length=190, unique=true)
      * @Gedmo\Slug(fields={"firstname", "lastname"})
      * @Groups({"user", "userWrite"})
      */
