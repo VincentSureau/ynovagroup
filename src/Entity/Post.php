@@ -61,7 +61,7 @@ class Post
     private $author;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=190, nullable=true)
      * @Groups({"post", "postWrite"})
      */
     private $picture;

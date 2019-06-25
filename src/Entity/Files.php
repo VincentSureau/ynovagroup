@@ -52,19 +52,19 @@ class Files
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=190)
      * @Groups({"user","file"})
      */
     private $name;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=190)
      * @Groups({"user","file"})
      */
     private $type;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=190)
      * @Groups({"file"})
      */
     private $path;
@@ -76,7 +76,7 @@ class Files
     private $description;
 
     /**
-     * @ORM\Column(type="string", length=255, unique=true)
+     * @ORM\Column(type="string", length=190, unique=true)
      * @Gedmo\Slug(fields={"name"})
      * @Groups({"file"})
      */
