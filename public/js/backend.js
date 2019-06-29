@@ -169,13 +169,7 @@ function init() {
                     data: 'id',
                     render: function (data, index, row) {
                         var button = `
-                        <btn class="btn btn-success btn-sm edit-modal"
-                            data-id="${data}"
-                            data-title="${row.title}"
-                            data-author="${(row.author.firstname + ' ' + row.author.lastname)}"
-                            data-picture="${row.picture}"
-                            data-isActive="${row.isActive}"
-                        >
+                        <btn class="btn btn-success btn-sm edit-modal" data-id="${data}">
                             <i class="fas fa-plus-circle"></i>
                         </btn>`
                         return button
@@ -200,23 +194,37 @@ function init() {
                 $('.edit-modal').click(function () {
                     var data = $(this).data()
 
-                    $('#title').val(data.title)
-                    $('#content').val(data.content)
-                    $('#author').val(data.author)
-                    $('#picture').val(data.picture)
-                    $('#isActive').val(data.isactive)
-                    $('option[value="' + data.isactive + '"]').attr('selected', true)
-
                     $('#editModal').modal({
                         focus: false
                     })
+
+                    $.ajax({
+                        url: '/api/posts/'+data.id,
+                        // data: {
+                        //     id: data.id
+                        // },
+                        datatype: 'json'
+                    }).done(function(response){
+                        $('#title').val(response.title)
+                        $('#content').val(response.content)
+                        editor.setData(response.content)
+                        $('#author').val(response.author.firstname + ' ' + response.author.lastname)
+                        $('#picture').val(response.picture)
+                        $('#isActive').val(response.isActive)
+                        $('option[value="' + response.isActive + '"]').attr('selected', true)
+                    })
                 })
+
             }
         })
-        var cke = ClassicEditor
-            .create(document.querySelector('#content'), {
-                toolbar: ['heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote', 'insertTable', 'mediaEmbed', 'undo', 'redo']
-            })
+        ClassicEditor
+        .create(document.querySelector('#content'), {
+            toolbar: ['heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote', 'insertTable', 'mediaEmbed', 'undo', 'redo']
+        }).then(newEditor => { editor = newEditor})
+        $('#postEdit').on('submit', function(e){
+            e.preventDefault()
+            // save article
+        })
     }
 
     if (document.querySelector('#userTable')) {
@@ -290,6 +298,10 @@ function init() {
 function unload() {
     if (typeof variable != 'undefined') {
         table.destroy()
+    }
+
+    if (editor) {
+        editor.destroy()
     }
 }
 
