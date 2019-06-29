@@ -190,7 +190,7 @@ button.form-btn:hover {
 
 
 /* Footer Section */
-footer {
+.footer {
     background-color: var(--green);
     display: flex !important;
     justify-content: center;
@@ -198,7 +198,7 @@ footer {
     flex-wrap: wrap-reverse;
 }
 
-footer > div > .h6 {
+.footer > div > .h6 {
     font-weight: bold;
 }
 
@@ -370,3 +370,8 @@ footer > div > .h6 {
     width: 300px;
     margin: 0 auto;
 }  */
+
+/* pagination du blog */
+.pagination {
+    justify-content: center;
+}
