@@ -10,7 +10,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul id="nav" class="navbar-nav mx-auto">
                 {% if current == 'home' %}
-                    <li class="nav-item active">
+                    <li class="nav-item {{ current == 'home'? 'active'}}">
                         <a class="nav-link" href="#">Accueil</a>
                     </li>
                     <li class="nav-item">
@@ -29,10 +29,13 @@
                         <a class="nav-link" href="#contact">Contact</a>
                     </li>
                 {% else %}
-                    <li class="nav-item active">
+                    <li class="nav-item">
                         <a class="nav-link" href="{{ path('home') }}">Accueil</a>
                     </li>
                 {% endif %}
+                    <li class="nav-item">
+                        <a class="nav-link {{ current == 'blog'? 'active'}}" href="{{ path('blog') }}">Blog</a>
+                    </li>
 
                     {# /vianney la différence avec is_granted('IS_AUTHENTICATED_FULLY') ?
 
@@ -60,7 +63,6 @@
                         Déconnexion
                          <i class="far fa-paper-plane"></i>
                         </a>
-                       
                     </li>
                 {% elseif is_granted('IS_AUTHENTICATED_REMEMBERED') %}
                     <li class="nav-item adherent">

@@ -29,7 +29,7 @@ class HomeController extends AbstractController
     }
 
     /**
-     * @Route("/mentionslegales", name="mentionslegales")
+     * @Route("/mentions-legales", name="mentionslegales")
      */
     public function mentionslegales()
     {
