@@ -331,17 +331,25 @@ function init() {
         })
     }
 
-    if (document.querySelector('#something-else')) {
-        // ...
+    if (document.querySelector('#post_content')) {
+        ClassicEditor
+            .create(document.querySelector('#post_content'), {
+                toolbar: ['heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote', 'insertTable', 'mediaEmbed', 'undo', 'redo']
+            }).then(newEditor => { editor = newEditor })
+        
+        $('form[name="post"]').submit(function(){
+            var content = editor.getData()
+            $('#post_content').val(content)
+        })
     }
 }
 
 function unload() {
-    if (typeof variable != 'undefined') {
+    if (typeof table != 'undefined') {
         table.destroy()
     }
 
-    if (editor) {
+    if (typeof editor != 'undefined') {
         editor.destroy()
     }
 }

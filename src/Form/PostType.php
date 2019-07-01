@@ -22,7 +22,12 @@ class PostType extends AbstractType
                 'label' => 'Titre de l\'article',
             ])
             ->add('content', TextareaType::class, [
-                'label' => 'Contenu de l\'article'
+                'label' => 'Contenu de l\'article',
+                'attr' => [
+                    'id' => 'content',
+                    'required' => false
+
+                ]
             ])
             //->add('picture')
             ->add('isActive', ChoiceType::class, [
