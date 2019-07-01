@@ -9,6 +9,11 @@ console.log("app.js is loaded");
         $('#myModal').modal('show');
     });
 
+    $(window).on('click', function(){
+        $('#myModal').modal('hide');
+    });
+   
+
 // SCROLL TOP BUTTON
     window.onscroll = function() {scrollFunction()};
 
