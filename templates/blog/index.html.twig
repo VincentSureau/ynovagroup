@@ -12,7 +12,7 @@
         <h1 class="h2">Blog</h1>
         {% for post in pagination %}
             <div class="card mb-3 bg-white">
-                {% if post.picture is defined %}
+                {% if post.picture is not null %}
                     <img class="card-img-top" src="{{ post.picture }}" style="max-height: 400px" alt="illustration de l'article">
                 {% endif %}
                 <div class="card-body">

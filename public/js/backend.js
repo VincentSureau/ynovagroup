@@ -11,21 +11,26 @@ function init() {
             columns: [
                 {
                     data: 'id',
-                    render: function (data, index, row) {
-                        var button = `
-                        <btn class="btn btn-success btn-sm edit-modal"
-                            data-id="${data}"
-                            data-name="${row.name}"
-                            data-member="${(row.user.firstname + ' ' + row.user.lastname)}"
-                            data-commercial="${(row.user.firstname + ' ' + row.user.lastname)}"
-                            data-adress1="${row.firstAdressField}"
-                            data-adress2="${row.secondAdressField}"
-                            data-postalcode="${row.postalCode}"
-                            data-city="${row.city}"
-                        >
-                            <i class="fas fa-edit"></i>
-                        </btn>`
-                        return button
+                    render: {
+                        "_": function (data) {
+                            return data
+                        },
+                        display: function (data, index, row) {
+                            var button = `
+                            <btn class="btn btn-success btn-sm edit-modal"
+                                data-id="${data}"
+                                data-name="${row.name}"
+                                data-member="${(row.user.firstname + ' ' + row.user.lastname)}"
+                                data-commercial="${(row.user.firstname + ' ' + row.user.lastname)}"
+                                data-adress1="${row.firstAdressField}"
+                                data-adress2="${row.secondAdressField}"
+                                data-postalcode="${row.postalCode}"
+                                data-city="${row.city}"
+                            >
+                                <i class="fas fa-edit"></i>
+                            </btn>`
+                            return button
+                        }
                     }
                 },
                 { data: 'name' },
@@ -101,19 +106,24 @@ function init() {
             columns: [
                 {
                     data: 'id',
-                    render: function (data, index, row) {
-                        var button = `
-                        <btn class="btn btn-success btn-sm edit-modal"
-                            data-id="${data}"
-                            data-name="${row.name}"
-                            data-type="${row.type}"
-                            data-description="${row.description}"
-                            data-isActive="${row.isActive}"
-                            data-commercial="${row.commercial.firstname + ' ' + row.commercial.lastname}"
-                        >
-                            <i class="fas fa-edit"></i>
-                        </btn>`
-                        return button
+                    render: {
+                        "_": function (data) {
+                            return data
+                        },
+                        display: function (data, index, row) {
+                            var button = `
+                            <btn class="btn btn-success btn-sm edit-modal"
+                                data-id="${data}"
+                                data-name="${row.name}"
+                                data-type="${row.type}"
+                                data-description="${row.description}"
+                                data-isActive="${row.isActive}"
+                                data-commercial="${row.commercial.firstname + ' ' + row.commercial.lastname}"
+                            >
+                                <i class="fas fa-edit"></i>
+                            </btn>`
+                            return button
+                        }
                     }
                 },
                 { data: 'name' },
@@ -167,12 +177,18 @@ function init() {
             columns: [
                 {
                     data: 'id',
-                    render: function (data, index, row) {
-                        var button = `
-                        <btn class="btn btn-success btn-sm edit-modal" data-id="${data}">
-                            <i class="fas fa-edit"></i>
-                        </btn>`
-                        return button
+                    render: {
+                        "_" : function(data){
+                            return data
+                        },
+                        display : function (data, index, row) {
+                            var button = `
+                            <btn class="btn btn-success btn-sm edit-modal" data-id="${data}">
+                                <i class="fas fa-edit"></i>
+                            </btn>`
+                            return button
+
+                        }
                     }
                 },
                 { data: 'title' },
