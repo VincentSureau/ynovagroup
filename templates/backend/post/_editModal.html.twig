@@ -10,6 +10,7 @@
       </div>
       <form id="postEdit">
         <div class="modal-body">
+              <input type="hidden" name="id" id="id">
               <div class="form-group">
                   <label for="title">Titre de l'article</label>
                   <input class="form-control" type="text" name="title" id="title">
@@ -30,7 +31,7 @@
               <div class="form-group">
                   <label for="isActive">Article publié</label>
                   <select name="isActive" id="isActive" class="form-control">
-                    <option value="true">oui</option>
+                    <option value="true" selected>oui</option>
                     <option value="false">non</option>
                   </select>
               </div>

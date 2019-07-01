@@ -24,15 +24,15 @@ class PostController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{id}", name="show", methods={"GET"})
-     */
-    public function show(Post $post): Response
-    {
-        return $this->render('backend/post/show.html.twig', [
-            'post' => $post,
-        ]);
-    }
+    // /**
+    //  * @Route("/{id}", name="show", methods={"GET"})
+    //  */
+    // public function show(Post $post): Response
+    // {
+    //     return $this->render('backend/post/show.html.twig', [
+    //         'post' => $post,
+    //     ]);
+    // }
     
     /**
      * @Route("/{id}/edition", name="edit", methods={"GET","POST"})
@@ -43,6 +43,10 @@ class PostController extends AbstractController
         $form->handleRequest($request); 
         if ($form->isSubmitted() && $form->isValid()) {
 
+            $post
+                ->setCreatedAt(new \Datetime)
+                ->setUpdatedAt(new \Datetime);
+            dump($post);
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('backend_post_index', [
@@ -51,6 +55,34 @@ class PostController extends AbstractController
         }
 
         return $this->render('backend/post/edit.html.twig', [
+            'post' => $post,
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/ajouter-un-article", name="create", methods={"GET","POST"})
+     */
+    public function new(Request $request): Response
+    {
+        $post = new Post();
+        $form = $this->createForm(PostType::class, $post);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $post
+                ->setCreatedAt(new \Datetime)
+                ->setUpdatedAt(new \Datetime);
+
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($post);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('backend_post_index', []);
+        }
+
+        return $this->render('backend/post/new.html.twig', [
+            'current' => 'createPost',
             'post' => $post,
             'form' => $form->createView(),
         ]);

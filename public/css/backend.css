@@ -3,9 +3,13 @@
 
 /* Navigation Adhérents Button */
 
-* {
+:root {
+    --box-shadow-lg: 0 7px 14px 0 rgba(59,64,94,0.1),0 3px 6px 0 rgba(0,0,0,0.07);
     --green-color : #28a645 ;
     --green-hover-color : #218838 ;
+}
+
+* {
     font-family: 'Montserrat', sans-serif;
 }
 
@@ -51,4 +55,8 @@ html.is-animating .transition-fade {
 :root {
     --ck-z-default: 100;
     --ck-z-modal: calc( var(--ck-z-default) + 999 );
+}
+
+.card {
+    box-shadow: var(--box-shadow-lg);
 }

@@ -23,7 +23,7 @@ function init() {
                             data-postalcode="${row.postalCode}"
                             data-city="${row.city}"
                         >
-                            <i class="fas fa-plus-circle"></i>
+                            <i class="fas fa-edit"></i>
                         </btn>`
                         return button
                     }
@@ -111,7 +111,7 @@ function init() {
                             data-isActive="${row.isActive}"
                             data-commercial="${row.commercial.firstname + ' ' + row.commercial.lastname}"
                         >
-                            <i class="fas fa-plus-circle"></i>
+                            <i class="fas fa-edit"></i>
                         </btn>`
                         return button
                     }
@@ -123,7 +123,7 @@ function init() {
                 {
                     data: 'isActive',
                     render: function (data) {
-                        return (data === true) ? 'oui' : 'non'
+                        return (data == "true" || data == true) ? 'oui' : 'non'
                     }
                 },
                 {
@@ -170,7 +170,7 @@ function init() {
                     render: function (data, index, row) {
                         var button = `
                         <btn class="btn btn-success btn-sm edit-modal" data-id="${data}">
-                            <i class="fas fa-plus-circle"></i>
+                            <i class="fas fa-edit"></i>
                         </btn>`
                         return button
                     }
@@ -186,13 +186,13 @@ function init() {
                 {
                     data: 'isActive',
                     render: function (data) {
-                        return (data === true) ? 'oui' : 'non'
+                        return (data == "true" || data == true) ? 'oui' : 'non'
                     }
                 }
             ],
             'drawCallback': function () {
                 $('.edit-modal').click(function () {
-                    var data = $(this).data()
+                    data = $(this).data()
 
                     $('#editModal').modal({
                         focus: false
@@ -207,10 +207,10 @@ function init() {
                     }).done(function(response){
                         $('#title').val(response.title)
                         $('#content').val(response.content)
+                        $("#id").val(response.id)
                         editor.setData(response.content)
                         $('#author').val(response.author.firstname + ' ' + response.author.lastname)
                         $('#picture').val(response.picture)
-                        $('#isActive').val(response.isActive)
                         $('option[value="' + response.isActive + '"]').attr('selected', true)
                     })
                 })
@@ -221,9 +221,50 @@ function init() {
         .create(document.querySelector('#content'), {
             toolbar: ['heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote', 'insertTable', 'mediaEmbed', 'undo', 'redo']
         }).then(newEditor => { editor = newEditor})
+
+        // $('#add-modal').click(function () {
+        //     $('#editModal').modal({
+        //         focus: false
+        //     })
+
+        //     $('#title').val('')
+        //     $('#content').val('')
+        //     $("#id").val('')
+        //     editor.setData('')
+        //     $('#author').val('')
+        //     $('#picture').val('')
+        //     $('option[value="true"]').attr('selected',true)
+
+        // })
+
         $('#postEdit').on('submit', function(e){
             e.preventDefault()
-            // save article
+            var id = $('#id').val()
+            var title = $('#title').val()
+            var content = $('#content').val()
+            var isActive = ($('#isActive').val() == "true")? true : false
+            var method = id? 'PUT' : 'POST'
+            var data = {
+                "title" : title,
+                "content": content,
+                "isActive": isActive
+            }
+            var url = id ? '/api/posts/' + id : '/api/posts'
+            data= JSON.stringify(data)
+            $.ajax({
+                method: method,
+                url: url,
+                data: data,
+                datatype: 'json',
+                contentType: "application/json",
+                headers: {
+                    accept: "application/json"
+                }
+            }).done(function (response) {
+                table.ajax.reload()
+                $('#editModal').modal('hide')
+            })
+
         })
     }
 
@@ -249,7 +290,7 @@ function init() {
                             data-email="${row.email}"
                             data-isActive="${row.isActive}"
                         >
-                            <i class="fas fa-plus-circle"></i>
+                            <i class="fas fa-edit"></i>
                         </btn>`
                         return button
                     }
@@ -266,7 +307,7 @@ function init() {
                 {
                     data: 'isActive',
                     render: function (data) {
-                        return (data === true) ? 'oui' : 'non'
+                        return (data == "true" || data == true) ? 'oui' : 'non'
                     }
                 }
             ],
