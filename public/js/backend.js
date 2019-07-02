@@ -154,6 +154,7 @@ function init() {
                                 data-description="${row.description}"
                                 data-isActive="${row.isActive}"
                                 data-commercial="${row.commercial.firstname + ' ' + row.commercial.lastname}"
+                                data-delete="${row.deletedAt}"
                             >
                                 <i class="fas fa-edit"></i>
                             </btn>`
@@ -184,19 +185,56 @@ function init() {
             'drawCallback': function () {
                 $('.edit-modal').click(function () {
                     var data = $(this).data()
-
+                    console.log(data.delete)
+                    $('#id').val(data.id)
                     $('#fileName').val(data.name)
                     $('#fileType').val(data.type)
                     $('#fileDescription').val(data.description)
                     $('#fileCommercial').val(data.commercial)
-                    $('#isActive').val(data.isactive)
+                    // to complete
+                    $('#deletedAt').val(data.delete)
+                    $('option').removeAttr('selected')
+                    $('option[value="' + data.isactive + '"]').prop('selected', true)
                     $('option[value="' + data.isactive + '"]').attr('selected', true)
                     $('#editModal').modal({
                         focus: false
                     })
-
                 })
             }
+        })
+        $('#fileEdit').on('submit', function (e) {
+            e.preventDefault()
+            var id = $('#id').val()
+            var fileName = $('#fileName').val()
+            var fileType = $('#fileType').val()
+            var fileDescription = $('#fileDescription').val()
+            var deletedAt = $('#deletedAt').val()
+            var isActive = ($('#isActive').val() == "true") ? true : false
+            //var isActive = ($('#isActive').val() == "true") ? true : false
+            var method = id ? 'PUT' : 'POST'
+            var data = {
+                "name": fileName,
+                "type": fileType,
+                "description": fileDescription,
+                "isActive": isActive,
+                "deletedAt": deletedAt
+            }
+            var url = id ? '/api/files/' + id : '/api/files'
+            data = JSON.stringify(data)
+            $.ajax({
+                method: method,
+                url: url,
+                data: data,
+                datatype: 'json',
+                contentType: "application/json",
+                headers: {
+                    accept: "application/json"
+                }
+            }).done(function (response) {
+                table.ajax.reload()
+                $('#editModal').modal('hide')
+            })
+
         })
     }
 

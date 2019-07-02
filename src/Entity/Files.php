@@ -36,7 +36,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *         },
  *         "put"={
  *             "normalization_context"={"groups"={"fileWrite"}},
- *             "access_control"="is_granted('ROLE_USER') and object == user.getFile() or is_granted('ROLE_BUSINESS')"},
+ *             "access_control"="is_granted('ROLE_USER') and user.getFiles().contains(object) or is_granted('ROLE_BUSINESS')"},
  *         "delete"={"access_control"="is_granted('ROLE_BUSINESS')"}
  *     },
  * )
@@ -53,25 +53,25 @@ class Files
 
     /**
      * @ORM\Column(type="string", length=190)
-     * @Groups({"user","file"})
+     * @Groups({"user", "file", "fileWrite"})
      */
     private $name;
 
     /**
      * @ORM\Column(type="string", length=190)
-     * @Groups({"user","file"})
+     * @Groups({"user","file", "fileWrite"})
      */
     private $type;
 
     /**
      * @ORM\Column(type="string", length=190)
-     * @Groups({"file"})
+     * @Groups({"file", "fileWrite"})
      */
     private $path;
 
     /**
      * @ORM\Column(type="text")
-     * @Groups({"file"})
+     * @Groups({"file", "fileWrite"})
      */
     private $description;
 
@@ -84,7 +84,7 @@ class Files
 
     /**
      * @ORM\Column(type="boolean")
-     * @Groups({"file"})
+     * @Groups({"file", "fileWrite"})
      */
     private $isActive;
 
@@ -96,24 +96,26 @@ class Files
 
     /**
      * @ORM\Column(type="datetime")
+     * @Groups({"file", "fileWrite"})
      */
     private $updatedAt;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
+     * @Groups({"file", "fileWrite"})
      */
     private $deletedAt;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="managedFiles")
      * @ORM\JoinColumn(nullable=false)
-     * @Groups({"file"})
+     * @Groups({"file",  "fileWrite"})
      */
     private $commercial;
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\User", mappedBy="files")
-     * @Groups({"file"})
+     * @Groups({"file", "fileWrite"})
      */
     private $users;
 
