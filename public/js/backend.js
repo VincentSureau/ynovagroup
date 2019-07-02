@@ -262,7 +262,8 @@ function init() {
                         editor.setData(response.content)
                         $('#author').val(response.author.firstname + ' ' + response.author.lastname)
                         $('#picture').val(response.picture)
-                        $('option[value="' + response.isActive + '"]').attr('selected', true)
+                        $('option').removeAttr('selected')
+                        $('option[value="' + response.isActive + '"]').prop('selected', true)
                     })
                 })
 
@@ -366,18 +367,50 @@ function init() {
                 $('.edit-modal').click(function () {
                     var data = $(this).data()
 
+                    $('#id').val(data.id)
                     $('#firstname').val(data.firstname)
                     $('#lastname').val(data.lastname)
                     $('#email').val(data.email)
                     $('#company').val(data.company)
-                    $('#isActive').val(data.isActive)
-
+                    $('option').removeAttr('selected')
+                    $('option[value="' + data.isactive + '"]').prop('selected', true)
                     $('#editModal').modal({
                         focus: false
                     })
 
                 })
             }
+        })
+        $('#userEdit').on('submit', function (e) {
+            e.preventDefault()
+            var id = $('#id').val()
+            var email = $('#email').val()
+            var firstname = $('#firstname').val()
+            var lastname = $('#lastname').val()
+            var isActive = ($('#isActive').val() == "true") ? true : false
+            //var isActive = ($('#isActive').val() == "true") ? true : false
+            var method = id ? 'PUT' : 'POST'
+            var data = {
+                "firstname": firstname,
+                "lastname": lastname,
+                "email": email,
+                "isActive": isActive
+            }
+            var url = id ? '/api/users/' + id : '/api/users'
+            data = JSON.stringify(data)
+            $.ajax({
+                method: method,
+                url: url,
+                data: data,
+                datatype: 'json',
+                contentType: "application/json",
+                headers: {
+                    accept: "application/json"
+                }
+            }).done(function (response) {
+                table.ajax.reload()
+                $('#editModal').modal('hide')
+            })
 
         })
     }

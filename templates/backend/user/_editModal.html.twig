@@ -8,8 +8,9 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
         <form id="userEdit">
+          <input type="hidden" name="id" id="id">
+          <div class="modal-body">
             <div class="form-group mr-1">
                 <label for="company">Pharmacie</label>
                 <input class="form-control" type="text" name="company" id="company">
@@ -28,14 +29,17 @@
             </div>
             <div class="form-group">
                 <label for="isActive">Actif</label>
-                <input class="form-control" type="text" name="isActive" id="isActive">
+                <select name="isActive" id="isActive" class="form-control">
+                  <option value="true">oui</option>
+                  <option value="false">non</option>
+                </select>
             </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Fermer</button>
+            <button id="btn-edit-user" type="submit" class="btn btn-primary">Enregistrer</button>
+          </div>
         </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">Fermer</button>
-        <button id="btn-edit-user" type="button" class="btn btn-primary">Enregistrer</button>
-      </div>
     </div>
   </div>
 </div>

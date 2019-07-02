@@ -89,7 +89,7 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="boolean")
-     * @Groups({"user"})
+     * @Groups({"user", "userWrite"})
      */
     private $isActive;
 
@@ -101,6 +101,7 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="datetime")
+     * @Groups({"userWrite"})
      */
     private $updatedAt;
 
