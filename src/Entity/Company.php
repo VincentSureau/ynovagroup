@@ -45,43 +45,43 @@ class Company
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"user","company"})
+     * @Groups({"user","company", "companyWrite"})
      */
     private $name;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups({"company"})
+     * @Groups({"company", "companyWrite"})
      */
     private $firstAdressField;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups({"company"})
+     * @Groups({"company", "companyWrite"})
      */
     private $secondAdressField;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups({"company"})
+     * @Groups({"company", "companyWrite"})
      */
     private $postalCode;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups({"company"})
+     * @Groups({"company", "companyWrite"})
      */
     private $city;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups({"company"})
+     * @Groups({"company", "companyWrite"})
      */
     private $country;
 
     /**
      * @ORM\Column(type="text", nullable=true)
-     * @Groups({"company"})
+     * @Groups({"company", "companyWrite"})
      */
     private $description;
 
@@ -92,7 +92,7 @@ class Company
      *      mimeTypesMessage = "Merci de fournir un format valide : png, jpeg"
      * )
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups({"company"})
+     * @Groups({"company", "companyWrite"})
      */
     private $picture;
 
@@ -104,7 +104,7 @@ class Company
 
     /**
      * @ORM\Column(type="boolean")
-     * @Groups({"company"})
+     * @Groups({"company", "companyWrite"})
      */
     private $isActive;
 
@@ -120,13 +120,13 @@ class Company
 
     /**
      * @ORM\OneToOne(targetEntity="App\Entity\User", mappedBy="company", cascade={"persist", "remove"})
-     * @Groups({"company"})
+     * @Groups({"company", "companyWrite"})
      */
     private $user;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="managedCompanies")
-     * @Groups({"company"})
+     * @Groups({"company", "companyWrite"})
      */
     private $commercial;
 

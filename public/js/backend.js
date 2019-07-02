@@ -76,7 +76,7 @@ function init() {
             'drawCallback': function() {
                 $('.edit-modal').click(function () {
                     var data = $(this).data()
-
+                    $('#id').val(data.id)
                     $('#companyName').val(data.name)
                     $('#companyMember').val(data.member)
                     $('#companyCommercial').val(data.commercial)
@@ -91,6 +91,41 @@ function init() {
 
                 })
             }
+        })
+        $('#companyEdit').on('submit', function (e) {
+            e.preventDefault()
+            var id = $('#id').val()
+            var companyName = $('#companyName').val()
+            var companyAdress1 = $('#companyAdress1').val()
+            var companyAdress2 = $('#companyAdress2').val()
+            var companyPostCode = $('#companyPostCode').val()
+            var companyCity = $('#companyCity').val()
+
+            //var isActive = ($('#isActive').val() == "true") ? true : false
+            var method = id ? 'PUT' : 'POST'
+            var data = {
+                "name": companyName,
+                "firstAdressField": companyAdress1,
+                "secondAdressField": companyAdress2,
+                "postalCode": companyPostCode,
+                "city": companyCity
+            }
+            var url = id ? '/api/companies/' + id : '/api/companies'
+            data = JSON.stringify(data)
+            $.ajax({
+                method: method,
+                url: url,
+                data: data,
+                datatype: 'json',
+                contentType: "application/json",
+                headers: {
+                    accept: "application/json"
+                }
+            }).done(function (response) {
+                table.ajax.reload()
+                $('#editModal').modal('hide')
+            })
+
         })
     }
 

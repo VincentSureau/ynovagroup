@@ -8,44 +8,45 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
-        <form id="companyEdit">
-            <div class="form-group">
-                <label for="companyName">Nom de la pharmacie</label>
-                <input class="form-control" type="text" name="companyName" id="companyName">
-            </div>
-            <div class="form-group">
-                <label for="companyMember">Gestionnaire</label>
-                <input class="form-control" type="text" name="companyMember" id="companyMember">
-            </div>
-            <div class="form-group">
-                <label for="companyAdress1">Adresse</label>
-                <input class="form-control" type="text" name="companyAdress1" id="companyAdress1">
-            </div>
-            <div class="form-group">
-                <label for="companyAdress2">Complément d'adresse</label>
-                <input class="form-control" type="text" name="companyAdress2" id="companyAdress2">
-            </div>
-            <div class="input-group">
-              <div class="form-group mr-1">
-                  <label for="companyPostCode">Code Postal</label>
-                  <input class="form-control" type="text" name="companyPostCode" id="companyPostCode">
+      <form id="companyEdit">
+        <div class="modal-body">
+            <input type="hidden" name="id" id="id">
+              <div class="form-group">
+                  <label for="companyName">Nom de la pharmacie</label>
+                  <input class="form-control" type="text" name="companyName" id="companyName">
               </div>
-              <div class="form-group ml-1">
-                  <label for="companyCity">Ville</label>
-                  <input class="form-control" type="text" name="companyCity" id="companyCity">
+              <div class="form-group">
+                  <label for="companyMember">Gestionnaire</label>
+                  <input class="form-control" type="text" name="companyMember" id="companyMember">
               </div>
-            </div>
-            <div class="form-group">
-                <label for="companyCommercial">Nom du commercial rattaché</label>
-                <input class="form-control" type="text" name="companyCommercial" id="companyCommercial">
-            </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">Fermer</button>
-        <button type="button" class="btn btn-primary">Enregistrer</button>
-      </div>
+              <div class="form-group">
+                  <label for="companyAdress1">Adresse</label>
+                  <input class="form-control" type="text" name="companyAdress1" id="companyAdress1">
+              </div>
+              <div class="form-group">
+                  <label for="companyAdress2">Complément d'adresse</label>
+                  <input class="form-control" type="text" name="companyAdress2" id="companyAdress2">
+              </div>
+              <div class="input-group">
+                <div class="form-group mr-1">
+                    <label for="companyPostCode">Code Postal</label>
+                    <input class="form-control" type="text" name="companyPostCode" id="companyPostCode">
+                </div>
+                <div class="form-group ml-1">
+                    <label for="companyCity">Ville</label>
+                    <input class="form-control" type="text" name="companyCity" id="companyCity">
+                </div>
+              </div>
+              <div class="form-group">
+                  <label for="companyCommercial">Nom du commercial rattaché</label>
+                  <input class="form-control" type="text" name="companyCommercial" id="companyCommercial">
+              </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Fermer</button>
+          <button type="submit" class="btn btn-primary">Enregistrer</button>
+        </div>
+      </form>
     </div>
   </div>
 </div>
