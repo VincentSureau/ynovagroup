@@ -42,6 +42,19 @@ body {
     width: auto;
 }
 
+.link-green, .link-green:visited,
+.page-link, .page-link:visited {
+    color: var(--green-color);
+}
+
+.link-green:active, .link-green:hover {
+    color: var(--green-hover-color);
+}
+
+.page-item.active .page-link {
+    background-color: var(--green-hover-color);
+    border-color: var(--green-hover-color);
+}
 
 .transition-fade {
   transition: 0.4s;
@@ -59,4 +72,15 @@ html.is-animating .transition-fade {
 
 .card {
     box-shadow: var(--box-shadow-lg);
+}
+
+/* Needed for select2 responsiveness */
+
+.select2-selection { 
+    overflow: hidden; 
+}
+
+.select2-selection__rendered { 
+    white-space: normal;
+    word-break: break-all;
 }

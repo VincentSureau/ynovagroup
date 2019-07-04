@@ -37,15 +37,19 @@ function init() {
                 //     }
                 // },
                 { data: 'firstAdressField' },
-                { data: 'secondAdressField' },
+                //{ data: 'secondAdressField' },
                 { data: 'postalCode' },
                 { data: 'city' },
                 {
                     data: 'user',
                     render: function (data, index, row) {
                         if (null !== data) {
-                            return data.firstname + ' ' + data.lastname
+                            var url = `
+                                <a class="link-green" href="/backend/gestionnaires/${data.id}">${data.firstname} ${data.lastname}<a>
+                            `
+                            return url
                         }
+                        return '-'
                     }
                 },
                 {
@@ -184,7 +188,13 @@ function init() {
                 {
                     data: 'company',
                     render: function (data, index, row) {
-                        return row.company.name || '-'
+                        if (null !== data) {
+                            var url = `
+                                <a class="link-green" href="/backend/pharmacies/${data.id}">${data.name}<a>
+                            `
+                            return url
+                        }
+                        return '-'
                     }
                 },
                 { data: 'email' },
@@ -209,6 +219,11 @@ function init() {
             $('#post_content').val(content)
         })
     }
+
+    $('.select2').select2({
+        width: '100%'
+    })
+
 }
 
 function unload() {

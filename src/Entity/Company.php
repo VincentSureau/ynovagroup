@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -39,7 +41,7 @@ class Company
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups({"company"})
+     * @Groups({"company", "user"})
      */
     private $id;
 
@@ -130,11 +132,23 @@ class Company
      */
     private $commercial;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Files", mappedBy="pharmacies")
+     */
+    private $files;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Files", mappedBy="pharmacies")
+     */
+    private $no;
+
     public function __construct()
     {
         $this->isActive = true;
         $this->createdAt = new \DateTime();
         $this->updatedAt = new \DateTime();
+        $this->files = new ArrayCollection();
+        $this->no = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -317,5 +331,61 @@ class Company
 
     public function __toString() {
         return $this->name;
+    }
+
+    /**
+     * @return Collection|Files[]
+     */
+    public function getFiles(): Collection
+    {
+        return $this->files;
+    }
+
+    public function addFile(Files $file): self
+    {
+        if (!$this->files->contains($file)) {
+            $this->files[] = $file;
+            $file->addPharmacy($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFile(Files $file): self
+    {
+        if ($this->files->contains($file)) {
+            $this->files->removeElement($file);
+            $file->removePharmacy($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Files[]
+     */
+    public function getNo(): Collection
+    {
+        return $this->no;
+    }
+
+    public function addNo(Files $no): self
+    {
+        if (!$this->no->contains($no)) {
+            $this->no[] = $no;
+            $no->addPharmacy($this);
+        }
+
+        return $this;
+    }
+
+    public function removeNo(Files $no): self
+    {
+        if ($this->no->contains($no)) {
+            $this->no->removeElement($no);
+            $no->removePharmacy($this);
+        }
+
+        return $this;
     }
 }

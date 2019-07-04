@@ -7,7 +7,7 @@
     <div class="card p-4">
         {{ include('backend/file/_form.html.twig', {'button_label': 'Enregistrer'}) }}
     </div>
-    <a href="{{ path('backend_file_index') }}">Retour à la liste des documents</a>
+    <a class="link-green" href="{{ path('backend_file_index') }}">Retour à la liste des documents</a>
 
     {# {{ include('backend/file/_delete_form.html.twig') }} #}
 {% endblock %}

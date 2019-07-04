@@ -47,7 +47,7 @@ class User implements UserInterface
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups({"user", "userWrite"})
+     * @Groups({"user", "userWrite", "company"})
      */
     private $id;
 
@@ -111,11 +111,6 @@ class User implements UserInterface
     private $managedFiles;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Files", inversedBy="users")
-     */
-    private $files;
-
-    /**
      * @ORM\OneToOne(targetEntity="App\Entity\Company", inversedBy="user", cascade={"persist", "remove"})
      * @ORM\JoinColumn(nullable=true)
      * @Groups({"user", "userWrite"})
@@ -132,15 +127,20 @@ class User implements UserInterface
      */
     private $posts;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Files", mappedBy="sentBy")
+     */
+    private $files;
+
     public function __construct()
     {
         $this->managedFiles = new ArrayCollection();
-        $this->files = new ArrayCollection();
         $this->managedCompanies = new ArrayCollection();
         $this->isActive = true;
         $this->createdAt = new \DateTime();
         $this->updatedAt = new \DateTime();
         $this->posts = new ArrayCollection();
+        $this->files = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -324,32 +324,6 @@ class User implements UserInterface
         return $this;
     }
 
-    /**
-     * @return Collection|Files[]
-     */
-    public function getFiles(): Collection
-    {
-        return $this->files;
-    }
-
-    public function addFile(Files $file): self
-    {
-        if (!$this->files->contains($file)) {
-            $this->files[] = $file;
-        }
-
-        return $this;
-    }
-
-    public function removeFile(Files $file): self
-    {
-        if ($this->files->contains($file)) {
-            $this->files->removeElement($file);
-        }
-
-        return $this;
-    }
-
     public function getCompany(): ?Company
     {
         return $this->company;
@@ -427,6 +401,37 @@ class User implements UserInterface
     public function __toString()
     {
         return $this->firstname .' '. $this->lastname;
+    }
+
+    /**
+     * @return Collection|Files[]
+     */
+    public function getFiles(): Collection
+    {
+        return $this->files;
+    }
+
+    public function addFile(Files $file): self
+    {
+        if (!$this->files->contains($file)) {
+            $this->files[] = $file;
+            $file->setSentBy($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFile(Files $file): self
+    {
+        if ($this->files->contains($file)) {
+            $this->files->removeElement($file);
+            // set the owning side to null (unless already changed)
+            if ($file->getSentBy() === $this) {
+                $file->setSentBy(null);
+            }
+        }
+
+        return $this;
     }
 
 }

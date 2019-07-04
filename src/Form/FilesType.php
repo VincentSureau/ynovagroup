@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\User;
 use App\Entity\Files;
+use App\Entity\Company;
 use App\Repository\UserRepository;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -51,16 +52,11 @@ class FilesType extends AbstractType
                     ;
                 },
             ])
-            ->add('users', EntityType::Class, [
+            ->add('pharmacies', EntityType::Class, [
                 'label' => 'Pharmacies',
-                'class' => User::class,
-                'query_builder' => function (UserRepository $er) {
-                    return $er
-                        ->createQueryBuilder('u')
-                        ->andWhere('u.roles LIKE :role')
-                        ->setParameter('role', '%"ROLE_MEMBER"%')
-                    ;
-                },
+                'class' => Company::class,
+                'multiple' => true,
+                'attr' => ['class' => 'select2']
             ])
         ;
     }

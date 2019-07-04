@@ -9,15 +9,6 @@ use Gedmo\Mapping\Annotation as Gedmo;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Symfony\Component\Serializer\Annotation\Groups;
 
-
-// /vianney que souhaites-tu serializer ici? peux-tu voir pour l'upload des fichiers afin d'avoir quelques données et travailler dessus? Comment sécurises-tu les accès à l'API? je veux bien un exemple de la façon dont tu le fais, ainsi que les données à sécuriser
-
-// je veux tout sérialiser sauf les updated at
-// pour le controller, tu peux prendre exemple sur le getUserController
-// il faut refaire un controller de ce type, comme ça tu peux faire toutes les vérification
-// dedans, du style $repositiry->findByCommercial($this->getUser())
-// car de base api platform ne permet pas de faire ça
-
 /**
  * @ORM\Entity(repositoryClass="App\Repository\FilesRepository")
  * 
@@ -114,14 +105,19 @@ class Files
     private $commercial;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\User", mappedBy="files")
-     * @Groups({"file", "fileWrite"})
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="files")
      */
-    private $users;
+    private $sentBy;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Company", inversedBy="no")
+     */
+    private $pharmacies;
 
     public function __construct()
     {
         $this->users = new ArrayCollection();
+        $this->pharmacies = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -249,35 +245,45 @@ class Files
         return $this;
     }
 
-    /**
-     * @return Collection|User[]
-     */
-    public function getUsers(): Collection
-    {
-        return $this->users;
-    }
-
-    public function addUser(User $user): self
-    {
-        if (!$this->users->contains($user)) {
-            $this->users[] = $user;
-            $user->addFile($this);
-        }
-
-        return $this;
-    }
-
-    public function removeUser(User $user): self
-    {
-        if ($this->users->contains($user)) {
-            $this->users->removeElement($user);
-            $user->removeFile($this);
-        }
-
-        return $this;
-    }
-
     public function __toString() {
         return $this->name;
+    }
+
+    public function getSentBy(): ?User
+    {
+        return $this->sentBy;
+    }
+
+    public function setSentBy(?User $sentBy): self
+    {
+        $this->sentBy = $sentBy;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Company[]
+     */
+    public function getPharmacies(): Collection
+    {
+        return $this->pharmacies;
+    }
+
+    public function addPharmacy(Company $pharmacy): self
+    {
+        if (!$this->pharmacies->contains($pharmacy)) {
+            $this->pharmacies[] = $pharmacy;
+        }
+
+        return $this;
+    }
+
+    public function removePharmacy(Company $pharmacy): self
+    {
+        if ($this->pharmacies->contains($pharmacy)) {
+            $this->pharmacies->removeElement($pharmacy);
+        }
+
+        return $this;
     }
 }

@@ -9,13 +9,13 @@
         <div class="d-flex mb-3">
             <a class="btn btn-success btn-sm" id="add-modal" href="{{ path('backend_company_create') }}"><i class="fas fa-plus-square"></i> Ajouter une pharmacie</a>
         </div>
-        <table id="companyTable" class="table table-hover table-striped table-responsive w-100">
+        <table id="companyTable" class="table table-hover table-striped w-100">
             <thead>
                 <tr>
                     <th>#</th>
                     <th>Nom</th>   
                     <th>Adresse</th>
-                    <th>Complément</th>
+                    {# <th>Complément</th> #}
                     <th>Code postal</th>
                     <th>Ville</th>
                     <th>Gestionnaire</th>
@@ -28,7 +28,7 @@
     </div>
 
     <p class="text-left">
-        <a href="">retour</a>
+        <a class="link-green" href="" class="link-green">retour</a>
     </p>
 
 {% endblock %}

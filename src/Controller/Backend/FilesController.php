@@ -38,7 +38,7 @@ class FilesController extends AbstractController
             $entityManager->persist($file);
             $entityManager->flush();
 
-            return $this->redirectToRoute('index');
+            return $this->redirectToRoute('backend_file_index');
         }
 
         return $this->render('/backend/file/new.html.twig', [
@@ -58,7 +58,7 @@ class FilesController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('index', [
+            return $this->redirectToRoute('backend_file_index', [
                 'id' => $file->getId(),
             ]);
         }
