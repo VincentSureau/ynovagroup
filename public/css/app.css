@@ -375,3 +375,21 @@ button.form-btn:hover {
 .pagination {
     justify-content: center;
 }
+
+.ynova-profil {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+}
+
+.ynova-profil-bar {
+    /* min-width: vw; */
+    min-width: 30%;
+    margin: 1rem 1rem;
+}
+
+.ynova-profil-doc {
+    min-width: 55%;
+    margin: 1rem 1rem;
+}

@@ -1,107 +1,66 @@
+
+
 {% extends 'base.html.twig' %}
 
 {% block title %}Mon profil{% endblock %}
 
 {% block body %}
-     <!-- Container -->
-    {# <div class="container-fluid px-0 py-5 bg-white"> #}
-            <div class="container-fluid bg-white bo">
-                            <!-- Main Back-office Adhérents -->
-                <section class="backoffice bg-white p-5 py-0">
-                    <!-- Profil de l'adhérent -->
-                    <div class="container-fluid profil text-center mb-5 ">
-                        <div class="card" style="width: 20rem;">
-                            <img src="https://via.placeholder.com/468x200?text=Image+de+la+pharmacie" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 id="bo-h5" class="card-title text-uppercase font-weight-bold">Mon profil adhérent</h5>
-                                <p class="card-text"><strong>Nom <br></strong>{{ user.lastname }}</p>
-                                <p class="card-text"><strong>Prénom<br></strong>{{ user.firstname }} </p>
-                                <p class="card-text"><strong>Adresse<br></strong>{{ app.user.company.firstadressfield|default('-') }} {{ app.user.company.secondadressfield|default('') }}
-                                    <br> 93200 SAINT-DENIS</p>
-                                <p class="card-text"><strong>E-mail<br></strong>eleonore@thibaud.fr</p>
-                                <p class="card-text"><strong>Téléphone<br></strong>06 89 18 95 56</p>
-                                <h5 class="card-title">Mon commercial</h5>
-                                <p class="card-text"><strong>{{ app.user.company.commercial.firstname|default('-') }} {{ app.user.company.commercial.lastname|default('') }}</strong></p>
-                                <p><strong>contact<br></strong>
-                                {{ app.user.company.commercial.email|default('-') }}
-                                </p>
-                                <button type="button" class="btn btn-danger">
-                                        <a href="{{ path('app_logout') }}" class="btn btn-danger">
-                                            Déconnexion 
-                                            <i class="fas fa-times"></i>
-                                        </a>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Section de téléchargement + tableau de fichiers -->
-                    <div class="card container-fluid upload mb-5 text-center ">
-                        <h5 class="card-title text-center text-uppercase font-weight-bold pt-5">Mon espace document</h5>
-                         {# <h6 class="card-title text-center">Envoyer un document à mon conseiller</h6> #}
-                        <form class="container-fluid mx-auto">
-                            <div class="form-group">
-                                <label for="exampleFormControlSelect1">
-                                    <p  class="label text-center">Quel est le type de votre document ?</p>
-                                </label>
-                                <select class="select form-control" id="exampleFormControlSelect1">
-                                    <option>Facture</option>
-                                    <option>Compte rendu</option>
-                                    <option>Publicité</option>
-                                    <option>Autre</option>
-                                </select>
-                            </div>
-                            <hr>
-                            <label for="exampleFormControlSelect1">
-                                <p class="label text-center">Téléchargement de mon document</p>
-                            </label>
-                            <div class="wrapper-backoffice">
-                                <div class="form-group">
-                                        <label for="exampleFormControlFile1"><strong>Formats autorisés :</strong> pdf, doc, docx, jpg, xls, ppt, pptx</label>
-                                        <input type="file" class="form-control-file" id="exampleFormControlFile1">
-                                </div>   
-                                <button type="submit" class="btn btn-primary mb-2">
-                                    Envoyer
-                                    <i class="fas fa-file-upload"></i>
-                                </button> 
-                            </div>
-                        </form>
-                        <table class="table table-striped table-hover">
-                            <thead>
-                                <tr class="row">
-                                <th scope="col">Nom du document</th>
-                                <th scope="col">Type</th>
-                                <th scope="col">Format</th>
-                                <th scope="col">Date d'ajout</th>
-                                <th scope="col">Télécharger</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr class="row">
-                                    <th scope="row">Compte rendu réunion</th>
-                                    <td>CR</td>
-                                    <td>.pdf</td>
-                                    <td>01/06/2019</td>
-                                    <td>*</td>
-                                </tr>
-                                <tr class="row">
-                                    <th scope="row">Facture achats</th>
-                                    <td>Facture</td>
-                                    <td>.pdf</td>
-                                    <td>25/04/2019</td>
-                                    <td>*</td>
-                                </tr>
-                                <tr class="row">
-                                    <th scope="row">Plaquette publicitaire</th>
-                                    <td>Publicité</td>
-                                    <td>.pdf</td>
-                                    <td>08/03/2019</td>
-                                    <td>*</td>
-                                    </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </section>
+
+<!--Backoffice général-->
+<section class=" ynova-profil">
+        <!--Profil-->
+        <div class="card text-center ynova-profil-bar">
+                <img src="https://via.placeholder.com/468x200?text=Image+de+la+pharmacie" class="img-fluid" alt="...">    
+            <div class="card-body">
+                <h5 class="card-title font-weight-bold text-success">Mon profil</h5>
+                <em class="card-text">Bienvenue sur votre espace personnel !</em>
             </div>
-    {# </div> #}
+            <ul class="list-group list-group-flush text-center">
+                <li class="list-group-item font-weight-bold text-uppercase">Nom</li>
+                <li class="list-group-item">{{ user.lastname }}</li>
+                <li class="list-group-item font-weight-bold text-uppercase">Prénom</li>        
+                <li class="list-group-item">{{ user.firstname }}</li>
+                <li class="list-group-item font-weight-bold text-uppercase">Adresse</li>
+                <li class="list-group-item">{{ app.user.company.firstadressfield|default('-') }} {{ app.user.company.secondadressfield|default('') }}</li>
+                <li class="list-group-item font-weight-bold text-uppercase">E-mail</li>
+                <li class="list-group-item">prenom@nom.fr</li>
+                <li class="list-group-item font-weight-bold text-uppercase">Téléphone</li>
+                <li class="list-group-item">0600000000</li>
+            </ul>
+
+            <div class="card-body">
+                <h5 class="card-title font-weight-bold text-success mt-5">Mon commercial</h5>
+                <em class="card-text">Retrouvez les coordonnées de votre commercial.</em>
+            </div>
+
+            <ul class="list-group list-group-flush text-center">
+                <li class="list-group-item font-weight-bold text-uppercase">Nom Prénom</li>
+                <li class="list-group-item">
+                    {{ app.user.company.commercial.firstname|default('-') }} {{ app.user.company.commercial.lastname|default('') }}
+                </li>
+                <li class="list-group-item font-weight-bold text-uppercase">Contact</li>        
+                <li class="list-group-item">
+                    {{ app.user.company.commercial.email|default('-') }}
+                </li>
+            </ul>
+            <button type="button" class="btn btn-danger mt-5">
+                <a href="{{ path('app_logout') }}" class="btn btn-danger">
+                    Déconnexion 
+                    <i class="fas fa-times"></i>
+                </a>
+            </button>
+        </div>
+        <!--Profil-->
+        <!--Documents-->
+        <div class="card text-center ynova-profil-doc">
+            <h5 class="card-title font-weight-bold pt-5 text-success">Mon espace documents</h5>
+            <em class="card-text p-3">Bonjour {{ user.firstname }}, <br> ici vous pourrez transmettre, consulter et télécharger vos fichiers relatifs à vos échanges auprès de votre commercial attitré.</em>
+        </div>
+
+        <!--Documents-->
+</section>
+<section class="container-fluid m-3 ">    
+        
+</section>
 
 {% endblock %}
