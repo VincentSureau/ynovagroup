@@ -1,0 +1,88 @@
+
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon profil{% endblock %}
+
+{% block body %}
+     <!-- Container -->
+    {# <div class="container-fluid px-0 py-5 bg-white"> #}
+            <div class="container-fluid bg-white bo">
+                <!-- Main Back-office Adhérents -->
+                <section class="backoffice bg-white p-5 py-0">
+                    <!-- Profil de l'adhérent -->
+                        <div class="card">
+                            <h5 class="card-header text-uppercase font-weight-bold text-center">Mon profil adhérent</h5>
+                            <div class="card-body text-center">
+                                <div class="card" style="width: 20rem;">
+                                    <img src="https://via.placeholder.com/468x200?text=Image+de+la+pharmacie" class="img-fluid" alt="...">
+                                </div>
+                                <h5 class="card-title font-weight-bold pt-3">Nom</h5>
+                                <p class="card-text">{{ user.lastname }}</p>
+                                <h5 class="card-title font-weight-bold text-center">Prénom</h5>
+                                <p class="card-text">{{ user.firstname }}</p>
+                                <h5 class="card-title font-weight-bold text-center">Adresse</h5>
+                                <p class="card-text">{{ app.user.company.firstadressfield|default('-') }} {{ app.user.company.secondadressfield|default('') }}</p>
+                                <h5 class="card-title font-weight-bold text-center">E-mail</h5>
+                                <p class="card-text">mon_email@adresse.fr</p>
+                                <h5 class="card-title font-weight-bold text-center">Téléphone</h5>
+                                <p class="card-text">06 00 00 00 00</p>
+                                <h5 class="card-title font-weight-bold text-center text-uppercase pt-5">Mon commercial</h5>
+                                <p class="card-text">
+                                        {{ app.user.company.commercial.firstname|default('-') }} {{ app.user.company.commercial.lastname|default('') }}
+                                </p>
+                                <h5 class="card-title font-weight-bold text-center">Contact</h5>
+                                <p class="card-text">
+                                    {{ app.user.company.commercial.email|default('-') }}
+                                </p>
+                                <button type="button" class="btn btn-danger">
+                                    <a href="{{ path('app_logout') }}" class="btn btn-danger">
+                                        Déconnexion 
+                                        <i class="fas fa-times"></i>
+                                    </a>
+                                </button>
+                        </div>
+                    <!-- Section de téléchargement + tableau de fichiers -->
+                    
+                </section>
+                <!-- Main Back-office Adhérents -->
+                <section class="backoffice bg-white p-5 py-0">
+                    <!-- Profil de l'adhérent -->
+                        <div class="card">
+                            <h5 class="card-header text-uppercase font-weight-bold text-center">Mon profil adhérent</h5>
+                            <div class="card-body text-center">
+                                <div class="card" style="width: 20rem;">
+                                    <img src="https://via.placeholder.com/468x200?text=Image+de+la+pharmacie" class="img-fluid" alt="...">
+                                </div>
+                                <h5 class="card-title font-weight-bold pt-3">Nom</h5>
+                                <p class="card-text">{{ user.lastname }}</p>
+                                <h5 class="card-title font-weight-bold text-center">Prénom</h5>
+                                <p class="card-text">{{ user.firstname }}</p>
+                                <h5 class="card-title font-weight-bold text-center">Adresse</h5>
+                                <p class="card-text">{{ app.user.company.firstadressfield|default('-') }} {{ app.user.company.secondadressfield|default('') }}</p>
+                                <h5 class="card-title font-weight-bold text-center">E-mail</h5>
+                                <p class="card-text">mon_email@adresse.fr</p>
+                                <h5 class="card-title font-weight-bold text-center">Téléphone</h5>
+                                <p class="card-text">06 00 00 00 00</p>
+                                <h5 class="card-title font-weight-bold text-center text-uppercase pt-5">Mon commercial</h5>
+                                <p class="card-text">
+                                        {{ app.user.company.commercial.firstname|default('-') }} {{ app.user.company.commercial.lastname|default('') }}
+                                </p>
+                                <h5 class="card-title font-weight-bold text-center">Contact</h5>
+                                <p class="card-text">
+                                    {{ app.user.company.commercial.email|default('-') }}
+                                </p>
+                                <button type="button" class="btn btn-danger">
+                                    <a href="{{ path('app_logout') }}" class="btn btn-danger">
+                                        Déconnexion 
+                                        <i class="fas fa-times"></i>
+                                    </a>
+                                </button>
+                        </div>
+                    <!-- Section de téléchargement + tableau de fichiers -->
+                    
+                </section>
+            </div>
+    {# </div> #}
+
+{% endblock %}
