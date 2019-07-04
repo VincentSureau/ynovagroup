@@ -44,7 +44,7 @@ class PostType extends AbstractType
                 'query_builder' => function (UserRepository $er) {
                     return $er
                         ->createQueryBuilder('u')
-                        ->andWhere('u.roles LIKE :role')
+                        ->andWhere('u.roles NOT LIKE :role')
                         ->setParameter('role', '%"ROLE_MEMBER"%')
                     ;
                 },

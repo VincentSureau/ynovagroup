@@ -2,32 +2,77 @@
 
 namespace App\Form;
 
+use App\Entity\User;
 use App\Entity\Company;
+use App\Repository\UserRepository;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class CompanyType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name', TextType::class)
-            ->add('firstAdressField', TextType::class)
-            ->add('secondAdressField', TextType::class)
-            ->add('postalCode', IntegerType::class)
-            ->add('city', TextType::class)
-            ->add('country', TextType::class)
-            ->add('description', TextType::class)
-            ->add('picture')
-            ->add('isActive')
-            // ->add('slug')
-            // ->add('createdAt')
-            // ->add('updatedAt')
-            // ->add('user')
-            // ->add('commercial')
+            ->add('name', TextType::class, [
+                'label' => 'Nom de la pharmacie'
+            ])
+            ->add('firstAdressField', TextType::class, [
+                'label' => 'Adresse'
+            ])
+            ->add('secondAdressField', TextType::class, [
+                'label' => 'Complément d\'adresse'
+            ])
+            ->add('postalCode', TextType::class, [
+                'label' => 'Code postal'
+            ])
+            ->add('city', TextType::class, [
+                'label' => 'Ville'
+            ])
+            ->add('country', TextType::class, [
+                'label' => 'Pays'
+            ])
+            ->add('description', TextareaType::class, [
+                'label' => 'Description',
+                'required' => false
+            ])
+            ->add('picture', null, [
+                'required' => false
+            ])
+            ->add('isActive', ChoiceType::class, [
+                'label' => 'Actif',
+                'choices' => [
+                    'Oui' => true,
+                    'Non' => false
+                ],
+                'placeholder' => false,
+            ])
+            ->add('user', EntityType::class, [
+                'label' => 'Gestionnaire',
+                'class' => User::class,
+                'query_builder' => function (UserRepository $er) {
+                    return $er
+                        ->createQueryBuilder('u')
+                        ->andWhere('u.roles LIKE :role')
+                        ->setParameter('role', '%"ROLE_MEMBER"%')
+                    ;
+                },
+            ])
+            ->add('commercial', EntityType::class, [
+                'label' => 'Commercial',
+                'class' => User::class,
+                'query_builder' => function (UserRepository $er) {
+                    return $er
+                        ->createQueryBuilder('u')
+                        ->andWhere('u.roles LIKE :role')
+                        ->setParameter('role', '%"ROLE_BUSINESS"%')
+                    ;
+                },
+            ]);
         ;
     }
 
