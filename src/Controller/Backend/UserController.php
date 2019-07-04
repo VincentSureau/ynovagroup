@@ -25,18 +25,44 @@ class UserController extends AbstractController
         ]);
     }
 
+
     /**
-     * @Route("/{id}", name="show", methods={"GET"})
+     * @Route("/ajout-d-un-utilisateur", name="create", methods={"GET","POST"})
      */
-    public function show(User $user): Response
+    public function new(Request $request, UserPasswordEncoderInterface $passwordEncoder): Response
     {
-        return $this->render('backend/user/show.html.twig', [
+        $user = new User();
+        $oldPassword = $user->getPassword();
+
+        $form = $this->createForm(UserType::class, $user);
+        $form->handleRequest($request); 
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            if(is_null($user->getPassword())){
+                $encodedPassword = $oldPassword;
+
+            } else {
+
+                $encodedPassword = $passwordEncoder->encodePassword($user, $user->getPassword());
+            }
+
+            $user->setPassword($encodedPassword);
+
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('backend_user_index', [
+                'id' => $user->getId(),
+            ]);
+        }
+
+        return $this->render('backend/user/new.html.twig', [
             'user' => $user,
+            'form' => $form->createView(),
         ]);
     }
 
     /**
-     * @Route("/{id}/edition", name="edit", methods={"GET","POST"})
+     * @Route("/{id}", name="edit", methods={"GET","POST"})
      */
     public function edit(Request $request, User $user, UserPasswordEncoderInterface $passwordEncoder): Response
     {

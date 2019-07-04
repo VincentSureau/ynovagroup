@@ -23,26 +23,46 @@ class CompanyController extends AbstractController
         return $this->render('backend/company/index.html.twig', [
         ]);
     }
-
-    /**
-     * @Route("/{id}", name="show", methods={"GET"})
-     */
-    public function show(Company $company): Response
-    {
-        return $this->render('backend/company/show.html.twig', [
-            'company' => $company,
-        ]);
-    }
     
     /**
-     * @Route("/{id}/edition", name="edit", methods={"GET","POST"})
+     * @Route("/ajouter-une-pharmacie", name="create", methods={"GET","POST"})
+     */
+    public function new(Request $request): Response
+    {
+        $company = new Company();
+
+        $form = $this->createForm(CompanyType::class, $company);
+        $form->handleRequest($request); 
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $company
+                ->setCreatedAt(new \Datetime())
+                ->setUpdatedAt(new \Datetime())
+            ;
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('backend_company_index', [
+                'id' => $company->getId(),
+            ]);
+        }
+
+        return $this->render('backend/company/new.html.twig', [
+            'company' => $company,
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/{id}", name="edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Company $company): Response
     {
         $form = $this->createForm(CompanyType::class, $company);
         $form->handleRequest($request); 
         if ($form->isSubmitted() && $form->isValid()) {
-
+            $company
+                ->setUpdatedAt(new \Datetime())
+            ;
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('backend_company_index', [
