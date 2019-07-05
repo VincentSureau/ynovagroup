@@ -131,6 +131,7 @@ class AppFixtures extends Fixture
                 ->setCommercial($commercial)
                 ->setCreatedAt(new \Datetime)
                 ->setUpdatedAt(new \Datetime)
+                ->setDeletedAt(new \Datetime)
                 ->setIsActive(true)
                 ;
             $manager->persist($file);
