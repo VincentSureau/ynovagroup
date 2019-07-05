@@ -11,7 +11,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class BlogController extends AbstractController
 {
     /**
-     * @Route("/blog", name="blog")
+     * @Route("/actualites", name="blog")
      */
     public function index(PostRepository $postRepository, PaginatorInterface $paginator, Request $request)
     {
