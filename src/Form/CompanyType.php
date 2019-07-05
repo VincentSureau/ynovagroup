@@ -7,6 +7,7 @@ use App\Entity\Company;
 use App\Repository\UserRepository;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -18,6 +19,15 @@ class CompanyType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('pictureFile', VichImageType::class, [
+                'required' => false,
+                'label' => 'Image de la pharmacie',
+                'allow_delete' => true,
+                'download_label' => 'Télécharger l\'image',
+                'download_uri' => true,
+                'download_link' => false,
+                'image_uri' => false,
+            ])
             ->add('name', TextType::class, [
                 'label' => 'Nom de la pharmacie'
             ])
@@ -38,9 +48,6 @@ class CompanyType extends AbstractType
             ])
             ->add('description', TextareaType::class, [
                 'label' => 'Description',
-                'required' => false
-            ])
-            ->add('picture', null, [
                 'required' => false
             ])
             ->add('isActive', ChoiceType::class, [

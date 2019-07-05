@@ -5,6 +5,16 @@
 {% block body %}
     <h1>Modification d'une pharmacie</h1>
     <div class="card p-4">
+    {% if company.picture is not null %}
+        <img src="{{ vich_uploader_asset(company, 'pictureFile') }}" alt="{{ company.name }}" />
+    {% else %}
+        <div class="alert alert-info alert-dismissible fade show" role="alert">
+        Aucune image disponible pour cette pharmacie
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+    {% endif %}
     {{ include('backend/company/_form.html.twig', {'button_label': 'Enregistrer'}) }}
     <div>
     <a class="link-green" href="{{ path('backend_company_index') }}">Retour à la liste des pharmacies</a>

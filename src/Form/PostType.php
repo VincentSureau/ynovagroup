@@ -31,7 +31,7 @@ class PostType extends AbstractType
             ])
             //->add('picture')
             ->add('isActive', ChoiceType::class, [
-                'label' => 'Publié sur le blog',
+                'label' => 'Publié sur le fil d\'actualités',
                 'choices' => [
                     'Oui' => true,
                     'Non' => false

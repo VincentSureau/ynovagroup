@@ -10,10 +10,12 @@ use Symfony\Component\Validator\Constraints as Assert;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Serializer\Annotation\MaxDepth;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\CompanyRepository")
- * 
+ * @Vich\Uploadable
  * @ApiResource(
  *     normalizationContext={"groups"={"company"}},
  *     denormalizationContext={"groups"={"companyWrite"}},
@@ -88,15 +90,18 @@ class Company
     private $description;
 
     /**
-     * @Assert\File(
-     *      maxSize = "1024k", 
-     *      mimeTypes={"image/jpeg", "image/png" },
-     *      mimeTypesMessage = "Merci de fournir un format valide : png, jpeg"
-     * )
      * @ORM\Column(type="string", length=255, nullable=true)
      * @Groups({"company", "companyWrite"})
      */
     private $picture;
+
+    /**
+     * @Assert\Image(
+     *      mimeTypesMessage = "Le fichier téléchargé n'est pas une image"
+     * )     
+     * @Vich\UploadableField(mapping="company_picture", fileNameProperty="picture")
+     */
+    private $pictureFile;
 
     /**
      * @ORM\Column(type="string", length=255, unique=true)
@@ -137,18 +142,12 @@ class Company
      */
     private $files;
 
-    /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Files", mappedBy="pharmacies")
-     */
-    private $no;
-
     public function __construct()
     {
         $this->isActive = true;
         $this->createdAt = new \DateTime();
         $this->updatedAt = new \DateTime();
         $this->files = new ArrayCollection();
-        $this->no = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -361,31 +360,21 @@ class Company
         return $this;
     }
 
-    /**
-     * @return Collection|Files[]
-     */
-    public function getNo(): Collection
+    public function setPictureFile(File $image = null)
     {
-        return $this->no;
-    }
+        $this->pictureFile = $image;
 
-    public function addNo(Files $no): self
-    {
-        if (!$this->no->contains($no)) {
-            $this->no[] = $no;
-            $no->addPharmacy($this);
+        // VERY IMPORTANT:
+        // It is required that at least one field changes if you are using Doctrine,
+        // otherwise the event listeners won't be called and the file is lost
+        if ($image) {
+            $this->updatedAt = new \DateTime('now');
         }
-
-        return $this;
     }
 
-    public function removeNo(Files $no): self
+    public function getPictureFile()
     {
-        if ($this->no->contains($no)) {
-            $this->no->removeElement($no);
-            $no->removePharmacy($this);
-        }
-
-        return $this;
+        return $this->pictureFile;
     }
+
 }
