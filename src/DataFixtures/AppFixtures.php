@@ -115,7 +115,6 @@ class AppFixtures extends Fixture
                 ->setCreatedAt(new \Datetime)
                 ->setUpdatedAt(new \Datetime)
                 ->setAuthor($admin)
-                ->setPicture($faker->imageUrl($width = 640, $height = 480))
                 ;
             $manager->persist($post);
             $posts[] = $post;
