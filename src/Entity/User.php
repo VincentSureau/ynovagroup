@@ -8,38 +8,13 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Gedmo\Mapping\Annotation as Gedmo;
-use ApiPlatform\Core\Annotation\ApiResource;
 Use App\Controller\Api\GetUserController;
-use Symfony\Component\Serializer\Annotation\Groups;
-use Symfony\Component\Serializer\Annotation\MaxDepth;
+use JMS\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  * @UniqueEntity(fields={"email"}, message="Il existe déjà un compte avec cet email.")
  * 
- * @ApiResource(
- *     normalizationContext={"groups"={"user", "post"}},
- *     denormalizationContext={"groups"={"userWrite"}},
- *     collectionOperations={
- *         "get"={
- *             "normalization_context"={"groups"={"user"}},
- *             "method"="GET",
- *             "path"="/users/",
- *             "controller"=GetUserController::class,
- *         },
- *         "post",
- *      },
- *     itemOperations={
- *         "get"={
- *             "normalization_context"={"groups"={"user"}}
- *         },
- *         "put"={
- *             "normalization_context"={"groups"={"userWrite"}},
- *             "access_control"="is_granted('ROLE_USER') and object == user or is_granted('ROLE_ADMIN')", "access_control_message"="Désolé, vous ne pouvez modifier que votre propre profil"
- *         },
- *         "delete"={"access_control"="is_granted('ROLE_ADMIN')", "access_control_message"="Désolé mais mais seuls les administrateurs peuvent supprimer un utilisateur"}
- *     },
- * )
  */
 class User implements UserInterface
 {

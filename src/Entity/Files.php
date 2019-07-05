@@ -2,35 +2,15 @@
 
 namespace App\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation\Groups;
 use Gedmo\Mapping\Annotation as Gedmo;
-use ApiPlatform\Core\Annotation\ApiResource;
-use Symfony\Component\Serializer\Annotation\Groups;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\FilesRepository")
  * 
- *  @ApiResource(
- *     normalizationContext={"groups"={"file"}},
- *     denormalizationContext={"groups"={"fileWrite"}},
- *     collectionOperations={
- *         "get"={
- *             "normalization_context"={"groups"={"file"}},
- *         },
- *         "post",
- *      },
- *     itemOperations={
- *         "get"={
- *             "normalization_context"={"groups"={"file"}}
- *         },
- *         "put"={
- *             "normalization_context"={"groups"={"fileWrite"}},
- *             "access_control"="is_granted('ROLE_USER') and user.getFiles().contains(object) or is_granted('ROLE_BUSINESS')"},
- *         "delete"={"access_control"="is_granted('ROLE_BUSINESS')"}
- *     },
- * )
  */
 class Files
 {

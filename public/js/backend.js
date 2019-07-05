@@ -25,20 +25,9 @@ function init() {
                     }
                 },
                 { data: 'name' },
-                // {
-                //     data: 'name',
-                //     render: function (data, index, row) {
-                //         var link = "{{ path('backend_company_show', {'id': '0'})|escape('js') }}"
-                //         // escape js est obligatoire sinon il y a une erreur javascript d'encodage
-                //         // je suis obligé de tricher en mettant un id fictif pour générer la route
-                //         // je le remplace ensuite pas la donnée du tableau
-                //         link = link.replace('0', row.id)
-                //         return '<a href="' + link + '">' + data + '</a>'
-                //     }
-                // },
-                { data: 'firstAdressField' },
+                { data: 'first_adress_field' },
                 //{ data: 'secondAdressField' },
-                { data: 'postalCode' },
+                { data: 'postal_code' },
                 { data: 'city' },
                 {
                     data: 'user',

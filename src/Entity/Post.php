@@ -4,32 +4,11 @@ namespace App\Entity;
 
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Validator\Constraints as Assert;
-use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Serializer\Annotation\Groups;
-
+use JMS\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\PostRepository")
- * @ApiResource(
- *     normalizationContext={"groups"={"post"}},
- *     denormalizationContext={"groups"={"postWrite"}},
- *     collectionOperations={
- *         "get"={
- *             "normalization_context"={"groups"={"post"}},
- *         },
- *         "post",
- *      },
- *     itemOperations={
- *         "get"={
- *             "normalization_context"={"groups"={"post"}}
- *         },
- *         "put"={
- *             "normalization_context"={"groups"={"postWrite"}},
- *         },
- *         "delete"={"access_control"="is_granted('ROLE_ADMIN')", "access_control_message"="Désolé mais mais seuls les administrateurs peuvent supprimer un utilisateur"}
- *     },
- * )
  */
 class Post
 {

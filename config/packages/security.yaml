@@ -45,18 +45,6 @@ security:
         - { path: '^\/admin', roles: ROLE_ADMIN } 
         - { path: '^\/backend', roles: ROLE_BUSINESS } 
         - { path: '^\/', roles : IS_AUTHENTICATED_ANONYMOUSLY }
-        
-        # - { path: '^\/pharmacies', roles: ROLE_ADMIN } 
-        # - { path: '^\/documents', roles: ROLE_ADMIN } 
-        # - { path: '^\/articles', roles: ROLE_ADMIN } 
-
-        # /vianney je veux bien que tu vérifies si la hiérarchie est bien faite, et bonne. Ensuite, savoir qui a le droit d'accéder à telle ou telle page
-        # pour moi dev est au dessus de admin du coup je le change
-        # developpeur : a accès tout
-        # admin : a accès à tout sauf à easyadmin
-        # business: a accès à tout sauf à la création d'utilisateurs avec un rôle admin ou dev (page pas encore créé)
-        # user: a accès à tout le front + mon profil
-        # anonymous, a accès à tout le front sauf mon profil
     role_hierarchy:
         ROLE_DEVELOPER: ROLE_ADMIN
         ROLE_ADMIN: ROLE_BUSINESS

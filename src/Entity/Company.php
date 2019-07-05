@@ -7,35 +7,13 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Validator\Constraints as Assert;
-use ApiPlatform\Core\Annotation\ApiResource;
-use Symfony\Component\Serializer\Annotation\Groups;
-use Symfony\Component\Serializer\Annotation\MaxDepth;
+use JMS\Serializer\Annotation\Groups;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\CompanyRepository")
  * @Vich\Uploadable
- * @ApiResource(
- *     normalizationContext={"groups"={"company"}},
- *     denormalizationContext={"groups"={"companyWrite"}},
- *     collectionOperations={
- *         "get"={
- *             "normalization_context"={"groups"={"company"}},
- *         },
- *         "post",
- *      },
- *     itemOperations={
- *         "get"={
- *             "normalization_context"={"groups"={"company"}}
- *         },
- *         "put"={
- *             "normalization_context"={"groups"={"companyWrite"}},
- *             "access_control"="is_granted('ROLE_USER') and object == user.getCompany() or is_granted('ROLE_ADMIN')", "access_control_message"="Désolé, vous ne pouvez pas modifier une autre pharmacie"
- *         },
- *         "delete"={"access_control"="is_granted('ROLE_ADMIN')", "access_control_message"="Désolé mais mais seuls les administrateurs peuvent supprimer une pharmacie"}
- *     },
- * )
  */
 class Company
 {
