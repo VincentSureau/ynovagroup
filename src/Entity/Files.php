@@ -110,7 +110,7 @@ class Files
     private $sentBy;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Company", inversedBy="no")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Company", inversedBy="files")
      */
     private $pharmacies;
 
