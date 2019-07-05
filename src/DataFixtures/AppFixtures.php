@@ -139,7 +139,7 @@ class AppFixtures extends Fixture
 
         foreach($files as $file) {
             for($i = 0; $i <= 6; $i++) {
-                $file->addUser($users[array_rand($users)]);
+                $file->addPharmacy($pharmacies[array_rand($pharmacies)]);
             }
         }
 
