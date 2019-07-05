@@ -6,7 +6,7 @@
     <h1>Modification d'une pharmacie</h1>
     <div class="card p-4">
     {% if company.picture is not null %}
-        <img src="{{ vich_uploader_asset(company, 'pictureFile') }}" alt="{{ company.name }}" />
+        <img class="card-img-top" style="max-height: 400px" src="{{ vich_uploader_asset(company, 'pictureFile') }}" alt="{{ company.name|default('image de la pharmacie') }}" />
     {% else %}
         <div class="alert alert-info alert-dismissible fade show" role="alert">
         Aucune image disponible pour cette pharmacie

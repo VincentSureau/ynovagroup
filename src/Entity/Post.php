@@ -6,9 +6,12 @@ use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation\Groups;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\PostRepository")
+ * @Vich\Uploadable
  */
 class Post
 {
@@ -43,6 +46,14 @@ class Post
      * @Groups({"post", "postWrite"})
      */
     private $picture;
+
+    /**
+     * @Assert\Image(
+     *      mimeTypesMessage = "Le fichier téléchargé n'est pas une image"
+     * )     
+     * @Vich\UploadableField(mapping="article_picture", fileNameProperty="picture")
+     */
+    private $pictureFile;
 
     /**
      * @ORM\Column(type="string", length=84, nullable=true)
@@ -177,4 +188,22 @@ class Post
     public function __toString() {
         return $this->title;
     }
+
+    public function setPictureFile(File $image = null)
+    {
+        $this->pictureFile = $image;
+
+        // VERY IMPORTANT:
+        // It is required that at least one field changes if you are using Doctrine,
+        // otherwise the event listeners won't be called and the file is lost
+        if ($image) {
+            $this->updatedAt = new \DateTime('now');
+        }
+    }
+
+    public function getPictureFile()
+    {
+        return $this->pictureFile;
+    }
+
 }

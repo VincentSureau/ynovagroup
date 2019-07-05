@@ -7,6 +7,7 @@ use App\Entity\User;
 use App\Repository\UserRepository;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -18,6 +19,15 @@ class PostType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('pictureFile', VichImageType::class, [
+                'required' => false,
+                'label' => 'Image de l\'article',
+                'allow_delete' => true,
+                'download_label' => 'Télécharger l\'image',
+                'download_uri' => true,
+                'download_link' => false,
+                'image_uri' => false,
+            ])
             ->add('title', TextType::class, [
                 'label' => 'Titre de l\'article',
             ])
@@ -29,7 +39,6 @@ class PostType extends AbstractType
 
                 ]
             ])
-            //->add('picture')
             ->add('isActive', ChoiceType::class, [
                 'label' => 'Publié sur le fil d\'actualités',
                 'choices' => [

@@ -5,6 +5,16 @@
 {% block body %}
     <h1>Modification d'un article</h1>
     <div class="card p-4">
+    {% if post.picture is not null %}
+        <img class="card-img-top" style="max-height: 400px" src="{{ vich_uploader_asset(post, 'pictureFile') }}" alt="{{ post.title|default('illustration de l\'article') }}" />
+    {% else %}
+        <div class="alert alert-info alert-dismissible fade show" role="alert">
+        Aucune image disponible pour cette pharmacie
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+    {% endif %}
         {{ include('backend/post/_form.html.twig', {'button_label': 'Update'}) }}
     </div>
     <a class="link-green" href="{{ path('backend_post_index') }}">Retour à la liste des articles</a>

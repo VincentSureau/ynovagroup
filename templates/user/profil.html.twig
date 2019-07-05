@@ -10,7 +10,11 @@
 <section class=" ynova-profil">
         <!--Profil-->
         <div class="card text-center ynova-profil-bar">
-                <img src="https://via.placeholder.com/468x200?text=Image+de+la+pharmacie" class="img-fluid" alt="...">    
+            {% if company is defined and company.picture is not null %}
+                <img class="img-fluid" src="{{ vich_uploader_asset(company, 'pictureFile') }}" alt="{{ company.name|default('photo de la pharmacie') }}" />
+            {% else %}
+                <img src="https://via.placeholder.com/468x200?text=Image+de+la+pharmacie" class="img-fluid" alt="..."> 
+            {% endif %}
             <div class="card-body">
                 <h5 class="h2 card-title font-weight-bold text-success">Mon profil</h5>
                 <em class="card-text">Bienvenue sur votre espace personnel !</em>

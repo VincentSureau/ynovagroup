@@ -13,7 +13,7 @@
         {% for post in pagination %}
             <div class="card mb-3 bg-white">
                 {% if post.picture is not null %}
-                    <img class="card-img-top" src="{{ post.picture }}" style="max-height: 400px" alt="illustration de l'article">
+                    <img class="card-img-top" style="max-height: 400px" src="{{ vich_uploader_asset(post, 'pictureFile') }}" alt="{{ post.title|default('illustration de l\'article') }}" />
                 {% endif %}
                 <div class="card-body">
                     <h3 class="card-title">{{post.title}}</h3>
