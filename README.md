@@ -19,10 +19,16 @@ Créer un fichier .env.local  puis y coller le contenu du fichier .env.dist  en 
 ```php bin/console server:run```
 
 
-Si problème d'actualisation suite à modification html/css:
+😇 Si problème d'actualisation suite à modification html/css:
 - Effectuer cette commande dans l'onglet principal:
 ```php bin/console cache:clear```
 
+😱 Et si rien ne va plus... :
+- Effectuer les commandes suivantes :
+```php bin/console doc:data:drop --force
+php bin/console doc:data:create
+php bin/console doc:schema:update --force
+php bin/console doc:fix:lo
 
 messages
 <i class="fas fa-envelope-open-text"></i>
