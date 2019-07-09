@@ -39,7 +39,7 @@ class User implements UserInterface
 
     /**
      * @var string The hashed password
-     * @ORM\Column(type="string", length=190)
+     * @ORM\Column(type="string", length=190, nullable=true)
      */
     private $password;
 
@@ -56,7 +56,7 @@ class User implements UserInterface
     private $lastname;
 
     /**
-     * @ORM\Column(type="string", length=190, unique=true)
+     * @ORM\Column(type="string", length=190, unique=true, nullable=true)
      * @Gedmo\Slug(fields={"firstname", "lastname"})
      * @Groups({"user", "userWrite"})
      */
@@ -77,6 +77,7 @@ class User implements UserInterface
     /**
      * @ORM\Column(type="datetime")
      * @Groups({"userWrite"})
+     * @Gedmo\Timestampable(on="update")
      */
     private $updatedAt;
 

@@ -2,8 +2,9 @@
 
 namespace App\Controller\Backend;
 
+use App\Utils\GeneratePassword;
 use App\Entity\User;
-use App\Form\UserType;
+use App\Form\SalesrepType;
 use App\Repository\UserRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -12,44 +13,43 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 /**
- * @Route("/gestionnaires", name="user_")
+ * @Route("/commerciaux", name="salesrep_")
  */
-class UserController extends AbstractController
+class SalesrepController extends AbstractController
 {
     /**
      * @Route("/", name="index", methods={"GET"})
      */
-    public function index(UserRepository $userRepository): Response
+    public function salesrepIndex(UserRepository $userRepository): Response
     {
-        return $this->render('backend/user/index.html.twig', [
+        return $this->render('backend/salesrep/index.html.twig', [
         ]);
     }
 
+
     /**
-     * @Route("/ajout-d-un-utilisateur", name="create", methods={"GET","POST"})
+     * @Route("/ajout-d-un-commercial", name="create", methods={"GET","POST"})
      */
-    public function new(Request $request, UserPasswordEncoderInterface $passwordEncoder): Response
+    public function new(Request $request, UserPasswordEncoderInterface $passwordEncoder, GeneratePassword $passwordGenerator): Response
     {
         $user = new User();
-        $oldPassword = $user->getPassword();
-
-        $form = $this->createForm(UserType::class, $user);
+        $form = $this->createForm(SalesrepType::class, $user);
         $form->handleRequest($request); 
         if ($form->isSubmitted() && $form->isValid()) {
+            $password = $passwordGenerator->generate();
+            $encodedPassword = $passwordEncoder->encodePassword($user, $password);
+            
+            $user
+            ->setRoles(['ROLE_BUSINESS'])
+            ->setPassword($encodedPassword)
+            ->setCreatedAt(new \Datetime)
+            ->setUpdatedAt(new \Datetime);
+        
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($user);
+            $entityManager->flush();
 
-            if(is_null($user->getPassword())){
-                $encodedPassword = $oldPassword;
-
-            } else {
-
-                $encodedPassword = $passwordEncoder->encodePassword($user, $user->getPassword());
-            }
-
-            $user->setPassword($encodedPassword);
-
-            $this->getDoctrine()->getManager()->flush();
-
-            return $this->redirectToRoute('backend_user_index', [
+            return $this->redirectToRoute('backend_salesrep_index', [
                 'id' => $user->getId(),
             ]);
         }
@@ -67,7 +67,7 @@ class UserController extends AbstractController
     {
         $oldPassword = $user->getPassword();
 
-        $form = $this->createForm(UserType::class, $user);
+        $form = $this->createForm(SalesrepType::class, $user);
         $form->handleRequest($request); 
         if ($form->isSubmitted() && $form->isValid()) {
 
@@ -83,7 +83,7 @@ class UserController extends AbstractController
 
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('backend_user_index', [
+            return $this->redirectToRoute('backend_salesrep_index', [
                 'id' => $user->getId(),
             ]);
         }
@@ -105,6 +105,6 @@ class UserController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('backend_user_index');
+        return $this->redirectToRoute('backend_salesrep_index');
     }
 }

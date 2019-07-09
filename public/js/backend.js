@@ -240,6 +240,39 @@ function init() {
         })
     }
 
+    if (document.querySelector('#salesrepTable')) {
+        var table = $('#salesrepTable').DataTable({
+            language: {
+                url: '/json/fr_FR.json'
+            },
+            ajax: {
+                url: '/api/commerciaux',
+                dataSrc: ''
+            },
+            columns: [
+                {
+                    data: 'id',
+                    render: function (data, index, row) {
+                        var button = `
+                        <a href="/backend/commerciaux/${data}" class="btn btn-success btn-sm edit-modal">
+                            <i class="fas fa-edit"></i>
+                        </a>`
+                        return button
+                    }
+                },
+                { data: 'firstname' },
+                { data: 'lastname' },
+                { data: 'email' },
+                {
+                    data: 'isActive',
+                    render: function (data) {
+                        return (data == "true" || data == true) ? 'oui' : 'non'
+                    }
+                }
+            ]
+        })
+    }
+
     if (document.querySelector('#post_content')) {
         ClassicEditor
             .create(document.querySelector('#post_content'), {
