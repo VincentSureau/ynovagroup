@@ -1,0 +1,16 @@
+{% extends 'backend/backend_layout.html.twig' %}
+
+{% block title %}Ajouter un thème{% endblock %}
+
+{% block body %}
+    <h1>Ajouter un thème</h1>
+    <div class="card p-4">
+    {{ include('backend/partials/_flash.html.twig') }}
+    {% if theme.picture is not null %}
+        <img class="" style="max-height: 400px" src="{{ vich_uploader_asset(theme, 'pictureFile') }}" alt="{{ theme.title|default('logo du thème') }}" />
+    {% endif %}
+
+    {{ include('backend/theme/_form.html.twig') }}
+    </div>
+    <a class="link-green" href="{{ path('backend_theme_index') }}">retour à la liste des thèmes</a>
+{% endblock %}

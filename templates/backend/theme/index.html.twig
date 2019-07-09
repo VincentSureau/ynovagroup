@@ -1,23 +1,22 @@
 {% extends 'backend/backend_layout.html.twig' %}
 
-{% block title %}Liste des articles{% endblock %}
+{% block title %}Liste des thèmes{% endblock %}
 
 {% block body %}
-    <h1>Liste des articles</h1>
+    <h1>Liste des thèmes</h1>
 
 <div class="card p-4">
     {{ include('backend/partials/_flash.html.twig') }}
     <div class="d-flex mb-3">
-        <a class="btn btn-success btn-sm" id="add-modal" href="{{ path('backend_post_create') }}"><i class="fas fa-plus-square"></i> Ajouter un article</a>
+        <a class="btn btn-success btn-sm" id="add-modal" href="{{ path('backend_theme_new') }}"><i class="fas fa-plus-square"></i> Ajouter un thème</a>
     </div>
-    <table id="postTable" class="table table-hover table-striped w-100">
+    <table id="themeTable" class="table table-hover table-striped w-100">
         <thead>
             <tr>
                 <th>#</th>
-                <th>Titre</th>
-                <th>Auteur</th>
+                <th>Nom</th>
                 <th>Image</th>
-                <th>Publié</th>
+                <th>Actif</th>
             </tr>
         </thead>
         <tbody>

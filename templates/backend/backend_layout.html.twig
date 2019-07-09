@@ -11,9 +11,9 @@
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
-        {% include('/backend/partials/__navbar.html.twig') %}
+        {% include('/backend/partials/_navbar.html.twig') %}
         <div class="row py-4">
-            {% include('backend/partials/__sidebar.html.twig') %}
+            {% include('backend/partials/_sidebar.html.twig') %}
             <div id="swup" class="transition-fade col-12 col-lg-10 pr-lg-5">
                 {% block body %}{% endblock %}
             </div>
