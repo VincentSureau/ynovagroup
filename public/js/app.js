@@ -1,5 +1,3 @@
-console.log("app.js is loaded");
-
 // MODAL DISPLAY ON PAGE LOAD
     // window.addEventListener('DOMContentLoaded', function() {
     //     let popup = document.getElementById('popup');
@@ -27,6 +25,23 @@ console.log("app.js is loaded");
         document.getElementById("myBtn").style.display = "block";
         } else {
         document.getElementById("myBtn").style.display = "none";
+        }
+    }
+
+
+// SCROLL FN NAV
+    window.onscroll = function() {scrollFunction()};
+
+    function scrollFunction() {
+    if (document.body.scrollTop > 850 || document.documentElement.scrollTop > 850) {
+        document.getElementById("nav").style.padding = "10px 5px";
+        document.getElementById("logo").style.width = "200px";
+        document.getElementById("logo").style.height = "70px";
+        document.getElementsByClassName("nav-item").style.fontSize = "1.2em";
+        } else {
+            document.getElementById("nav").style.padding = "80px 15px";
+            document.getElementById("logo").style.fontSize = "55px";
+            document.getElementsByClassName("nav-item").style.fontSize = "0.9em";
         }
     }
 
