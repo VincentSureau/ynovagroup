@@ -1,8 +1,12 @@
 <!-- Navigation with a burger menu -->
 <header class="header py-5">
     <nav class="navbar fixed-top navbar-expand-xl navbar-light bg-white ">
-        <a class="navbar-brand" href="{{ current == 'home'? '#hero' : path('home') }}">
-            <img src="{{ asset('images/ynovagroup_logo.png') }}" width="200" height="70" alt="">
+        <a class="navbar-brand" href="{{ current == 'home'? '#' : path('home') }}">
+        {% if theme.picture is defined %}
+            <img src="{{ vich_uploader_asset(theme, 'pictureFile') }}" width="200" height="70" alt="">
+        {% else %}
+            Ynovagroup
+        {% endif %}
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -31,6 +35,21 @@
                 {% else %}
                     <li class="nav-item">
                         <a class="nav-link" href="{{ path('home') }}">Accueil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('home') }}#about">Qui sommes-nous ?</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('home') }}#valeurs">Nos valeurs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('home') }}#difference">Notre différence</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('home') }}#objectifs">Nos objectifs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('home') }}#contact">Contact</a>
                     </li>
                 {% endif %}
                     <li class="nav-item">
