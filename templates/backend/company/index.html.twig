@@ -6,6 +6,7 @@
     <h1>Liste des pharmacies</h1>
 
     <div class="card p-4">
+        {{ include('backend/partials/_flash.html.twig') }}
         <div class="d-flex mb-3">
             <a class="btn btn-success btn-sm" id="add-modal" href="{{ path('backend_company_create') }}"><i class="fas fa-plus-square"></i> Ajouter une pharmacie</a>
         </div>

@@ -60,6 +60,49 @@ function init() {
         })
     }
 
+    if (document.querySelector('#themeTable')) {
+        swup.cache.empty()
+        var table = $('#themeTable').DataTable({
+            language: {
+                url: '/json/fr_FR.json'
+            },
+            ajax: {
+                url: '/api/themes',
+                dataSrc: ''
+            },
+            columns: [
+                {
+                    data: 'id',
+                    render: {
+                        "_": function (data) {
+                            return data
+                        },
+                        display: function (data, index, row) {
+                            var button = `
+                            <a href="/backend/themes/${data}" class="btn btn-success btn-sm edit-modal">
+                                <i class="fas fa-edit"></i>
+                            </a>`
+                            return button
+                        }
+                    }
+                },
+                { data: 'name' },
+                { data: 'picture' },
+                {
+                    data: 'is_active',
+                    render: function (data, index, row) {
+                        if(data == true || data == 'true') {
+                            var button = `<a href="/backend/themes/${row.id}/toggle" class="btn btn-success btn-sm"><i class="fas fa-toggle-on"></i></a>`
+                        } else {
+                            var button = `<a href="/backend/themes/${row.id}/toggle" class="btn btn-secondary btn-sm"><i class="fas fa-toggle-off"></i></a>`
+                        }
+                        return button
+                    }
+                },
+            ]
+        })
+    }
+
     if (document.querySelector('#filesTable')) {
         var table = $('#filesTable').DataTable({
             language: {

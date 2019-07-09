@@ -21,13 +21,6 @@
                         </a>
                     </li>
                     <li class="nav-item text-center d-lg-none">
-                        <a class="nav-link" href="#">
-                            <i class="far fa-envelope"></i>
-                            Messages reçus
-                            <span class="badge badge-pill badge-success">2</span>
-                        </a>
-                    </li>
-                    <li class="nav-item text-center d-lg-none">
                         <a class="nav-link" href="{{ path('company_index') }}">
                             <i class="far fa-hospital"></i>
                             Pharmacies
@@ -45,12 +38,20 @@
                             Documents
                         </a>
                     </li>
-                    <li class="nav-item text-center d-lg-none">
+                    {% if is_granted('ROLE_ADMIN')%}
+                    <li class="nav-item  text-center d-lg-none">
                         <a class="nav-link" href="{{ path('post_index') }}">
                             <i class="far fa-newspaper"></i>
                             Articles
                         </a>
                     </li>
+                    <li class="nav-item  text-center d-lg-none">
+                        <a class="nav-link" href="{{ path('theme_index') }}">
+                            <i class="fas fa-birthday-cake"></i>
+                            Thèmes
+                        </a>
+                    </li>
+                    {% endif %}
                     <!-- sidebar items end -->
 
                     <li class="nav-item text-center">

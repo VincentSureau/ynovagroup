@@ -5,6 +5,7 @@
 {% block body %}
     <h1>Modification d'une pharmacie</h1>
     <div class="card p-4">
+    {{ include('backend/partials/_flash.html.twig') }}
     {% if company.picture is not null %}
         <img class="card-img-top" style="max-height: 400px" src="{{ vich_uploader_asset(company, 'pictureFile') }}" alt="{{ company.name|default('image de la pharmacie') }}" />
     {% else %}
