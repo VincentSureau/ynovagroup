@@ -7,6 +7,7 @@ use App\Entity\Files;
 use App\Entity\Company;
 use App\Repository\UserRepository;
 use Symfony\Component\Form\AbstractType;
+use Vich\UploaderBundle\Form\Type\VichFileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -21,6 +22,14 @@ class FilesType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('documentFile', VichFileType::class, [
+                'required' => false,
+                'label' => 'Importer le fichier',
+                'allow_delete' => false,
+                'download_label' => 'Télécharger le fichier',
+                'download_uri' => true,
+                'download_link' => true,
+            ])
             ->add('name', TextType::class, [
                 'label' => 'Nom du document'
             ])
@@ -28,9 +37,9 @@ class FilesType extends AbstractType
                 'label' => 'Type de document'
             ])
             ->add('description',  TextareaType::class, [
-                'label' => 'Description'
+                'label' => 'Description',
+                'required' => false
             ])
-            //->add('path')
             ->add('isActive', ChoiceType::class, [
                 'choices' => [
                     'Oui' => true,
@@ -40,7 +49,8 @@ class FilesType extends AbstractType
             ])
             ->add('deletedAt', DateType::class, [
                 'label' => 'Disponible jusqu\'au',
-                'widget' => 'single_text'
+                'widget' => 'single_text',
+                'required' => false,
             ])
             ->add('commercial', EntityType::Class, [
                 'label' => 'Commercial',

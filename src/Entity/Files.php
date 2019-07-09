@@ -6,11 +6,13 @@ use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation\Groups;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\Common\Collections\Collection;
+use Symfony\Component\HttpFoundation\File\File;
 use Doctrine\Common\Collections\ArrayCollection;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\FilesRepository")
- * 
+ * @Vich\Uploadable
  */
 class Files
 {
@@ -38,7 +40,13 @@ class Files
      * @ORM\Column(type="string", length=190)
      * @Groups({"file", "fileWrite"})
      */
-    private $path;
+    private $document;
+
+    /**
+     * @Vich\UploadableField(mapping="files", fileNameProperty="document")
+     * @var File
+     */
+    private $documentFile;
 
     /**
      * @ORM\Column(type="text")
@@ -130,14 +138,14 @@ class Files
         return $this;
     }
 
-    public function getPath(): ?string
+    public function getDocument(): ?string
     {
-        return $this->path;
+        return $this->document;
     }
 
-    public function setPath(string $path): self
+    public function setDocument(string $document): self
     {
-        $this->path = $path;
+        $this->document = $document;
 
         return $this;
     }
@@ -207,7 +215,7 @@ class Files
         return $this->deletedAt;
     }
 
-    public function setDeletedAt(\DateTimeInterface $deletedAt): self
+    public function setDeletedAt(\DateTimeInterface $deletedAt = null): self
     {
         $this->deletedAt = $deletedAt;
 
@@ -266,5 +274,22 @@ class Files
         }
 
         return $this;
+    }
+
+    public function setDocumentFile(File $image = null)
+    {
+        $this->documentFile = $image;
+
+        // VERY IMPORTANT:
+        // It is required that at least one field changes if you are using Doctrine,
+        // otherwise the event listeners won't be called and the file is lost
+        if ($image) {
+            $this->updatedAt = new \DateTime('now');
+        }
+    }
+
+    public function getDocumentFile()
+    {
+        return $this->documentFile;
     }
 }

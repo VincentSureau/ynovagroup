@@ -290,6 +290,7 @@ function init() {
         placeholder: 'Choisir un/des destinataire(s)',
         allowClear: true
     })
+    
     $("#files_selectAll").change(function () {
         if ($("#files_selectAll").is(':checked')) {
             $(".select2 > option").prop("selected", "selected");
@@ -300,6 +301,9 @@ function init() {
         }
     });
 
+    $(document).ready(function () {
+        bsCustomFileInput.init()
+    })
 }
 
 function unload() {

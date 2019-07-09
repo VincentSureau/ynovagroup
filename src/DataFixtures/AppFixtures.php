@@ -120,30 +120,6 @@ class AppFixtures extends Fixture
             $posts[] = $post;
         }
 
-        $files = [];
-        for($i = 0; $i <= 50; $i++) {
-            $file = new Files();
-            $file
-                ->setName($faker->words(4, true))
-                ->setDescription($faker->word(30))
-                ->setType($faker->fileExtension)
-                ->setPath($faker->image)
-                ->setCommercial($commercial)
-                ->setCreatedAt(new \Datetime)
-                ->setUpdatedAt(new \Datetime)
-                ->setDeletedAt(new \Datetime)
-                ->setIsActive(true)
-                ;
-            $manager->persist($file);
-            $files[] = $file;
-        }
-
-        foreach($files as $file) {
-            for($i = 0; $i <= 6; $i++) {
-                $file->addPharmacy($pharmacies[array_rand($pharmacies)]);
-            }
-        }
-
         $manager->flush();
     }
 }

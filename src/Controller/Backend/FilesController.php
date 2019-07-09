@@ -32,8 +32,11 @@ class FilesController extends AbstractController
         $file = new Files();
         $form = $this->createForm(FilesType::class, $file);
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
+            $file
+                ->setCreatedAt(new \Datetime('now'))
+                ->setUpdatedAt(new \Datetime('now'))
+                ;
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($file);
             $entityManager->flush();
