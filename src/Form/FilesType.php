@@ -13,6 +13,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class FilesType extends AbstractType
@@ -57,6 +58,11 @@ class FilesType extends AbstractType
                 'class' => Company::class,
                 'multiple' => true,
                 'attr' => ['class' => 'select2']
+            ])
+            ->add('selectAll', CheckboxType::Class, [
+                'label' => 'Envoyer à toutes les pharmacies',
+                'mapped' => false,
+                'required' => false
             ])
         ;
     }

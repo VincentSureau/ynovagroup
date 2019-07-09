@@ -286,8 +286,19 @@ function init() {
     }
 
     $('.select2').select2({
-        width: '100%'
+        width: '100%',
+        placeholder: 'Choisir un/des destinataire(s)',
+        allowClear: true
     })
+    $("#files_selectAll").change(function () {
+        if ($("#files_selectAll").is(':checked')) {
+            $(".select2 > option").prop("selected", "selected");
+            $(".select2").trigger("change");
+        } else {
+            $(".select2 > option").prop("selected", false);
+            $(".select2").trigger("change");
+        }
+    });
 
 }
 
