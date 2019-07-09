@@ -19,6 +19,6 @@
 /.web-server-pid
 ###< symfony/web-server-bundle ###
 
-/images/articles/
-/images/company/
-/images/themes/
+/public/images/articles/
+/public/images/company/
+/public/images/themes/

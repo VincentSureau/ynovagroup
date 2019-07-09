@@ -1,0 +1,32 @@
+{% extends 'backend/backend_layout.html.twig' %}
+
+{% block title %}Liste des commerciaux{% endblock %}
+
+{% block body %}
+    <h1>Liste des commerciaux</h1>
+
+    <div class="card p-4">
+        {{ include('backend/partials/_flash.html.twig') }}
+        <div class="d-flex mb-3">
+            <a class="btn btn-success btn-sm" id="add-modal" href="{{ path('backend_salesrep_create') }}"><i class="fas fa-plus-square"></i> Ajouter un commercial</a>
+        </div>
+        <table id="salesrepTable" class="table table-hover table-striped w-100">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Prénom</th>
+                    <th>Nom</th>
+                    <th>Email</th>
+                    <th>Actif</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+
+    <p class="text-left">
+        <a class="link-green" href="">retour</a>
+    </p>
+
+{% endblock %}

@@ -68,6 +68,7 @@ class CompanyType extends AbstractType
                         ->setParameter('role', '%"ROLE_MEMBER"%')
                     ;
                 },
+                'required' => false
             ])
             ->add('commercial', EntityType::class, [
                 'label' => 'Commercial',

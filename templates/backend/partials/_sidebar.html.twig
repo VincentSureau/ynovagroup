@@ -1,6 +1,6 @@
         <nav class="col-md-2 pr-0 d-none d-lg-block bg-light sidebar">
           <div class="sidebar-sticky">
-
+            {# notification menu #}
             <h4 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
               <span>Notifications</span>
               <a class="d-flex align-items-center text-muted" href="#">
@@ -15,6 +15,7 @@
                 </a>
               </li>
             </ul>
+            {# Dashboard menu #}
             <h4 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
               <span>Dashboard</span>
               <a class="d-flex align-items-center text-muted" href="#">
@@ -22,37 +23,51 @@
             </h4>
             <ul class="nav flex-column">
               <li class="nav-item">
-                <a class="nav-link text-dark" href="{{ path('company_index') }}">
+                <a class="nav-link text-dark" href="{{ path('backend_company_index') }}">
                     <i class="far fa-hospital"></i>
                     Pharmacies
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link text-dark" href="{{ path('user_index') }}">
-                    <i class="far fa-user"></i>
+                <a class="nav-link text-dark" href="{{ path('backend_user_index') }}">
+                    <i class="fas fa-user-md"></i>
                     Gestionnaires
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link text-dark" href="{{ path('file_index') }}">
+                <a class="nav-link text-dark" href="{{ path('backend_file_index') }}">
                     <i class="far fa-file-alt"></i>
                     Documents
                 </a>
               </li>
-              {% if is_granted('ROLE_ADMIN')%}
+            </ul>
+            {# admin menu #}
+            {% if is_granted('ROLE_ADMIN')%}
+            <h4 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+              <span>Admin</span>
+              <a class="d-flex align-items-center text-muted" href="#">
+              </a>
+            </h4>
+            <ul class="nav flex-column">
               <li class="nav-item">
-                <a class="nav-link text-dark" href="{{ path('post_index') }}">
+                <a class="nav-link text-dark" href="{{ path('backend_post_index') }}">
                     <i class="far fa-newspaper"></i>
                     Articles
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link text-dark" href="{{ path('theme_index') }}">
+                <a class="nav-link text-dark" href="{{ path('backend_salesrep_index') }}">
+                    <i class="fas fa-user-tie"></i>
+                    Commerciaux
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-dark" href="{{ path('backend_theme_index') }}">
                     <i class="fas fa-birthday-cake"></i>
                     Thèmes
                 </a>
               </li>
-              {% endif %}
             </ul>
+            {% endif %}
           </div>
         </nav>

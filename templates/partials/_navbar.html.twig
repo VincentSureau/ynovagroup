@@ -32,6 +32,21 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ path('home') }}">Accueil</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('home') }}#about">Qui sommes-nous ?</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('home') }}#valeurs">Nos valeurs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('home') }}#difference">Notre différence</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('home') }}#objectifs">Nos objectifs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('home') }}#contact">Contact</a>
+                    </li>
                 {% endif %}
                     <li class="nav-item">
                         <a class="nav-link {{ current == 'blog'? 'active'}}" href="{{ path('blog') }}">Actualités</a>

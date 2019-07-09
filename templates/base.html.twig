@@ -10,7 +10,10 @@
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
-        {% include('partials/_navbar.html.twig') %}
+        {{ render(controller(
+            'App\\Controller\\NavbarController::index',
+            { 'current': current }
+        )) }}
         <div class="content">
             {% block body %}{% endblock %}
         </div>

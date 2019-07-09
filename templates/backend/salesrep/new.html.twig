@@ -1,0 +1,14 @@
+{% extends 'backend/backend_layout.html.twig' %}
+
+{% block title %}Ajout d'un commercial{% endblock %}
+
+{% block body %}
+    <h1>Ajout d'un commercial</h1>
+    <div class="card p-4">
+        {{ include('backend/partials/_flash.html.twig') }}
+        {{ include('backend/user/_form.html.twig', {'button_label': 'Enregistrer'}) }}
+    </div>
+    <a class="link-green" href="{{ path('backend_user_index') }}">Retour à la liste des commerciaux</a>
+
+    {# {{ include('backend/user/_delete_form.html.twig') }} #}
+{% endblock %}

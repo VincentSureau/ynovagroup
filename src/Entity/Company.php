@@ -82,7 +82,7 @@ class Company
     private $pictureFile;
 
     /**
-     * @ORM\Column(type="string", length=255, unique=true)
+     * @ORM\Column(type="string", length=255, unique=true, nullable=true)
      * @Gedmo\Slug(fields={"name"})
      */
     private $slug;
@@ -100,6 +100,7 @@ class Company
 
     /**
      * @ORM\Column(type="datetime")
+     * @Gedmo\Timestampable(on="update")
      */
     private $updatedAt;
 
@@ -119,6 +120,16 @@ class Company
      * @ORM\ManyToMany(targetEntity="App\Entity\Files", mappedBy="pharmacies")
      */
     private $files;
+
+    /**
+     * @ORM\Column(type="string", length=20, nullable=true)
+     */
+    private $phone;
+
+    /**
+     * @ORM\Column(type="string", length=20, nullable=true)
+     */
+    private $cip;
 
     public function __construct()
     {
@@ -353,6 +364,30 @@ class Company
     public function getPictureFile()
     {
         return $this->pictureFile;
+    }
+
+    public function getPhone(): ?string
+    {
+        return $this->phone;
+    }
+
+    public function setPhone(?string $phone): self
+    {
+        $this->phone = $phone;
+
+        return $this;
+    }
+
+    public function getCip(): ?string
+    {
+        return $this->cip;
+    }
+
+    public function setCip(?string $cip): self
+    {
+        $this->cip = $cip;
+
+        return $this;
     }
 
 }

@@ -68,6 +68,7 @@ class Files
     /**
      * @ORM\Column(type="datetime")
      * @Groups({"file", "fileWrite"})
+     * @Gedmo\Timestampable(on="update")
      */
     private $updatedAt;
 
