@@ -27,22 +27,35 @@ class ThemeController extends AbstractController
     /**
      * @Route("/new", name="theme_new", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public function new(Request $request, ThemeRepository $repo): Response
     {
-        $theme = new Theme();
-        $form = $this->createForm(ThemeType::class, $theme);
+        $newTheme = new Theme();
+        $form = $this->createForm(ThemeType::class, $newTheme);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($theme);
+
+            // make sure only one theme is active by setting every other theme to false
+            if($newTheme->getIsActive() == true) {
+                $themes = $repo->findBy([
+                    'isActive' => true
+                ]);
+                foreach($themes as $theme) {
+                    $theme->setIsActive(false);
+                }
+                
+                $this->addFlash('success', 'le thème du site a bien été modifié');
+            }
+            
+            $entityManager->persist($newTheme);
             $entityManager->flush();
 
             return $this->redirectToRoute('backend_theme_index');
         }
 
         return $this->render('backend/theme/new.html.twig', [
-            'theme' => $theme,
+            'theme' => $newTheme,
             'form' => $form->createView(),
         ]);
     }
@@ -50,12 +63,20 @@ class ThemeController extends AbstractController
     /**
      * @Route("/{id}/toggle", name="theme_toggle_active", methods={"GET","POST"})
      */
-    public function toggle(Theme $theme): Response
+    public function toggle(Theme $theme, ThemeRepository $repo): Response
     {
         if($theme->getIsActive() == false) {
+            // make sure only one theme is active by setting every other theme to false
+            $themes = $repo->findBy([
+                'isActive' => true
+            ]);
+            foreach($themes as $oldTheme) {
+                $oldTheme->setIsActive(false);
+            }
+
             $theme->setIsActive(true);
             $this->addFlash('success', 'le thème du site a bien été modifié');
-        } else {
+        } else {            
             $theme->setIsActive(false);
             $this->addFlash('danger', 'le thème a bien été désactivé, attention, il n\'y a plus de thème actif sur le site');
         }
@@ -68,12 +89,25 @@ class ThemeController extends AbstractController
     /**
      * @Route("/{id}", name="theme_edit", methods={"GET","POST"})
      */
-    public function edit(Request $request, Theme $theme): Response
+    public function edit(Request $request, Theme $theme, ThemeRepository $repo): Response
     {
         $form = $this->createForm(ThemeType::class, $theme);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            // make sure only one theme is active at the same time
+            if($theme->getIsActive() == true) {
+                $themes = $repo->findBy([
+                    'isActive' => true
+                ]);
+                foreach($themes as $oldTheme) {
+                    $oldTheme->setIsActive(false);
+                }
+
+                $this->addFlash('success', 'le thème du site a bien été modifié');
+            }
+
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('backend_theme_index', [
