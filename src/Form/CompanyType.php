@@ -10,6 +10,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Vich\UploaderBundle\Form\Type\VichImageType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\TelType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -31,6 +32,9 @@ class CompanyType extends AbstractType
             ->add('name', TextType::class, [
                 'label' => 'Nom de la pharmacie'
             ])
+            ->add('cip', TextType::class, [
+                'label' => 'Code Cip de la pharmacie'
+            ])
             ->add('firstAdressField', TextType::class, [
                 'label' => 'Adresse'
             ])
@@ -45,6 +49,9 @@ class CompanyType extends AbstractType
             ])
             ->add('country', TextType::class, [
                 'label' => 'Pays'
+            ])
+            ->add('phone', TelType::class, [
+                'label' => 'Numéro de téléphone de la pharmacie'
             ])
             ->add('description', TextareaType::class, [
                 'label' => 'Description',
