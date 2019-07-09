@@ -28,7 +28,7 @@ Créer un fichier .env.local  puis y coller le contenu du fichier .env.dist  en 
 ```php bin/console doc:data:drop --force
 php bin/console doc:data:create
 php bin/console doc:schema:update --force
-php bin/console doc:fix:lo
+php bin/console doc:fix:lo```
 
 messages
 <i class="fas fa-envelope-open-text"></i>
