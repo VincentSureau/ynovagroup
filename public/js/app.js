@@ -34,35 +34,11 @@
 
     function scrollFunction() {
     if (document.body.scrollTop > 900 || document.documentElement.scrollTop > 900) {
-
-        console.log("tu as scrollé au delà de 900px");
-        
-        document.getElementById("logo").style.width = "200px";
-        document.getElementById("logo").style.height = "70px";
-
-
-    } else {
-        // console.log("salut");
-       
-        // document.getElementById("logo").style.width = "400px";
-        // document.getElementById("logo").style.height = "140px";
-    }
+        document.getElementById("logo").style.width = "220px";
+        document.getElementById("logo").style.height = "80px";
+    } 
 }
-    //     document.getElementById("nav").style.padding = "20px 0px";
-        // document.getElementById("logo").style.width = "400px";
-        // document.getElementById("logo").style.height = "140px";
-    //     document.getElementsByClassName("nav-item").style.fontSize = "0.9em";
-        // } else {
-        //     document.getElementById("logo").style.width = "300px";
-        //     document.getElementById("logo").style.height = "105px";
-    //         document.getElementById("nav").style.padding = "0px 0px";
-    //         document.getElementById("logo").style.width = "200px";
-    //         document.getElementById("logo").style.height = "70px";
-    //         document.getElementsByClassName("nav-item").style.fontSize = "0.9em";
-    //     }
-    // }
 
-   
 // PARALLAX IMAGE ON HOMEPAGE
     function parallax() {
         var $slider = document.getElementById("parallax");
