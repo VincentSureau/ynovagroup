@@ -18,7 +18,8 @@
                 <div class="card-body">
                     <h3 class="card-title">{{post.title}}</h3>
                     <p class="card-text">{{ post.content|raw }}</p>
-                    <p class="card-text"><small class="text-muted">Posté le {{post.createdAt|date("d/m/y")}} par <cite title="auteur">{{ post.author.firstname ~ ' ' ~ post.author.lastname}}</cite></small></p>
+                    <p class="card-text"><small class="text-muted">Posté le {{post.createdAt|date("d/m/y")}} 
+                    par <cite title="auteur">{{ post.author.__toString|default('-')}}</cite></small></p>
                 </div>
             </div>
 

@@ -181,7 +181,11 @@ function init() {
                 {
                     data: 'author',
                     render: function (data, index, row) {
-                        return (row.author.firstname + ' ' + row.author.lastname) || '-'
+                        if (row.author != null) {
+                            return (row.author.firstname + ' ' + row.author.lastname) || '-'
+                        } else {
+                            return '-'
+                        }
                     }
                 },
                 { data: 'picture' },
