@@ -79,6 +79,11 @@ class Post
      */
     private $updatedAt;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $rssfeedname;
+
     public function __construct()
     {
         $this->isActive = true;
@@ -205,6 +210,18 @@ class Post
     public function getPictureFile()
     {
         return $this->pictureFile;
+    }
+
+    public function getRssfeedname(): ?string
+    {
+        return $this->rssfeedname;
+    }
+
+    public function setRssfeedname(?string $rssfeedname): self
+    {
+        $this->rssfeedname = $rssfeedname;
+
+        return $this;
     }
 
 }

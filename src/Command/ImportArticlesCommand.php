@@ -8,6 +8,7 @@ use App\Repository\PostRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputOption;
+use Symfony\Component\Console\Helper\ProgressBar;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -40,46 +41,6 @@ class ImportArticlesCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $oldPosts = $this->postRepository->findByAuthor(null);
-        foreach($oldPosts as $post) {
-            $this->em->remove($post);
-        }
-
-        $this->em->flush();
-        
-        $activeRssFeeds = $this->rssRepository->findByIsActive(true);
-        $output->writeln('<comment>Articles will be imported from the following RSS feeds :</comment>');
-        foreach($activeRssFeeds as $rss) {
-            $output->writeln([
-                '- ' . $rss->getName(),
-            ]);
-        }
-        $inactiveRssFeeds = $this->rssRepository->findByIsActive(false);
-        $output->writeln('<comment>The following RSS feeds will be ignored :</comment>');
-        foreach($inactiveRssFeeds as $rss) {
-            $output->writeln([
-                '- ' . $rss->getName(),
-            ]);
-        }
-
-        $articles = [];
-        $total = 0;
-        foreach($activeRssFeeds as $rss) {
-            $feed = simplexml_load_file($rss->getLink());
-            foreach($feed->channel->item as $item) {
-                $post = new Post();
-                $post
-                    ->setTitle($item->title)
-                    ->setContent($item->description)
-                    ->setCreatedAt(\DateTime::createFromFormat('D, d M Y H:i:s e', $item->pubDate));
-                
-                $this->em->persist($post);
-                $articles[$rss->getName()][] = $post;
-                $total++;
-            }
-        }
-        $this->em->flush();
-
         $io = new SymfonyStyle($input, $output);
         // $arg1 = $input->getArgument('arg1');
 
@@ -91,12 +52,85 @@ class ImportArticlesCommand extends Command
         //     // ...
         // }
 
-        $response = [$total . ' articles have been imported successfully :'];
-        foreach($articles as $source => $posts) {
-            $format = '- %s article(s) from %s';
-            $format = sprintf($format, count($posts), $source);
-            $response[] = $format;
+        $oldPosts = $this->postRepository->findByAuthor(null);
+        
+        $activeRssFeeds = $this->rssRepository->findByIsActive(true);
+        if(!empty($activeRssFeeds)) {
+            $io->title('Articles will be imported from the following RSS feeds :');
+            $listing = array_map(function($rss){ return $rss->getName();}, $activeRssFeeds);
+            $io->listing($listing);
+
+            $inactiveRssFeeds = $this->rssRepository->findByIsActive(false);
+            $io->title('The following RSS feeds will be ignored :');
+
+            if(!empty($inactiveRssFeeds)) {
+                $listing = array_map(function($rss){ return $rss->getName();}, $inactiveRssFeeds);
+                $io->listing($listing);
+            } else {
+                $io->text('No inactive RSS feed found');
+            }
+
+            $articles = [];
+            $total = 0;
+
+            foreach($activeRssFeeds as $rss) {
+                $feed = simplexml_load_file($rss->getLink());
+
+                $io->text([
+                    'Importing articles from ' . $rss->getName() .' :',
+                ]);
+
+                $progressBar = new ProgressBar($output);
+
+                foreach($progressBar->iterate($feed->channel->item) as $item) {
+                    $content = $item->description;
+
+                    if(isset($item->link)) {
+                        $link = '
+                            <br>
+                            <p class="text-right">
+                                <a class="btn btn-success btn-sm" href="%s" target="_blank">Lire la suite</a>
+                            </p>
+                        ';
+                        $link = sprintf($link, $item->link);
+                        $content .= $link;
+                    }
+
+                    $post = new Post();
+                    $post
+                        ->setRssfeedname($feed->channel->title)
+                        ->setTitle($item->title)
+                        ->setContent($content)
+                        ->setCreatedAt(\DateTime::createFromFormat('D, d M Y H:i:s e', $item->pubDate));
+                    
+                    $this->em->persist($post);
+                    $articles[$rss->getName()][] = $post;
+                    $total++;
+                }
+
+                $progressBar->finish();
+                $io->newLine();
+            }
+
+            $this->em->flush();
+
+            foreach($oldPosts as $post) {
+                $this->em->remove($post);
+            }
+
+            $this->em->flush();
+
+            $response = [$total . ' articles have been imported successfully :'];
+            $list = array_map(function($key, $values) {
+                return '* ' . count($values) .  ' article(s) from ' . $key;
+            },array_keys($articles), $articles);
+            $response = array_merge($response, $list);
+
+            $io->newLine();
+            $io->success($response);
+        } else {
+            $io->newLine();
+            $io->warning('No active RSS feed available, to continue, please go to RSS administration page and set at least one RSS Feed to active');
         }
-        $io->success($response);
     }
 }
