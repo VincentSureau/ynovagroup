@@ -304,6 +304,23 @@ button.form-btn:hover {
     margin: 3rem 0;
 }
 
+.list-group-item > a {
+    color: black;
+    text-decoration: none;
+}
+
+.list-group-item > a:hover {
+    color:var(--green);
+    text-decoration: none;
+}
+
+td > a > i {
+    color:var(--green);
+}
+
+td > a > i:hover {
+    color: black;
+}
 
 /*Page RGPD*/
 .rgpd {
