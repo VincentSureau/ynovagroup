@@ -24,7 +24,7 @@ class Post
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=64)
+     * @ORM\Column(type="text")
      * @Groups({"post", "postWrite"})
      */
     private $title;

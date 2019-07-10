@@ -14,9 +14,7 @@ class PostController extends FOSRestController
     * @Rest\View(serializerGroups={"post"})
     */
     public function getListAction(PostRepository $repo) {
-        $data = $repo->findAll(
-            ['createdAt' => 'DESC']
-        );
+        $data = $repo->findAll();
 
         return $data;
     }
