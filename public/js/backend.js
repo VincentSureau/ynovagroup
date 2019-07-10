@@ -274,6 +274,7 @@ function init() {
     }
 
     if (document.querySelector('#rssTable')) {
+        swup.cache.empty()
         var table = $('#rssTable').DataTable({
             language: {
                 url: '/json/fr_FR.json'
@@ -296,14 +297,16 @@ function init() {
                 { data: 'name' },
                 { data: 'link' },
                 {
-                    data: 'isActive',
-                    render: function (data) {
-                        return (data == "true" || data == true) ? 'oui' : 'non'
+                    data: 'is_active',
+                    render: function (data, index, row) {
+                        if (data == true || data == 'true') {
+                            var button = `<a href="/backend/rss/${row.id}/toggle" class="btn btn-success btn-sm"><i class="fas fa-toggle-on"></i></a>`
+                        } else {
+                            var button = `<a href="/backend/rss/${row.id}/toggle" class="btn btn-secondary btn-sm"><i class="fas fa-toggle-off"></i></a>`
+                        }
+                        return button
                     }
                 },
-                {
-                    data: 'id'
-                }
             ]
         })
     }

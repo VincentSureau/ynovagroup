@@ -49,6 +49,24 @@ class RssController extends AbstractController
     }
 
     /**
+     * @Route("/{id}/toggle", name="rss_toggle_active", methods={"GET","POST"})
+     */
+    public function toggle(Rss $rss, RssRepository $repo): Response
+    {
+        if($rss->getIsActive() == false) {
+            $rss->setIsActive(true);
+            $this->addFlash('success', 'le flux RSS ' . $rss->getName() . ' a bien été activé');
+        } else {            
+            $rss->setIsActive(false);
+            $this->addFlash('info', 'le flux RSS ' . $rss->getName() . ' a bien été désactivé');
+        }
+
+        $this->getDoctrine()->getManager()->flush();
+
+        return $this->redirectToRoute('backend_rss_index');
+    }
+
+    /**
      * @Route("/{id}", name="rss_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Rss $rss): Response
