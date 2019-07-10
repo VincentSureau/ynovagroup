@@ -33,17 +33,34 @@
     window.onscroll = function() {scrollFunction()};
 
     function scrollFunction() {
-    if (document.body.scrollTop > 850 || document.documentElement.scrollTop > 850) {
-        document.getElementById("nav").style.padding = "10px 5px";
+    if (document.body.scrollTop > 900 || document.documentElement.scrollTop > 900) {
+
+        console.log("tu as scrollé au delà de 900px");
+        
         document.getElementById("logo").style.width = "200px";
         document.getElementById("logo").style.height = "70px";
-        document.getElementsByClassName("nav-item").style.fontSize = "1.2em";
-        } else {
-            document.getElementById("nav").style.padding = "80px 15px";
-            document.getElementById("logo").style.fontSize = "55px";
-            document.getElementsByClassName("nav-item").style.fontSize = "0.9em";
-        }
+
+
+    } else {
+        // console.log("salut");
+       
+        // document.getElementById("logo").style.width = "400px";
+        // document.getElementById("logo").style.height = "140px";
     }
+}
+    //     document.getElementById("nav").style.padding = "20px 0px";
+        // document.getElementById("logo").style.width = "400px";
+        // document.getElementById("logo").style.height = "140px";
+    //     document.getElementsByClassName("nav-item").style.fontSize = "0.9em";
+        // } else {
+        //     document.getElementById("logo").style.width = "300px";
+        //     document.getElementById("logo").style.height = "105px";
+    //         document.getElementById("nav").style.padding = "0px 0px";
+    //         document.getElementById("logo").style.width = "200px";
+    //         document.getElementById("logo").style.height = "70px";
+    //         document.getElementsByClassName("nav-item").style.fontSize = "0.9em";
+    //     }
+    // }
 
    
 // PARALLAX IMAGE ON HOMEPAGE
@@ -57,5 +74,3 @@
     window.addEventListener("scroll", function(){
         parallax();	
     });
-    
-

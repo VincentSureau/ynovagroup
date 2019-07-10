@@ -1,18 +1,18 @@
 <!-- Navigation with a burger menu -->
 <header class="header py-5">
-    <nav class="navbar fixed-top navbar-expand-xl navbar-light bg-white ">
+    <nav id="nav" class="navbar fixed-top navbar-expand-xl navbar-light bg-white ">
         <a class="navbar-brand" href="{{ current == 'home'? '#hero' : path('home') }}">
         {% if theme.picture is defined %}
-            <img src="{{ vich_uploader_asset(theme, 'pictureFile') }}" width="400" height="140" alt="">
+            <img src="{{ vich_uploader_asset(theme, 'pictureFile') }}"  alt="">
         {% else %}
-            <img id="logo" src="{{ asset('images/ynovagroup_logo.png') }}" width="400" height="140" alt="Ynovagroup Logo">
+            <img id="logo" src="{{ asset('images/ynovagroup_logo.png') }}" alt="Ynovagroup Logo">
         {% endif %}
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul id="nav" class="navbar-nav mx-auto">
+            <ul class="navbar-nav mx-auto">
                 {% if current == 'home' %}
                     <li class="nav-item {{ current == 'home'? 'active'}}">
                         <a class="nav-link" href="#">Accueil</a>
