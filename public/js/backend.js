@@ -153,6 +153,7 @@ function init() {
 
     if (document.querySelector('#postTable')) {
         var table = $('#postTable').DataTable({
+            order: [[0, "desc"]],
             language: {
                 url: '/json/fr_FR.json'
             },
@@ -190,7 +191,7 @@ function init() {
                 },
                 { data: 'picture' },
                 {
-                    data: 'isActive',
+                    data: 'is_active',
                     render: function (data) {
                         return (data == "true" || data == true) ? 'oui' : 'non'
                     }
