@@ -33,19 +33,12 @@
     window.onscroll = function() {scrollFunction()};
 
     function scrollFunction() {
-    if (document.body.scrollTop > 850 || document.documentElement.scrollTop > 850) {
-        document.getElementById("nav").style.padding = "10px 5px";
-        document.getElementById("logo").style.width = "200px";
-        document.getElementById("logo").style.height = "70px";
-        document.getElementsByClassName("nav-item").style.fontSize = "1.2em";
-        } else {
-            document.getElementById("nav").style.padding = "80px 15px";
-            document.getElementById("logo").style.fontSize = "55px";
-            document.getElementsByClassName("nav-item").style.fontSize = "0.9em";
-        }
-    }
+    if (document.body.scrollTop > 900 || document.documentElement.scrollTop > 900) {
+        document.getElementById("logo").style.width = "220px";
+        document.getElementById("logo").style.height = "80px";
+    } 
+}
 
-   
 // PARALLAX IMAGE ON HOMEPAGE
     function parallax() {
         var $slider = document.getElementById("parallax");
@@ -57,5 +50,3 @@
     window.addEventListener("scroll", function(){
         parallax();	
     });
-    
-

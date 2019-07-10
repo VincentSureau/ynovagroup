@@ -110,17 +110,22 @@ li {
     top:0;
 }
 
+.navbar-brand {
+    margin: 0;
+    padding: 0;
+}
+
 #nav {
     display: flex;
     justify-content: center;
-    padding: 80px 15px;
-    transition: all .5s linear;
+    padding: 20px 0px;
+    
 }
 
 #logo {
-    width: 400px;
-    height: 140px;
-    
+    width: 300px;
+    height: 105px;
+    transition: all 1s ease-in-out;
 }
 
 .navbar-nav > .adherent {
@@ -130,7 +135,7 @@ li {
 .nav-item {
     margin: 0 5px;
     text-align: center;
-    font-size: 1.2em;
+    font-size: 1em;
 }
 
 /* Navigation Underline Hover effect */
