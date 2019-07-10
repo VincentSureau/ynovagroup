@@ -273,6 +273,41 @@ function init() {
         })
     }
 
+    if (document.querySelector('#rssTable')) {
+        var table = $('#rssTable').DataTable({
+            language: {
+                url: '/json/fr_FR.json'
+            },
+            ajax: {
+                url: '/api/rss',
+                dataSrc: ''
+            },
+            columns: [
+                {
+                    data: 'id',
+                    render: function (data, index, row) {
+                        var button = `
+                        <a href="/backend/rss/${data}" class="btn btn-success btn-sm edit-modal">
+                            <i class="fas fa-edit"></i>
+                        </a>`
+                        return button
+                    }
+                },
+                { data: 'name' },
+                { data: 'link' },
+                {
+                    data: 'isActive',
+                    render: function (data) {
+                        return (data == "true" || data == true) ? 'oui' : 'non'
+                    }
+                },
+                {
+                    data: 'id'
+                }
+            ]
+        })
+    }
+
     if (document.querySelector('#post_content')) {
         ClassicEditor
             .create(document.querySelector('#post_content'), {

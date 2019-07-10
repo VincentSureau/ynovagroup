@@ -1,0 +1,12 @@
+{% extends 'backend/backend_layout.html.twig' %}
+
+{% block title %}Ajouter un flux RSS{% endblock %}
+
+{% block body %}
+    <h1>Ajouter un flux RSS</h1>
+    <div class="card p-4">
+        {{ include('backend/partials/_flash.html.twig') }}
+        {{ include('backend/rss/_form.html.twig', {'button_label': 'Enregistrer'}) }}
+    </div>
+    <a class="link-green" href="{{ path('backend_rss_index') }}">Retour à la liste des flux RSS</a>
+{% endblock %}
