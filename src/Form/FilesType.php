@@ -35,9 +35,6 @@ class FilesType extends AbstractType
             ->add('name', TextType::class, [
                 'label' => 'Nom du document'
             ])
-            ->add('type', TextType::class, [
-                'label' => 'Type de document'
-            ])
             ->add('description',  TextareaType::class, [
                 'label' => 'Description',
                 'required' => false

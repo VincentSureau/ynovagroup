@@ -81,11 +81,13 @@ class Post
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"post", "postWrite"})
      */
     private $rssfeedname;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"post", "postWrite"})
      */
     private $visibility;
 

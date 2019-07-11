@@ -47,6 +47,14 @@ class PostType extends AbstractType
                 ],
                 'placeholder' => false,
             ])
+            ->add('visibility', ChoiceType::class, [
+                'label' => 'Visibilité',
+                'choices' => [
+                    'Public' => 'public',
+                    'Privé' => 'private'
+                ],
+                'placeholder' => false,
+            ])
             ->add('author', EntityType::class, [
                 'label' => 'Auteur',
                 'class' => User::class,

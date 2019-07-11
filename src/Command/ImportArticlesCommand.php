@@ -107,6 +107,7 @@ class ImportArticlesCommand extends Command
                         ->setRssfeedname($feed->channel->title)
                         ->setTitle($item->title)
                         ->setContent($content)
+                        ->setVisibility('public')
                         ->setCreatedAt($date);
 
                     if (isset($item->enclosure)) {

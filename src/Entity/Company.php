@@ -131,6 +131,11 @@ class Company
      */
     private $cip;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $contractType;
+
     public function __construct()
     {
         $this->isActive = true;
@@ -386,6 +391,18 @@ class Company
     public function setCip(?string $cip): self
     {
         $this->cip = $cip;
+
+        return $this;
+    }
+
+    public function getContractType(): ?string
+    {
+        return $this->contractType;
+    }
+
+    public function setContractType(?string $contractType): self
+    {
+        $this->contractType = $contractType;
 
         return $this;
     }

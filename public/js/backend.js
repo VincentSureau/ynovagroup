@@ -146,7 +146,6 @@ function init() {
                     }
                 },
                 { data: 'name' },
-                { data: 'type' },
                 { data: 'description' },
                 {
                     data: 'isActive',
@@ -215,12 +214,20 @@ function init() {
                         }
                     }
                 },
-                { data: 'picture' },
+                { 
+                    data: 'rssfeedname',
+                    render: function (data) {
+                        return data || 'Ynovagroup';
+                    }
+                },
                 {
                     data: 'is_active',
                     render: function (data) {
                         return (data == "true" || data == true) ? 'oui' : 'non'
                     }
+                },
+                {
+                    data: 'visibility'
                 }
             ]
         })

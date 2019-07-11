@@ -32,8 +32,11 @@ class CompanyType extends AbstractType
             ->add('name', TextType::class, [
                 'label' => 'Nom de la pharmacie'
             ])
+            ->add('contractType', TextType::class, [
+                'label' => 'Type de contrat'
+            ])
             ->add('cip', TextType::class, [
-                'label' => 'Code Cip de la pharmacie'
+                'label' => 'Code CIP de la pharmacie'
             ])
             ->add('firstAdressField', TextType::class, [
                 'label' => 'Adresse'
@@ -51,7 +54,8 @@ class CompanyType extends AbstractType
                 'label' => 'Pays'
             ])
             ->add('phone', TelType::class, [
-                'label' => 'Numéro de téléphone de la pharmacie'
+                'label' => 'Numéro de téléphone de la pharmacie',
+                'required' => false
             ])
             ->add('description', TextareaType::class, [
                 'label' => 'Description',

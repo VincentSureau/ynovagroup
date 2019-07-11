@@ -16,7 +16,10 @@ class BlogController extends AbstractController
     public function index(PostRepository $postRepository, PaginatorInterface $paginator, Request $request)
     {
         $query = $postRepository->findBy(
-            ['isActive' => true],
+            [
+                'isActive' => true,
+                'visibility' => 'public'
+            ],
             ['createdAt' => 'DESC', 'updatedAt' => 'DESC']
         );
 
