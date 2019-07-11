@@ -128,6 +128,12 @@ li {
     transition: all 1s ease-in-out;
 }
 
+#ephemeride {
+    width: 300px;
+    height: 105px;
+    transition: all 1s ease-in-out;
+}
+
 .navbar-nav > .adherent {
     justify-self: flex-end;
 }
@@ -149,11 +155,18 @@ li {
     flex-wrap: wrap;
 }
 
-/* .valeurs-img {
-} */
+.valeurs-img {
+    width: 125px;
+    height: 125px;
+}
 
 .valeurs-text {
     min-width: 200px;
+}
+
+.valeurs-logo {
+    width: 200px;
+    height: 70px;
 }
 
 /* Notre différence */

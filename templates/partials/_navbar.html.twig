@@ -3,7 +3,7 @@
     <nav id="nav" class="navbar fixed-top navbar-expand-xl navbar-light bg-white ">
         <a class="navbar-brand" href="{{ current == 'home'? '#hero' : path('home') }}">
         {% if theme.picture is defined %}
-            <img src="{{ vich_uploader_asset(theme, 'pictureFile') }}"  alt="">
+            <img id="ephemeride" src="{{ vich_uploader_asset(theme, 'pictureFile') }}"  alt="">
         {% else %}
             <img id="logo" src="{{ asset('images/ynovagroup_logo.png') }}" alt="Ynovagroup Logo">
         {% endif %}

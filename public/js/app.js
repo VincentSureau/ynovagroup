@@ -35,9 +35,10 @@
     function scrollFunction() {
     if (document.body.scrollTop > 900 || document.documentElement.scrollTop > 900) {
         document.getElementById("logo").style.width = "220px";
-        document.getElementById("logo").style.height = "80px";
+        document.getElementById("logo").style.height = "80px";  
     } 
 }
+
 
 // PARALLAX IMAGE ON HOMEPAGE
     function parallax() {
