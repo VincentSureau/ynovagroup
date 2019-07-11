@@ -97,12 +97,16 @@ class ImportArticlesCommand extends Command
                     }
 
                     $post = new Post();
+                    $date = \DateTime::createFromFormat(\DateTimeInterface::RSS, $item->pubDate);
+                    if ($date == false) {
+                        $date = new \DateTime('first day of last month');
+                    }
+
                     $post
                         ->setRssfeedname($feed->channel->title)
                         ->setTitle($item->title)
                         ->setContent($content)
-                        ->setCreatedAt(\DateTime::createFromFormat('D, d M Y H:i:s e', $item->pubDate));
-                    
+                        ->setCreatedAt($date);
                     $this->em->persist($post);
                     $articles[$rss->getName()][] = $post;
                     $total++;
