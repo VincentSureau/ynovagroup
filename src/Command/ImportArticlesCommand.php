@@ -83,7 +83,7 @@ class ImportArticlesCommand extends Command
                 $progressBar = new ProgressBar($output);
 
                 foreach($progressBar->iterate($feed->channel->item) as $item) {
-                    $content = $item->description;
+                    $content = strip_tags($item->description);
 
                     if(isset($item->link)) {
                         $link = '
@@ -105,7 +105,7 @@ class ImportArticlesCommand extends Command
                     $post
                         ->setRssfeedname($feed->channel->title)
                         ->setTitle($item->title)
-                        ->setContent(strip_tags($content))
+                        ->setContent($content)
                         ->setCreatedAt($date);
 
                     if (isset($item->enclosure)) {
