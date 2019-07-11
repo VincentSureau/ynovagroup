@@ -95,18 +95,27 @@ class Files
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="files")
+     * @Groups({"file",  "fileWrite"})
      */
     private $sentBy;
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Company", inversedBy="files")
+     * @Groups({"file",  "fileWrite"})
      */
     private $pharmacies;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\User", inversedBy="readFiles")
+     * @Groups({"file",  "fileWrite"})
+     */
+    private $readBy;
 
     public function __construct()
     {
         $this->users = new ArrayCollection();
         $this->pharmacies = new ArrayCollection();
+        $this->readBy = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -291,5 +300,31 @@ class Files
     public function getDocumentFile()
     {
         return $this->documentFile;
+    }
+
+    /**
+     * @return Collection|User[]
+     */
+    public function getReadBy(): Collection
+    {
+        return $this->readBy;
+    }
+
+    public function addReadBy(User $readBy): self
+    {
+        if (!$this->readBy->contains($readBy)) {
+            $this->readBy[] = $readBy;
+        }
+
+        return $this;
+    }
+
+    public function removeReadBy(User $readBy): self
+    {
+        if ($this->readBy->contains($readBy)) {
+            $this->readBy->removeElement($readBy);
+        }
+
+        return $this;
     }
 }

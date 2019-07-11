@@ -21,6 +21,8 @@ class FilesType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $file = $builder->getData();
+
         $builder
             ->add('documentFile', VichFileType::class, [
                 'required' => false,
@@ -67,14 +69,20 @@ class FilesType extends AbstractType
                 'label' => 'Pharmacies',
                 'class' => Company::class,
                 'multiple' => true,
-                'attr' => ['class' => 'select2']
+                'attr' => ['class' => 'select2 d-none'],
+                'choice_attr' => function($choice, $key, $value) use ($file) {
+                    if($file->getReadBy()->contains($choice)) {
+                        return ['data-read' => 'true'];
+                    };
+                    return ['data-read' => 'false'];
+                }
             ])
             ->add('selectAll', CheckboxType::Class, [
                 'label' => 'Envoyer à toutes les pharmacies',
                 'mapped' => false,
                 'required' => false
             ])
-        ;
+        ;        
     }
 
     public function configureOptions(OptionsResolver $resolver)

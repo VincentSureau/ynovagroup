@@ -108,6 +108,11 @@ class User implements UserInterface
      */
     private $files;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Files", mappedBy="readBy")
+     */
+    private $readFiles;
+
     public function __construct()
     {
         $this->managedFiles = new ArrayCollection();
@@ -117,6 +122,7 @@ class User implements UserInterface
         $this->updatedAt = new \DateTime();
         $this->posts = new ArrayCollection();
         $this->files = new ArrayCollection();
+        $this->readFiles = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -405,6 +411,34 @@ class User implements UserInterface
             if ($file->getSentBy() === $this) {
                 $file->setSentBy(null);
             }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Files[]
+     */
+    public function getReadFiles(): Collection
+    {
+        return $this->readFiles;
+    }
+
+    public function addReadFile(Files $readFile): self
+    {
+        if (!$this->readFiles->contains($readFile)) {
+            $this->readFiles[] = $readFile;
+            $readFile->addReadBy($this);
+        }
+
+        return $this;
+    }
+
+    public function removeReadFile(Files $readFile): self
+    {
+        if ($this->readFiles->contains($readFile)) {
+            $this->readFiles->removeElement($readFile);
+            $readFile->removeReadBy($this);
         }
 
         return $this;

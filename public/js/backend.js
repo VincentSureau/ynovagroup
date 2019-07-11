@@ -1,4 +1,6 @@
 function init() {
+    swup.cache.empty()
+
     if (document.querySelector('#companyTable')) {
         var table = $('#companyTable').DataTable({
             language: {
@@ -61,7 +63,6 @@ function init() {
     }
 
     if (document.querySelector('#themeTable')) {
-        swup.cache.empty()
         var table = $('#themeTable').DataTable({
             language: {
                 url: '/json/fr_FR.json'
@@ -131,7 +132,6 @@ function init() {
                 { data: 'name' },
                 { data: 'type' },
                 { data: 'description' },
-
                 {
                     data: 'isActive',
                     render: function (data) {
@@ -147,6 +147,16 @@ function init() {
                         return '-'
                     }
                 },
+                {
+                    data: 'id',
+                    sortable: false,
+                    render: function (data, index, row) {
+                        if (row.read_by && row.pharmacies) {
+                            return row.read_by.length + '/' + row.pharmacies.length
+                        }
+                        return '-'
+                    }
+                }
             ],
         })
     }
@@ -279,7 +289,6 @@ function init() {
     }
 
     if (document.querySelector('#rssTable')) {
-        swup.cache.empty()
         var table = $('#rssTable').DataTable({
             language: {
                 url: '/json/fr_FR.json'
@@ -328,10 +337,20 @@ function init() {
         })
     }
 
+    function formatState(state) {
+        console.log(state)
+        if (state.element.dataset.read == "true") {
+            return $(`<span>${state.text} <i class="fas fa-check text-success"></i></span>`);
+        }
+        return $(`<span>${state.text} <i class="fas fa-times text-danger"></i></span>`);
+    };
+
     $('.select2').select2({
+        templateSelection: formatState,
         width: '100%',
         placeholder: 'Choisir un/des destinataire(s)',
-        allowClear: true
+        allowClear: true,
+        closeOnSelect: false,
     })
     
     $("#files_selectAll").change(function () {

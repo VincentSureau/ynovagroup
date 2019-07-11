@@ -84,6 +84,11 @@ class Post
      */
     private $rssfeedname;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $visibility;
+
     public function __construct()
     {
         $this->isActive = true;
@@ -220,6 +225,18 @@ class Post
     public function setRssfeedname(?string $rssfeedname): self
     {
         $this->rssfeedname = $rssfeedname;
+
+        return $this;
+    }
+
+    public function getVisibility(): ?string
+    {
+        return $this->visibility;
+    }
+
+    public function setVisibility(string $visibility): self
+    {
+        $this->visibility = $visibility;
 
         return $this;
     }
