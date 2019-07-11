@@ -42,12 +42,15 @@ body {
     width: auto;
 }
 
+.vich-file a, .vich-file a:visited,
 .link-green, .link-green:visited,
 .page-link, .page-link:visited {
     color: var(--green-color);
 }
 
-.link-green:active, .link-green:hover {
+.vich-file a:active, .vich-file a:hover,
+.link-green:active, .link-green:hover,
+.page-link:active, .page-link:hover {
     color: var(--green-hover-color);
 }
 
