@@ -105,8 +105,37 @@ class ImportArticlesCommand extends Command
                     $post
                         ->setRssfeedname($feed->channel->title)
                         ->setTitle($item->title)
-                        ->setContent($content)
+                        ->setContent(strip_tags($content))
                         ->setCreatedAt($date);
+
+                    if (isset($item->enclosure)) {
+                        $validFormat = [
+                            'image/gif',
+                            'image/jpeg',
+                            'image/jpg',
+                            'image/png',
+                            'image/tiff',
+                            'image/webp'
+                        ];
+
+                        if(in_array($item->enclosure['type'], $validFormat)) {                                                 
+                            $extension = explode('/', $item->enclosure['type']);
+                            $ch = curl_init($item->enclosure['url']);
+                            
+                            $my_save_dir = 'public/images/articles/';
+                            $filename = md5(uniqid(rand(), true)) . '.' . $extension[1];
+                            $complete_save_loc = $my_save_dir . $filename;
+                            $fp = fopen($complete_save_loc, 'wb');
+                            curl_setopt($ch, CURLOPT_FILE, $fp);
+                            curl_setopt($ch, CURLOPT_HEADER, 0);
+                            curl_exec($ch);
+                            curl_close($ch);
+                            fclose($fp);
+    
+                            $post->setPicture($filename);
+                        }
+                    }
+
                     $this->em->persist($post);
                     $articles[$rss->getName()][] = $post;
                     $total++;

@@ -2,16 +2,17 @@
 
 namespace App\DataFixtures;
 
-use App\Entity\Company;
-use App\Entity\User;
-use App\Entity\Post;
-use App\Entity\Files;
 use Faker\Factory;
+use App\Entity\Rss;
+use App\Entity\Post;
+use App\Entity\User;
+use App\Entity\Files;
 
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use App\Entity\Company;
 
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class AppFixtures extends Fixture
 {
@@ -103,21 +104,23 @@ class AppFixtures extends Fixture
             ;
 
         $manager->persist($admin);
-        
-        // Posts
-        $posts = [];
-        for($i = 0; $i <= 30; $i++) {
-            $post = new Post();
-            $post
-                ->setTitle($faker->word(5, true))
-                ->setContent($faker->paragraphs(6, true))
-                ->setIsActive(true)
-                ->setCreatedAt(new \Datetime)
-                ->setUpdatedAt(new \Datetime)
-                ->setAuthor($admin)
-                ;
-            $manager->persist($post);
-            $posts[] = $post;
+
+        $rsslinks = [
+            'https://www.who.int/feeds/entity/mediacentre/news/fr/rss.xml',
+            'https://www.santemagazine.fr/feeds/rss',
+            'https://www.e-sante.fr/taxonomy/term/615086/feed',
+            'https://www.e-sante.fr/taxonomy/term/615087/feed'
+        ];
+
+        foreach($rsslinks as $link) {
+            $rssFeed = new Rss();
+
+            $rssFeed
+                ->setName($link)
+                ->setLink($link)
+                ->setIsActive(true);
+
+            $manager->persist($rssFeed);
         }
 
         $manager->flush();
