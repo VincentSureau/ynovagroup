@@ -144,8 +144,22 @@ li {
     font-size: 1em;
 }
 
-/* Navigation Underline Hover effect */
+/* Couleurs de fond */
+#about {
+  background-color: var(--green);
+}
 
+#about > h2 {
+  color: white;
+}
+
+#difference {
+  background-color: var(--green);
+}
+
+.titre-difference {
+  color: white;
+}
 
 /* Nos valeurs */
 
@@ -153,11 +167,18 @@ li {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    align-items: last baseline;
 }
 
 .valeurs-img {
-    width: 125px;
-    height: 125px;
+    width: 100px;
+    height: 100px;
+}
+
+
+.valeurs-img:hover {
+    width: 100px;
+    height: 100px;
 }
 
 .valeurs-text {
@@ -167,6 +188,14 @@ li {
 .valeurs-logo {
     width: 200px;
     height: 70px;
+    opacity: 0;
+}
+
+.valeurs-logo:hover {
+    width: 200px;
+    height: 70px;
+    opacity: 1;
+    transition-duration: .5s;
 }
 
 /* Notre différence */
