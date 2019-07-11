@@ -68,6 +68,7 @@ class ImportArticlesCommand extends Command
                 $io->listing($listing);
             } else {
                 $io->text('No inactive RSS feed found');
+                $io->newLine();
             }
 
             $articles = [];
