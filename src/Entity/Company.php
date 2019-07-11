@@ -39,7 +39,6 @@ class Company
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups({"company", "companyWrite"})
      */
     private $secondAdressField;
 
@@ -95,6 +94,7 @@ class Company
 
     /**
      * @ORM\Column(type="datetime")
+     * @Groups({"company", "companyWrite"})
      */
     private $createdAt;
 

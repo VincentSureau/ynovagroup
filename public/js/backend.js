@@ -44,6 +44,22 @@ function init() {
                     }
                 },
                 {
+                    data: 'created_at',
+                    render: function (data, index, row) {
+                        if (data) {
+                            const d = new Date(data);
+                            if (d.getMonth() < 10) {
+                                var month = `0${d.getMonth() + 1}`;
+                            } else {
+                                var month = d.getMonth() + 1;
+                            }
+                            const dateFormated = `${d.getDate()}/${month}/${d.getFullYear()}`;
+                            return dateFormated
+                        }
+                        return '-';
+                    }
+                },
+                {
                     data: 'commercial',
                     render: function (data, index, row) {
                         if (data) {
