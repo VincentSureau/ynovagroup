@@ -465,3 +465,20 @@ td > a > i:hover {
     min-width: 55%;
     margin: 1rem 1rem;
 }
+
+/* Partenaires */
+#partenaires {
+    width: 100vw;
+}
+.partenaire {
+    display: flex;
+    width: 10%;
+    height: 10%;
+    margin: 2rem 2rem;
+}
+
+.partenaire > img {
+    width: 150px;
+    height: auto;
+}
+
