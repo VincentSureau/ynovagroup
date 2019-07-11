@@ -10,6 +10,7 @@ use Symfony\Component\Form\AbstractType;
 use Vich\UploaderBundle\Form\Type\VichFileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -31,9 +32,15 @@ class FilesType extends AbstractType
                 'download_label' => 'Télécharger le fichier',
                 'download_uri' => true,
                 'download_link' => true,
+                'constraints' => [
+                    new File(
+                        ['mimeTypes' => ["application/pdf", "application/x-pdf"]]
+                    )
+                ]
+                
             ])
             ->add('name', TextType::class, [
-                'label' => 'Nom du document'
+                'label' => 'Nom du document',
             ])
             ->add('description',  TextareaType::class, [
                 'label' => 'Description',
