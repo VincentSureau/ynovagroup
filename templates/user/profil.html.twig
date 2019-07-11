@@ -1,64 +1,72 @@
-
-
 {% extends 'base.html.twig' %}
 
 {% block title %}Mon profil{% endblock %}
 
 {% block body %}
 
+Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reprehenderit laborum deserunt, expedita id illum voluptatibus, pariatur sapiente error ipsam dicta quas at accusamus! Ratione quisquam blanditiis adipisci incidunt, enim dolor ea tempore alias et id voluptate reprehenderit dignissimos accusamus vero voluptas nostrum illo cumque dicta odio voluptatibus officiis! Veritatis iure quae suscipit animi ullam odit dolore totam nisi. Inventore quibusdam veritatis minima non eum aperiam, numquam magnam? Amet laudantium possimus expedita! Magnam dolor provident praesentium temporibus fuga error, natus voluptate magni numquam. Ipsum nostrum minima, nisi dolores mollitia dolore corporis, maiores magni illo neque voluptas esse doloribus deserunt veritatis quo officia impedit atque alias excepturi, rem ipsa quidem ipsam reprehenderit incidunt. Atque ab et molestiae cumque placeat minima ex alias consequatur reprehenderit minus accusamus aliquid, nobis aperiam magnam nisi ea ipsam explicabo veritatis dolores praesentium rerum! Adipisci dolorem ut sapiente obcaecati sequi similique quasi laborum saepe repellendus. Ipsa cupiditate veritatis amet vel modi voluptate facilis iusto id ducimus dicta, non aspernatur fugiat quos nobis optio voluptates doloremque vero eius, distinctio aperiam ad. Ut possimus quam adipisci facere nihil corrupti natus soluta rerum porro accusantium dolore veniam ipsum quas magnam assumenda in, saepe voluptate doloremque. A voluptates laborum culpa omnis exercitationem?
+
+<div class="container-fluid text-center bg-white">
+    <h5 class="h2 card-title font-weight-bold text-success">Mon profil</h5>
+    <em class="card-text">Bienvenue sur votre espace personnel !</em>
 <!--Backoffice général-->
-<section class=" ynova-profil">
-        <!--Profil-->
-        <div class="card text-center ynova-profil-bar">
-            {% if company is defined and company.picture is not null %}
-                <img class="img-fluid" src="{{ vich_uploader_asset(company, 'pictureFile') }}" alt="{{ company.name|default('photo de la pharmacie') }}" />
-            {% else %}
-                <img src="https://via.placeholder.com/468x200?text=Image+de+la+pharmacie" class="img-fluid" alt="..."> 
-            {% endif %}
-            <div class="card-body">
-                <h5 class="h2 card-title font-weight-bold text-success">Mon profil</h5>
-                <em class="card-text">Bienvenue sur votre espace personnel !</em>
-            </div>
-            <ul class="list-group list-group-flush text-center">
-                <li class="list-group-item font-weight-bold text-uppercase">Nom</li>
-                <li class="list-group-item">{{ user.lastname }}</li>
-                <li class="list-group-item font-weight-bold text-uppercase">Prénom</li>        
-                <li class="list-group-item">{{ user.firstname }}</li>
-                <li class="list-group-item font-weight-bold text-uppercase">Adresse</li>
-                <li class="list-group-item">{{ app.user.company.firstadressfield|default('-') }} {{ app.user.company.secondadressfield|default('') }}</li>
-                <li class="list-group-item font-weight-bold text-uppercase">E-mail</li>
-                <li class="list-group-item">prenom@nom.fr</li>
-                <li class="list-group-item font-weight-bold text-uppercase">Téléphone</li>
-                <li class="list-group-item">0600000000</li>
-            </ul>
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item">
+        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Home</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Profile</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Contact</a>
+    </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+    
+    <!--Profil-->
+        {% if company is defined and company.picture is not null %}
+            <img class="img-fluid" src="{{ vich_uploader_asset(company, 'pictureFile') }}" alt="{{ company.name|default('photo de la pharmacie') }}" />
+        {% else %}
+            <img src="https://via.placeholder.com/468x200?text=Image+de+la+pharmacie" class="img-fluid" alt="..."> 
+        {% endif %}
+        <ul class="list-group list-group-flush text-center">
+            <li class="list-group-item font-weight-bold text-uppercase">Nom</li>
+            <li class="list-group-item">{{ user.lastname }}</li>
+            <li class="list-group-item font-weight-bold text-uppercase">Prénom</li>        
+            <li class="list-group-item">{{ user.firstname }}</li>
+            <li class="list-group-item font-weight-bold text-uppercase">Adresse</li>
+            <li class="list-group-item">{{ app.user.company.firstadressfield|default('-') }} {{ app.user.company.secondadressfield|default('') }}</li>
+            <li class="list-group-item font-weight-bold text-uppercase">E-mail</li>
+            <li class="list-group-item">prenom@nom.fr</li>
+            <li class="list-group-item font-weight-bold text-uppercase">Téléphone</li>
+            <li class="list-group-item">0600000000</li>
+        </ul>
 
-            <div class="card-body">
-                <h5 class="h2 card-title font-weight-bold text-success mt-5">Mon commercial</h5>
-                <em class="card-text">Retrouvez les coordonnées de votre commercial.</em>
-            </div>
-
-            <ul class="list-group list-group-flush text-center">
-                <li class="list-group-item font-weight-bold text-uppercase">Nom Prénom</li>
-                <li class="list-group-item">
-                    {{ app.user.company.commercial.firstname|default('-') }} {{ app.user.company.commercial.lastname|default('') }}
-                </li>
-                <li class="list-group-item font-weight-bold text-uppercase">Contact</li>        
-                <li class="list-group-item">
-                   <a href="mailto:{{ app.user.company.commercial.email|default('-') }}">
-                    {{ app.user.company.commercial.email|default('-') }}
-                   </a>
-                </li>
-            </ul>
-            <button type="button" class="btn btn-danger mt-5">
-                <a href="{{ path('app_logout') }}" class="btn btn-danger">
-                    Déconnexion 
-                    <i class="fas fa-times"></i>
-                </a>
-            </button>
+        <div class="card-body">
+            <h5 class="h2 card-title font-weight-bold text-success mt-5">Mon commercial</h5>
+            <em class="card-text">Retrouvez les coordonnées de votre commercial.</em>
         </div>
-        <!--Profil-->
+
+        <ul class="list-group list-group-flush text-center">
+            <li class="list-group-item font-weight-bold text-uppercase">Nom Prénom</li>
+            <li class="list-group-item">
+                {{ app.user.company.commercial.firstname|default('-') }} {{ app.user.company.commercial.lastname|default('') }}
+            </li>
+            <li class="list-group-item font-weight-bold text-uppercase">Contact</li>        
+            <li class="list-group-item">
+                <a href="mailto:{{ app.user.company.commercial.email|default('-') }}">
+                {{ app.user.company.commercial.email|default('-') }}
+                </a>
+            </li>
+        </ul>
+    <!--Profil-->
+    
+    </div>
+    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+    
         <!--Documents-->
-        <div class="card text-center ynova-profil-doc">
+        <div class="card text-center">
             <h5 class="h2 card-title font-weight-bold pt-1 text-success">Mon espace documents</h5>
             <em class="card-text p-3">Bonjour {{ user.firstname }}, <br> ici vous pourrez transmettre, consulter et télécharger vos fichiers relatifs à vos échanges auprès de votre commercial attitré.</em>
             <div class="card-body">
@@ -125,9 +133,9 @@
             </div>
         </div>
         <!--Documents-->
-</section>
-<section class="container-fluid m-3 ">    
-        
-</section>
-
+    
+    </div>
+    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
+    </div>
+</div>
 {% endblock %}
