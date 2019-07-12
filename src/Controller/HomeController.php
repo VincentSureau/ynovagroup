@@ -2,19 +2,24 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Repository\PostRepository;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class HomeController extends AbstractController
 {
     /**
      * @Route("/", name="home")
      */
-    public function index()
+    public function index(PostRepository $repo)
     {
-        dump($this->getUser());
+        $articles = $repo->findHomeArticles();
+
+        dump($articles);
+
         return $this->render('home/home.html.twig', [
             'current' => 'home',
+            'article' => $articles
         ]);
     }
 
