@@ -2,9 +2,10 @@
 
 namespace App\Repository;
 
+use App\Entity\User;
 use App\Entity\Files;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 /**
  * @method Files|null find($id, $lockMode = null, $lockVersion = null)
@@ -47,4 +48,18 @@ class FilesRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function findUserActiveDocuments(User $user): ?array
+    {
+        return $this->createQueryBuilder('f')
+            ->andWhere(':user MEMBER OF f.pharmacies')
+            ->setParameter('user', $user)
+            ->andWhere('f.isActive = true')
+            ->andWhere('f.deletedAt >= CURRENT_TIMESTAMP()')
+            ->orWhere('f.deletedAt IS NULL')
+            ->orderBy('f.id', 'ASC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 }
