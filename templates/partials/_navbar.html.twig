@@ -32,9 +32,6 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#contact">Contact</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ path('partenaires') }}">Partenaires</a>
-                    </li>
                 {% else %}
                     <li class="nav-item">
                         <a class="nav-link" href="{{ path('home') }}">Accueil</a>
@@ -54,10 +51,10 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ path('home') }}#contact">Contact</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ path('partenaires') }}">Partenaires</a>
-                    </li>
                 {% endif %}
+                    <li class="nav-item">
+                        <a class="nav-link {{ current == 'partenaires'? 'active'}}" href="{{ path('partenaires') }}">Partenaires</a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link {{ current == 'blog'? 'active'}}" href="{{ path('blog') }}">Actualités</a>
                     </li>
