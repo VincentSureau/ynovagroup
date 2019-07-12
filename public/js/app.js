@@ -3,13 +3,14 @@
     //     let popup = document.getElementById('popup');
     //     popup.style.display = "block";
     // });
-    $(window).on('load',function(){
-        $('#myModal').modal('show');
-    });
 
-    $(window).on('click', function(){
-        $('#myModal').modal('hide');
-    });
+    // $(window).on('load',function(){
+    //     $('#myModal').modal('show');
+    // });
+
+    // $(window).on('click', function(){
+    //     $('#myModal').modal('hide');
+    // });
    
 
 // SCROLL TO the TOP BUTTON
@@ -41,28 +42,34 @@
 
 
 // PARALLAX IMAGE ON HOMEPAGE
-    function parallax() {
-        var $slider = document.getElementById("parallax");
-        var yPos = window.pageYOffset / $slider.dataset.speed;
-        yPos = -yPos;
-        var coords = '0% '+ yPos + 'px';
-        $slider.style.backgroundPosition = coords;
+    // function parallax() {
+    //     var $slider = document.getElementById("parallax");
+    //     var yPos = window.pageYOffset / $slider.dataset.speed;
+    //     yPos = -yPos;
+    //     var coords = '0% '+ yPos + 'px';
+    //     $slider.style.backgroundPosition = coords;
+    // }
+    // window.addEventListener("scroll", function(){
+    //     parallax();	
+    // });
+
+    const ratio = .1;
+    const options = {
+        root: null,
+        rootMargin: `0px`,
+        threshold: ratio
     }
-    window.addEventListener("scroll", function(){
-        parallax();	
-    });
-
-
-// SCROLL CALC
-// function amountscrolled(){
-//     var winheight = $(window).height()
-//     var docheight = $(document).height()
-//     var scrollTop = $(window).scrollTop()
-//     var trackLength = docheight - winheight
-//     var pctScrolled = Math.floor(scrollTop/trackLength * 100) // gets percentage scrolled (ie: 80 NaN if tracklength == 0)
-//     console.log(pctScrolled + '% scrolled')
-// }
- 
-// $(window).on("scroll", function(){
-//     amountscrolled();
-// })
+    
+    const handleIntersect = function (entries, observer) {
+        entries.forEach(function (entry) {
+        if (entry.intersectionRatio > ratio) {
+            entry.target.classList.add('reveal-visible')
+            observer.unobserve(entry.target)
+            }
+        })
+    }
+    
+    const observer = new IntersectionObserver(handleIntersect, options)
+    document.querySelectorAll('[class*="reveal-"]').forEach(function (r) {
+        observer.observe(r)
+    })
