@@ -4,18 +4,18 @@
 
 {% block body %}
 
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima veritatis sit quisquam quidem commodi nisi velit aperiam magni ad cum optio totam dolorum fugit ea quaerat iste sapiente asperiores maiores, natus nemo voluptatibus! Rem, suscipit repellendus. Quia, esse dolores. Dolorem officiis repellendus a repellat atque ab libero, hic impedit dicta.
+<em class="">Bienvenue sur votre espace personnel !<br>Retrouvez ici les informations de votre pharmacie</em>
 <div class="container-fluid text-center bg-white">
 <!--Backoffice général-->
     <ul class="nav nav-tabs" id="myTab" role="tablist">
     <li class="nav-item">
-        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Mon profil</a>
+        <a class="nav-link active text-success" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Mon profil</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" id="document-tab" data-toggle="tab" href="#document" role="tab" aria-controls="document" aria-selected="false">Documents</a>
+        <a class="nav-link text-success" id="document-tab" data-toggle="tab" href="#document" role="tab" aria-controls="document" aria-selected="false">Documents</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Contact</a>
+        <a class="nav-link text-success" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Contact</a>
     </li>
     </ul>
     <div class="tab-content" id="myTabContent">
@@ -23,7 +23,7 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima veritatis sit qu
     
     <!--Profil-->
         <h5 class="h2 font-weight-bold text-success">Mon espace</h5>
-        <em class="">Bienvenue sur votre espace personnel !<br>Retrouvez ici les informations de votre pharmacie</em>
+        {# <em class="">Bienvenue sur votre espace personnel !<br>Retrouvez ici les informations de votre pharmacie</em> #}
         <div>
             {% if company is defined and company.picture is not null %}
                 <img class="img-fluid" src="{{ vich_uploader_asset(company, 'pictureFile') }}" alt="{{ company.name|default('photo de la pharmacie') }}" />
