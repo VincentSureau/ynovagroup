@@ -15,8 +15,6 @@ class HomeController extends AbstractController
     {
         $articles = $repo->findHomeArticles();
 
-        dump($articles);
-
         return $this->render('home/home.html.twig', [
             'current' => 'home',
             'article' => $articles
