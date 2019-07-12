@@ -148,7 +148,7 @@ function init() {
                 { data: 'name' },
                 { data: 'description' },
                 {
-                    data: 'isActive',
+                    data: 'is_active',
                     render: function (data) {
                         return (data == "true" || data == true) ? 'oui' : 'non'
                     }
@@ -269,7 +269,7 @@ function init() {
                 },
                 { data: 'email' },
                 {
-                    data: 'isActive',
+                    data: 'is_active',
                     render: function (data) {
                         return (data == "true" || data == true) ? 'oui' : 'non'
                     }
@@ -302,7 +302,7 @@ function init() {
                 { data: 'lastname' },
                 { data: 'email' },
                 {
-                    data: 'isActive',
+                    data: 'is_active',
                     render: function (data) {
                         return (data == "true" || data == true) ? 'oui' : 'non'
                     }

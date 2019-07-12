@@ -75,7 +75,7 @@ class FilesType extends AbstractType
                 'multiple' => true,
                 'attr' => ['class' => 'select2 d-none'],
                 'choice_attr' => function($choice, $key, $value) use ($file) {
-                    if($file->getReadBy()->contains($choice)) {
+                    if($file->getReadBy()->contains($choice->getUser())) {
                         return ['data-read' => 'true'];
                     };
                     return ['data-read' => 'false'];

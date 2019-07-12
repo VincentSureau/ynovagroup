@@ -108,7 +108,7 @@
                         <td>{{ document.updatedAt|date('d/m/y')|default('-') }}</td>
                         <td>{{ document.deletedAt is empty? "-" : document.deletedAt|date('d/m/y') }}</td>
                         <td>
-                            <a href="http://127.0.0.1:8000{{ vich_uploader_asset(document, 'documentFile') }}">
+                            <a href="http://127.0.0.1:8000{{ vich_uploader_asset(document, 'documentFile') }}" ping="{{ path('read_document', { 'id' : document.id }) }}" target="_blank">
                                 <i class="fas fa-file-upload fa-lg"></i>
                             </a>
                         </td>
