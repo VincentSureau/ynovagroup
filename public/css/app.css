@@ -144,7 +144,7 @@ li {
     font-size: 1em;
 }
 
-/* Couleurs de fond */
+/* Couleurs de fond
 #about {
   background-color: var(--green);
 }
@@ -155,11 +155,11 @@ li {
 
 #difference {
   background-color: var(--green);
-}
-
+} */
+/* 
 .titre-difference {
   color: white;
-}
+} */
 
 /* Nos valeurs */
 
@@ -353,6 +353,12 @@ td > a > i {
 
 td > a > i:hover {
     color: black;
+}
+
+.separator {
+    border: 0; 
+    height: 3px; 
+    background-image: -moz-linear-gradient(left, var(--bamboo), var(--green), var(--bamboo));
 }
 
 /*Page RGPD*/
