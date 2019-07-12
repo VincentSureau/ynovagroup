@@ -24,35 +24,29 @@
             <section id="actu" class="container-fluid p-0 text-center py-3">
                 <!-- Section heading -->
                 <h2 class="titre h1-responsive font-weight-bold my-5">Actualités</h2>
-                <div class="wrapper-carousel-fix">
-                    <!-- Carousel Wrapper -->
-                    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                    <ol class="carousel-indicators">
-                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                    </ol>
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                        <img class="d-block w-100" src="..." alt="First slide">
-                        </div>
-                        <div class="carousel-item">
-                        <img class="d-block w-100" src="..." alt="Second slide">
-                        </div>
-                        <div class="carousel-item">
-                        <img class="d-block w-100" src="..." alt="Third slide">
-                        </div>
-                    </div>
-                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
-                    </a>
+                {# <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        {% for post in articles %}
+                <div class="card mb-3 bg-white">
+                    {% if post.picture is not null %}
+                        <img class="card-img-top" style="max-height: 400px" src="{{ vich_uploader_asset(post, 'pictureFile') }}" alt="{{ post.title|default('illustration de l\'article') }}" />
+                    {% endif %}
+                    <div class="card-body">
+                        <h3 class="card-title">{{post.title}}</h3>
+                        <p class="card-text">{{ post.content|raw }}</p>
+                        <p class="card-text"><small class="text-muted">Posté le {{post.createdAt|date("d/m/y")}} par 
+                        <cite title="auteur">
+                            {{ attribute(post.author, '__toString') is defined ? post.author.__toString : post.rssfeedname|default('-') }}
+                        </cite></small></p>
                     </div>
                 </div>
+                {% endfor %}
+                    </div>
+                </div>
+                </div> #}
+
+
             <hr class="separator">
             </section>
             <!-- Citation Section -->
@@ -70,7 +64,7 @@
                             <div class="testimonial">
                                 <!--Content-->
                                 <p class="m-5 font-weight-lighter font-italic">
-                                <i class="fas fa-quote-left"></i>Ynovagroup est un groupement créé par des pharmaciens de votre région qui connaissent vos problématiques et les rencrontrent tous les jours.
+                                <i class="fas fa-quote-left"></i>Ynovagroup est un groupement créé par des pharmaciens de votre région qui connaissent vos problématiques et les rencontrent tous les jours.
                                 </p>
                                 <p class="m-5 font-weight-lighter font-italic">
                                 Nous sommes composés d'une équipe pluridisciplinaire de pharmaciens et de professionnels du secteur pharmaceutique.
