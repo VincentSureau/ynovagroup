@@ -43,7 +43,7 @@ class Files
     private $documentFile;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="text", nullable=true)
      * @Groups({"file", "fileWrite"})
      */
     private $description;

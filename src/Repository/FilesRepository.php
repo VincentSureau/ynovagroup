@@ -55,9 +55,8 @@ class FilesRepository extends ServiceEntityRepository
             ->andWhere(':company MEMBER OF f.pharmacies')
             ->setParameter('company', $user->getCompany())
             ->andWhere('f.isActive = true')
-            ->andWhere('f.deletedAt >= CURRENT_TIMESTAMP()')
-            ->orWhere('f.deletedAt IS NULL')
-            ->orderBy('f.createdAt', 'ASC')
+            ->andWhere('f.deletedAt >= CURRENT_TIMESTAMP() or f.deletedAt IS NULL')
+            ->orderBy('f.id', 'ASC')
             ->getQuery()
             ->getResult()
         ;

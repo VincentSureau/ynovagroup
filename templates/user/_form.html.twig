@@ -1,0 +1,11 @@
+{{ form_start(form) }}
+    {{ form_errors(form) }}
+
+    {{ form_row(form.name) }}
+    {{ form_row(form.documentFile) }}
+    <small><strong>Formats autorisés :</strong> zip, pdf, doc, docx, jpg, xls, ppt, pptx</small>
+
+    <div class="text-right">
+        <button class="btn btn-success">{{ button_label|default('Envoyer') }} <i class="fas fa-file-upload"></i></button>
+    </div>
+{{ form_end(form) }}

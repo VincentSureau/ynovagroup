@@ -73,7 +73,7 @@
             <em class=" py-5">Bonjour {{ user.firstname }}, <br> ici vous pourrez transmettre, consulter et télécharger vos fichiers relatifs à vos échanges auprès de votre commercial attitré.</em>
             <div class="card-body">
                 <h5 class="h2 font-weight-bold mt-2 text-success">Transmettre un document à mon commercial</h5>
-                <form action="" class="mt-5">
+                {# <form action="" class="mt-5">
                     <div class="form-group">
                         <div class="form-group">
                         <label for="exampleFormControlFile1" class="">
@@ -86,7 +86,8 @@
                             <i class="fas fa-file-upload"></i>
                         </button> 
                         </div>
-                </form>
+                </form> #}
+                {{ include('/user/_form.html.twig') }}
             </div>
             <div class="card-body">
                 <h5 class="h2 font-weight-bold mt-1 text-success">Consulter mes derniers documents</h5>  

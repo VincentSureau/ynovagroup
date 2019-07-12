@@ -46,7 +46,7 @@ class PostRepository extends ServiceEntityRepository
             ->setParameter('isActive', true)
             ->andWhere('p.visibility = :visibility')
             ->setParameter('visibility', 'public')
-            ->andWhere('p.author  IS NOT NULL')
+            ->andWhere('p.author IS NOT NULL')
             ->orderBy('p.createdAt', 'DESC')
             ->setMaxResults(5)
             ->getQuery()
