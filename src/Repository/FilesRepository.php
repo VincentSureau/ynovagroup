@@ -52,12 +52,12 @@ class FilesRepository extends ServiceEntityRepository
     public function findUserActiveDocuments(User $user): ?array
     {
         return $this->createQueryBuilder('f')
-            ->andWhere(':user MEMBER OF f.pharmacies')
-            ->setParameter('user', $user)
+            ->andWhere(':company MEMBER OF f.pharmacies')
+            ->setParameter('company', $user->getCompany())
             ->andWhere('f.isActive = true')
             ->andWhere('f.deletedAt >= CURRENT_TIMESTAMP()')
             ->orWhere('f.deletedAt IS NULL')
-            ->orderBy('f.id', 'ASC')
+            ->orderBy('f.createdAt', 'ASC')
             ->getQuery()
             ->getResult()
         ;

@@ -19,8 +19,6 @@ class UserController extends AbstractController
 
         $documents = $repo->findUserActiveDocuments($user);
 
-        dump($documents);
-
         return $this->render('user/profil.html.twig', [
             'user' => $user,
             'documents' => $documents,

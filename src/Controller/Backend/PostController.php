@@ -64,7 +64,6 @@ class PostController extends AbstractController
             $post
                 ->setCreatedAt(new \Datetime)
                 ->setUpdatedAt(new \Datetime);
-            dump($post);
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('backend_post_index', [
