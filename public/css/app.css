@@ -361,12 +361,15 @@ td > a > i:hover {
 }
 
 .separator {
-    border: 0; 
+    /* border: 0; 
     height: 3px; 
-    background-image: -moz-linear-gradient(left, var(--bamboo), var(--green), var(--bamboo));
-    background-image: -webkit-linear-gradient(left, var(--bamboo), var(--green), var(--bamboo));
-    background-image: -ms-linear-gradient(left, var(--bamboo), var(--green), var(--bamboo));
-    background-image: -o-linear-gradient(left, var(--bamboo), var(--green), var(--bamboo));
+    color: var(--green); */
+
+    /* border: none;
+    color: #28A645;
+
+    height: 5px; */
+    border: 1px solid #28A645;
 }
 
 /*Page RGPD*/
