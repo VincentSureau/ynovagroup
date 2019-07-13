@@ -229,6 +229,11 @@ button.form-btn:hover {
     border-color: #28A645;
 }
 
+/*Sticky Slim Footer*/
+.sticky-slim-footer {
+    background-color: var(--green);
+    color: white;
+}
 
 /* Footer Section */
 .footer {
@@ -356,9 +361,15 @@ td > a > i:hover {
 }
 
 .separator {
-    border: 0; 
+    /* border: 0; 
     height: 3px; 
-    background-image: -moz-linear-gradient(left, var(--bamboo), var(--green), var(--bamboo));
+    color: var(--green); */
+
+    /* border: none;
+    color: #28A645;
+
+    height: 5px; */
+    border: 1px solid #28A645;
 }
 
 /*Page RGPD*/
