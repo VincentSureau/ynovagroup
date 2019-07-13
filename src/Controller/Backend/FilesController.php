@@ -30,6 +30,7 @@ class FilesController extends AbstractController
     public function new(Request $request): Response
     {
         $file = new Files();
+        $file->setDeletedAt(new \DateTime('+ 4 months'));
         $form = $this->createForm(FilesType::class, $file);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
