@@ -65,7 +65,12 @@
         if (entry.intersectionRatio > ratio) {
             entry.target.classList.add('reveal-visible')
             observer.unobserve(entry.target)
-            }
+        }
+        else if (entry.intersectionRatio < ratio) {
+            // entry.target.classList.remove('reveal-visible')
+            // observer.unobserve(entry.target)
+            console.log(" intersection ration inférieur à ratio ");
+        }
         })
     }
     
@@ -73,3 +78,13 @@
     document.querySelectorAll('[class*="reveal-"]').forEach(function (r) {
         observer.observe(r)
     })
+
+    observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.intersectionRatio > 0) {
+            console.log('in the view');
+          } else {
+            console.log('out of view');
+          }
+        });
+      });
