@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Repository\PostRepository;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Core\Security;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
@@ -13,15 +14,24 @@ class BlogController extends AbstractController
     /**
      * @Route("/actualites", name="blog")
      */
-    public function index(PostRepository $postRepository, PaginatorInterface $paginator, Request $request)
+    public function index(PostRepository $postRepository, PaginatorInterface $paginator, Request $request, Security $security)
     {
-        $query = $postRepository->findBy(
-            [
-                'isActive' => true,
-                'visibility' => 'public'
-            ],
-            ['createdAt' => 'DESC', 'updatedAt' => 'DESC']
-        );
+        if ($security->isGranted('ROLE_MEMBER')) {
+            $query = $postRepository->findBy(
+                [
+                    'isActive' => true,
+                ],
+                ['createdAt' => 'DESC', 'updatedAt' => 'DESC']
+            );
+        } else {
+            $query = $postRepository->findBy(
+                [
+                    'isActive' => true,
+                    'visibility' => 'public'
+                ],
+                ['createdAt' => 'DESC', 'updatedAt' => 'DESC']
+            );
+        }
 
         $pagination = $paginator->paginate(
             $query, /* query NOT result */
