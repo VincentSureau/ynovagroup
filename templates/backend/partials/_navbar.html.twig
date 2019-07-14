@@ -39,22 +39,28 @@
                         </a>
                     </li>
                     {% if is_granted('ROLE_ADMIN')%}
-                    <li class="nav-item  text-center d-lg-none">
+                    <li class="nav-item text-center d-lg-none">
                         <a class="nav-link" href="{{ path('post_index') }}">
                             <i class="far fa-newspaper"></i>
                             Articles
                         </a>
                     </li>
-                    <li class="nav-item  text-center d-lg-none">
+                    <li class="nav-item text-center d-lg-none">
                         <a class="nav-link" href="{{ path('theme_index') }}">
                             <i class="fas fa-birthday-cake"></i>
                             Thèmes
                         </a>
                     </li>
-                    <li class="nav-item  text-center d-lg-none">
+                    <li class="nav-item text-center d-lg-none">
                         <a class="nav-link" href="{{ path('backend_rss_index') }}">
                             <i class="fas fa-rss"></i>                            
                             RSS
+                        </a>
+                    </li>
+                    <li class="nav-item text-center d-lg-none">
+                        <a class="nav-link" href="{{ path('backend_partner_index') }}">
+                            <i class="far fa-handshake"></i>                          
+                            Partenaires
                         </a>
                     </li>
                     {% endif %}

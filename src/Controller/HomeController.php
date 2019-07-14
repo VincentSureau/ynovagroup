@@ -22,16 +22,6 @@ class HomeController extends AbstractController
     }
 
     /**
-     * @Route("/partenaires", name="partenaires")
-     */
-    public function partenaires()
-    {
-        return $this->render('home/partenaires.html.twig', [
-            'current' => 'partenaires'
-        ]);
-    }
-
-    /**
      * @Route("/rgpd", name="rgpd")
      */
     public function rgpd()

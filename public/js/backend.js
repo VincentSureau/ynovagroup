@@ -176,6 +176,55 @@ function init() {
         })
     }
 
+    if (document.querySelector('#partnerTable')) {
+        var table = $('#partnerTable').DataTable({
+            order: [[0, "desc"]],
+            language: {
+                url: '/json/fr_FR.json'
+            },
+            ajax: {
+                url: '/api/partners',
+                dataSrc: ''
+            },
+            columns: [
+                {
+                    data: 'id',
+                    render: {
+                        "_" : function(data){
+                            return data
+                        },
+                        display : function (data, index, row) {
+                            var button = `
+                            <a href="/backend/partenaires/${data}" class="btn btn-success btn-sm edit-modal">
+                                <i class="fas fa-edit"></i>
+                            </a>`
+                            return button
+
+                        }
+                    }
+                },
+                { data: 'name' },
+                { data: 'image' },
+                {
+                    data: 'link',
+                    render: function (data, index, row) {
+                        if (data != null) {
+                            return '<a href="' + data + '" target="_blank">'+ data +'</a>' || '-'
+                        } else {
+                            return '-'
+                        }
+                    }
+                },
+                {
+                    data: 'is_active',
+                    render: function (data) {
+                        return (data == "true" || data == true) ? 'oui' : 'non'
+                    }
+                },
+            ]
+        })
+    }
+
     if (document.querySelector('#postTable')) {
         var table = $('#postTable').DataTable({
             order: [[0, "desc"]],
