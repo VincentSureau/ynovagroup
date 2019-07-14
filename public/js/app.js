@@ -79,7 +79,8 @@
         observer.observe(r)
     })
 
-    observer = new IntersectionObserver(entries => {
+    // Sarrah, j'ai mis observer2 var pas de réassignation possible d'une variable à une const donc erreur js
+    const observer2 = new IntersectionObserver(entries => {
         entries.forEach(entry => {
           if (entry.intersectionRatio > 0) {
             console.log('in the view');
@@ -88,3 +89,5 @@
           }
         });
       });
+
+    $('.carousel').carousel()

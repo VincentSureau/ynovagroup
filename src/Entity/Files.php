@@ -134,7 +134,7 @@ class Files
         return $this->document;
     }
 
-    public function setDocument(string $document): self
+    public function setDocument(?string $document): self
     {
         $this->document = $document;
 
