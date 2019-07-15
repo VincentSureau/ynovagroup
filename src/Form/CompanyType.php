@@ -33,16 +33,19 @@ class CompanyType extends AbstractType
                 'label' => 'Nom de la pharmacie'
             ])
             ->add('contractType', TextType::class, [
-                'label' => 'Type de contrat'
+                'label' => 'Type de contrat',
+                'required' => false
             ])
             ->add('cip', TextType::class, [
-                'label' => 'Code CIP de la pharmacie'
+                'label' => 'Code CIP de la pharmacie',
+                'required' => false
             ])
             ->add('firstAdressField', TextType::class, [
                 'label' => 'Adresse'
             ])
             ->add('secondAdressField', TextType::class, [
-                'label' => 'Complément d\'adresse'
+                'label' => 'Complément d\'adresse',
+                'required' => false
             ])
             ->add('postalCode', TextType::class, [
                 'label' => 'Code postal'
@@ -51,7 +54,8 @@ class CompanyType extends AbstractType
                 'label' => 'Ville'
             ])
             ->add('country', TextType::class, [
-                'label' => 'Pays'
+                'label' => 'Pays',
+                'required' => false
             ])
             ->add('phone', TelType::class, [
                 'label' => 'Numéro de téléphone de la pharmacie',
@@ -69,18 +73,18 @@ class CompanyType extends AbstractType
                 ],
                 'placeholder' => false,
             ])
-            ->add('user', EntityType::class, [
-                'label' => 'Gestionnaire',
-                'class' => User::class,
-                'query_builder' => function (UserRepository $er) {
-                    return $er
-                        ->createQueryBuilder('u')
-                        ->andWhere('u.roles LIKE :role')
-                        ->setParameter('role', '%"ROLE_MEMBER"%')
-                    ;
-                },
-                'required' => false
-            ])
+            // ->add('user', EntityType::class, [
+            //     'label' => 'Gestionnaire',
+            //     'class' => User::class,
+            //     'query_builder' => function (UserRepository $er) {
+            //         return $er
+            //             ->createQueryBuilder('u')
+            //             ->andWhere('u.roles LIKE :role')
+            //             ->setParameter('role', '%"ROLE_MEMBER"%')
+            //         ;
+            //     },
+            //     'required' => false
+            // ])
             ->add('commercial', EntityType::class, [
                 'label' => 'Commercial',
                 'class' => User::class,

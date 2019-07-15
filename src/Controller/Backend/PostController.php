@@ -42,6 +42,8 @@ class PostController extends AbstractController
             $entityManager->persist($post);
             $entityManager->flush();
 
+            $this->addFlash('success', 'L\'article ' . $post . ' a bien été ajouté');
+
             return $this->redirectToRoute('backend_post_index', []);
         }
 
@@ -53,7 +55,7 @@ class PostController extends AbstractController
     }
     
     /**
-     * @Route("/{id}", name="edit", methods={"GET","POST"})
+     * @Route("/{id}", requirements={"id"="\d+"}), name="edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Post $post): Response
     {
@@ -66,6 +68,8 @@ class PostController extends AbstractController
                 ->setUpdatedAt(new \Datetime);
             $this->getDoctrine()->getManager()->flush();
 
+            $this->addFlash('success', 'L\'article ' . $post . ' a bien été mis à jour');
+
             return $this->redirectToRoute('backend_post_index', [
                 'id' => $post->getId(),
             ]);
@@ -75,5 +79,21 @@ class PostController extends AbstractController
             'post' => $post,
             'form' => $form->createView(),
         ]);
+    }
+
+    /**
+     * @Route("/{id}", requirements={"id"="\d+"}), name="delete", methods={"DELETE"})
+     */
+    public function delete(Request $request, Post $post): Response
+    {
+        if ($this->isCsrfTokenValid('delete'.$post->getId(), $request->request->get('_token'))) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->remove($post);
+            $entityManager->flush();
+
+            $this->addFlash('success', 'L\'article ' . $post . ' a bien été supprimé');
+        }
+
+        return $this->redirectToRoute('backend_post_index');
     }
 }

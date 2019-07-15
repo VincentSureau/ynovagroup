@@ -39,6 +39,8 @@ class RssController extends AbstractController
             $entityManager->persist($rss);
             $entityManager->flush();
 
+            $this->addFlash('success', 'le flux RSS ' . $rss . ' a bien été ajouté');
+
             return $this->redirectToRoute('rss_index');
         }
 
@@ -49,16 +51,16 @@ class RssController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/toggle", name="rss_toggle_active", methods={"GET","POST"})
+     * @Route("/{id}/toggle", requirements={"id"="\d+"}, name="rss_toggle_active", methods={"GET","POST"})
      */
     public function toggle(Rss $rss, RssRepository $repo): Response
     {
         if($rss->getIsActive() == false) {
             $rss->setIsActive(true);
-            $this->addFlash('success', 'le flux RSS ' . $rss->getName() . ' a bien été activé');
+            $this->addFlash('success', 'le flux RSS ' . $rss . ' a bien été activé');
         } else {            
             $rss->setIsActive(false);
-            $this->addFlash('info', 'le flux RSS ' . $rss->getName() . ' a bien été désactivé');
+            $this->addFlash('info', 'le flux RSS ' . $rss . ' a bien été désactivé');
         }
 
         $this->getDoctrine()->getManager()->flush();
@@ -67,7 +69,7 @@ class RssController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="rss_edit", methods={"GET","POST"})
+     * @Route("/{id}", requirements={"id"="\d+"}, name="rss_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Rss $rss): Response
     {
@@ -76,6 +78,8 @@ class RssController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
+
+            $this->addFlash('success', 'le flux RSS ' . $rss . ' a bien été mis à jour');
 
             return $this->redirectToRoute('rss_index', [
                 'id' => $rss->getId(),
@@ -89,7 +93,7 @@ class RssController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="rss_delete", methods={"DELETE"})
+     * @Route("/{id}", requirements={"id"="\d+"}, name="rss_delete", methods={"DELETE"})
      */
     public function delete(Request $request, Rss $rss): Response
     {
@@ -97,6 +101,8 @@ class RssController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($rss);
             $entityManager->flush();
+
+            $this->addFlash('success', 'le flux RSS ' . $rss . ' a bien été supprimé');
         }
 
         return $this->redirectToRoute('rss_index');

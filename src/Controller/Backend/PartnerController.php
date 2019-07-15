@@ -11,7 +11,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/backend/partenaires", name="partner_")
+ * @Route("/partenaires", name="partner_")
  */
 class PartnerController extends AbstractController
 {
@@ -42,7 +42,7 @@ class PartnerController extends AbstractController
             $entityManager->persist($partner);
             $entityManager->flush();
 
-            $this->addFlash('success', 'Le partenaire ' . $partner->getName() . ' a bien été ajouté');
+            $this->addFlash('success', 'Le partenaire ' . $partner . ' a bien été ajouté');
 
             return $this->redirectToRoute('backend_partner_index', []);
         }
@@ -55,7 +55,7 @@ class PartnerController extends AbstractController
     }
     
     /**
-     * @Route("/{id}", name="edit", methods={"GET","POST"})
+     * @Route("/{id}", name="edit", methods={"GET","POST"}, requirements={"id"="\d+"})
      */
     public function edit(Request $request, Partner $partner): Response
     {
@@ -65,7 +65,7 @@ class PartnerController extends AbstractController
 
             $this->getDoctrine()->getManager()->flush();
 
-            $this->addFlash('success', 'Le partenaire ' . $partner->getName() . ' a bien été modifié');
+            $this->addFlash('success', 'Le partenaire ' . $partner . ' a bien été modifié');
 
             return $this->redirectToRoute('backend_partner_index', [
                 'id' => $partner->getId(),
@@ -76,5 +76,21 @@ class PartnerController extends AbstractController
             'partner' => $partner,
             'form' => $form->createView(),
         ]);
+    }
+
+    /**
+     * @Route("/{id}", name="delete", methods={"DELETE"}, requirements={"id"="\d+"})
+     */
+    public function delete(Request $request, Partner $partner): Response
+    {
+        if ($this->isCsrfTokenValid('delete'.$partner->getId(), $request->request->get('_token'))) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->remove($partner);
+            $entityManager->flush();
+
+            $this->addFlash('success', 'Le partenaire ' . $partner . ' a bien été supprimé');
+        }
+
+        return $this->redirectToRoute('backend_partner_index');
     }
 }

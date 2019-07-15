@@ -112,6 +112,7 @@ class Company
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="managedCompanies")
+     * @ORM\JoinColumn(nullable=true, onDelete="SET NULL")
      * @Groups({"company", "companyWrite"})
      */
     private $commercial;
@@ -298,7 +299,7 @@ class Company
         return $this->user;
     }
 
-    public function setUser(User $user): self
+    public function setUser(?User $user): self
     {
         $this->user = $user;
 

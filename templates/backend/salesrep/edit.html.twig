@@ -6,6 +6,7 @@
     <h1>Modification d'un commercial</h1>
     <div class="card p-4">
         {{ include('backend/partials/_flash.html.twig') }}
+        {{ include('backend/salesrep/_delete_form.html.twig') }}
         {{ include('backend/user/_form.html.twig', {'button_label': 'Enregistrer'}) }}
     </div>
     <a class="link-green" href="{{ path('backend_user_index') }}">Retour à la liste des commerciaux</a>

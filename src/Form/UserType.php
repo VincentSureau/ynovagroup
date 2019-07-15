@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\User;
 use App\Entity\Company;
+use App\Repository\CompanyRepository;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -26,7 +27,6 @@ class UserType extends AbstractType
             ->add('email', EmailType::class, [
                 'label' => 'Email'
             ])
-            // ->add('roles')
             ->add('isActive', ChoiceType::class, [
                 'label' => 'Actif',
                 'choices' => [
@@ -35,18 +35,20 @@ class UserType extends AbstractType
                 ],
                 'placeholder' => false,
             ])
-            // ->add('files')
-            // ->add('password')
-            // ->add('slug')
-            // ->add('createdAt')
-            // ->add('updatedAt')
             ->add('company', EntityType::class, [
                 'label' => 'Pharmacie',
                 'class' => Company::class,
+                'query_builder' => function (CompanyRepository $er) {
+                    return $er
+                        ->createQueryBuilder('c')
+                        ->leftJoin('c.user', 'u')
+                        ->andWhere('u.id IS NULL')
+                    ;
+                },
+                'required' => false
             ])
         ;
     }
-
 
     public function configureOptions(OptionsResolver $resolver)
     {

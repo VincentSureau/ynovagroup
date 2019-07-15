@@ -88,13 +88,14 @@ class User implements UserInterface
 
     /**
      * @ORM\OneToOne(targetEntity="App\Entity\Company", inversedBy="user", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(nullable=true)
+     * @ORM\JoinColumn(onDelete="cascade")
      * @Groups({"user", "userWrite"})
      */
     private $company;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Company", mappedBy="commercial")
+     * @ORM\JoinColumn(nullable=true, onDelete="SET NULL")
      */
     private $managedCompanies;
 

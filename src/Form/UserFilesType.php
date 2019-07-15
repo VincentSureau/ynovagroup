@@ -54,27 +54,6 @@ class UserFilesType extends AbstractType
                 ]
                 
             ])
-            // ->add('description',  TextareaType::class, [
-            //     'label' => 'Description',
-            //     'required' => false
-            // ])
-            // ->add('isActive', ChoiceType::class, [
-            //     'choices' => [
-            //         'Oui' => true,
-            //         'Non' => false
-            //     ],
-            //     'placeholder' => false,
-            // ])
-            // ->add('deletedAt', DateType::class, [
-            //     'label' => 'Disponible jusqu\'au',
-            //     'widget' => 'single_text',
-            //     'required' => false,
-            // ])
-            // ->add('selectAll', CheckboxType::Class, [
-            //     'label' => 'Envoyer à toutes les pharmacies',
-            //     'mapped' => false,
-            //     'required' => false
-            // ])
         ;        
     }
 

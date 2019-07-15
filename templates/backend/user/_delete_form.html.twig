@@ -1,5 +1,7 @@
-<form method="post" action="{{ path('backend_user_delete', {'id': user.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+<form method="post" action="{{ path('backend_user_delete', {'id': user.id}) }}" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur? \nAttention, pensez à créer un autre utilisateur pour cette pharmacie pour lui permettre de continuer à accéder à son espace adhérent');">
     <input type="hidden" name="_method" value="DELETE">
     <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ user.id) }}">
-    <button class="btn">Supprimer</button>
+    <p class="text-right">
+        <button class="btn btn-danger"><i class="fas fa-trash-alt"></i> Supprimer</button>
+    </p>
 </form>

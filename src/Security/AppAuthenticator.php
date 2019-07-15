@@ -27,13 +27,15 @@ class AppAuthenticator extends AbstractFormLoginAuthenticator
     private $urlGenerator;
     private $csrfTokenManager;
     private $passwordEncoder;
+    private $security;
 
-    public function __construct(EntityManagerInterface $entityManager, UrlGeneratorInterface $urlGenerator, CsrfTokenManagerInterface $csrfTokenManager, UserPasswordEncoderInterface $passwordEncoder)
+    public function __construct(EntityManagerInterface $entityManager, UrlGeneratorInterface $urlGenerator, CsrfTokenManagerInterface $csrfTokenManager, UserPasswordEncoderInterface $passwordEncoder, Security $security)
     {
         $this->entityManager = $entityManager;
         $this->urlGenerator = $urlGenerator;
         $this->csrfTokenManager = $csrfTokenManager;
         $this->passwordEncoder = $passwordEncoder;
+        $this->security = $security;
     }
 
     public function supports(Request $request)
@@ -83,8 +85,11 @@ class AppAuthenticator extends AbstractFormLoginAuthenticator
     {
         if ($targetPath = $this->getTargetPath($request->getSession(), $providerKey)) {
             return new RedirectResponse($targetPath);
+        } else if ($this->security->isGranted('ROLE_BUSINESS')) {
+            return new RedirectResponse($this->urlGenerator->generate('backend_company_index'));
+        } else if ($this->security->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
+            return new RedirectResponse($this->urlGenerator->generate('profil'));
         }
-
         return new RedirectResponse($this->urlGenerator->generate('home'));
     }
 

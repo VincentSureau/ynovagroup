@@ -6,6 +6,7 @@
     <h1>Modification d'un partenaire</h1>
     <div class="card p-4">
     {{ include('backend/partials/_flash.html.twig') }}
+    {{ include('backend/partner/_delete_form.html.twig') }}
     {% if partner.image is not null %}
         <img class="card-img-top" style="max-height: 400px" src="{{ vich_uploader_asset(partner, 'imageFile') }}" alt="{{ partner.name|default('illustration du partenaire') }}" />
     {% else %}
@@ -19,6 +20,4 @@
         {{ include('backend/partner/_form.html.twig', {'button_label': 'Enregistrer'}) }}
     </div>
     <a class="link-green" href="{{ path('backend_partner_index') }}">Retour à la liste des partenaires</a>
-
-    {# {{ include('backend/partner/_delete_form.html.twig') }} #}
 {% endblock %}

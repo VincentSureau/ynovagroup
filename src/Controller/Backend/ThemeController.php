@@ -25,7 +25,7 @@ class ThemeController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="theme_new", methods={"GET","POST"})
+     * @Route("/ajouter-un-theme", name="theme_new", methods={"GET","POST"})
      */
     public function new(Request $request, ThemeRepository $repo): Response
     {
@@ -45,7 +45,9 @@ class ThemeController extends AbstractController
                     $theme->setIsActive(false);
                 }
                 
-                $this->addFlash('success', 'le thème du site a bien été modifié');
+                $this->addFlash('success', 'le thème ' . $theme . ' a bien été ajouté et est désormais actif');
+            } else {
+                $this->addFlash('success', 'Le thème ' . $theme . ' a bien été ajouté');
             }
             
             $entityManager->persist($newTheme);
@@ -61,7 +63,7 @@ class ThemeController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/toggle", name="theme_toggle_active", methods={"GET","POST"})
+     * @Route("/{id}/toggle", requirements={"id"="\d+"}, name="theme_toggle_active", methods={"GET","POST"})
      */
     public function toggle(Theme $theme, ThemeRepository $repo): Response
     {
@@ -87,7 +89,7 @@ class ThemeController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="theme_edit", methods={"GET","POST"})
+     * @Route("/{id}", requirements={"id"="\d+"}, name="theme_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Theme $theme, ThemeRepository $repo): Response
     {
@@ -105,7 +107,11 @@ class ThemeController extends AbstractController
                     $oldTheme->setIsActive(false);
                 }
 
-                $this->addFlash('success', 'le thème du site a bien été modifié');
+                $theme->setIsActive(true);
+
+                $this->addFlash('success', 'le thème ' . $theme . ' a bien été modifié et est désormais actif');
+            } else {
+                $this->addFlash('success', 'Le thème ' . $theme . ' a bien été mis à jour');
             }
 
             $this->getDoctrine()->getManager()->flush();
@@ -122,7 +128,7 @@ class ThemeController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="theme_delete", methods={"DELETE"})
+     * @Route("/{id}", requirements={"id"="\d+"}, name="theme_delete", methods={"DELETE"})
      */
     public function delete(Request $request, Theme $theme): Response
     {
@@ -130,6 +136,8 @@ class ThemeController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($theme);
             $entityManager->flush();
+
+            $this->addFlash('success', 'Le thème ' . $theme . ' a bien été supprimé');
         }
 
         return $this->redirectToRoute('backend_theme_index');

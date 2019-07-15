@@ -25,7 +25,7 @@ class FilesController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="create", methods={"GET","POST"})
+     * @Route("/ajouter-un-document", name="create", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {
@@ -42,6 +42,8 @@ class FilesController extends AbstractController
             $entityManager->persist($file);
             $entityManager->flush();
 
+            $this->addFlash('success', 'Le document ' . $file . ' a bien été ajouté');
+
             return $this->redirectToRoute('backend_file_index');
         }
 
@@ -52,7 +54,7 @@ class FilesController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="edit", methods={"GET","POST"})
+     * @Route("/{id}", requirements={"id"="\d+"}, name="edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Files $file): Response
     {
@@ -61,6 +63,8 @@ class FilesController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
+
+            $this->addFlash('success', 'Le document ' . $file . ' a bien été mis à jour');
 
             return $this->redirectToRoute('backend_file_index', [
                 'id' => $file->getId(),
@@ -74,7 +78,7 @@ class FilesController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="files_delete", methods={"DELETE"})
+     * @Route("/{id}", requirements={"id"="\d+"}, name="delete", methods={"DELETE"})
      */
     public function delete(Request $request, Files $file): Response
     {
@@ -82,8 +86,10 @@ class FilesController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($file);
             $entityManager->flush();
+
+            $this->addFlash('success', 'Le document ' . $file . ' a bien été supprimé');
         }
 
-        return $this->redirectToRoute('files_index');
+        return $this->redirectToRoute('backend_file_index');
     }
 }
