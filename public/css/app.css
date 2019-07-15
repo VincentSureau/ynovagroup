@@ -233,6 +233,25 @@ button.form-btn:hover {
 .sticky-slim-footer {
     background-color: var(--green);
     color: white;
+    display: flex;
+    justify-content: center;
+    font-size: 1em;
+    position: sticky;
+    bottom: 0;
+}
+
+.sticky-slim-footer > a {
+    color: white;
+}
+
+.sticky-slim-footer > a:hover {
+    background-color: white;
+    color: #28A645;
+    text-decoration: none;
+}
+
+.hide-sticky-slim-footer {
+    display: none;
 }
 
 /* Footer Section */
@@ -361,14 +380,6 @@ td > a > i:hover {
 }
 
 .separator {
-    /* border: 0; 
-    height: 3px; 
-    color: var(--green); */
-
-    /* border: none;
-    color: #28A645;
-
-    height: 5px; */
     border: 1px solid #28A645;
 }
 
