@@ -50,29 +50,18 @@
         if (entry.intersectionRatio > ratio) {
             entry.target.classList.add('reveal-visible')
             observer.unobserve(entry.target)
-        }
-        else if (entry.intersectionRatio < ratio) {
-            // entry.target.classList.remove('reveal-visible')
-            // observer.unobserve(entry.target)
-            console.log(" intersection ration inférieur à ratio ");
-        }
+            }
         })
     }
-    
-    const observer = new IntersectionObserver(handleIntersect, options)
-    document.querySelectorAll('[class*="reveal-"]').forEach(function (r) {
-        observer.observe(r)
-    })
 
-    // Sarrah, j'ai mis observer2 var pas de réassignation possible d'une variable à une const donc erreur js
-    const observer2 = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-          if (entry.intersectionRatio > 0) {
-            console.log('in the view');
-          } else {
-            console.log('out of view');
-          }
-        });
-      });
 
+    $(window).scroll(function() {
+        if($(window).scrollTop() + $(window).height() > $(document).height() - 180) {
+            $('.footer-slim-link').hide()
+        } else {
+            $('.footer-slim-link').show() 
+        }
+     });
+
+    console.log(window.onscroll);
     $('.carousel').carousel()

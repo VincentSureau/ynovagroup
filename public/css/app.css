@@ -230,9 +230,30 @@ button.form-btn:hover {
 }
 
 /*Sticky Slim Footer*/
-.sticky-slim-footer {
+
+#sticky-footer {
     background-color: var(--green);
     color: white;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    position: sticky;
+    bottom: 0;
+}
+
+.footer-slim-link  {
+    color: white;
+    padding: 0 50px;
+}
+
+.footer-slim-link:hover {
+    background-color: white;
+    color: #28A645;
+    text-decoration: none;
+}
+
+.footer-hide {
+    display: none;
 }
 
 /* Footer Section */
@@ -361,14 +382,6 @@ td > a > i:hover {
 }
 
 .separator {
-    /* border: 0; 
-    height: 3px; 
-    color: var(--green); */
-
-    /* border: none;
-    color: #28A645;
-
-    height: 5px; */
     border: 1px solid #28A645;
 }
 
