@@ -26,5 +26,8 @@
         <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
         {% block javascripts %}{% endblock %}
         {% include('partials/_schema.html.twig') %}
+        {% if not app.user and app.session.get('acceptCookie') is null %}
+            {% include('partials/_rgpd.html.twig') %}
+        {% endif %}
     </body>
 </html>

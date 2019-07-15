@@ -1,18 +1,3 @@
-// MODAL DISPLAY ON PAGE LOAD
-    // window.addEventListener('DOMContentLoaded', function() {
-    //     let popup = document.getElementById('popup');
-    //     popup.style.display = "block";
-    // });
-
-    // $(window).on('load',function(){
-    //     $('#myModal').modal('show');
-    // });
-
-    // $(window).on('click', function(){
-    //     $('#myModal').modal('hide');
-    // });
-   
-
 // SCROLL TO the TOP BUTTON
     window.onscroll = function() {scrollFunction()};
 

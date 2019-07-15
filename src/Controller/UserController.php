@@ -9,6 +9,8 @@ use App\Repository\FilesRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class UserController extends AbstractController
@@ -48,5 +50,15 @@ class UserController extends AbstractController
             'file' => $file,
             'form' => $form->createView(),
         ]);
+    }
+
+    /**
+     * @Route("/accept-cookies", name="accept_cookies", methods={"POST"})
+     */
+    public function acceptCookies(SessionInterface $session): JsonResponse
+    {
+        $session->set('acceptCookie', true);
+        
+        return new JsonResponse(['message' => 'les cookies ont été acceptés']);
     }
 }

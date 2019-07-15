@@ -40,5 +40,4 @@ class HomeController extends AbstractController
             'current' => 'mentionslegales'
         ]);
     }
-    
 }
