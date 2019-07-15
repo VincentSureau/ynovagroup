@@ -27,8 +27,6 @@ function init() {
                     }
                 },
                 { data: 'name' },
-                { data: 'first_adress_field' },
-                //{ data: 'secondAdressField' },
                 { data: 'postal_code' },
                 { data: 'city' },
                 {

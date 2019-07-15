@@ -28,8 +28,6 @@ class RssType extends AbstractType
                 ],
                 'placeholder' => false,
             ])
-            // ->add('createdAt')
-            // ->add('updatedAt')
         ;
     }
 

@@ -49,19 +49,21 @@ class SalesrepController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
 
+            $this->addFlash('success', 'Le commercial ' . $user . ' a bien été ajouté');
+
             return $this->redirectToRoute('backend_salesrep_index', [
                 'id' => $user->getId(),
             ]);
         }
 
-        return $this->render('backend/user/new.html.twig', [
+        return $this->render('backend/salesrep/new.html.twig', [
             'user' => $user,
             'form' => $form->createView(),
         ]);
     }
 
     /**
-     * @Route("/{id}", name="edit", methods={"GET","POST"})
+     * @Route("/{id}", requirements={"id"="\d+"}, name="edit", methods={"GET","POST"})
      */
     public function edit(Request $request, User $user, UserPasswordEncoderInterface $passwordEncoder): Response
     {
@@ -83,19 +85,21 @@ class SalesrepController extends AbstractController
 
             $this->getDoctrine()->getManager()->flush();
 
+            $this->addFlash('success', 'Le commercial ' . $user . ' a bien été mis à jour');
+
             return $this->redirectToRoute('backend_salesrep_index', [
                 'id' => $user->getId(),
             ]);
         }
 
-        return $this->render('backend/user/edit.html.twig', [
+        return $this->render('backend/salesrep/edit.html.twig', [
             'user' => $user,
             'form' => $form->createView(),
         ]);
     }
 
     /**
-     * @Route("/{id}", name="delete", methods={"DELETE"})
+     * @Route("/{id}", requirements={"id"="\d+"}, name="delete", methods={"DELETE"})
      */
     public function delete(Request $request, User $user): Response
     {
@@ -103,6 +107,8 @@ class SalesrepController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($user);
             $entityManager->flush();
+
+            $this->addFlash('success', 'Le commercial ' . $user . ' a bien été supprimé');
         }
 
         return $this->redirectToRoute('backend_salesrep_index');

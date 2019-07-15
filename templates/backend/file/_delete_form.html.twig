@@ -1,0 +1,7 @@
+<form method="post" action="{{ path('backend_file_delete', {'id': file.id}) }}" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ce document ?');">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ file.id) }}">
+    <p class="text-right">
+        <button class="btn btn-danger"><i class="fas fa-trash-alt"></i> Supprimer</button>
+    </p>
+</form>

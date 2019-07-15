@@ -26,7 +26,6 @@ class SalesrepType extends AbstractType
             ->add('email', EmailType::class, [
                 'label' => 'Email'
             ])
-            // ->add('roles')
             ->add('isActive', ChoiceType::class, [
                 'label' => 'Actif',
                 'choices' => [
@@ -35,11 +34,6 @@ class SalesrepType extends AbstractType
                 ],
                 'placeholder' => false,
             ])
-            // ->add('files')
-            // ->add('password')
-            // ->add('slug')
-            // ->add('createdAt')
-            // ->add('updatedAt')
         ;
     }
 

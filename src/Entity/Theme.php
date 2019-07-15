@@ -109,7 +109,7 @@ class Theme
     }
 
     public function __toString() {
-        return $this->title;
+        return $this->name;
     }
 
     public function setPictureFile(File $image = null)

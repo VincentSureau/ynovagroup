@@ -4,11 +4,12 @@ namespace App\Controller\Backend;
 
 use App\Entity\User;
 use App\Form\UserType;
+use App\Entity\Company;
 use App\Repository\UserRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 /**
@@ -26,13 +27,19 @@ class UserController extends AbstractController
     }
 
     /**
+     * @Route("/ajout-d-un-utilisateur/{pharmacie}",requirements={"pharmacie"="\d+"}, name="create_after_company", methods={"GET","POST"})
      * @Route("/ajout-d-un-utilisateur", name="create", methods={"GET","POST"})
      */
-    public function new(Request $request, UserPasswordEncoderInterface $passwordEncoder): Response
+    public function new(Company $pharmacie = null, Request $request, UserPasswordEncoderInterface $passwordEncoder): Response
     {
         $user = new User();
         $oldPassword = $user->getPassword();
-
+        
+        if(!empty($pharmacie)) {
+            $user->setCompany($pharmacie);
+        } else {
+            $this->addFlash('warning', 'Pour changer le gestionnaire d\'une pharmacie, vous devez d\'abord supprimer l\'ancien utilisateur');
+        }
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request); 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -47,7 +54,12 @@ class UserController extends AbstractController
 
             $user->setPassword($encodedPassword);
 
-            $this->getDoctrine()->getManager()->flush();
+            $em = $this->getDoctrine()->getManager();
+            
+            $em->persist($user);
+            $em->flush();
+
+            $this->addFlash('success', 'L\'utilisateur '. $user . ' a bien été ajouté');
 
             return $this->redirectToRoute('backend_user_index', [
                 'id' => $user->getId(),
@@ -61,7 +73,7 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="edit", methods={"GET","POST"})
+     * @Route("/{id}", name="edit", requirements={"id"="\d+"}, methods={"GET","POST"})
      */
     public function edit(Request $request, User $user, UserPasswordEncoderInterface $passwordEncoder): Response
     {
@@ -83,6 +95,8 @@ class UserController extends AbstractController
 
             $this->getDoctrine()->getManager()->flush();
 
+            $this->addFlash('success', 'L\'utilisateur '. $user . ' a bien été mis à jour');
+
             return $this->redirectToRoute('backend_user_index', [
                 'id' => $user->getId(),
             ]);
@@ -95,7 +109,7 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="delete", methods={"DELETE"})
+     * @Route("/{id}", requirements={"id"="\d+"}, name="delete", methods={"DELETE"})
      */
     public function delete(Request $request, User $user): Response
     {
@@ -103,6 +117,8 @@ class UserController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($user);
             $entityManager->flush();
+
+            $this->addFlash('success', 'L\'utilisateur ' . $user . ' a bien été supprimé');
         }
 
         return $this->redirectToRoute('backend_user_index');

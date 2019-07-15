@@ -5,6 +5,7 @@
 {% block body %}
     <h1>Modification d'un document</h1>
     <div class="card p-4">
+        {{ include('backend/file/_delete_form.html.twig') }}
         {{ include('backend/file/_form.html.twig', {'button_label': 'Enregistrer'}) }}
     </div>
     <a class="link-green" href="{{ path('backend_file_index') }}">Retour à la liste des documents</a>

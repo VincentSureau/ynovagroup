@@ -34,7 +34,8 @@ class ThemeType extends AbstractType
                     'Non' => false
                 ],
                 'placeholder' => false,
-            ])        ;
+            ])        
+        ;
     }
 
     public function configureOptions(OptionsResolver $resolver)

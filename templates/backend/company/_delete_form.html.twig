@@ -1,0 +1,7 @@
+<form method="post" action="{{ path('backend_company_delete', {'id': company.id}) }}" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cette pharmacie ? \nLes utilisateurs rattachés seront également supprimés');">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ company.id) }}">
+    <p class="text-right">
+        <button class="btn btn-danger"><i class="fas fa-trash-alt"></i> Supprimer</button>
+    </p>
+</form>

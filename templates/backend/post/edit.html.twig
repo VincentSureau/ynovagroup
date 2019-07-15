@@ -6,6 +6,7 @@
     <h1>Modification d'un article</h1>
     <div class="card p-4">
     {{ include('backend/partials/_flash.html.twig') }}
+    {{ include('backend/post/_delete_form.html.twig') }}
     {% if post.picture is not null %}
         <img class="card-img-top" style="max-height: 400px" src="{{ vich_uploader_asset(post, 'pictureFile') }}" alt="{{ post.title|default('illustration de l\'article') }}" />
     {% else %}
