@@ -53,26 +53,15 @@
             }
         })
     }
-    
-    const observer = new IntersectionObserver(handleIntersect, options)
-    document.querySelectorAll('[class*="reveal-"]').forEach(function (r) {
-        observer.observe(r)
-    })
-
-    const handleIntersectFooter = function (entries, observer) {
-        entries.forEach(function (entry) {
-        if (entry.intersectionRatio > ratio) {
-            entry.target.classList.add('hide-sticky-slim-footer')
-            observer.unobserve(entry.target)
-            }
-        })
-    }
-
-    const observerFooter = new IntersectionObserver(handleIntersect2, options)
-    document.querySelectorAll('footer-slim-link"]').forEach(function (r) {
-        observer.observe(r)
-    })
 
 
+    $(window).scroll(function() {
+        if($(window).scrollTop() + $(window).height() > $(document).height() - 180) {
+            $('.footer-slim-link').hide()
+        } else {
+            $('.footer-slim-link').show() 
+        }
+     });
 
+    console.log(window.onscroll);
     $('.carousel').carousel()

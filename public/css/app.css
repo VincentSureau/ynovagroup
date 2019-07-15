@@ -230,27 +230,29 @@ button.form-btn:hover {
 }
 
 /*Sticky Slim Footer*/
-.sticky-slim-footer {
+
+#sticky-footer {
     background-color: var(--green);
     color: white;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-    font-size: 1em;
     position: sticky;
     bottom: 0;
 }
 
-.sticky-slim-footer > a {
+.footer-slim-link  {
     color: white;
+    padding: 0 50px;
 }
 
-.sticky-slim-footer > a:hover {
+.footer-slim-link:hover {
     background-color: white;
     color: #28A645;
     text-decoration: none;
 }
 
-.hide-sticky-slim-footer {
+.footer-hide {
     display: none;
 }
 
