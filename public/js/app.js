@@ -56,7 +56,7 @@
 
 
     $(window).scroll(function() {
-        if($(window).scrollTop() + $(window).height() > $(document).height() - 180) {
+        if($(window).scrollTop() + $(window).height() > $(document).height() - 130) {
             $('.footer-slim-link').hide()
         } else {
             $('.footer-slim-link').show() 

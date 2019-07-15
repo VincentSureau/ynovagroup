@@ -239,6 +239,7 @@ button.form-btn:hover {
     justify-content: center;
     position: sticky;
     bottom: 0;
+    z-index: 1000;
 }
 
 .footer-slim-link  {
@@ -255,6 +256,15 @@ button.form-btn:hover {
 .footer-hide {
     display: none;
 }
+
+/* Slim Footer Media Query Rule */
+@media (min-width: 320px) and (max-width: 767px) {
+  
+    #sticky-footer {
+        display: none;
+    }
+    
+  }
 
 /* Footer Section */
 .footer {
