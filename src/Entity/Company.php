@@ -105,7 +105,7 @@ class Company
     private $updatedAt;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\User", mappedBy="company", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity="App\Entity\User", mappedBy="company", orphanRemoval=true, cascade={"persist", "remove"})
      * @Groups({"company", "companyWrite"})
      */
     private $user;
