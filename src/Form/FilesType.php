@@ -58,17 +58,17 @@ class FilesType extends AbstractType
                 'widget' => 'single_text',
                 'required' => false,
             ])
-            ->add('commercial', EntityType::Class, [
-                'label' => 'Commercial',
-                'class' => User::class,
-                'query_builder' => function (UserRepository $er) {
-                    return $er
-                        ->createQueryBuilder('u')
-                        ->andWhere('u.roles NOT LIKE :role')
-                        ->setParameter('role', '%"ROLE_MEMBER"%')
-                    ;
-                },
-            ])
+            // ->add('commercial', EntityType::Class, [
+            //     'label' => 'Commercial',
+            //     'class' => User::class,
+            //     'query_builder' => function (UserRepository $er) {
+            //         return $er
+            //             ->createQueryBuilder('u')
+            //             ->andWhere('u.roles NOT LIKE :role')
+            //             ->setParameter('role', '%"ROLE_MEMBER"%')
+            //         ;
+            //     },
+            // ])
             ->add('pharmacies', EntityType::Class, [
                 'label' => 'Pharmacies',
                 'class' => Company::class,

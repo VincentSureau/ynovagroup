@@ -43,7 +43,7 @@ class UserController extends AbstractController
      * @Route("/ajout-d-un-utilisateur/{pharmacie}",requirements={"pharmacie"="\d+"}, name="create_after_company", methods={"GET","POST"})
      * @Route("/ajout-d-un-utilisateur", name="create", methods={"GET","POST"})
      */
-    public function new(Company $pharmacie = null, Request $request, UserPasswordEncoderInterface $passwordEncoder): Response
+    public function new(Company $pharmacie = null, Request $request): Response
     {
         $user = new User();
         // $oldPassword = $user->getPassword();
@@ -70,7 +70,7 @@ class UserController extends AbstractController
                 ->setRoles(['ROLE_MEMBER'])
                 ->setPassword($this->passwordGenerator->generate());
             $this->mailer->newUser($user);
-            $encodedPassword = $passwordEncoder->encodePassword($user, $user->getPassword());
+            $encodedPassword = $this->passwordEncoder->encodePassword($user, $user->getPassword());
             $user->setPassword($encodedPassword);
 
             $em = $this->getDoctrine()->getManager();

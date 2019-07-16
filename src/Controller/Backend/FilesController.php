@@ -37,6 +37,8 @@ class FilesController extends AbstractController
             $file
                 ->setCreatedAt(new \Datetime('now'))
                 ->setUpdatedAt(new \Datetime('now'))
+                ->setCommercial($this->getUser())
+                ->setSentBy($this->getUser())
                 ;
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($file);

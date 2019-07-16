@@ -5,21 +5,24 @@
 {% block body %}
 
 <em class="">Bienvenue sur votre espace personnel !<br>Retrouvez ici les informations de votre pharmacie</em>
+<div class="container" style="max-width:700px">
+    {{ include('/partials/_flash.html.twig') }}
+</div>
 <div class="container-fluid text-center bg-white">
 <!--Backoffice général-->
     <ul class="nav nav-tabs" id="myTab" role="tablist">
     <li class="nav-item">
-        <a class="nav-link active text-success" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Mon profil</a>
+        <a class="nav-link {{ (activePanel == 'actualite')? 'active' }} text-success" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Mon profil</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link text-success" id="document-tab" data-toggle="tab" href="#document" role="tab" aria-controls="document" aria-selected="false">Documents</a>
+        <a class="nav-link {{ (activePanel == 'files')? 'active' }} text-success" id="document-tab" data-toggle="tab" href="#document" role="tab" aria-controls="document" aria-selected="false">Documents</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link text-success" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Contact</a>
+        <a class="nav-link {{ (activePanel == 'password')? 'active' }} text-success" id="password-tab" data-toggle="tab" href="#password" role="tab" aria-controls="password" aria-selected="false">Mot de passe</a>
     </li>
     </ul>
     <div class="tab-content" id="myTabContent">
-    <div class="tab-pane fade show active px-5" id="home" role="tabpanel" aria-labelledby="home-tab">
+    <div class="tab-pane fade {{ (activePanel == 'actualite')? 'show active' }} px-5" id="home" role="tabpanel" aria-labelledby="home-tab">
     
     <!--Profil-->
         <h5 class="h2 font-weight-bold text-success">Mon espace</h5>
@@ -33,11 +36,11 @@
         </div>
         <ul class="list-group list-group-flush text-center">
             <li class="list-group-item font-weight-bold text-uppercase">Nom</li>
-            <li class="list-group-item">{{ user.lastname }}</li>
+            <li class="list-group-item">{{ user.lastname|default('') }}</li>
             <li class="list-group-item font-weight-bold text-uppercase">Prénom</li>        
-            <li class="list-group-item">{{ user.firstname }}</li>
+            <li class="list-group-item">{{ user.firstname|default('') }}</li>
             <li class="list-group-item font-weight-bold text-uppercase">Nom de la pharmacie</li>
-            <li class="list-group-item">{{ user.company.name }}</li>
+            <li class="list-group-item">{{ user.company.name|default('') }}</li>
             <li class="list-group-item font-weight-bold text-uppercase">Adresse</li>
             <li class="list-group-item">{{ user.company.firstadressfield|default('-') }} {{ user.company.secondadressfield|default('') }}</li>
             <li class="list-group-item font-weight-bold text-uppercase">E-mail</li>
@@ -56,7 +59,7 @@
             <li class="list-group-item">
                 {{ user.company.commercial.firstname|default('-') }} {{ user.company.commercial.lastname|default('') }}
             </li>
-            <li class="list-group-item font-weight-bold text-uppercase">Contact</li>        
+            <li class="list-group-item font-weight-bold text-uppercase">password</li>        
             <li class="list-group-item">
                 <a href="mailto:{{ user.company.commercial.email|default('-') }}">
                 {{ user.company.commercial.email|default('-') }}
@@ -66,27 +69,13 @@
     <!--Profil-->
     
     </div>
-    <div class="tab-pane fade p-3" id="document" role="tabpanel" aria-labelledby="document-tab">
+    <div class="tab-pane fade {{ (activePanel == 'files')? 'show active' }} p-3" id="document" role="tabpanel" aria-labelledby="document-tab">
     
         <!--Documents-->
             <h5 class="h2 font-weight-bold pt-1 text-success">Mon espace documents</h5>
             <em class=" py-5">Bonjour {{ user.firstname }}, <br> ici vous pourrez transmettre, consulter et télécharger vos fichiers relatifs à vos échanges auprès de votre commercial attitré.</em>
             <div class="card-body">
                 <h5 class="h2 font-weight-bold mt-2 text-success">Transmettre un document à mon commercial</h5>
-                {# <form action="" class="mt-5">
-                    <div class="form-group">
-                        <div class="form-group">
-                        <label for="exampleFormControlFile1" class="">
-                            <strong>Formats autorisés :</strong> zip, pdf, doc, docx, jpg, xls, ppt, pptx
-                        </label>
-                        <input type="file" class="form-control-file text-center" id="exampleFormControlFile1">
-                        </div>   
-                        <button type="submit" class="btn btn-success mt-4">
-                            Envoyer
-                            <i class="fas fa-file-upload"></i>
-                        </button> 
-                        </div>
-                </form> #}
                 {{ include('/user/_form.html.twig') }}
             </div>
             <div class="card-body">
@@ -125,8 +114,12 @@
         <!--Documents-->
     
     </div>
-    <div class="tab-pane fade py-5" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim rerum repudiandae totam quasi iure cum dignissimos eveniet possimus, velit perferendis quis quaerat ipsam, veniam dicta nihil distinctio voluptatem similique rem! Itaque consequuntur enim velit veritatis, amet neque repellendus inventore numquam provident accusantium illo corporis quos, iure modi quis dolorem molestiae.
+    <div class="tab-pane fade {{ (activePanel == 'password')? 'show active' }} py-5" id="password" role="tabpanel" aria-labelledby="password-tab">
+            <h5 class="h2 font-weight-bold pt-1 text-success">Modifier mon mot de passe</h5>
+            <em class=" py-5">Bonjour {{ user.firstname }}, <br> ici vous pouvez modifier le mot de passe de votre espace adhérent.</em>
+            <div class="card-body">
+                {{ include('/security/changepassword.html.twig') }}
+            </div>
     </div>
     </div>
 </div>
