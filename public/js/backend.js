@@ -211,7 +211,16 @@ function init() {
                     }
                 },
                 { data: 'name' },
-                { data: 'image' },
+                { 
+                    data: 'image',
+                    sortable: false,
+                    render: function (data, index, row) {
+                        if (data) {
+                            return `<img class="img-thumbnail" alt="${row.name}" style="height:50px;width:75px;" src="/images/partners/${data}">`
+                        }
+                        return '-'
+                    }
+                },
                 {
                     data: 'link',
                     render: function (data, index, row) {
