@@ -20,8 +20,8 @@ class SendMail
    */
   public function newUser($user)
   {
-    $message = (new \Swift_Message('Bienvenue sur Oclock Community'))
-        ->setFrom('contact@o-community.fr')
+    $message = (new \Swift_Message('Bienvenue sur Ynovagroup.com'))
+        ->setFrom('contact@ynovagroup.com')
         ->setTo($user->getEmail())
         ->setBody($this->twig->render('email/registration.html.twig', ['user' => $user]), 'text/html');
     return $this->mailer->send($message);
@@ -30,8 +30,8 @@ class SendMail
   // send a mail to a user with a new password
   public function resetPassword($user)
   {
-    $message = (new \Swift_Message('Ton nouveau mot de passe'))
-        ->setFrom('contact@o-community.fr')
+    $message = (new \Swift_Message('Votre nouveau mot de passe sur Ynovagroup.com'))
+        ->setFrom('contact@ynovagroup.com')
         ->setTo($user->getEmail())
         ->setBody($this->twig->render('email/resetpassword.html.twig', ['user' => $user]), 'text/html');
 

@@ -16,7 +16,13 @@ class UserController extends FOSRestController
     */
     public function getListAction(UserRepository $repo, Security $security) {
         if ($security->isGranted('ROLE_ADMIN')) {
-            $data = $repo->findMembers();
+            $data = $repo->createQueryBuilder('u')
+                        ->where('u.roles LIKE :role')
+                        ->setParameter('role', '%"ROLE_MEMBER"%')
+                        ->orderBy('u.id', 'ASC')
+                        ->getQuery()
+                        ->getResult()
+                    ;
         } elseif ($security->isGranted('ROLE_BUSINESS')) {
             $data = $repo->createQueryBuilder('u')
                         ->innerJoin('u.company', 'c')
