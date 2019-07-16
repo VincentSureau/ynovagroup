@@ -1,0 +1,41 @@
+<div class="tab-pane fade {{ (activePanel == 'files')? 'show active' }} p-3" id="document" role="tabpanel" aria-labelledby="document-tab">
+        <h5 class="h2 font-weight-bold pt-1 text-success">Mon espace documents</h5>
+        <em class=" py-5">Bonjour {{ user.firstname }}, <br> ici vous pourrez transmettre, consulter et télécharger vos fichiers relatifs à vos échanges auprès de votre commercial attitré.</em>
+        <div class="card-body">
+            <h5 class="h2 font-weight-bold mt-2 text-success">Transmettre un document à mon commercial</h5>
+            {{ include('/user/_form.html.twig') }}
+        </div>
+        <div class="card-body">
+            <h5 class="h2 font-weight-bold mt-1 text-success">Consulter mes derniers documents</h5>  
+            <table class="table table-hover">
+                <thead class="thead-light">
+                    <tr>
+                    <th scope="col">Nom du document</th>
+                    <th scope="col">Format</th>
+                    <th scope="col">Date d'ajout</th>
+                    <th scope="col">Disponnible jusqu'au</th>
+                    <th scope="col">Télécharger</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for document in documents %}
+                    <tr>
+                    <th scope="row">{{ document.name|default('-') }}</th>
+                    <td>{{ document.documentFile.extension|default('-')}}</td>
+                    <td>{{ document.updatedAt|date('d/m/y')|default('-') }}</td>
+                    <td>{{ document.deletedAt is empty? "-" : document.deletedAt|date('d/m/y') }}</td>
+                    <td>
+                        <a href="http://127.0.0.1:8000{{ vich_uploader_asset(document, 'documentFile') }}" ping="{{ path('read_document', { 'id' : document.id }) }}" target="_blank">
+                            <i class="fas fa-file-upload fa-lg"></i>
+                        </a>
+                    </td>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td colspan=5>Aucun document à télécharger</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+                </table>
+        </div>    
+</div>
