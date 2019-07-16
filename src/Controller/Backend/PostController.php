@@ -21,6 +21,7 @@ class PostController extends AbstractController
     public function index(PostRepository $postRepository): Response
     {
         return $this->render('backend/post/index.html.twig', [
+            'current' => 'article',
         ]);
     }
 
@@ -48,7 +49,7 @@ class PostController extends AbstractController
         }
 
         return $this->render('backend/post/new.html.twig', [
-            'current' => 'createPost',
+            'current' => 'article',
             'post' => $post,
             'form' => $form->createView(),
         ]);
@@ -78,6 +79,7 @@ class PostController extends AbstractController
         return $this->render('backend/post/edit.html.twig', [
             'post' => $post,
             'form' => $form->createView(),
+            'current' => 'article',
         ]);
     }
 
