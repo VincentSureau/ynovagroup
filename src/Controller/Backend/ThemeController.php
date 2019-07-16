@@ -45,9 +45,9 @@ class ThemeController extends AbstractController
                     $theme->setIsActive(false);
                 }
                 
-                $this->addFlash('success', 'le thème ' . $theme . ' a bien été ajouté et est désormais actif');
+                $this->addFlash('success', 'le thème ' . $newTheme . ' a bien été ajouté et est désormais actif');
             } else {
-                $this->addFlash('success', 'Le thème ' . $theme . ' a bien été ajouté');
+                $this->addFlash('success', 'Le thème ' . $newTheme . ' a bien été ajouté');
             }
             
             $entityManager->persist($newTheme);
