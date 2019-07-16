@@ -203,6 +203,27 @@ li {
     min-width: 250px;
 }
 
+.carousel-inner {
+    height: 450px;
+}
+
+.carousel-item > img {
+    filter: blur(5px) grayscale(10%);
+}
+
+.carousel-caption {
+    bottom: 0;
+    padding: 0;
+}
+
+.carousel-caption > h4 {
+    font-size: 2.5em;
+}
+
+.carousel-caption > p {
+    font-size: 1.2em;
+}
+
 /* Nos objectifs */
 /* #objectifs {
 
