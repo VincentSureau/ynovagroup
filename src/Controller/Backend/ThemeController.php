@@ -21,6 +21,7 @@ class ThemeController extends AbstractController
     public function index(ThemeRepository $themeRepository): Response
     {
         return $this->render('backend/theme/index.html.twig', [
+            'current' => 'theme',
         ]);
     }
 
@@ -59,6 +60,7 @@ class ThemeController extends AbstractController
         return $this->render('backend/theme/new.html.twig', [
             'theme' => $newTheme,
             'form' => $form->createView(),
+            'current' => 'theme',
         ]);
     }
 
@@ -124,6 +126,7 @@ class ThemeController extends AbstractController
         return $this->render('backend/theme/edit.html.twig', [
             'theme' => $theme,
             'form' => $form->createView(),
+            'current' => 'theme',
         ]);
     }
 

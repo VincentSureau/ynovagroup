@@ -21,6 +21,7 @@ class FilesController extends AbstractController
     public function index(FilesRepository $filesRepository): Response
     {
         return $this->render('backend/file/index.html.twig', [
+            'current' => 'file',
         ]);
     }
 
@@ -52,6 +53,7 @@ class FilesController extends AbstractController
         return $this->render('/backend/file/new.html.twig', [
             'file' => $file,
             'form' => $form->createView(),
+            'current' => 'file',
         ]);
     }
 
@@ -76,6 +78,7 @@ class FilesController extends AbstractController
         return $this->render('/backend/file/edit.html.twig', [
             'file' => $file,
             'form' => $form->createView(),
+            'current' => 'file',
         ]);
     }
 

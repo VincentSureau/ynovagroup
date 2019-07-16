@@ -61,6 +61,7 @@ class CompanyController extends AbstractController
         return $this->render('backend/company/new.html.twig', [
             'company' => $company,
             'form' => $form->createView(),
+            'current' => 'company',
         ]);
     }
 
@@ -87,6 +88,7 @@ class CompanyController extends AbstractController
         return $this->render('backend/company/edit.html.twig', [
             'company' => $company,
             'form' => $form->createView(),
+            'current' => 'company',
         ]);
     }
 

@@ -36,6 +36,7 @@ class UserController extends AbstractController
     public function index(UserRepository $userRepository): Response
     {
         return $this->render('backend/user/index.html.twig', [
+            'current' => 'user',
         ]);
     }
 
@@ -46,8 +47,6 @@ class UserController extends AbstractController
     public function new(Company $pharmacie = null, Request $request): Response
     {
         $user = new User();
-        // $oldPassword = $user->getPassword();
-        
         if(!empty($pharmacie)) {
             $user->setCompany($pharmacie);
         }
@@ -81,6 +80,7 @@ class UserController extends AbstractController
         return $this->render('backend/user/new.html.twig', [
             'user' => $user,
             'form' => $form->createView(),
+            'current' => 'user',
         ]);
     }
 
@@ -117,6 +117,7 @@ class UserController extends AbstractController
         return $this->render('backend/user/edit.html.twig', [
             'user' => $user,
             'form' => $form->createView(),
+            'current' => 'user',
         ]);
     }
 

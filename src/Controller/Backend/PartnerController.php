@@ -21,6 +21,7 @@ class PartnerController extends AbstractController
     public function index(PartnerRepository $partnerRepository): Response
     {
         return $this->render('backend/partner/index.html.twig', [
+            'current' => 'partner',
         ]);
     }
 
@@ -51,6 +52,7 @@ class PartnerController extends AbstractController
             'current' => 'createPartner',
             'partner' => $partner,
             'form' => $form->createView(),
+            'current' => 'partner',
         ]);
     }
     
@@ -75,6 +77,7 @@ class PartnerController extends AbstractController
         return $this->render('backend/partner/edit.html.twig', [
             'partner' => $partner,
             'form' => $form->createView(),
+            'current' => 'partner',
         ]);
     }
 

@@ -21,7 +21,7 @@ class RssController extends AbstractController
     public function index(RssRepository $rssRepository): Response
     {
         return $this->render('backend/rss/index.html.twig', [
-            'rsses' => $rssRepository->findAll(),
+            'current' => 'rss',
         ]);
     }
 
@@ -47,6 +47,7 @@ class RssController extends AbstractController
         return $this->render('backend/rss/new.html.twig', [
             'rss' => $rss,
             'form' => $form->createView(),
+            'current' => 'rss',
         ]);
     }
 
@@ -89,6 +90,7 @@ class RssController extends AbstractController
         return $this->render('backend/rss/edit.html.twig', [
             'rss' => $rss,
             'form' => $form->createView(),
+            'current' => 'rss',
         ]);
     }
 

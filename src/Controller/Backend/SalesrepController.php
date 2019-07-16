@@ -23,6 +23,7 @@ class SalesrepController extends AbstractController
     public function salesrepIndex(UserRepository $userRepository): Response
     {
         return $this->render('backend/salesrep/index.html.twig', [
+            'current' => 'business',
         ]);
     }
 
@@ -59,6 +60,7 @@ class SalesrepController extends AbstractController
         return $this->render('backend/salesrep/new.html.twig', [
             'user' => $user,
             'form' => $form->createView(),
+            'current' => 'business',
         ]);
     }
 
@@ -95,6 +97,7 @@ class SalesrepController extends AbstractController
         return $this->render('backend/salesrep/edit.html.twig', [
             'user' => $user,
             'form' => $form->createView(),
+            'current' => 'business',
         ]);
     }
 
