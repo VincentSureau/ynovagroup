@@ -95,6 +95,8 @@ class CompanyType extends AbstractType
                         ->setParameter('role', '%"ROLE_BUSINESS"%')
                     ;
                 },
+                'required' => false,
+                'placeholder' => 'Choisir un commercial'
             ]);
         ;
     }

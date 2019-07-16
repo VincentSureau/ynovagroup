@@ -87,8 +87,8 @@ class User implements UserInterface
     private $managedFiles;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Company", inversedBy="user", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(onDelete="cascade")
+     * @ORM\OneToOne(targetEntity="App\Entity\Company", inversedBy="user", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=true, onDelete="SET NULL")
      * @Groups({"user", "userWrite"})
      */
     private $company;
