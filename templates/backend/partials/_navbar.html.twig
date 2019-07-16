@@ -21,32 +21,32 @@
                         </a>
                     </li>
                     <li class="nav-item text-center d-lg-none">
-                        <a class="nav-link" href="{{ path('company_index') }}">
+                        <a class="nav-link" href="{{ path('backend_company_index') }}">
                             <i class="far fa-hospital"></i>
                             Pharmacies
                         </a>
                     </li>
                     <li class="nav-item text-center d-lg-none">
-                        <a class="nav-link" href="{{ path('user_index') }}">
+                        <a class="nav-link" href="{{ path('backend_user_index') }}">
                             <i class="far fa-user"></i>
                             Gestionnaires
                         </a>
                     </li>
                     <li class="nav-item text-center d-lg-none">
-                        <a class="nav-link" href="{{ path('file_index') }}">
+                        <a class="nav-link" href="{{ path('backend_file_index') }}">
                             <i class="far fa-file-alt"></i>
                             Documents
                         </a>
                     </li>
                     {% if is_granted('ROLE_ADMIN')%}
                     <li class="nav-item text-center d-lg-none">
-                        <a class="nav-link" href="{{ path('post_index') }}">
+                        <a class="nav-link" href="{{ path('backend_post_index') }}">
                             <i class="far fa-newspaper"></i>
                             Articles
                         </a>
                     </li>
                     <li class="nav-item text-center d-lg-none">
-                        <a class="nav-link" href="{{ path('theme_index') }}">
+                        <a class="nav-link" href="{{ path('backend_theme_index') }}">
                             <i class="fas fa-birthday-cake"></i>
                             Thèmes
                         </a>

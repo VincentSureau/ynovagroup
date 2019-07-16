@@ -3,8 +3,13 @@ backend:
     prefix: /backend
     name_prefix: backend_
     type: annotation
+
+api:
+    resource: ../../src/Controller/Api/
+    name_prefix: api_
+    type: annotation
     
 controllers:
-    resource: ../../src/Controller/
+    resource: ../../src/Controller/Frontend/
     type: annotation
 
