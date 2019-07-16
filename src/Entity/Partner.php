@@ -63,6 +63,7 @@ class Partner
 
     /**
      * @ORM\Column(type="boolean")
+     * @Groups({"partner"})
      */
     private $isActive;
 

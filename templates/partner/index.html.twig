@@ -13,7 +13,7 @@
         {% for partner in partners %}
             <div class="partenaire">
                 <img src="{{ vich_uploader_asset(partner, 'imageFile') }}" alt="{{ company.name|default('image du paternaire') }}" />
-            <a href="{{ partner.link|default('#') }}">{{ partner.name|default('lien') }}</a>
+            <a class="btn btn-success {{ (partner.link is null)? 'disabled' }}" href="{{ partner.link|default('#') }}">{{ partner.name|default('lien') }}</a>
         </div>
         {% else %}
             <div class="partenaire">

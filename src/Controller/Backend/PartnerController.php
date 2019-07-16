@@ -79,6 +79,24 @@ class PartnerController extends AbstractController
     }
 
     /**
+     * @Route("/{id}/toggle", requirements={"id"="\d+"}, name="partner_toggle_active", methods={"GET","POST"})
+     */
+    public function toggle(Partner $partner): Response
+    {
+        if($partner->getIsActive() == false) {
+            $partner->setIsActive(true);
+            $this->addFlash('success', 'le partenaire ' . $partner . ' a bien été activé');
+        } else {            
+            $partner->setIsActive(false);
+            $this->addFlash('info', 'le partenaire ' . $partner . ' a bien été désactivé');
+        }
+
+        $this->getDoctrine()->getManager()->flush();
+
+        return $this->redirectToRoute('backend_partner_index');
+    }
+
+    /**
      * @Route("/{id}", name="delete", methods={"DELETE"}, requirements={"id"="\d+"})
      */
     public function delete(Request $request, Partner $partner): Response

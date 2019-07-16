@@ -233,8 +233,13 @@ function init() {
                 },
                 {
                     data: 'is_active',
-                    render: function (data) {
-                        return (data == "true" || data == true) ? 'oui' : 'non'
+                    render: function (data, index, row) {
+                        if (data == true || data == 'true') {
+                            var button = `<a href="/backend/partenaires/${row.id}/toggle" class="btn btn-success btn-sm"><i class="fas fa-toggle-on"></i></a>`
+                        } else {
+                            var button = `<a href="/backend/partenaires/${row.id}/toggle" class="btn btn-secondary btn-sm"><i class="fas fa-toggle-off"></i></a>`
+                        }
+                        return button
                     }
                 },
             ]

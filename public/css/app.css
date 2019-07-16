@@ -538,12 +538,8 @@ td > a > i:hover {
 }
 
 .partenaire > a {
-    color: white;
-    background-color: var(--green);
-    border: 1px solid var(--green);
     margin: 1rem 0;
     padding: .3rem .3rem;
-    border-radius: .2rem;
 }
 
 .partenaire > a:hover {
@@ -552,8 +548,6 @@ td > a > i:hover {
     border: 1px solid var(--green);
     margin: 1rem 0;
     padding: .3rem .3rem;
-    border-radius: .2rem;
-    text-decoration: none;
 }
 
 
