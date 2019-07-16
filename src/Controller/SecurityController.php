@@ -3,7 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Utils\SendMail;
 use App\Form\PasswordType;
+use App\Utils\GeneratePassword;
 use App\Repository\UserRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -14,6 +16,17 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class SecurityController extends AbstractController
 {
+    private $passwordEncoder;
+    private $passwordGenerator;
+    private $mailer;
+
+    public function __construct(UserPasswordEncoderInterface $passwordEncoder, GeneratePassword $passwordGenerator, SendMail $mailer)
+    {
+        $this->passwordEncoder = $passwordEncoder;
+        $this->passwordGenerator = $passwordGenerator;
+        $this->mailer = $mailer;
+    }
+
     /**
      * @Route("/connexion", name="app_login")
      */
@@ -48,12 +61,12 @@ class SecurityController extends AbstractController
 
             if($user) {
                 // encode the plain password
-                $user->setPassword(
-                    $encoder->encodePassword(
-                        $user,
-                        'admin'
-                    )
-                );
+
+                $user
+                    ->setPassword($this->passwordGenerator->generate());
+                $this->mailer->resetPassword($user);
+                $encodedPassword = $this->passwordEncoder->encodePassword($user, $user->getPassword());
+                $user->setPassword($encodedPassword);
 
                 $entityManager = $this->getDoctrine()->getManager();
                 $entityManager->persist($user);

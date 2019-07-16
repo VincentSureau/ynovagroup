@@ -55,17 +55,6 @@ class UserController extends AbstractController
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request); 
         if ($form->isSubmitted() && $form->isValid()) {
-
-            // if(is_null($user->getPassword())){
-            //     $encodedPassword = $oldPassword;
-
-            // } else {
-
-            //     $encodedPassword = $passwordEncoder->encodePassword($user, $user->getPassword());
-            // }
-
-            // $user->setPassword($encodedPassword);
-
             $user
                 ->setRoles(['ROLE_MEMBER'])
                 ->setPassword($this->passwordGenerator->generate());
