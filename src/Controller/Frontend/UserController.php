@@ -6,6 +6,7 @@ use App\Entity\User;
 use App\Entity\Files;
 use App\Form\UserFilesType;
 use App\Form\ChangePasswordType;
+use App\Repository\PostRepository;
 use App\Repository\FilesRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -27,10 +28,13 @@ class UserController extends AbstractController
     /**
      * @Route("/mon-espace", name="profil", methods={"GET", "POST"})
      */
-    public function profil(Request $request, FilesRepository $repo): Response
+    public function profil(Request $request, FilesRepository $repo, PostRepository $postRepo): Response
     {
         $activePanel = 'actualite';
+        $articles = $postRepo->findPrivateArticles();
         $user = $this->getUser();
+
+
         $oldPassword = $user->getPassword();
         $documents = $repo->findUserActiveDocuments($user);
 
@@ -90,6 +94,7 @@ class UserController extends AbstractController
             'form' => $form->createView(),
             'passwordForm' => $passwordForm->createView(),
             'activePanel' => $activePanel,
+            'articles' => $articles,
         ]);
     }
 

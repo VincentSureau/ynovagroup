@@ -54,6 +54,24 @@ class PostRepository extends ServiceEntityRepository
         ;
     }
 
+    /**
+     * @return Post[] Returns an array of Post objects
+     */
+    public function findPrivateArticles()
+    {
+        return $this->createQueryBuilder('p')
+            ->andWhere('p.isActive = :isActive')
+            ->setParameter('isActive', true)
+            ->andWhere('p.visibility = :visibility')
+            ->setParameter('visibility', 'private')
+            ->andWhere('p.author IS NOT NULL')
+            ->orderBy('p.createdAt', 'DESC')
+            ->setMaxResults(3)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
     /*
     public function findOneBySomeField($value): ?Post
     {
