@@ -102,7 +102,16 @@ function init() {
                     }
                 },
                 { data: 'name' },
-                { data: 'picture' },
+                { 
+                    data: 'picture',
+                    sortable: false,
+                    render: function(data, index, row) {
+                        if(data) {
+                            return `<img class="img-thumbnail" alt="${row.name}" style="height:50px;width:75px;" src="/images/themes/${data}">`
+                        }
+                        return '-'
+                    }
+                },
                 {
                     data: 'is_active',
                     render: function (data, index, row) {
