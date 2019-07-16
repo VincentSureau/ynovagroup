@@ -471,7 +471,9 @@ function unload() {
     }
 }
 
-const swup = new Swup();
+const swup = new Swup({
+    containers: ['#swup', "#sidebar"]
+});
 
 document.addEventListener("DOMContentLoaded", init);
 swup.on('contentReplaced', init)

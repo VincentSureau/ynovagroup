@@ -1,85 +1,85 @@
-        <nav class="col-md-2 pr-0 d-none d-lg-block bg-light sidebar">
-          <div class="sidebar-sticky">
-            {# notification menu #}
-            <h4 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-              <span>Notifications</span>
-              <a class="d-flex align-items-center text-muted" href="#">
-              </a>
-            </h4>     
-            <ul class="nav flex-column mb-2">
-              <li class="nav-item">
-                <a class="nav-link text-dark" href="{{ path('backend_notification') }}">
-                    <i class="fas fa-file-import"></i>
-                    Documents reçus
-                    <span class="badge badge-pill badge-success">5</span>
-                </a>
-              </li>
-            </ul>
-            {# Dashboard menu #}
-            <h4 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-              <span>Dashboard</span>
-              <a class="d-flex align-items-center text-muted" href="#">
-              </a>
-            </h4>
-            <ul class="nav flex-column">
-              <li class="nav-item">
-                <a class="nav-link text-dark" href="{{ path('backend_company_index') }}">
-                    <i class="far fa-hospital"></i>
-                    Pharmacies
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link text-dark" href="{{ path('backend_user_index') }}">
-                    <i class="fas fa-user-md"></i>
-                    Gestionnaires
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link text-dark" href="{{ path('backend_file_index') }}">
-                    <i class="far fa-file-alt"></i>
-                    Documents
-                </a>
-              </li>
-            </ul>
-            {# admin menu #}
-            {% if is_granted('ROLE_ADMIN')%}
-            <h4 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-              <span>Admin</span>
-              <a class="d-flex align-items-center text-muted" href="#">
-              </a>
-            </h4>
-            <ul class="nav flex-column">
-              <li class="nav-item">
-                <a class="nav-link text-dark" href="{{ path('backend_post_index') }}">
-                    <i class="far fa-newspaper"></i>
-                    Articles
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link text-dark" href="{{ path('backend_salesrep_index') }}">
-                    <i class="fas fa-user-tie"></i>
-                    Commerciaux
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link text-dark" href="{{ path('backend_theme_index') }}">
-                    <i class="fas fa-birthday-cake"></i>
-                    Thèmes
-                </a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link text-dark" href="{{ path('backend_rss_index') }}">
-                      <i class="fas fa-rss"></i>                            
-                      RSS
-                  </a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link text-dark" href="{{ path('backend_partner_index') }}">
-                      <i class="far fa-handshake"></i>                          
-                      Partenaires
-                  </a>
-              </li>
-            </ul>
-            {% endif %}
-          </div>
-        </nav>
+<nav id="sidebar" class="col-md-2 pr-0 d-none d-lg-block bg-light sidebar">
+  <div class="sidebar-sticky">
+    {# notification menu #}
+    <h4 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+      <span>Notifications</span>
+      <a class="d-flex align-items-center text-muted" href="#">
+      </a>
+    </h4>     
+    <ul class="nav flex-column mb-2">
+      <li class="nav-item">
+        <a class="nav-link {{ (current == 'notification')? 'link-green' : 'text-dark' }}" href="{{ path('backend_notification') }}">
+            <i class="fas fa-file-import"></i>
+            Documents reçus
+            <span class="badge badge-pill badge-success">5</span>
+        </a>
+      </li>
+    </ul>
+    {# Dashboard menu #}
+    <h4 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+      <span>Dashboard</span>
+      <a class="d-flex align-items-center text-muted" href="#">
+      </a>
+    </h4>
+    <ul class="nav flex-column">
+      <li class="nav-item">
+        <a class="nav-link {{ (current == 'company')? 'link-green' : 'text-dark' }}" href="{{ path('backend_company_index') }}">
+            <i class="far fa-hospital"></i>
+            Pharmacies
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link {{ (current == 'user')? 'link-green' : 'text-dark' }}" href="{{ path('backend_user_index') }}">
+            <i class="fas fa-user-md"></i>
+            Gestionnaires
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link {{ (current == 'file')? 'link-green' : 'text-dark' }}" href="{{ path('backend_file_index') }}">
+            <i class="far fa-file-alt"></i>
+            Documents
+        </a>
+      </li>
+    </ul>
+    {# admin menu #}
+    {% if is_granted('ROLE_ADMIN')%}
+    <h4 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+      <span>Admin</span>
+      <a class="d-flex align-items-center text-muted" href="#">
+      </a>
+    </h4>
+    <ul class="nav flex-column">
+      <li class="nav-item">
+        <a class="nav-link {{ (current == 'article')? 'link-green' : 'text-dark' }}" href="{{ path('backend_post_index') }}">
+            <i class="far fa-newspaper"></i>
+            Articles
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link {{ (current == 'business')? 'link-green' : 'text-dark' }}" href="{{ path('backend_salesrep_index') }}">
+            <i class="fas fa-user-tie"></i>
+            Commerciaux
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link {{ (current == 'theme')? 'link-green' : 'text-dark' }}" href="{{ path('backend_theme_index') }}">
+            <i class="fas fa-birthday-cake"></i>
+            Thèmes
+        </a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link {{ (current == 'rss')? 'link-green' : 'text-dark' }}" href="{{ path('backend_rss_index') }}">
+              <i class="fas fa-rss"></i>                            
+              RSS
+          </a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link {{ (current == 'partner')? 'link-green' : 'text-dark' }}" href="{{ path('backend_partner_index') }}">
+              <i class="far fa-handshake"></i>                          
+              Partenaires
+          </a>
+      </li>
+    </ul>
+    {% endif %}
+  </div>
+</nav>

@@ -13,7 +13,7 @@ class NotificationController extends AbstractController
     public function index()
     {
         return $this->render('backend/notification/index.html.twig', [
-            'current' => 'notifications',
+            'current' => 'notification',
         ]);
     }
 }

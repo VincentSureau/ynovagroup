@@ -59,8 +59,9 @@ class UserController extends AbstractController
 
         $file = new Files();
         $form = $this->createForm(UserFilesType::class, $file);
-
         if ($request->request->has('user_files')) {
+            // if ($this->isCsrfTokenValid('changepassword'.$user->getId(), $request->request->get('_token'))) {
+            // }
             $activePanel = 'files';
             $form->handleRequest($request);
     
@@ -90,10 +91,6 @@ class UserController extends AbstractController
             'passwordForm' => $passwordForm->createView(),
             'activePanel' => $activePanel,
         ]);
-
-        if ($this->isCsrfTokenValid('changepassword'.$user->getId(), $request->request->get('_token'))) {
-        }
-
     }
 
     /**

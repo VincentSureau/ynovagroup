@@ -22,6 +22,7 @@ class CompanyController extends AbstractController
     public function index(CompanyRepository $companyRepository): Response
     {
         return $this->render('backend/company/index.html.twig', [
+            'current' => 'company'
         ]);
     }
     
