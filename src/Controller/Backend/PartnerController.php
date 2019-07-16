@@ -91,7 +91,7 @@ class PartnerController extends AbstractController
             $this->addFlash('success', 'le partenaire ' . $partner . ' a bien été activé');
         } else {            
             $partner->setIsActive(false);
-            $this->addFlash('info', 'le partenaire ' . $partner . ' a bien été désactivé');
+            $this->addFlash('danger', 'le partenaire ' . $partner . ' a bien été désactivé');
         }
 
         $this->getDoctrine()->getManager()->flush();
@@ -109,7 +109,7 @@ class PartnerController extends AbstractController
             $entityManager->remove($partner);
             $entityManager->flush();
 
-            $this->addFlash('success', 'Le partenaire ' . $partner . ' a bien été supprimé');
+            $this->addFlash('danger', 'Le partenaire ' . $partner . ' a bien été supprimé');
         }
 
         return $this->redirectToRoute('backend_partner_index');

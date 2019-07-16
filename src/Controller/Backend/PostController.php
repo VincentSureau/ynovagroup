@@ -84,7 +84,25 @@ class PostController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", requirements={"id"="\d+"}), name="delete", methods={"DELETE"})
+     * @Route("/{id}/toggle", requirements={"id"="\d+"}, name="toggle_active", methods={"GET","POST"})
+     */
+    public function toggle(Post $post): Response
+    {
+        if($post->getIsActive() == false) {
+            $post->setIsActive(true);
+            $this->addFlash('success', 'l\'article ' . $post . ' a bien été mis en publié');
+        } else {            
+            $post->setIsActive(false);
+            $this->addFlash('danger', 'l\'artlicle ' . $post . ' a bien été dépublié');
+        }
+
+        $this->getDoctrine()->getManager()->flush();
+
+        return $this->redirectToRoute('backend_post_index');
+    }
+
+    /**
+     * @Route("/{id}", requirements={"id"="\d+"}, name="delete", methods={"DELETE"})
      */
     public function delete(Request $request, Post $post): Response
     {
@@ -93,7 +111,7 @@ class PostController extends AbstractController
             $entityManager->remove($post);
             $entityManager->flush();
 
-            $this->addFlash('success', 'L\'article ' . $post . ' a bien été supprimé');
+            $this->addFlash('danger', 'L\'article ' . $post . ' a bien été supprimé');
         }
 
         return $this->redirectToRoute('backend_post_index');

@@ -122,6 +122,24 @@ class UserController extends AbstractController
     }
 
     /**
+     * @Route("/{id}/toggle", requirements={"id"="\d+"}, name="toggle_active", methods={"GET","POST"})
+     */
+    public function toggle(User $user): Response
+    {
+        if($user->getIsActive() == false) {
+            $user->setIsActive(true);
+            $this->addFlash('success', 'le compte ' . $user . ' a bien été activé');
+        } else {            
+            $user->setIsActive(false);
+            $this->addFlash('danger', 'le compte ' . $user . ' a bien été désactivé');
+        }
+
+        $this->getDoctrine()->getManager()->flush();
+
+        return $this->redirectToRoute('backend_user_index');
+    }
+
+    /**
      * @Route("/{id}", requirements={"id"="\d+"}, name="delete", methods={"DELETE"})
      */
     public function delete(Request $request, User $user): Response
@@ -131,7 +149,7 @@ class UserController extends AbstractController
             $entityManager->remove($user);
             $entityManager->flush();
 
-            $this->addFlash('success', 'L\'utilisateur ' . $user . ' a bien été supprimé');
+            $this->addFlash('danger', 'L\'utilisateur ' . $user . ' a bien été supprimé');
         }
 
         return $this->redirectToRoute('backend_user_index');

@@ -42,6 +42,7 @@ class CompanyController extends AbstractController
             $company
                 ->setCreatedAt(new \Datetime())
                 ->setUpdatedAt(new \Datetime())
+                ->setIsActive(true)
             ;
 
             $em = $this->getDoctrine()->getManager();
@@ -49,7 +50,7 @@ class CompanyController extends AbstractController
             $em->persist($company);
             $em->flush();
 
-            $this->addFlash('warning', 'La pharmacie ' . $company . ' a bien été ajoutée, Vous devez maintenant créer un compte gestionnaire');
+            $this->addFlash('success', 'La pharmacie ' . $company . ' a bien été ajoutée, Vous devez maintenant créer un compte gestionnaire');
 
             return $this->redirectToRoute('backend_user_create_after_company', [
                 'pharmacie' => $company->getId(),
@@ -104,7 +105,7 @@ class CompanyController extends AbstractController
             $entityManager->remove($company);
             $entityManager->flush();
 
-            $this->addFlash('success', 'La pharmacie ' . $company . ' a bien été supprimée');
+            $this->addFlash('danger', 'La pharmacie ' . $company . ' a bien été supprimée');
         }
 
         return $this->redirectToRoute('backend_company_index');

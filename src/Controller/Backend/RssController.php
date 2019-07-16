@@ -61,7 +61,7 @@ class RssController extends AbstractController
             $this->addFlash('success', 'le flux RSS ' . $rss . ' a bien été activé');
         } else {            
             $rss->setIsActive(false);
-            $this->addFlash('info', 'le flux RSS ' . $rss . ' a bien été désactivé');
+            $this->addFlash('danger', 'le flux RSS ' . $rss . ' a bien été désactivé');
         }
 
         $this->getDoctrine()->getManager()->flush();
@@ -104,7 +104,7 @@ class RssController extends AbstractController
             $entityManager->remove($rss);
             $entityManager->flush();
 
-            $this->addFlash('success', 'le flux RSS ' . $rss . ' a bien été supprimé');
+            $this->addFlash('danger', 'le flux RSS ' . $rss . ' a bien été supprimé');
         }
 
         return $this->redirectToRoute('rss_index');

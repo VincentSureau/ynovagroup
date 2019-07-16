@@ -65,14 +65,14 @@ class CompanyType extends AbstractType
                 'label' => 'Description',
                 'required' => false
             ])
-            ->add('isActive', ChoiceType::class, [
-                'label' => 'Actif',
-                'choices' => [
-                    'Oui' => true,
-                    'Non' => false
-                ],
-                'placeholder' => false,
-            ])
+            // ->add('isActive', ChoiceType::class, [
+            //     'label' => 'Actif',
+            //     'choices' => [
+            //         'Oui' => true,
+            //         'Non' => false
+            //     ],
+            //     'placeholder' => false,
+            // ])
             // ->add('user', EntityType::class, [
             //     'label' => 'Gestionnaire',
             //     'class' => User::class,

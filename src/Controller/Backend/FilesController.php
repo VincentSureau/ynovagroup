@@ -83,6 +83,24 @@ class FilesController extends AbstractController
     }
 
     /**
+     * @Route("/{id}/toggle", requirements={"id"="\d+"}, name="toggle_active", methods={"GET","POST"})
+     */
+    public function toggle(Files $file): Response
+    {
+        if($file->getIsActive() == false) {
+            $file->setIsActive(true);
+            $this->addFlash('success', 'le document ' . $file . ' a bien été activé');
+        } else {            
+            $file->setIsActive(false);
+            $this->addFlash('danger', 'le document ' . $file . ' a bien été désactivé');
+        }
+
+        $this->getDoctrine()->getManager()->flush();
+
+        return $this->redirectToRoute('backend_file_index');
+    }
+
+    /**
      * @Route("/{id}", requirements={"id"="\d+"}, name="delete", methods={"DELETE"})
      */
     public function delete(Request $request, Files $file): Response
@@ -92,7 +110,7 @@ class FilesController extends AbstractController
             $entityManager->remove($file);
             $entityManager->flush();
 
-            $this->addFlash('success', 'Le document ' . $file . ' a bien été supprimé');
+            $this->addFlash('danger', 'Le document ' . $file . ' a bien été supprimé');
         }
 
         return $this->redirectToRoute('backend_file_index');

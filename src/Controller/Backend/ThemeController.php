@@ -140,7 +140,7 @@ class ThemeController extends AbstractController
             $entityManager->remove($theme);
             $entityManager->flush();
 
-            $this->addFlash('success', 'Le thème ' . $theme . ' a bien été supprimé');
+            $this->addFlash('danger', 'Le thème ' . $theme . ' a bien été supprimé');
         }
 
         return $this->redirectToRoute('backend_theme_index');

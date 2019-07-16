@@ -115,7 +115,7 @@ function init() {
                 {
                     data: 'is_active',
                     render: function (data, index, row) {
-                        if(data == true || data == 'true') {
+                        if (data == true || data == 'true') {
                             var button = `<a href="/backend/themes/${row.id}/toggle" class="btn btn-success btn-sm"><i class="fas fa-toggle-on"></i></a>`
                         } else {
                             var button = `<a href="/backend/themes/${row.id}/toggle" class="btn btn-secondary btn-sm"><i class="fas fa-toggle-off"></i></a>`
@@ -145,7 +145,7 @@ function init() {
                         },
                         display: function (data, index, row) {
                             var button = `
-                            <a href="/documents/${data}" class="btn btn-success btn-sm edit-modal">
+                            <a href="/backend/documents/${data}" class="btn btn-success btn-sm edit-modal">
                                 <i class="fas fa-edit"></i>
                             </a>`
                             return button
@@ -154,12 +154,6 @@ function init() {
                 },
                 { data: 'name' },
                 { data: 'description' },
-                {
-                    data: 'is_active',
-                    render: function (data) {
-                        return (data == "true" || data == true) ? 'oui' : 'non'
-                    }
-                },
                 {
                     data: 'commercial',
                     render: function (data, index, row) {
@@ -178,7 +172,18 @@ function init() {
                         }
                         return '-'
                     }
-                }
+                },
+                {
+                    data: 'is_active',
+                    render: function (data, index, row) {
+                        if (data == true || data == 'true') {
+                            var button = `<a href="/backend/documents/${row.id}/toggle" class="btn btn-success btn-sm"><i class="fas fa-toggle-on"></i></a>`
+                        } else {
+                            var button = `<a href="/backend/documents/${row.id}/toggle" class="btn btn-secondary btn-sm"><i class="fas fa-toggle-off"></i></a>`
+                        }
+                        return button
+                    }
+                },
             ],
         })
     }
@@ -291,14 +296,19 @@ function init() {
                     }
                 },
                 {
-                    data: 'is_active',
-                    render: function (data) {
-                        return (data == "true" || data == true) ? 'oui' : 'non'
-                    }
+                    data: 'visibility'
                 },
                 {
-                    data: 'visibility'
-                }
+                    data: 'is_active',
+                    render: function (data, index, row) {
+                        if (data == true || data == 'true') {
+                            var button = `<a href="/backend/articles/${row.id}/toggle" class="btn btn-success btn-sm"><i class="fas fa-toggle-on"></i></a>`
+                        } else {
+                            var button = `<a href="/backend/articles/${row.id}/toggle" class="btn btn-secondary btn-sm"><i class="fas fa-toggle-off"></i></a>`
+                        }
+                        return button
+                    }
+                },
             ]
         })
     }
@@ -340,10 +350,15 @@ function init() {
                 { data: 'email' },
                 {
                     data: 'is_active',
-                    render: function (data) {
-                        return (data == "true" || data == true) ? 'oui' : 'non'
+                    render: function (data, index, row) {
+                        if (data == true || data == 'true') {
+                            var button = `<a href="/backend/gestionnaires/${row.id}/toggle" class="btn btn-success btn-sm"><i class="fas fa-toggle-on"></i></a>`
+                        } else {
+                            var button = `<a href="/backend/gestionnaires/${row.id}/toggle" class="btn btn-secondary btn-sm"><i class="fas fa-toggle-off"></i></a>`
+                        }
+                        return button
                     }
-                }
+                },
             ]
         })
     }
@@ -373,10 +388,15 @@ function init() {
                 { data: 'email' },
                 {
                     data: 'is_active',
-                    render: function (data) {
-                        return (data == "true" || data == true) ? 'oui' : 'non'
+                    render: function (data, index, row) {
+                        if (data == true || data == 'true') {
+                            var button = `<a href="/backend/commerciaux/${row.id}/toggle" class="btn btn-success btn-sm"><i class="fas fa-toggle-on"></i></a>`
+                        } else {
+                            var button = `<a href="/backend/commerciaux/${row.id}/toggle" class="btn btn-secondary btn-sm"><i class="fas fa-toggle-off"></i></a>`
+                        }
+                        return button
                     }
-                }
+                },
             ]
         })
     }
