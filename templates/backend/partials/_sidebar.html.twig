@@ -79,6 +79,12 @@
               Partenaires
           </a>
       </li>
+      <li class="nav-item">
+          <a class="nav-link {{ (current == 'config')? 'link-green' : 'text-dark' }}" href="{{ path('backend_parameters') }}">
+              <i class="fas fa-tools"></i>                         
+              Configuration
+          </a>
+      </li>
     </ul>
     {% endif %}
   </div>
