@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class NotificationController extends AbstractController
 {
     /**
-     * @Route("/backend/notifications", name="notification")
+     * @Route("/notifications", name="notification")
      */
     public function index()
     {

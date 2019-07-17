@@ -48,6 +48,7 @@ security:
         - { path: '^\/backend/themes', roles: ROLE_ADMIN } 
         - { path: '^\/backend/rss', roles: ROLE_ADMIN } 
         - { path: '^\/backend', roles: ROLE_BUSINESS } 
+        - { path: '^\/api', roles: ROLE_BUSINESS } 
         - { path: '^\/mon-espace', roles : IS_AUTHENTICATED_REMEMBERED }
         - { path: '^\/', roles : IS_AUTHENTICATED_ANONYMOUSLY }
     role_hierarchy:
