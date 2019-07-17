@@ -8,8 +8,9 @@ use App\Entity\Post;
 use App\Entity\User;
 use App\Entity\Files;
 
-use App\Entity\Company;
+use App\Entity\Config;
 
+use App\Entity\Company;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
@@ -122,6 +123,16 @@ class AppFixtures extends Fixture
 
             $manager->persist($rssFeed);
         }
+
+        $config = new Config();
+
+        $config
+            ->setIsUnderMaintenance(false)
+            ->setCreatedAt(new \Datetime)
+            ->setCreatedAt(new \Datetime)
+            ->setUpdatedAt(new \Datetime);
+
+        $manager->persist($config);
 
         $manager->flush();
     }

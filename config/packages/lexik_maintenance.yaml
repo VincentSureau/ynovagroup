@@ -1,7 +1,7 @@
 lexik_maintenance:
 
     authorized:
-    #     path: '^\/(backend|api|connexion)'                                  # Optional. Authorized path, accepts regexs
+        path: '^\/(backend|api|connexion)'                                  # Optional. Authorized path, accepts regexs
     #     host: your-domain.com                                               # Optional. Authorized domain, accepts regexs
     #     ips: ['127.0.0.1', '172.123.10.14']                                 # Optional. Authorized ip addresses
     #     query: { connexion: maintenance }                                   # Optional. Authorized request query parameter (GET/POST)

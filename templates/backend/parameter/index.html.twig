@@ -1,0 +1,32 @@
+{% extends 'backend/backend_layout.html.twig' %}
+
+{% block title %}Configuration{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1>Configuration du site</h1>
+        <div class="card p-4">
+            {{ include('backend/partials/_flash.html.twig') }}
+
+            {% if consoleResponse is not empty %}
+            <div class="alert alert-dark" role="alert">
+                Réponse du serveur :
+                <pre style="background-color: black; overflow: auto; padding: 10px 15px; font-family: monospace; border: 2px solid white;">
+                    {{ consoleResponse|raw }}
+                </pre>
+            </div>
+            {% endif %}
+
+            {{ form_start(form) }}
+                {{ form_errors(form) }}
+
+                {{ form_row(form.isUnderMaintenance) }}
+                <small class="text-danger"><strong><i class="fas fa-exclamation-triangle"></i></strong> Attention, pensez à vérifier les paramètres de maintenance dans le fichier "/config/packages/lexik_maintenance'.yaml"</small>
+
+                <div class="text-right my-2">
+                    <button class="btn btn-success">{{ button_label|default('Enregistrer') }} <i class="fas fa-cog"></i></button>
+                </div>
+            {{ form_end(form) }}
+        </div>
+    </div>
+{% endblock %}
