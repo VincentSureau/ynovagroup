@@ -654,3 +654,7 @@ td > a > i:hover {
     display: flex !important;
     justify-content: space-around !important;
 }
+
+.form-group > textarea {
+    height: 200px;
+} 
