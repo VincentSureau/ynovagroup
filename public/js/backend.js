@@ -243,11 +243,7 @@ function init() {
                     data: 'link',
                     render: function(data, index, row) {
                         if (data) {
-                            let link = `<a 
-                            href="${data}" 
-                            ping="/api/file-downloaded/${row.id}"
-                            target="_blank"
-                            >télécharger</a>`
+                            let link = `<a href="${data}" ping="/api/file-downloaded/${row.id}" target="_blank">télécharger</a>`
                             return link
                         }
                         return '-'
