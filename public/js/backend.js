@@ -190,6 +190,10 @@ function init() {
 
     if (document.querySelector('#receivedFilesTable')) {
         var table = $('#receivedFilesTable').DataTable({
+            order: [
+                [3, "asc"],
+                [2, "desc"]
+            ],
             language: {
                 url: '/json/fr_FR.json'
             },
