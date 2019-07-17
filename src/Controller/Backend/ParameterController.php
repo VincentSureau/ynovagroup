@@ -59,14 +59,13 @@ class ParameterController extends AbstractController
                 '--no-interaction' => '',
             ]);
 
-            // You can use NullOutput() if you don't need the output
             $output = new BufferedOutput(
                 OutputInterface::VERBOSITY_NORMAL,
                 true // true for decorated
             );
             $application->run($input, $output);
 
-            // return the output, don't use if you used NullOutput()
+            // return the output
             $converter = new AnsiToHtmlConverter();
             $content = $output->fetch();
 
