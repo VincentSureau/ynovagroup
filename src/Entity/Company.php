@@ -27,7 +27,7 @@ class Company
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"user","company", "companyWrite"})
+     * @Groups({"user","company", "companyWrite", "receivedFile"})
      */
     private $name;
 

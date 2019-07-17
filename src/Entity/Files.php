@@ -6,33 +6,38 @@ use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation\Groups;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\Common\Collections\Collection;
+use JMS\Serializer\Annotation\SerializedName;
+use JMS\Serializer\Annotation\VirtualProperty;
 use Symfony\Component\HttpFoundation\File\File;
 use Doctrine\Common\Collections\ArrayCollection;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\Security\Core\User\UserInterface;
+use Vich\UploaderBundle\Templating\Helper\UploaderHelper;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\FilesRepository")
  * @Vich\Uploadable
  */
+
 class Files
 {
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups({"file"})
+     * @Groups({"file", "receivedFile"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=190)
-     * @Groups({"user", "file", "fileWrite"})
+     * @Groups({"user", "file", "receivedFile"})
      */
     private $name;
 
     /**
      * @ORM\Column(type="string", length=190)
-     * @Groups({"file", "fileWrite"})
+     * @Groups({"file", "receivedFile"})
      */
     private $document;
 
@@ -63,7 +68,7 @@ class Files
 
     /**
      * @ORM\Column(type="datetime")
-     * @Groups({"file"})
+     * @Groups({"file", "receivedFile"})
      */
     private $createdAt;
 
@@ -83,27 +88,49 @@ class Files
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="managedFiles")
      * @ORM\JoinColumn(nullable=false)
-     * @Groups({"file",  "fileWrite"})
+     * @Groups({"file"})
      */
     private $commercial;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="files")
-     * @Groups({"file",  "fileWrite"})
+     * @Groups({"file", "receivedFile"})
      */
     private $sentBy;
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Company", inversedBy="files")
-     * @Groups({"file",  "fileWrite"})
+     * @Groups({"file"})
      */
     private $pharmacies;
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\User", inversedBy="readFiles")
-     * @Groups({"file",  "fileWrite"})
+     * @Groups({"file"})
      */
     private $readBy;
+
+    /**
+     * @Groups({"receivedFile"})
+     * 
+     * @var string
+     */
+    private $link;
+
+    /**
+     * @VirtualProperty
+     * @SerializedName("read")
+     * @Groups({"receivedFile"})
+     * 
+     * @return boolean
+     */
+    public function isRead()
+    {
+        $users = $this->getReadBy();
+        $commercial = $this->getCommercial();
+
+        return $users->contains($commercial);
+    }
 
     public function __construct()
     {
@@ -306,6 +333,26 @@ class Files
         if ($this->readBy->contains($readBy)) {
             $this->readBy->removeElement($readBy);
         }
+
+        return $this;
+    }
+
+    /**
+     * Get the value of link
+     */ 
+    public function getLink()
+    {
+        return $this->link;
+    }
+
+    /**
+     * Set the value of link
+     *
+     * @return  self
+     */ 
+    public function setLink($link)
+    {
+        $this->link = $link;
 
         return $this;
     }

@@ -22,7 +22,7 @@ class User implements UserInterface
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups({"user", "userWrite", "company"})
+     * @Groups({"user", "userWrite", "company", "receivedFile"})
      */
     private $id;
 
@@ -45,13 +45,13 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=190, nullable=true)
-     * @Groups({"user", "userWrite", "company", "post", "file"})
+     * @Groups({"user", "userWrite", "company", "post", "file", "receivedFile"})
      */
     private $firstname;
 
     /**
      * @ORM\Column(type="string", length=190, nullable=true)
-     * @Groups({"user", "userWrite", "company", "post", "file"})
+     * @Groups({"user", "userWrite", "company", "post", "file", "receivedFile"})
      */
     private $lastname;
 
@@ -89,7 +89,7 @@ class User implements UserInterface
     /**
      * @ORM\OneToOne(targetEntity="App\Entity\Company", inversedBy="user", cascade={"persist"})
      * @ORM\JoinColumn(nullable=true, onDelete="SET NULL")
-     * @Groups({"user", "userWrite"})
+     * @Groups({"user", "userWrite", "receivedFile"})
      */
     private $company;
 

@@ -188,6 +188,75 @@ function init() {
         })
     }
 
+    if (document.querySelector('#receivedFilesTable')) {
+        var table = $('#receivedFilesTable').DataTable({
+            language: {
+                url: '/json/fr_FR.json'
+            },
+            ajax: {
+                url: '/api/files/received',
+                dataSrc: ''
+            },
+            columns: [
+                { data: 'name' },
+                { 
+                    data: 'sent_by',
+                    render: function(data) {
+                        if(data) {
+                            let firstname = data.firstname || '-'
+                            let lastname = data.lastname || '-'
+                            let company = data.company? data.company.name || '-' : '-'
+
+                            return firstname + ' ' + lastname + ' [' + company +']'
+                        }
+
+                        return '-'
+                    }
+
+                },
+                { 
+                    data: 'created_at',
+                    render: function (data, index, row) {
+                        if (data) {
+                            const d = new Date(data);
+                            if (d.getMonth() < 10) {
+                                var month = `0${d.getMonth() + 1}`;
+                            } else {
+                                var month = d.getMonth() + 1;
+                            }
+                            const dateFormated = `${d.getDate()}/${month}/${d.getFullYear()}`;
+                            return dateFormated
+                        }
+                        return '-';
+                    }
+                },
+                {
+                    data: 'read',
+                    render: function(data) {
+                        if (data == true || data == 'true') {
+                            return 'oui'
+                        }
+                        return 'non'
+                    }
+                },
+                {
+                    data: 'link',
+                    render: function(data, index, row) {
+                        if (data) {
+                            let link = `<a 
+                            href="${data}" 
+                            ping="/api/file-downloaded/${row.id}"
+                            target="_blank"
+                            >télécharger</a>`
+                            return link
+                        }
+                        return '-'
+                    }
+                },
+            ],
+        })
+    }
+
     if (document.querySelector('#partnerTable')) {
         var table = $('#partnerTable').DataTable({
             order: [[0, "desc"]],
@@ -210,6 +279,7 @@ function init() {
                             <a href="/backend/partenaires/${data}" class="btn btn-success btn-sm edit-modal">
                                 <i class="fas fa-edit"></i>
                             </a>`
+                        
                             return button
 
                         }

@@ -5,10 +5,10 @@ namespace App\Controller\Backend;
 use App\Entity\Files;
 use App\Form\FilesType;
 use App\Repository\FilesRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
  * @Route("/documents", name="file_")

@@ -11,7 +11,9 @@
         <a class="nav-link {{ (current == 'notification')? 'link-green' : 'text-dark' }}" href="{{ path('backend_notification') }}">
             <i class="fas fa-file-import"></i>
             Documents reçus
-            <span class="badge badge-pill badge-success">5</span>
+            {% if unread is defined and unread > 0 %}
+            <span class="badge badge-pill badge-success">{{unread}}</span>
+            {% endif %}
         </a>
       </li>
     </ul>
