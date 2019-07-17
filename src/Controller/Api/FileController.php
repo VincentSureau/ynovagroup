@@ -21,9 +21,13 @@ class FileController extends FOSRestController
     */
     public function getListAction(FilesRepository $repo, Security $security) {
         if ($security->isGranted('ROLE_ADMIN')) {
-            $data = $repo->findAll(
-                ['createdAt' => 'DESC']
-            );
+            $data = $repo->createQueryBuilder('f')
+                        ->join('f.sentBy', 'u')
+                        ->where('u.roles NOT LIKE :role')
+                        ->setParameter('role', '%"ROLE_MEMBER"%')
+                        ->getQuery()
+                        ->getResult()
+                    ;
         } elseif ($security->isGranted('ROLE_BUSINESS')) {
             $data = $repo->findBy(
                 ['sentBy' => $this->getUser()]
