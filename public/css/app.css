@@ -581,3 +581,71 @@ td > a > i:hover {
 .reveal-6 {
     transition-delay: 1.8s;
 }
+
+.maintenance > h1 {
+    color: var(--green);
+    font-size: 3.5em;
+    margin-top: 3em;
+    margin-bottom: 1.5em;
+}
+
+.maintenance > p > a {
+    color: var(--green);
+    text-decoration: none;
+    padding: 2px 4px;
+}
+
+.maintenance > p > a:hover {
+    color: var(--white);
+    background-color: var(--green);
+    text-decoration: none;
+    padding: 2px 4px;
+}
+.maintenance > img {
+    width: 150px;
+    margin-top: 3em;
+}
+
+.error404 {
+    margin-top: 10rem;
+} 
+
+.error404 > span {
+    color: var(--green);
+    text-transform: uppercase;
+    font-weight: bolder;
+    font-size: 3.5em;
+    margin-top: 5em;
+    margin-bottom: 1.5em; 
+    letter-spacing: 10px;
+}
+.error404 > h1 {
+    color: var(--green);
+    font-size: 2.5em;
+    /* margin-top: 3em; */
+    margin-bottom: 1.5em; 
+}
+
+.error404 > p {
+    margin-bottom: 1.5em; 
+}
+
+.error {
+    margin-top: 10rem;
+} 
+
+
+.error > h1 {
+    color: var(--green);
+    text-transform: uppercase;
+    font-weight: bolder;
+    font-size: 3.5em;
+    margin-top: 3em;
+    /* margin-bottom: 1.5em;  */
+    letter-spacing: 10px;
+}
+
+
+.error > p {
+    margin-bottom: 5em; 
+}

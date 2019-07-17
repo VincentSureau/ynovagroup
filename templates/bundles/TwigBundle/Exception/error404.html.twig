@@ -2,10 +2,16 @@
 
 {% block title %}Ynovagroup - Votre groupement de pharmaciens indépendants{% endblock %}
 
-<span>Oups !</span>
-<h1>Erreur 404</h1>
-<p>La page que vous cherchez semble introuvable ou n'existe pas...</p>
-<button>Retourner à l'accueil</button>
+<div class="container-fluid text-center error404">
+    <span>Oups !</span>
+    <h1>Erreur 404</h1>
+    <p>La page que vous cherchez semble introuvable ou n'existe pas...</p>
+    <button class="btn btn-success">
+        Retourner à l'accueil
+        <i class="fas fa-home"></i>
+    </button>
+</div>
+
 
 {% block body %}
 
