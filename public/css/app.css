@@ -649,3 +649,8 @@ td > a > i:hover {
 .error > p {
     margin-bottom: 5em; 
 }
+
+.carousel-item-active {
+    display: flex !important;
+    justify-content: space-around !important;
+}
