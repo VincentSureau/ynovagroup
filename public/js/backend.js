@@ -190,6 +190,10 @@ function init() {
 
     if (document.querySelector('#receivedFilesTable')) {
         var table = $('#receivedFilesTable').DataTable({
+            order: [
+                [3, "asc"],
+                [2, "desc"]
+            ],
             language: {
                 url: '/json/fr_FR.json'
             },
@@ -243,7 +247,8 @@ function init() {
                     data: 'link',
                     render: function(data, index, row) {
                         if (data) {
-                            let link = `<a href="${data}" ping="/api/file-downloaded/${row.id}" target="_blank">télécharger</a>`
+                            let ping = `/api/file-downloaded/${row.id}`
+                            let link = `<a href="${data}" ping="${ping}" data-no-swup target="_blank"}">télécharger</a>`
                             return link
                         }
                         return '-'
@@ -296,7 +301,7 @@ function init() {
                     data: 'link',
                     render: function (data, index, row) {
                         if (data != null) {
-                            return '<a href="' + data + '" target="_blank">'+ data +'</a>' || '-'
+                            return '<a href="' + data + '" target="_blank" data-no-swup>'+ data +'</a>' || '-'
                         } else {
                             return '-'
                         }
