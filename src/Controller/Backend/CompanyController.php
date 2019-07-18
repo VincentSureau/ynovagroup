@@ -57,7 +57,7 @@ class CompanyController extends AbstractController
             ]);
         }
 
-        $this->addFlash('warning', 'Après avoir créé la pharmacie, vous pourrez ajouter un compte utilisateur');
+        $this->addFlash('warning', 'Après avoir créé la pharmacie, vous pourrez ajouter un compte pharmacien');
 
         return $this->render('backend/company/new.html.twig', [
             'company' => $company,

@@ -5,7 +5,10 @@ namespace App\Form;
 use App\Entity\User;
 use App\Entity\Company;
 use App\Repository\UserRepository;
+use Symfony\Component\Form\FormEvent;
+use Symfony\Component\Form\FormEvents;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Security\Core\Security;
 use Symfony\Component\Form\FormBuilderInterface;
 use Vich\UploaderBundle\Form\Type\VichImageType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -17,6 +20,12 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class CompanyType extends AbstractType
 {
+    private $security;
+
+    public function __construct(Security $security) {
+        $this->security = $security;
+    }
+
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
@@ -65,40 +74,40 @@ class CompanyType extends AbstractType
                 'label' => 'Description',
                 'required' => false
             ])
-            // ->add('isActive', ChoiceType::class, [
-            //     'label' => 'Actif',
-            //     'choices' => [
-            //         'Oui' => true,
-            //         'Non' => false
-            //     ],
-            //     'placeholder' => false,
-            // ])
-            // ->add('user', EntityType::class, [
-            //     'label' => 'Gestionnaire',
-            //     'class' => User::class,
-            //     'query_builder' => function (UserRepository $er) {
-            //         return $er
-            //             ->createQueryBuilder('u')
-            //             ->andWhere('u.roles LIKE :role')
-            //             ->setParameter('role', '%"ROLE_MEMBER"%')
-            //         ;
-            //     },
-            //     'required' => false
-            // ])
-            ->add('commercial', EntityType::class, [
-                'label' => 'Commercial',
-                'class' => User::class,
-                'query_builder' => function (UserRepository $er) {
-                    return $er
-                        ->createQueryBuilder('u')
-                        ->andWhere('u.roles LIKE :role')
-                        ->setParameter('role', '%"ROLE_BUSINESS"%')
-                    ;
-                },
-                'required' => false,
-                'placeholder' => 'Choisir un commercial'
-            ]);
         ;
+
+        $builder->addEventListener(
+            FormEvents::PRE_SET_DATA,
+            function(FormEvent $event) {
+                $form = $event->getForm();
+                $company = $event->getData();
+
+                if ($this->security->isGranted('ROLE_ADMIN')) {
+                    $form->add('commercial', EntityType::class, [
+                    'label' => 'Commercial',
+                    'class' => User::class,
+                    'query_builder' => function (UserRepository $er) {
+                        return $er
+                            ->createQueryBuilder('u')
+                            ->andWhere('u.roles LIKE :role')
+                            ->setParameter('role', '%"ROLE_BUSINESS"%')
+                        ;
+                    },
+                    'required' => false,
+                    'placeholder' => 'Choisir un commercial'
+                    ]);
+                } else {
+                    $form->add('commercial', EntityType::class, [
+                        'label' => 'Commercial',
+                        'class' => User::class,
+                        'choices' => [
+                            $this->security->getUser()
+                        ],
+                        'placeholder' => false
+                    ]);
+                }
+            }
+        );
     }
 
     public function configureOptions(OptionsResolver $resolver)

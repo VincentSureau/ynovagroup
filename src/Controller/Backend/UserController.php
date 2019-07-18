@@ -41,8 +41,8 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/ajout-d-un-utilisateur/{pharmacie}",requirements={"pharmacie"="\d+"}, name="create_after_company", methods={"GET","POST"})
-     * @Route("/ajout-d-un-utilisateur", name="create", methods={"GET","POST"})
+     * @Route("/ajout-d-un-pharmacien/{pharmacie}",requirements={"pharmacie"="\d+"}, name="create_after_company", methods={"GET","POST"})
+     * @Route("/ajout-d-un-pharmacien", name="create", methods={"GET","POST"})
      */
     public function new(Company $pharmacie = null, Request $request): Response
     {
@@ -66,7 +66,7 @@ class UserController extends AbstractController
             $em->persist($user);
             $em->flush();
 
-            $this->addFlash('success', 'L\'utilisateur '. $user . ' a bien été ajouté, un mail avec son mot de passe lui a été envoyé');
+            $this->addFlash('success', 'Le pharmacien '. $user . ' a bien été ajouté, un mail avec son mot de passe lui a été envoyé');
 
             return $this->redirectToRoute('backend_user_index', [
                 'id' => $user->getId(),
@@ -74,7 +74,7 @@ class UserController extends AbstractController
         }
 
         if(empty($pharmacie)) {
-            $this->addFlash('warning', 'Pour changer le gestionnaire d\'une pharmacie, vous devez d\'abord supprimer l\'ancien utilisateur');
+            $this->addFlash('warning', 'Pour changer le pharmacien d\'une pharmacie, vous devez d\'abord supprimer l\'ancien pharmacien');
         }
         
         return $this->render('backend/user/new.html.twig', [
@@ -107,7 +107,7 @@ class UserController extends AbstractController
 
             $this->getDoctrine()->getManager()->flush();
 
-            $this->addFlash('success', 'L\'utilisateur '. $user . ' a bien été mis à jour');
+            $this->addFlash('success', 'Le pharmacien '. $user . ' a bien été mis à jour');
 
             return $this->redirectToRoute('backend_user_index', [
                 'id' => $user->getId(),
@@ -149,7 +149,7 @@ class UserController extends AbstractController
             $entityManager->remove($user);
             $entityManager->flush();
 
-            $this->addFlash('danger', 'L\'utilisateur ' . $user . ' a bien été supprimé');
+            $this->addFlash('danger', 'Le pharmacien ' . $user . ' a bien été supprimé');
         }
 
         return $this->redirectToRoute('backend_user_index');
