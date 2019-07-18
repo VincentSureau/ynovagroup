@@ -52,7 +52,7 @@ class BlogController extends AbstractController
     {
         $post = $postRepository->findOneBySlug($slug);
 
-        return $this->render('blog/index.html.twig', [
+        return $this->render('blog/single.html.twig', [
             'current' => 'blog',
             'post' => $post
         ]);
