@@ -10,6 +10,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Vich\UploaderBundle\Form\Type\VichImageType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -54,6 +55,11 @@ class PostType extends AbstractType
                     'Privé' => 'private'
                 ],
                 'placeholder' => false,
+            ])
+            ->add('deletedAt', DateType::class, [
+                'label' => 'Disponible jusqu\'au',
+                'widget' => 'single_text',
+                'required' => false,
             ])
             ->add('author', EntityType::class, [
                 'label' => 'Auteur',
