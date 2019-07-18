@@ -3,7 +3,7 @@
     <header class="header">
         <!-- Navigation with a burger menu -->
         <nav class="fixed-top navbar navbar-expand-xl navbar-light bg-white navbar-fixed-top">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="{{ path('home') }}">
             {% if theme.picture is defined %}
                 <img src="{{ vich_uploader_asset(theme, 'pictureFile') }}" width="200" height="70" alt="Ynovagroup Logo">
             {% else %}
