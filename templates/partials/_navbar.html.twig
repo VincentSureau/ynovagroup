@@ -3,9 +3,9 @@
     <nav id="nav" class="navbar fixed-top navbar-expand-lg navbar-light bg-white ">
         <a class="navbar-brand" href="{{ current == 'home'? '#' : path('home') }}">
         {% if theme.picture is defined %}
-            <img id="ephemeride" src="{{ vich_uploader_asset(theme, 'pictureFile') }}"  alt="">
+            <img id="{{ current == 'home'? 'ephemeride' : 'logo'}}" src="{{ vich_uploader_asset(theme, 'pictureFile') }}"  alt="">
         {% else %}
-            <img id="ephemeride" src="{{ asset('images/ynovagroup_logo.png') }}" alt="Ynovagroup Logo">
+            <span>Ynovagroup</span>
         {% endif %}
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
