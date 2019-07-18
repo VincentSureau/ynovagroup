@@ -33,7 +33,8 @@ class SidebarController extends AbstractController
                     ->setParameter('role', '%"ROLE_MEMBER"%')
                     ->andWhere('f.commercial = :commercial')
                     ->setParameter('commercial', $this->getUser())
-                    ->andWhere('f.readBy IS EMPTY')
+                    ->andWhere(':commercial2 NOT MEMBER OF f.readBy')
+                    ->setParameter('commercial2', $this->getUser())
                     ->getQuery()
                     ->getSingleScalarResult();
                 ;
