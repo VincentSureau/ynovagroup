@@ -76,8 +76,8 @@ li {
 /* Hero Section */
 #hero {
     background-image: url('./../images/ynovagroup_hero_2.jpg');
-    background-repeat: repeat;
-    background-position: center;
+    /* background-repeat: repeat;
+    background-position: center; */
     /* filter: blur(8px);
     -webkit-filter: blur(8px); */
     backdrop-filter: blur(5px);
@@ -86,6 +86,11 @@ li {
     display: flex;
     flex-direction: column;
     justify-content: center;
+
+    background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 #hero > div > h1 {
@@ -205,7 +210,7 @@ li {
 }
 
 .carousel-inner-difference {
-    height: 300px;
+    /* height: 300px; */
     position: relative;
 }
 
@@ -215,8 +220,8 @@ li {
 
 .carousel-caption {
     position: absolute;
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: 50px;
+    margin-right: 50px;
     left: 0;
     right: 0;
     z-index: 2;
@@ -240,7 +245,7 @@ li {
     right: 0;
     z-index: 2;
     top: 50%;
-    margin-top: 30px;
+    /* margin-top: 30px; */
 }
 
 .interlude-home > h3, p {
@@ -253,6 +258,26 @@ li {
 
 .interlude-home > p {
     font-size: 1.2em;
+}
+
+@media only screen and (max-width: 576px) {
+    .carousel-caption {
+        position: absolute;
+        margin-left: 50px;
+        margin-right: 50px;
+        left: 0;
+        right: 0;
+        z-index: 2;
+        top: 180px;
+    }
+
+    .carousel-caption > h4 {
+        font-size: 1.4em;
+    }
+    
+    .carousel-caption > p {
+        font-size: 1em;
+    }
 }
 
 /* Nos objectifs */
