@@ -14,7 +14,10 @@
     {% if current is not defined %}
         {% set current = null %}
     {% endif %}
-        {% include('/backend/partials/_navbar.html.twig') %}
+        {{ render(controller(
+            'App\\Controller\\Backend\\NavbarController::index',
+            { 'current': current }
+        )) }}
         <div class="row py-4">
             {{ render(controller(
                 'App\\Controller\\Backend\\SidebarController::index',

@@ -1,6 +1,5 @@
 <div class="tab-pane fade {{ (activePanel == 'profil')? 'show active' }} p-3" id="profil" role="tabpanel" aria-labelledby="profil-tab">    
     <h5 class="h2 font-weight-bold text-success">Mon profil</h5>
-    {# <em class="">Bienvenue sur votre espace personnel !<br>Retrouvez ici les informations de votre pharmacie</em> #}
     <div>
         {% if company is defined and company.picture is not null %}
             <img class="img-fluid" src="{{ vich_uploader_asset(company, 'pictureFile') }}" alt="{{ company.name|default('photo de la pharmacie') }}" />
@@ -13,6 +12,12 @@
         <li class="list-group-item">{{ user.lastname|default('') }}</li>
         <li class="list-group-item font-weight-bold text-uppercase">Prénom</li>        
         <li class="list-group-item">{{ user.firstname|default('') }}</li>
+        <li class="list-group-item font-weight-bold text-uppercase">Nom de la pharmacie</li>
+        <li class="list-group-item">{{ user.company.name|default('') }}</li>
+        <li class="list-group-item font-weight-bold text-uppercase">Adhérent depuis</li>
+        <li class="list-group-item">{{ (user.company)? user.company.createdAt|date("d/m/y") : '-' }}</li>
+        <li class="list-group-item font-weight-bold text-uppercase">Type de contrat</li>
+        <li class="list-group-item">{{ user.company.contractType|default('') }}</li>
         <li class="list-group-item font-weight-bold text-uppercase">Nom de la pharmacie</li>
         <li class="list-group-item">{{ user.company.name|default('') }}</li>
         <li class="list-group-item font-weight-bold text-uppercase">Adresse</li>

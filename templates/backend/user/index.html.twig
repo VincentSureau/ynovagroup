@@ -1,9 +1,9 @@
 {% extends 'backend/backend_layout.html.twig' %}
 
-{% block title %}Liste des utilisateurs{% endblock %}
+{% block title %}Liste des pharmaciens{% endblock %}
 
 {% block body %}
-    <h1>Liste des utilisateurs</h1>
+    <h1>Liste des pharmaciens</h1>
 
     <div class="card p-4">
         {{ include('backend/partials/_flash.html.twig') }}
@@ -25,9 +25,5 @@
             </tbody>
         </table>
     </div>
-
-    <p class="text-left">
-        <a class="link-green" href="">retour</a>
-    </p>
 
 {% endblock %}
