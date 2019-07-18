@@ -173,6 +173,15 @@ li {
 }
 
 /* Notre différence */
+.titre-difference {
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    z-index: 2;
+}
+
 .panel {
     display: flex;
     flex-wrap: wrap;
@@ -192,23 +201,53 @@ li {
 }
 
 .carousel-inner {
-    height: 450px;
+    height: 900px;
+    position: relative;
 }
 
 .carousel-item > img {
-    filter: blur(5px) grayscale(10%);
+    filter: blur(7px) grayscale(30%);
 }
 
 .carousel-caption {
-    bottom: 0;
-    padding: 0;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    top: 150px;
 }
 
 .carousel-caption > h4 {
     font-size: 2.5em;
+    font-weight: bold;
 }
 
 .carousel-caption > p {
+    font-size: 1.2em;
+}
+
+.interlude-home {
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    top: 50%;
+    margin-top: 30px;
+}
+
+.interlude-home > h3, p {
+    color: white;
+}
+
+.interlude-home > h4 {
+    font-size: 2.5em;
+}
+
+.interlude-home > p {
     font-size: 1.2em;
 }
 
