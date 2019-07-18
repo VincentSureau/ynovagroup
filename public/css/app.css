@@ -148,6 +148,10 @@ li {
   background-color: #abe8b863 !important;
 }
 
+.testimonial > p {
+  color: black;
+}
+
 
 /* Nos valeurs */
 
@@ -201,7 +205,7 @@ li {
 }
 
 .carousel-inner-difference {
-    height: 900px;
+    height: 300px;
     position: relative;
 }
 
