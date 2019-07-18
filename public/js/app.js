@@ -69,3 +69,8 @@
 
     console.log(window.onscroll);
     $('.carousel').carousel()
+
+    // display file name in bootstrap file inputs
+    $(document).ready(function () {
+        bsCustomFileInput.init()
+    })
