@@ -255,6 +255,26 @@ li {
     font-size: 1.2em;
 }
 
+@media only screen and (max-width: 576px) {
+    .carousel-caption {
+        position: absolute;
+        margin-left: 50px;
+        margin-right: 50px;
+        left: 0;
+        right: 0;
+        z-index: 2;
+        top: 180px;
+    }
+
+    .carousel-caption > h4 {
+        font-size: 1.4em;
+    }
+    
+    .carousel-caption > p {
+        font-size: 1em;
+    }
+}
+
 /* Nos objectifs */
 /* #objectifs {
 
