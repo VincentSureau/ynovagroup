@@ -41,7 +41,7 @@ class RssController extends AbstractController
 
             $this->addFlash('success', 'le flux RSS ' . $rss . ' a bien été ajouté');
 
-            return $this->redirectToRoute('rss_index');
+            return $this->redirectToRoute('backend_rss_index');
         }
 
         return $this->render('backend/rss/new.html.twig', [
@@ -82,7 +82,7 @@ class RssController extends AbstractController
 
             $this->addFlash('success', 'le flux RSS ' . $rss . ' a bien été mis à jour');
 
-            return $this->redirectToRoute('rss_index', [
+            return $this->redirectToRoute('backend_rss_index', [
                 'id' => $rss->getId(),
             ]);
         }
@@ -107,6 +107,6 @@ class RssController extends AbstractController
             $this->addFlash('danger', 'le flux RSS ' . $rss . ' a bien été supprimé');
         }
 
-        return $this->redirectToRoute('rss_index');
+        return $this->redirectToRoute('backend_rss_index');
     }
 }
