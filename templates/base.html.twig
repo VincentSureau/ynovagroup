@@ -32,5 +32,6 @@
         {% if not app.user and app.session.get('acceptCookie') is null %}
             {% include('partials/_rgpd.html.twig') %}
         {% endif %}
+        {% include('partials/_metadata.html.twig') %}
     </body>
 </html>
