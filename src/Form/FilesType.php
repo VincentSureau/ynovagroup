@@ -35,19 +35,6 @@ class FilesType extends AbstractType
         $file = $builder->getData();
 
         $builder
-            ->add('documentFile', VichFileType::class, [
-                'required' => false,
-                'label' => 'Importer le fichier',
-                'allow_delete' => false,
-                'download_label' => 'Télécharger le fichier',
-                'download_uri' => true,
-                'download_link' => true,
-                'constraints' => [
-                    new File(
-                        ['mimeTypes' => ["application/pdf", "application/x-pdf"]]
-                    )
-                ]
-            ])
             ->add('name', TextType::class, [
                 'label' => 'Nom du document',
             ])
@@ -78,7 +65,16 @@ class FilesType extends AbstractType
                 $file = $event->getData();
 
                 if ($this->security->isGranted('ROLE_ADMIN')) {
-                    $form->add('pharmacies', EntityType::Class, [
+                    $form
+                    ->add('documentFile', VichFileType::class, [
+                        'required' => false,
+                        'label' => 'Importer le fichier',
+                        'allow_delete' => false,
+                        'download_label' => 'Télécharger le fichier',
+                        'download_uri' => true,
+                        'download_link' => true
+                    ])
+                    ->add('pharmacies', EntityType::Class, [
                             'label' => 'Pharmacies',
                             'class' => Company::class,
                             'multiple' => true,
@@ -91,7 +87,21 @@ class FilesType extends AbstractType
                             }
                         ]);
                 } else {
-                    $form->add('pharmacies', EntityType::Class, [
+                    $form
+                    ->add('documentFile', VichFileType::class, [
+                        'required' => false,
+                        'label' => 'Importer le fichier',
+                        'allow_delete' => false,
+                        'download_label' => 'Télécharger le fichier',
+                        'download_uri' => true,
+                        'download_link' => true,
+                        'constraints' => [
+                            new File(
+                                ['mimeTypes' => ["application/pdf", "application/x-pdf"]]
+                            )
+                        ]
+                    ])
+                    ->add('pharmacies', EntityType::Class, [
                             'label' => 'Pharmacies',
                             'class' => Company::class,
                             'multiple' => true,
