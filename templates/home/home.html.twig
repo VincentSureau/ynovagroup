@@ -45,7 +45,7 @@
                             <p>{{ post.content|striptags|truncate(600, true) }}</p>
                             {# <p>{{ post.content }}</p> #}
                             <button class="btn btn-success button-actu m-5">
-                                <a href="">Lire la suite</a>
+                                <a href="{{ path('blog_single', {'slug': post.slug}) }}">Lire la suite</a>
                             </button>
                             {% endfor %}
                             </div>

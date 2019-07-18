@@ -44,4 +44,17 @@ class BlogController extends AbstractController
             'pagination' => $pagination
         ]);
     }
+
+    /**
+     * @Route("/actualites/{slug}", name="blog_single")
+     */
+    public function single($slug, PostRepository $postRepository)
+    {
+        $post = $postRepository->findOneBySlug($slug);
+
+        return $this->render('blog/index.html.twig', [
+            'current' => 'blog',
+            'post' => $post
+        ]);
+    }
 }

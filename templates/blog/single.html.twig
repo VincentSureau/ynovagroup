@@ -10,7 +10,7 @@
     <!-- Section Blog--> 
     <div class="container">
         <h1 class="h2 text-center">Actualités</h1>
-        {% for post in pagination %}
+        {% if post %}
             <div class="card mb-3 bg-white">
                 {% if post.picture is not null %}
                     <img class="card-img-top" style="max-height: 400px" src="{{ vich_uploader_asset(post, 'pictureFile') }}" alt="{{ post.title|default('illustration de l\'article') }}" />
@@ -24,15 +24,11 @@
                     </cite></small></p>
                 </div>
             </div>
-            {% if not loop.last %}
-                <hr>
-            {% endif %}
         {% else %}
             <div class="blog-post my-5 p-3 text-center">
-                <p>Aucun article n'a été publié pour le moment</p>
+                <p>Une erreur est survenue et l'article n'a pas pu être chargé</p>
             </div>
         {% endfor %}
-        {{ knp_pagination_render(pagination) }}
     </div>
 </div>
 {% endblock %}
