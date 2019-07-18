@@ -11,6 +11,9 @@
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
+    {% if current is not defined %}
+        {% set current = null %}
+    {% endif %}
         {% include('/backend/partials/_navbar.html.twig') %}
         <div class="row py-4">
             {{ render(controller(
