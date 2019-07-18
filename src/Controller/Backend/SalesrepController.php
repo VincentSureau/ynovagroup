@@ -14,7 +14,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 /**
- * @Route("/commerciaux", name="salesrep_")
+ * @Route("/utilisateurs", name="salesrep_")
  */
 class SalesrepController extends AbstractController
 {
@@ -46,9 +46,10 @@ class SalesrepController extends AbstractController
         $form->handleRequest($request); 
         if ($form->isSubmitted() && $form->isValid()) {
             $password = $this->passwordGenerator->generate();
+            $role = $form->get('role')->getData();
 
             $user
-            ->setRoles(['ROLE_BUSINESS'])
+            ->setRoles([$role])
             ->setPassword($password)
             ->setCreatedAt(new \Datetime)
             ->setUpdatedAt(new \Datetime);
@@ -85,6 +86,9 @@ class SalesrepController extends AbstractController
         $form = $this->createForm(SalesrepType::class, $user);
         $form->handleRequest($request); 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $role = $form->get('role')->getData();
+            $user->setRoles([$role]);
 
             if(is_null($user->getPassword())){
                 $encodedPassword = $oldPassword;

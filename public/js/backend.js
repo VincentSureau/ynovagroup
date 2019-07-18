@@ -440,7 +440,7 @@ function init() {
                 url: '/json/fr_FR.json'
             },
             ajax: {
-                url: '/api/commerciaux',
+                url: '/api/utilisateurs',
                 dataSrc: ''
             },
             columns: [
@@ -448,7 +448,7 @@ function init() {
                     data: 'id',
                     render: function (data, index, row) {
                         var button = `
-                        <a href="/backend/commerciaux/${data}" class="btn btn-success btn-sm edit-modal">
+                        <a href="/backend/utilisateurs/${data}" class="btn btn-success btn-sm edit-modal">
                             <i class="fas fa-edit"></i>
                         </a>`
                         return button
@@ -461,9 +461,9 @@ function init() {
                     data: 'is_active',
                     render: function (data, index, row) {
                         if (data == true || data == 'true') {
-                            var button = `<a href="/backend/commerciaux/${row.id}/toggle" class="btn btn-success btn-sm"><i class="fas fa-toggle-on"></i></a>`
+                            var button = `<a href="/backend/utilisateurs/${row.id}/toggle" class="btn btn-success btn-sm"><i class="fas fa-toggle-on"></i></a>`
                         } else {
-                            var button = `<a href="/backend/commerciaux/${row.id}/toggle" class="btn btn-secondary btn-sm"><i class="fas fa-toggle-off"></i></a>`
+                            var button = `<a href="/backend/utilisateurs/${row.id}/toggle" class="btn btn-secondary btn-sm"><i class="fas fa-toggle-off"></i></a>`
                         }
                         return button
                     }
