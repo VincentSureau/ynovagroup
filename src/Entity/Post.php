@@ -91,6 +91,11 @@ class Post
      */
     private $visibility;
 
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $deletedAt;
+
     public function __construct()
     {
         $this->isActive = true;
@@ -239,6 +244,18 @@ class Post
     public function setVisibility(string $visibility): self
     {
         $this->visibility = $visibility;
+
+        return $this;
+    }
+
+    public function getDeletedAt(): ?\DateTimeInterface
+    {
+        return $this->deletedAt;
+    }
+
+    public function setDeletedAt(?\DateTimeInterface $deletedAt): self
+    {
+        $this->deletedAt = $deletedAt;
 
         return $this;
     }

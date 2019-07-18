@@ -31,6 +31,7 @@ class PostController extends AbstractController
     public function new(Request $request): Response
     {
         $post = new Post();
+        $post->setDeletedAt(new \DateTime('+ 4 months'));
         $form = $this->createForm(PostType::class, $post);
         $form->handleRequest($request);
 
