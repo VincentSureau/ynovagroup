@@ -793,6 +793,13 @@ transform: translate(-50%, -50%);
 }
 
 @media only screen and (max-width: 575px) {
+    /* .carousel-inner > h2,
+    .titre
+    .titre-valeurs, 
+    .titre-objectifs
+    .titre-contact {
+        font-size: 3rem !important;
+    } */
     .interlude-home {
         position: absolute;
         margin-left: 0;
@@ -805,10 +812,10 @@ transform: translate(-50%, -50%);
         padding-bottom: 3em;
     }
     .interlude-home > h3 {
-        font-size: 1em;
+        font-size: 1rem;
     }
 
     .interlude-home > p {
-        font-size: .7em;
+        font-size: .7rem;
     }
 }
