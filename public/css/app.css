@@ -772,13 +772,22 @@ td > a > i:hover {
     transform:translate(0, -50%);
     } */
 
-    .interlude-home {
-        position: absolute;
-        margin-left: 0;
-        margin-right: 0;
-        z-index: 3;
-        /* padding: 0 25em; */
-        left: 50%;
-        transform: translate(-50%, 50%);
-        padding-bottom: 3em;
-    }
+.interlude-home {
+    position: absolute;
+    margin-left: 0;
+    margin-right: 0;
+    z-index: 3;
+    /* padding: 0 25em; */
+    left: 50%;
+top: 50%;
+transform: translate(-50%, -50%);
+    padding-bottom: 3em;
+}
+
+.interlude-home > h3 {
+    color: white;
+}
+
+.interlude-home > p {
+    color: white;
+}

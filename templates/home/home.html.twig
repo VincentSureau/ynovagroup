@@ -92,9 +92,9 @@
                             <!--Avatar-->
                                 <div class="avatar mx-auto">
                                 {% if theme.picture is defined %}
-                                    <img class="rounded-circle img-fluid" width="300" height="100" src="{{ vich_uploader_asset(theme, 'pictureFile') }}" alt="{{ theme.name|default('logo Ynovagroup') }}">
+                                    <img class="img-fluid" width="300" height="100" src="{{ vich_uploader_asset(theme, 'pictureFile') }}" alt="{{ theme.name|default('logo Ynovagroup') }}">
                                 {% else %}
-                                    <img class="rounded-circle img-fluid" width="300" height="100" src="{{ asset('images/ynovagroup_logo.png') }}" alt="logo Ynovagroup">
+                                    <img class="img-fluid" width="300" height="100" src="{{ asset('images/ynovagroup_logo.png') }}" alt="logo Ynovagroup">
                                 {% endif %}
                                 </div>
                                 <h6 class="font-weight-lighter">Votre groupement de pharmaciens indépendants</h6>
