@@ -148,6 +148,10 @@ li {
   background-color: #abe8b863 !important;
 }
 
+.testimonial > p {
+  color: black;
+}
+
 
 /* Nos valeurs */
 
