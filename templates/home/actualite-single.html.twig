@@ -1,0 +1,14 @@
+<div class="carousel-item active">
+{% for post in articles %}
+    {% if post.picture is not null %}
+        <img class="d-block w-100" src="{{ vich_uploader_asset(post, 'pictureFile') }}" alt="{{ post.title|default("illustration de l\‘article") }}" />
+    {% endif %}
+    <div class="carousel-caption carousel-article d-none d-md-block">
+        <span class="badge badge-light">Posté le {{post.createdAt|date("d/m/y")}}</span>
+        <h5 class="font-weight-bold h3 m-5">{{post.title}}</h5>
+        <p>{{ post.content|striptags|truncate(600, true) }}</p>
+        <button class="btn btn-success button-actu m-5">
+            <a href="">Lire la suite</a>
+        </button>
+{% endfor %}
+</div>
