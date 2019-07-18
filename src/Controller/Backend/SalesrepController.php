@@ -2,14 +2,15 @@
 
 namespace App\Controller\Backend;
 
-use App\Utils\GeneratePassword;
 use App\Entity\User;
+use App\Utils\SendMail;
 use App\Form\SalesrepType;
+use App\Utils\GeneratePassword;
 use App\Repository\UserRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 /**
@@ -17,6 +18,13 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
  */
 class SalesrepController extends AbstractController
 {
+    public function __construct(UserPasswordEncoderInterface $passwordEncoder, GeneratePassword $passwordGenerator, SendMail $mailer)
+    {
+        $this->passwordEncoder = $passwordEncoder;
+        $this->passwordGenerator = $passwordGenerator;
+        $this->mailer = $mailer;
+    }
+
     /**
      * @Route("/", name="index", methods={"GET"})
      */
@@ -31,21 +39,24 @@ class SalesrepController extends AbstractController
     /**
      * @Route("/ajout-d-un-commercial", name="create", methods={"GET","POST"})
      */
-    public function new(Request $request, UserPasswordEncoderInterface $passwordEncoder, GeneratePassword $passwordGenerator): Response
+    public function new(Request $request): Response
     {
         $user = new User();
         $form = $this->createForm(SalesrepType::class, $user);
         $form->handleRequest($request); 
         if ($form->isSubmitted() && $form->isValid()) {
-            $password = $passwordGenerator->generate();
-            $encodedPassword = $passwordEncoder->encodePassword($user, $password);
-            
+            $password = $this->passwordGenerator->generate();
+
             $user
             ->setRoles(['ROLE_BUSINESS'])
-            ->setPassword($encodedPassword)
+            ->setPassword($password)
             ->setCreatedAt(new \Datetime)
             ->setUpdatedAt(new \Datetime);
         
+            $this->mailer->newCommercial($user);
+            $encodedPassword = $this->passwordEncoder->encodePassword($user, $user->getPassword());
+            $user->setPassword($encodedPassword);
+
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->flush();
@@ -67,7 +78,7 @@ class SalesrepController extends AbstractController
     /**
      * @Route("/{id}", requirements={"id"="\d+"}, name="edit", methods={"GET","POST"})
      */
-    public function edit(Request $request, User $user, UserPasswordEncoderInterface $passwordEncoder): Response
+    public function edit(Request $request, User $user): Response
     {
         $oldPassword = $user->getPassword();
 
@@ -80,7 +91,7 @@ class SalesrepController extends AbstractController
 
             } else {
 
-                $encodedPassword = $passwordEncoder->encodePassword($user, $user->getPassword());
+                $encodedPassword = $this->passwordEncoder->encodePassword($user, $user->getPassword());
             }
 
             $user->setPassword($encodedPassword);
