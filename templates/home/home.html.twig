@@ -27,7 +27,7 @@
 
 
                 <!-- Début du carousel -->
-{# 
+
                 <div class="bd-example">
   <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
@@ -39,12 +39,16 @@
       <div class="carousel-item active">
       {% for post in articles %}
         {% if post.picture is not null %}
-            <img class="d-block w-100" src="{{ vich_uploader_asset(post, ‘pictureFile’) }}" alt="{{ post.title|default("illustration de l\‘article") }}" />
+            <img class="d-block w-100" src="{{ vich_uploader_asset(post, 'pictureFile') }}" alt="{{ post.title|default("illustration de l\‘article") }}" />
         {% endif %}
         <div class="carousel-caption d-none d-md-block">
+          <span>Posté le {{post.createdAt|date("d/m/y")}}</span>  
           <h5>{{post.title}}</h5>
+          <button class="btn btn-light">
+            <a href="">En savoir plus</a>
+          </button>
+          {% endfor %}
         </div>
-        {% endfor %}
       </div>
     </div>
     <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
@@ -56,11 +60,11 @@
       <span class="sr-only">Next</span>
     </a>
   </div>
-</div> #}
+</div>
 <!-- fin du carousel -->
             </section>
 
-            {# {{dump (articles)}} #}
+            {{dump (articles)}}
                         
             <!-- Citation Section -->
             <section id="about" class="container-fluid p-0 text-center py-3 mt-5">
