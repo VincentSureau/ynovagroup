@@ -144,22 +144,10 @@ li {
     font-size: 1em;
 }
 
-/* Couleurs de fond
 #about {
-  background-color: var(--green);
+  background-color: #abe8b863 !important;
 }
 
-#about > h2 {
-  color: white;
-}
-
-#difference {
-  background-color: var(--green);
-} */
-/* 
-.titre-difference {
-  color: white;
-} */
 
 /* Nos valeurs */
 
