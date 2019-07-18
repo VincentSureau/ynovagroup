@@ -24,6 +24,16 @@
                     </cite></small></p>
                 </div>
             </div>
+            {# <div class="blog mt-5">
+                <h1 class="blog-title mt-5 h1">{{post.title}}</h1>
+                <span class="blog-date badge badge-pill badge-success">Posté le {{post.createdAt|date("d/m/y")}} par {{ post.author.firstname ~ ' ' ~ post.author.lastname}}</span>
+            </div>
+            {% if post.picture is defined %}
+                <img class="img-fluid rounded blog-img mt-3 mb-5" src="{{ post.picture }}" alt="">
+            {% endif %}
+            <div class="blog-post mb-5 p-3">
+                {{ post.content }}
+            </div> #}
             {% if not loop.last %}
                 <hr>
             {% endif %}

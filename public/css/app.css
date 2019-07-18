@@ -142,9 +142,8 @@ li {
 }
 
 #logo {
-    width: 300px;
-    height: 105px;
-    transition: all 1s ease-in-out;
+    width: 200px;
+    height: 80px;
 }
 
 #ephemeride {
@@ -230,6 +229,10 @@ li {
 .carousel-inner-difference {
     /* height: 300px; */
     position: relative;
+}
+
+.carousel-inner > .item > img {
+    height: 500px;
 }
 
 .carousel-item > img {
