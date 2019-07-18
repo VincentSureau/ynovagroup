@@ -10,6 +10,9 @@
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
+    {% if current is not defined %}
+        {% set current = null %}
+    {% endif %}
         {{ render(controller(
             'App\\Controller\\Frontend\\NavbarController::index',
             { 'current': current }
