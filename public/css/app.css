@@ -791,3 +791,24 @@ transform: translate(-50%, -50%);
 .interlude-home > p {
     color: white;
 }
+
+@media only screen and (max-width: 575px) {
+    .interlude-home {
+        position: absolute;
+        margin-left: 0;
+        margin-right: 0;
+        z-index: 3;
+        /* padding: 0 25em; */
+        left: 50%;
+        top: 70%;
+        transform: translate(-50%, -50%);
+        padding-bottom: 3em;
+    }
+    .interlude-home > h3 {
+        font-size: 1em;
+    }
+
+    .interlude-home > p {
+        font-size: .7em;
+    }
+}
