@@ -4,6 +4,8 @@ namespace App\Controller\Frontend;
 
 use App\Form\UserMailType;
 use App\Repository\PostRepository;
+use App\Repository\ThemeRepository;
+use App\Repository\ConfigRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -13,8 +15,20 @@ class HomeController extends AbstractController
     /**
      * @Route("/", name="home")
      */
-    public function index(PostRepository $repo, Request $request, \Swift_Mailer $mailer)
+    public function index(ThemeRepository $themeRepo, PostRepository $repo, Request $request, \Swift_Mailer $mailer, ConfigRepository $configRepo)
     {
+        $config = $configRepo->findConfig();
+
+        if(!empty($config) && $config->getIsUnderMaintenance() == true) {
+            return $this->render('bundles/TwigBundle/Exception/error503.html.twig', [
+                'current' => 'home',
+            ]);
+        }
+
+        $theme = $themeRepo->findOneBy([
+            'isActive' => true
+        ]);
+
         $articles = $repo->findHomeArticles();
 
         $form = $this->createForm(UserMailType::class);
@@ -63,6 +77,7 @@ class HomeController extends AbstractController
             'current' => 'home',
             'articles' => $articles,
             'form' => $form->createView(),
+            'theme' => $theme
         ]);
     }
 
@@ -82,7 +97,7 @@ class HomeController extends AbstractController
     public function mentionslegales()
     {
         return $this->render('home/mentionslegales.html.twig', [
-            'current' => 'mentionslegales'
+            'current' => 'mentionslegales',
         ]);
     }
 }

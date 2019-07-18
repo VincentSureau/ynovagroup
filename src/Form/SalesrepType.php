@@ -4,6 +4,8 @@ namespace App\Form;
 
 use App\Entity\User;
 use App\Entity\Company;
+use Symfony\Component\Form\FormEvent;
+use Symfony\Component\Form\FormEvents;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -35,6 +37,38 @@ class SalesrepType extends AbstractType
                 'placeholder' => false,
             ])
         ;
+
+        $builder->addEventListener(
+            FormEvents::PRE_SET_DATA,
+            function(FormEvent $event) {
+                $form = $event->getForm();
+                $user = $event->getData();
+                $roles = $user->getRoles();
+
+                if(in_array('ROLE_ADMIN', $roles)) {
+                    $form->add('role', ChoiceType::class, [
+                    'label' => 'Rôle',
+                    'choices' => [
+                        'Administrateur' => 'ROLE_ADMIN',
+                        'Commercial' => 'ROLE_BUSINESS'
+                    ],
+                    'placeholder' => false,
+                    'required' => true,
+                    'mapped' => false
+                    ]);
+                } else {
+                    $form->add('role', ChoiceType::class, [
+                    'label' => 'Rôle',
+                    'choices' => [
+                        'Commercial' => 'ROLE_BUSINESS',
+                        'Administrateur' => 'ROLE_ADMIN'
+                    ],
+                    'placeholder' => false,
+                    'required' => true,
+                    'mapped' => false
+                    ]);
+                }
+        });
     }
 
 

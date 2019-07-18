@@ -6,7 +6,11 @@ use App\Entity\User;
 use App\Entity\Files;
 use App\Entity\Company;
 use App\Repository\UserRepository;
+use App\Repository\CompanyRepository;
+use Symfony\Component\Form\FormEvent;
+use Symfony\Component\Form\FormEvents;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Security\Core\Security;
 use Vich\UploaderBundle\Form\Type\VichFileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -20,6 +24,12 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class FilesType extends AbstractType
 {
+    private $security;
+
+    public function __construct(Security $security) {
+        $this->security = $security;
+    }
+
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $file = $builder->getData();
@@ -37,7 +47,6 @@ class FilesType extends AbstractType
                         ['mimeTypes' => ["application/pdf", "application/x-pdf"]]
                     )
                 ]
-                
             ])
             ->add('name', TextType::class, [
                 'label' => 'Nom du document',
@@ -47,6 +56,7 @@ class FilesType extends AbstractType
                 'required' => false
             ])
             ->add('isActive', ChoiceType::class, [
+                'label' => 'Actif',
                 'choices' => [
                     'Oui' => true,
                     'Non' => false
@@ -58,35 +68,58 @@ class FilesType extends AbstractType
                 'widget' => 'single_text',
                 'required' => false,
             ])
-            // ->add('commercial', EntityType::Class, [
-            //     'label' => 'Commercial',
-            //     'class' => User::class,
-            //     'query_builder' => function (UserRepository $er) {
-            //         return $er
-            //             ->createQueryBuilder('u')
-            //             ->andWhere('u.roles NOT LIKE :role')
-            //             ->setParameter('role', '%"ROLE_MEMBER"%')
-            //         ;
-            //     },
-            // ])
-            ->add('pharmacies', EntityType::Class, [
-                'label' => 'Pharmacies',
-                'class' => Company::class,
-                'multiple' => true,
-                'attr' => ['class' => 'select2 d-none'],
-                'choice_attr' => function($choice, $key, $value) use ($file) {
-                    if($file->getReadBy()->contains($choice->getUser())) {
-                        return ['data-read' => 'true'];
-                    };
-                    return ['data-read' => 'false'];
-                }
-            ])
-            ->add('selectAll', CheckboxType::Class, [
-                'label' => 'Envoyer à toutes les pharmacies',
-                'mapped' => false,
-                'required' => false
-            ])
+
         ;        
+
+        $builder->addEventListener(
+            FormEvents::PRE_SET_DATA,
+            function(FormEvent $event) {
+                $form = $event->getForm();
+                $file = $event->getData();
+
+                if ($this->security->isGranted('ROLE_ADMIN')) {
+                    $form->add('pharmacies', EntityType::Class, [
+                            'label' => 'Pharmacies',
+                            'class' => Company::class,
+                            'multiple' => true,
+                            'attr' => ['class' => 'select2 d-none'],
+                            'choice_attr' => function($choice, $key, $value) use ($file) {
+                                if($file->getReadBy()->contains($choice->getUser())) {
+                                    return ['data-read' => 'true'];
+                                };
+                                return ['data-read' => 'false'];
+                            }
+                        ]);
+                } else {
+                    $form->add('pharmacies', EntityType::Class, [
+                            'label' => 'Pharmacies',
+                            'class' => Company::class,
+                            'multiple' => true,
+                            'attr' => ['class' => 'select2 d-none'],
+                            'choice_attr' => function($choice, $key, $value) use ($file) {
+                                if($file->getReadBy()->contains($choice->getUser())) {
+                                    return ['data-read' => 'true'];
+                                };
+                                return ['data-read' => 'false'];
+                            },
+                            'query_builder' => function (CompanyRepository $er) {
+                                return $er
+                                    ->createQueryBuilder('c')
+                                    ->join('c.commercial', 'co')
+                                    ->andWhere('c.commercial = :commercial')
+                                    ->setParameter('commercial', $this->security->getUser())
+                                ;
+                            },
+                        ]);
+                }
+                    
+                $form->add('selectAll', CheckboxType::Class, [
+                    'label' => 'Envoyer à toutes les pharmacies',
+                    'mapped' => false,
+                    'required' => false
+                ]);
+            }
+        );
     }
 
     public function configureOptions(OptionsResolver $resolver)

@@ -1,4 +1,4 @@
-<form method="post" action="{{ path('backend_user_delete', {'id': user.id}) }}" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur? \nAttention, pensez à créer un autre utilisateur pour cette pharmacie pour lui permettre de continuer à accéder à son espace adhérent');">
+<form method="post" action="{{ path('backend_user_delete', {'id': user.id}) }}" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ce pharmacien? \nAttention, pensez à créer un autre pharmacien pour cette pharmacie pour lui permettre de continuer à accéder à son espace adhérent');">
     <input type="hidden" name="_method" value="DELETE">
     <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ user.id) }}">
     <p class="text-right">

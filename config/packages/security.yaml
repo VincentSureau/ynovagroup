@@ -15,6 +15,8 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         main:
+            pattern: ^/
+            user_checker: App\Security\UserChecker
             anonymous: true
             logout:
                 path:   app_logout
@@ -37,13 +39,14 @@ security:
             # https://symfony.com/doc/current/security.html#firewalls-authentication
 
             # https://symfony.com/doc/current/security/impersonating_user.html
-            # switch_user: true
+            switch_user: true
+
 
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
         - { path: '^\/admin', roles: ROLE_ADMIN } 
-        - { path: '^\/backend/(articles|commerciaux|themes|rss|partenaires|configuration)', roles: ROLE_ADMIN }
+        - { path: '^\/backend/(articles|commerciaux|themes|rss|partenaires)', roles: ROLE_ADMIN }
         - { path: '^\/backend', roles: ROLE_BUSINESS } 
         - { path: '^\/api', roles: ROLE_BUSINESS } 
         - { path: '^\/mon-espace', roles : IS_AUTHENTICATED_REMEMBERED }

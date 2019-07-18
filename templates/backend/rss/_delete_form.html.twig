@@ -1,4 +1,4 @@
-<form method="post" action="{{ path('rss_delete', {'id': rss.id}) }}" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ce flux RSS ?');">
+<form method="post" action="{{ path('backend_rss_delete', {'id': rss.id}) }}" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ce flux RSS ?');">
     <input type="hidden" name="_method" value="DELETE">
     <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ rss.id) }}">
     <p class="text-right">

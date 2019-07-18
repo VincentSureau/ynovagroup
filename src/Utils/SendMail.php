@@ -13,7 +13,7 @@ class SendMail
   }
 
   /**
-   * Send a welcoming mail to every user with his password
+   * Send a welcoming mail to every member with his password
    *
    * @param [type] $user
    * @return mail
@@ -24,6 +24,21 @@ class SendMail
         ->setFrom('contact@ynovagroup.com')
         ->setTo($user->getEmail())
         ->setBody($this->twig->render('email/registration.html.twig', ['user' => $user]), 'text/html');
+    return $this->mailer->send($message);
+  }
+
+  /**
+   * Send a welcoming mail to every commercial with his password
+   *
+   * @param [type] $user
+   * @return mail
+   */
+  public function newCommercial($user)
+  {
+    $message = (new \Swift_Message('Bienvenue sur Ynovagroup.com'))
+        ->setFrom('contact@ynovagroup.com')
+        ->setTo($user->getEmail())
+        ->setBody($this->twig->render('email/registrationCommercial.html.twig', ['user' => $user]), 'text/html');
     return $this->mailer->send($message);
   }
 

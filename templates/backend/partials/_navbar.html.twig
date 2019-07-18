@@ -3,8 +3,12 @@
     <header class="header">
         <!-- Navigation with a burger menu -->
         <nav class="fixed-top navbar navbar-expand-xl navbar-light bg-white navbar-fixed-top">
-            <a class="navbar-brand" href="#">
-                <img src="{{ asset('images/ynovagroup_logo.png') }}" width="200" height="70" alt="">
+            <a class="navbar-brand" href="{{ path('home') }}">
+            {% if theme.picture is defined %}
+                <img src="{{ vich_uploader_asset(theme, 'pictureFile') }}" width="200" height="70" alt="Ynovagroup Logo">
+            {% else %}
+                <img src="{{ asset('images/ynovagroup_logo.png') }}" width="200" height="70" alt="Ynovagroup Logo">
+            {% endif %}
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -29,7 +33,7 @@
                     <li class="nav-item text-center d-lg-none">
                         <a class="nav-link" href="{{ path('backend_user_index') }}">
                             <i class="far fa-user"></i>
-                            Gestionnaires
+                            Pharmaciens
                         </a>
                     </li>
                     <li class="nav-item text-center d-lg-none">

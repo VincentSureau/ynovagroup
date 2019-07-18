@@ -1,7 +1,7 @@
 lexik_maintenance:
 
     authorized:
-        path: '^\/(backend|api|connexion)'                                  # Optional. Authorized path, accepts regexs
+        path: '^\/($|backend|api|connexion|rgpd|mentions-legales|accept-cookie)'                                  # Optional. Authorized path, accepts regexs
     #     host: your-domain.com                                               # Optional. Authorized domain, accepts regexs
     #     ips: ['127.0.0.1', '172.123.10.14']                                 # Optional. Authorized ip addresses
     #     query: { connexion: maintenance }                                   # Optional. Authorized request query parameter (GET/POST)
@@ -34,6 +34,6 @@ lexik_maintenance:
 
     # #Optional. response code and status of the maintenance page
     response:
-        code: 503                                                                  # Http response code of Exception page
+        code: 404                                                                  # Http response code of Exception page
         status: "Site en cours de maintenance"                                  # Exception page title
         exception_message: "Site en cours de maintenance"                       # Message when Exception is thrown 
