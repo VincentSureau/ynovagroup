@@ -15,7 +15,7 @@ use App\Utils\SendMail;
 use App\Utils\GeneratePassword;
 
 /**
- * @Route("/gestionnaires", name="user_")
+ * @Route("/pharmaciens", name="user_")
  */
 class UserController extends AbstractController
 {

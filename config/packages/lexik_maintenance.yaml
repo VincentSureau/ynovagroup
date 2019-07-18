@@ -34,6 +34,6 @@ lexik_maintenance:
 
     # #Optional. response code and status of the maintenance page
     response:
-        code: 503                                                                  # Http response code of Exception page
+        code: 404                                                                  # Http response code of Exception page
         status: "Site en cours de maintenance"                                  # Exception page title
         exception_message: "Site en cours de maintenance"                       # Message when Exception is thrown 
