@@ -5,19 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
   <body style="width:100%">
-    <div class="container" style="width:650px; margin:auto">
-      <table style="width:100%; color: #EAE9E3; border-collapse:collapse">
-        <thead style="height:150px; background-color:#588157">
+<body class="bg-light">
+ <div class="container" style="width:650px; margin:auto">
+      <table style="width:100%; color: white; border-collapse:collapse">
+        <thead style="height:150px; background-color:#28a645">
         <tr>
           <th style="width=50px"></th>
           <th style="text-align:center"><h1 style="padding: 20px 0">Bienvenue chez Ynovagroup !</h1></th>
           <th style="width=50px"></th>
         </tr>
         </thead>
-        <tbody style="background-color:#b3bf9f; min-height: 400px">
+        <tbody style="background-color:white; color:black; min-height: 400px;">
           <tr>
             <td style="width:50px"></td>
-            <td><h2 style="text-align:center; padding: 15px 0">Bonjour {{user.firstname ~ ' ' ~ user.lastname}}</h2></td>
+            <td><h2 style="text-align:center; padding: 15px 0">Bonjour, {{user.firstname ~ ' ' ~ user.lastname}}</h2></td>
             <td style="width:50px"></td>
           </tr>
           <tr>
@@ -27,17 +28,17 @@
           </tr>
           <tr>
             <td style="width:50px"></td>
-            <td><p style="padding:5px">Ynovagroup c'est le groupement des pharmaciens indépendants présent à vos cotés pour relever les défis actuels de l'officine</p></td>
+            <td><p style="padding:5px">Ynovagroup est <strong>LE</strong> groupement des pharmaciens indépendants présent à vos cotés pour relever les défis actuels de l'officine</p></td>
             <td style="width:50px"></td>
           </tr>
           <tr>
             <td style="width:50px"></td>
-            <td><p style="padding:5px">Ici vous pourrez consulter les documents mis à disposition par votre conseiller commercial et consulté les actualités du monde de la pharmacie au quotidien.</p></td>
+            <td><p style="padding:5px">Ici vous pourrez consulter les documents mis à disposition par votre conseiller commercial et consulter les actualités du monde de la pharmacie au quotidien.</p></td>
             <td style="width:50px"></td>
           </tr>
           <tr>
             <td style="width:50px"></td>
-            <td><p style="border:2px dashed #EAE9E3; padding:15px; margin:30px; text-align:center">Votre mot de passe est : {{ user.password }}</p></td>
+            <td><p style="border:2px dashed #28a645; padding:15px; margin:30px; text-align:center">Votre mot de passe est : {{ user.password }}</p></td>
             <td style="width:50px"></td>
           </tr>
           <tr>
@@ -51,7 +52,7 @@
             <td style="width:50px"></td>
           </tr>
         </tbody>
-        <tfoot style="height:150px; background-color:#588157">
+        <tfoot style="height:150px; background-color:#28a645">
           <tr>
             <th style="width=50px"></th>
             <th style="text-align:center"><p>2019 &copy; Ynovagroup.com</th>
@@ -59,7 +60,6 @@
           </tr>
         </tfoot>
       </table>
-
     </div>
   </body>
 </html>
