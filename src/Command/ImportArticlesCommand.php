@@ -124,7 +124,7 @@ class ImportArticlesCommand extends Command
                             $extension = explode('/', $item->enclosure['type']);
                             $ch = curl_init($item->enclosure['url']);
                             
-                            $my_save_dir = 'public/images/articles/';
+                            $my_save_dir = '/var/www/html/Ynovagroup/public/images/articles/';
                             $filename = md5(uniqid(rand(), true)) . '.' . $extension[1];
                             $complete_save_loc = $my_save_dir . $filename;
                             $fp = fopen($complete_save_loc, 'wb');

@@ -226,84 +226,6 @@ li {
     min-width: 250px;
 }
 
-.carousel-inner-difference {
-    /* height: 300px; */
-    position: relative;
-}
-
-.carousel-inner > .item > img {
-    height: 500px;
-}
-
-.carousel-item > img {
-    filter: blur(7px) grayscale(30%);
-}
-
-.carousel-caption {
-    position: absolute;
-    margin-left: 50px;
-    margin-right: 50px;
-    left: 0;
-    right: 0;
-    z-index: 2;
-    top: 150px;
-}
-
-.carousel-caption > h4 {
-    font-size: 2.5em;
-    font-weight: bold;
-}
-
-.carousel-caption > p {
-    font-size: 1.2em;
-}
-
-.interlude-home {
-    position: absolute;
-    margin-left: auto;
-    margin-right: auto;
-    left: 0;
-    right: 0;
-    z-index: 2;
-    top: 50%;
-    /* margin-top: 30px; */
-}
-
-.interlude-home > h3 {
-    color: white;
-}
-
-.interlude-home > p {
-    color: white;
-}
-
-.interlude-home > h4 {
-    font-size: 2.5em;
-}
-
-.interlude-home > p {
-    font-size: 1.2em;
-}
-
-@media only screen and (max-width: 576px) {
-    .carousel-caption {
-        position: absolute;
-        margin-left: 50px;
-        margin-right: 50px;
-        left: 0;
-        right: 0;
-        z-index: 2;
-        top: 180px;
-    }
-
-    .carousel-caption > h4 {
-        font-size: 1.4em;
-    }
-    
-    .carousel-caption > p {
-        font-size: 1em;
-    }
-}
 
 /* Nos objectifs */
 /* #objectifs {
@@ -738,4 +660,162 @@ td > a > i:hover {
 
 .form-group > textarea {
     height: 200px;
+}
+
+
+/*Carousel Notre Différence*/
+
+
+
+.carousel-inner-difference {
+    /* height: 300px;
+    position: relative; */
 } 
+
+
+/* .carousel-inner > .item > img {
+    height: 500px;
+} */
+/* 
+
+
+.carousel-inner > .item {
+   height: 400px;
+}
+
+.carousel-caption {
+    position: absolute;
+    margin-left: 50px;
+    margin-right: 50px;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    top: 150px;
+} */
+
+/* .carousel-caption > h4 {
+    font-size: 2.5em;
+    font-weight: bold;
+}
+
+.carousel-caption > p {
+    font-size: 1.2em;
+} */
+
+/* .interlude-home {
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    top: 50%;
+    /* margin-top: 30px; */
+} */
+
+/* .interlude-home > h3 {
+    color: white;
+}
+
+.interlude-home > p {
+    color: white;
+}
+
+.interlude-home > h4 {
+    font-size: 2.5em;
+}
+
+.interlude-home > p {
+    font-size: 1.2em;
+}
+
+@media only screen and (max-width: 576px) {
+    .carousel-caption {
+        position: absolute;
+        margin-left: 50px;
+        margin-right: 50px;
+        left: 0;
+        right: 0;
+        z-index: 2;
+        top: 180px;
+    }
+
+    .carousel-caption > h4 {
+        font-size: 1.4em;
+    }
+    
+    .carousel-caption > p {
+        font-size: 1em;
+    }
+} */
+
+/* .carousel-item.active, .carousel-item .view {
+    height: 50vh!important;
+  } */
+
+
+  
+.carousel-img {
+    filter: blur(7px) grayscale(30%);
+}
+
+/* 
+.interlude-home {
+    width:75%;
+    z-index:10;
+    color:#fff;
+    text-align:center;
+    bottom:50%;
+    left:50%;
+    -webkit-transform:translate(0, -50%);
+    -ms-transform:translate(0, -50%);
+    transform:translate(0, -50%);
+    } */
+
+.interlude-home {
+    position: absolute;
+    margin-left: 0;
+    margin-right: 0;
+    z-index: 3;
+    /* padding: 0 25em; */
+    left: 50%;
+top: 50%;
+transform: translate(-50%, -50%);
+    padding-bottom: 3em;
+}
+
+.interlude-home > h3 {
+    color: white;
+}
+
+.interlude-home > p {
+    color: white;
+}
+
+@media only screen and (max-width: 575px) {
+    /* .carousel-inner > h2,
+    .titre
+    .titre-valeurs, 
+    .titre-objectifs
+    .titre-contact {
+        font-size: 3rem !important;
+    } */
+    .interlude-home {
+        position: absolute;
+        margin-left: 0;
+        margin-right: 0;
+        z-index: 3;
+        /* padding: 0 25em; */
+        left: 50%;
+        top: 70%;
+        transform: translate(-50%, -50%);
+        padding-bottom: 3em;
+    }
+    .interlude-home > h3 {
+        font-size: 1rem;
+    }
+
+    .interlude-home > p {
+        font-size: .7rem;
+    }
+}

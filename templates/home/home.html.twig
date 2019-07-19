@@ -23,7 +23,7 @@
             <!-- Citation Actu -->
             <section id="actu" class="container-fluid p-0 text-center py-3">
                 <!-- Section heading -->
-                <h2 class="titre h1-responsive font-weight-bold my-5">Les dernières actualités</h2>
+                <h2 class="titre font-weight-bold my-5">Les dernières actualités</h2>
                 <!-- Début du carousel -->
 
                 <div class="bd-example">
@@ -92,9 +92,9 @@
                             <!--Avatar-->
                                 <div class="avatar mx-auto">
                                 {% if theme.picture is defined %}
-                                    <img class="rounded-circle img-fluid" width="300" height="100" src="{{ vich_uploader_asset(theme, 'pictureFile') }}" alt="{{ theme.name|default('logo Ynovagroup') }}">
+                                    <img class="img-fluid" width="300" height="100" src="{{ vich_uploader_asset(theme, 'pictureFile') }}" alt="{{ theme.name|default('logo Ynovagroup') }}">
                                 {% else %}
-                                    <img class="rounded-circle img-fluid" width="300" height="100" src="{{ asset('images/ynovagroup_logo.png') }}" alt="logo Ynovagroup">
+                                    <img class="img-fluid" width="300" height="100" src="{{ asset('images/ynovagroup_logo.png') }}" alt="logo Ynovagroup">
                                 {% endif %}
                                 </div>
                                 <h6 class="font-weight-lighter">Votre groupement de pharmaciens indépendants</h6>
@@ -105,7 +105,7 @@
             <section id="valeurs">
             <!-- Respect -->
             <div class="container-fluid p-0 text-center my-5">
-                <h2 class="titre-valeurs h1-responsive font-weight-bold my-5">Nos valeurs</h2>
+                <h2 class="titre-valeurs text-center h1-responsive font-weight-bold my-5">Nos valeurs</h2>
                 <div class="valeurs">
                     <img class="valeurs-img" src="{{ asset('images/respect.png') }}" alt="" width="250" height="250">
                     <div class="valeurs-text m-5">
@@ -192,7 +192,7 @@
             <!-- N O S  O B J E C T I F S -->
             <section id="objectifs">
                 <div class="container-fluid p-0 text-center m-5">
-                <h2 class="titre-objectifs h1-responsive font-weight-bold m-5">Nos objectifs</h2>
+                <h2 class="titre-objectifs text-center h1-responsive font-weight-bold m-5">Nos objectifs</h2>
                     <div class="panel">
                         <div class="panel-box m-5">
                             <div class="panel-box-text m-5">
