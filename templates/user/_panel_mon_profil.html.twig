@@ -27,22 +27,4 @@
         <li class="list-group-item font-weight-bold text-uppercase">Téléphone</li>
         <li class="list-group-item">{{ user.company.phone|default('-') }}</li>
     </ul>
-
-    <div class="card-body">
-        <h5 class="h2 font-weight-bold text-success mt-5">Mon commercial</h5>
-        <em class="">Retrouvez les coordonnées de votre commercial.</em>
-    </div>
-
-    <ul class="list-group list-group-flush text-center">
-        <li class="list-group-item font-weight-bold text-uppercase">Nom Prénom</li>
-        <li class="list-group-item">
-            {{ user.company.commercial.firstname|default('-') }} {{ user.company.commercial.lastname|default('') }}
-        </li>
-        <li class="list-group-item font-weight-bold text-uppercase">password</li>        
-        <li class="list-group-item">
-            <a href="mailto:{{ user.company.commercial.email|default('-') }}">
-            {{ user.company.commercial.email|default('-') }}
-            </a>
-        </li>
-    </ul>    
 </div>
