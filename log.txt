@@ -1,0 +1,33 @@
+
+Articles will be imported from the following RSS feeds :
+========================================================
+
+ * Actualités de l'OMS
+ * Santé magazine
+ * E-santé nutrition
+ * E-santé médicaments
+
+The following RSS feeds will be ignored :
+=========================================
+
+ No inactive RSS feed found
+
+ Importing articles from Actualités de l'OMS :
+
+ Importing articles from Santé magazine :
+
+ Importing articles from E-santé nutrition :
+
+ Importing articles from E-santé médicaments :
+
+
+ [OK] 90 articles have been imported successfully :                             
+                                                                                
+      * 10 article(s) from Actualités de l'OMS                                  
+                                                                                
+      * 50 article(s) from Santé magazine                                       
+                                                                                
+      * 15 article(s) from E-santé nutrition                                    
+                                                                                
+      * 15 article(s) from E-santé médicaments                                  
+
