@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
   <body style="width:100%">
-    <div class="container" style="width:650px; margin:auto">
-      <table style="width:100%; color: #EAE9E3; border-collapse:collapse">
+<body class="bg-light">
+ <div class="container" style="width:650px; margin:auto">
+      <table style="width:100%; color: white; border-collapse:collapse">
         <thead style="height:150px; background-color:#28a645">
         <tr>
           <th style="width=50px"></th>
@@ -17,27 +18,27 @@
         <tbody style="background-color:white; color:black; min-height: 400px;">
           <tr>
             <td style="width:50px"></td>
-            <td><h2 style="text-align:center; padding: 15px 0">Bonjour {{user.firstname ~ ' ' ~ user.lastname}}</h2></td>
+            <td><h2 style="text-align:center; padding: 15px 0">Bonjour, {{user.firstname ~ ' ' ~ user.lastname}}</h2></td>
             <td style="width:50px"></td>
           </tr>
           <tr>
             <td style="width:50px"></td>
-            <td><p style="padding:5px">Vous avez été inscrit sur le site Ynovagroup.com par les administrateurs du site.</p></td>
+            <td><p style="padding:5px">Vous avez un nouveau message à votre disposition.</p></td>
             <td style="width:50px"></td>
           </tr>
           <tr>
             <td style="width:50px"></td>
-            <td><p style="border:2px dashed #28a645; padding:15px; margin:30px; text-align:center">Votre mot de passe est : {{ user.password }}</p></td>
+            <td><p style="padding:5px">Veuillez consulter votre espace client Ynovagroup à cette adresse : </p></td>
             <td style="width:50px"></td>
           </tr>
           <tr>
             <td style="width:50px"></td>
-            <td><p style="padding:5px">Pensez à le modifier après votre première connexion !</p></td>
+            <td><p style="padding:5px;"><a class="btn btn-success mx-auto" href="https://ynovagroup.com/connexion">Accéder à mon espace</a></p></td>
             <td style="width:50px"></td>
           </tr>
           <tr>
             <td style="width:50px"></td>
-            <td><p style="padding:5px">L'équipe Ynovagroup</p><br></td>
+            <td><p style="padding:10px;">L'équipe Ynovagroup</p><br></td>
             <td style="width:50px"></td>
           </tr>
         </tbody>
@@ -49,7 +50,6 @@
           </tr>
         </tfoot>
       </table>
-
     </div>
   </body>
 </html>
