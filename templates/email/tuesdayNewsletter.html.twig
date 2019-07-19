@@ -25,16 +25,18 @@
                     <td><p style="padding:5px">Tous les mardis, vous recevez notre newsletter. Voici les actualités : </p></td>
                     <td style="width:50px"></td>
                 </tr>
+                {% for post in newPosts %}
                 <tr>
                     <td style="width:50px"></td>
-                    <td><p style="padding:5px"> <strong>TITRE ARTICLE</strong> </p></td>
+                    <td><p style="padding:5px"> <strong>{{ post.title }}</strong> </p></td>
                     <td style="width:50px"></td>
                 </tr>
                 <tr>
                     <td style="width:50px"></td>
-                    <td><p style="padding:5px">Publié le DATE par <em>AUTEUR</em></p></td>
+                    <td><p style="padding:5px">Publié le {{post.createdAt|date("d/m/y")}} par <em>  {{ attribute(post.author, '__toString') is defined ? post.author.__toString : post.rssfeedname|default('-') }}</em></p></td>
                     <td style="width:50px"></td>
                 </tr>
+                 {% endfor %}
                     <td style="width:50px"></td>
                     <td><p style="padding:5px">L'équipe Ynovagroup</p><br></td>
                     <td style="width:50px"></td>
