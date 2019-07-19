@@ -82,7 +82,7 @@ class PartnerController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/toggle", requirements={"id"="\d+"}, name="partner_toggle_active", methods={"GET","POST"})
+     * @Route("/{id}/toggle", requirements={"id"="\d+"}, name="toggle_active", methods={"GET","POST"})
      */
     public function toggle(Partner $partner): Response
     {

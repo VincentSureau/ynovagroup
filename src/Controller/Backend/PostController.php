@@ -103,7 +103,7 @@ class PostController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", requirements={"id"="\d+"}, name="delete", methods={"DELETE"})
+     * @Route("/{id}/delete", requirements={"id"="\d+"}, name="delete", methods={"DELETE"})
      */
     public function delete(Request $request, Post $post): Response
     {
