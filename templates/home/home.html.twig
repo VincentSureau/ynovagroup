@@ -123,7 +123,11 @@
                             Votre confiance est notre préoccupation
                         </p>
                     </div>
-                     <img class="valeurs-logo reveal-2" src="{{ asset('images/ynovagroup_logo.png') }}" alt="">
+                     {% if theme.picture is defined %}
+                        <img class="valeurs-logo reveal-2" id="{{ current == 'home'? 'ephemeride' : 'logo'}}" src="{{ vich_uploader_asset(theme, 'pictureFile') }}"  alt="">
+                    {% else %}
+                        <img class="valeurs-logo reveal-2" src="{{ asset('images/ynovagroup_logo.png') }}" alt="">
+                    {% endif %}
                 </div>
             </div>  
             <!-- Soutien -->
@@ -136,7 +140,11 @@
                             Toujours à vos côtés pour une relation pérenne
                         </p>
                     </div>
-                     <img class="valeurs-logo reveal-3" src="{{ asset('images/ynovagroup_logo.png') }}" alt="">
+                     {% if theme.picture is defined %}
+                        <img class="valeurs-logo reveal-2" id="{{ current == 'home'? 'ephemeride' : 'logo'}}" src="{{ vich_uploader_asset(theme, 'pictureFile') }}"  alt="">
+                    {% else %}
+                        <img class="valeurs-logo reveal-2" src="{{ asset('images/ynovagroup_logo.png') }}" alt="">
+                    {% endif %}
                 </div>
             </div>  
             <!-- Engagement -->
@@ -149,7 +157,11 @@
                             Notre équipe s'engage dans une démarche proactive de qualité
                         </p>
                     </div>
-                     <img class="valeurs-logo reveal-4" src="{{ asset('images/ynovagroup_logo.png') }}" alt="">
+                     {% if theme.picture is defined %}
+                        <img class="valeurs-logo reveal-2" id="{{ current == 'home'? 'ephemeride' : 'logo'}}" src="{{ vich_uploader_asset(theme, 'pictureFile') }}"  alt="">
+                    {% else %}
+                        <img class="valeurs-logo reveal-2" src="{{ asset('images/ynovagroup_logo.png') }}" alt="">
+                    {% endif %}
                 </div>
             </div> 
             <!-- Partage -->
@@ -162,7 +174,11 @@
                             Échange et communication, facteurs clés de synergie
                         </p>
                     </div>
-                     <img class="valeurs-logo reveal-5" src="{{ asset('images/ynovagroup_logo.png') }}" alt="">
+                     {% if theme.picture is defined %}
+                        <img class="valeurs-logo reveal-2" id="{{ current == 'home'? 'ephemeride' : 'logo'}}" src="{{ vich_uploader_asset(theme, 'pictureFile') }}"  alt="">
+                    {% else %}
+                        <img class="valeurs-logo reveal-2" src="{{ asset('images/ynovagroup_logo.png') }}" alt="">
+                    {% endif %}
                 </div>
             </div>  
             <!-- Excellence -->
@@ -175,7 +191,11 @@
                             L'expertise de professionnel entièrement à votre service
                         </p>
                     </div>
-                     <img class="valeurs-logo reveal-6" src="{{ asset('images/ynovagroup_logo.png') }}" alt="">
+                     {% if theme.picture is defined %}
+                        <img class="valeurs-logo reveal-2" id="{{ current == 'home'? 'ephemeride' : 'logo'}}" src="{{ vich_uploader_asset(theme, 'pictureFile') }}"  alt="">
+                    {% else %}
+                        <img class="valeurs-logo reveal-2" src="{{ asset('images/ynovagroup_logo.png') }}" alt="">
+                    {% endif %}
                 </div>
             </div>
             </section>

@@ -138,7 +138,6 @@ li {
     display: flex;
     justify-content: center;
     padding: 20px 0px;
-    
 }
 
 #logo {
@@ -832,3 +831,4 @@ transform: translate(-50%, -50%);
     height: 75px; 
     visibility: hidden; 
 }
+
