@@ -666,12 +666,6 @@ td > a > i:hover {
 
 
 
-.carousel-inner-difference {
-    /* height: 300px;
-    position: relative; */
-} 
-
-
 /* .carousel-inner > .item > img {
     height: 500px;
 } */
@@ -709,7 +703,7 @@ td > a > i:hover {
     right: 0;
     z-index: 2;
     top: 50%;
-    /* margin-top: 30px; */
+    margin-top: 30px;
 } */
 
 /* .interlude-home > h3 {
