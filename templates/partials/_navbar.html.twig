@@ -1,6 +1,6 @@
 <!-- Navigation with a burger menu -->
 <header class="header py-5">
-    <nav id="nav" class="navbar fixed-top navbar-expand-lg navbar-light">
+    <nav id="nav" class="navbar fixed-top navbar-expand-lg navbar-light bg-white">
         <a class="navbar-brand" href="{{ current == 'home'? '#' : path('home') }}">
         {% if theme.picture is defined %}
             <img id="{{ current == 'home'? 'ephemeride' : 'logo'}}" src="{{ vich_uploader_asset(theme, 'pictureFile') }}"  alt="">
