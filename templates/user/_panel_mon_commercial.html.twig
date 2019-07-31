@@ -1,0 +1,25 @@
+<div class="tab-pane fade {{ (activePanel == 'commercial')? 'show active' }} p-3" id="commercial" role="tabpanel" aria-labelledby="commercial-tab">    
+    <h5 class="h2 font-weight-bold text-success">Mon commercial</h5>
+    <div class="card-body">
+        <em class="">Retrouvez les coordonnées de votre commercial.</em>
+    </div>
+
+    <ul class="list-group list-group-flush text-center">
+        <li class="list-group-item font-weight-bold text-uppercase">Nom et Prénom</li>
+        <li class="list-group-item">
+            {{ user.company.commercial.firstname|default('-') }} {{ user.company.commercial.lastname|default('') }}
+        </li>
+        <li class="list-group-item font-weight-bold text-uppercase">Téléphone</li>        
+        <li class="list-group-item">
+            <a href="mailto:{{ user.company.commercial.phone|default('-') }}">
+            {{ user.company.commercial.phone|default('-') }}
+            </a>
+        </li>
+        <li class="list-group-item font-weight-bold text-uppercase">Email</li>        
+        <li class="list-group-item">
+            <a href="mailto:{{ user.company.commercial.email|default('-') }}">
+            {{ user.company.commercial.email|default('-') }}
+            </a>
+        </li>
+    </ul>    
+</div>

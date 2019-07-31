@@ -82,7 +82,7 @@ class SendMemberMailingCommand extends Command
                 $progressBar = new ProgressBar($output);
                 
                 foreach($progressBar->iterate($users) as $member) {
-                    //todo: send an email
+                    $this->mailer->sendNewsletter($member, $newPosts);
                 }
                 $io->newLine(2);
                 $io->success($nbUsers . ' members were notified');

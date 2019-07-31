@@ -52,4 +52,15 @@ class SendMail
 
     return $this->mailer->send($message);
   }
+
+  // send a mail to user with the newsletter
+  public function sendNewsletter($user, $newPosts)
+  {
+    $message = (new \Swift_Message('Votre newsletter novagroup.com'))
+        ->setFrom('contact@ynovagroup.com')
+        ->setTo($user->getEmail())
+        ->setBody($this->twig->render('email/tuesdayNewsletter.html.twig', ['user' => $user, 'newPosts' => $newPosts]), 'text/html');
+
+    return $this->mailer->send($message);
+  }
 }

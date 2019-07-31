@@ -137,8 +137,7 @@ li {
 #nav {
     display: flex;
     justify-content: center;
-    padding: 20px 0px;
-    
+    /* padding: 10px 0px; */
 }
 
 #logo {
@@ -667,12 +666,6 @@ td > a > i:hover {
 
 
 
-.carousel-inner-difference {
-    /* height: 300px;
-    position: relative; */
-} 
-
-
 /* .carousel-inner > .item > img {
     height: 500px;
 } */
@@ -710,7 +703,7 @@ td > a > i:hover {
     right: 0;
     z-index: 2;
     top: 50%;
-    /* margin-top: 30px; */
+    margin-top: 30px;
 } */
 
 /* .interlude-home > h3 {
@@ -753,8 +746,6 @@ td > a > i:hover {
     height: 50vh!important;
   } */
 
-
-  
 .carousel-img {
     filter: blur(7px) grayscale(30%);
 }
@@ -817,5 +808,45 @@ transform: translate(-50%, -50%);
 
     .interlude-home > p {
         font-size: .7rem;
+    }
+}
+
+#hero::before,
+#actu::before,
+#about::before,
+#valeurs::before,
+#difference::before,
+#objectifs::before,
+#contact::before
+ {
+    display: block; 
+    content: " "; 
+    margin-top: -75px; 
+    height: 75px; 
+    visibility: hidden; 
+}
+
+@media only screen and (max-width: 1400px) {
+    h2 {
+        font-size: 2.5rem;
+    }
+
+    h3 {
+        font-size: 1.5rem;
+    }
+
+    h4 {
+        font-size: 1rem;
+    }
+
+    .valeurs-img {
+        width: 75px;
+        height: 75px;
+    }
+}
+
+@media only screen and (max-width: 834px) {
+    .valeurs > #ephemeride {
+        display: none;
     }
 }

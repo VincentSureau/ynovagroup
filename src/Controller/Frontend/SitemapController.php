@@ -12,6 +12,6 @@ class SitemapController extends AbstractController
      */
     public function index()
     {
-        return $this->render('home/sitemap/index.html.twig');
+        return $this->render('home/sitemap.html.twig');
     }
 }
