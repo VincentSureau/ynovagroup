@@ -28,77 +28,77 @@ class AppFixtures extends Fixture
     {
         $faker = Factory::create('fr_FR');
 
-        $developper = new User();
-        $developper
-            ->setFirstname($faker->firstname)
-            ->setLastname($faker->name)
-            ->setEmail('dev@exemple.fr')
-            ->setRoles(['ROLE_DEVELOPER'])
-            ->setPassword($this->passwordEncoder->encodePassword($developper, 'admin'));
+        // $developper = new User();
+        // $developper
+        //     ->setFirstname($faker->firstname)
+        //     ->setLastname($faker->name)
+        //     ->setEmail('dev@exemple.fr')
+        //     ->setRoles(['ROLE_DEVELOPER'])
+        //     ->setPassword($this->passwordEncoder->encodePassword($developper, 'admin'));
         
-        $manager->persist($developper);
+        // $manager->persist($developper);
         
 
 
-        $commercial = new User();
-        $commercial
-            ->setEmail('commercial@commercial.fr')
-            ->setRoles(['ROLE_BUSINESS'])
-            ->setPassword($this->passwordEncoder->encodePassword($commercial, 'commercial'))
-            ->setFirstname($faker->firstName)
-            ->setLastname($faker->lastName);
+        // $commercial = new User();
+        // $commercial
+        //     ->setEmail('commercial@commercial.fr')
+        //     ->setRoles(['ROLE_BUSINESS'])
+        //     ->setPassword($this->passwordEncoder->encodePassword($commercial, 'commercial'))
+        //     ->setFirstname($faker->firstName)
+        //     ->setLastname($faker->lastName);
         
-        $manager->persist($commercial);
+        // $manager->persist($commercial);
 
-        // Pharmacies
-        $pharmacies = [];
-        for($i = 0; $i <= 40; $i++) {
-            $company = new Company();
-            $company
-                ->setName($faker->company)
-                ->setFirstAdressField($faker->streetAddress)
-                ->setsecondAdressField($faker->streetName)
-                ->setPostalCode($faker->postcode)
-                ->setCity($faker->city)
-                ->setCountry('France')
-                ->setDescription('Description factice')
-                ->setCommercial($commercial)
-                ->setIsActive(true)
-                ->setCreatedAt(new \Datetime)
-                ->setUpdatedAt(new \Datetime)
-                ;
-            $manager->persist($company);
-            $pharmacies[] = $company;
-        }
+        // // Pharmacies
+        // $pharmacies = [];
+        // for($i = 0; $i <= 40; $i++) {
+        //     $company = new Company();
+        //     $company
+        //         ->setName($faker->company)
+        //         ->setFirstAdressField($faker->streetAddress)
+        //         ->setsecondAdressField($faker->streetName)
+        //         ->setPostalCode($faker->postcode)
+        //         ->setCity($faker->city)
+        //         ->setCountry('France')
+        //         ->setDescription('Description factice')
+        //         ->setCommercial($commercial)
+        //         ->setIsActive(true)
+        //         ->setCreatedAt(new \Datetime)
+        //         ->setUpdatedAt(new \Datetime)
+        //         ;
+        //     $manager->persist($company);
+        //     $pharmacies[] = $company;
+        // }
 
-        $users = [];
-        foreach($pharmacies as $pharma) {
-            $user = new User();
-            $user
-                ->setEmail($faker->unique()->email)
-                ->setRoles(['ROLE_MEMBER'])
-                ->setPassword($this->passwordEncoder->encodePassword($user, 'user'))
-                ->setFirstname($faker->firstName)
-                ->setLastname($faker->lastName)
-                ->setCompany($pharma)
-                ->setIsActive(true)
-                ->setCreatedAt(new \Datetime)
-                ->setUpdatedAt(new \Datetime)
-            ;
+        // $users = [];
+        // foreach($pharmacies as $pharma) {
+        //     $user = new User();
+        //     $user
+        //         ->setEmail($faker->unique()->email)
+        //         ->setRoles(['ROLE_MEMBER'])
+        //         ->setPassword($this->passwordEncoder->encodePassword($user, 'user'))
+        //         ->setFirstname($faker->firstName)
+        //         ->setLastname($faker->lastName)
+        //         ->setCompany($pharma)
+        //         ->setIsActive(true)
+        //         ->setCreatedAt(new \Datetime)
+        //         ->setUpdatedAt(new \Datetime)
+        //     ;
 
-            $manager->persist($user);
-            $users[] = $user;
-        }
+        //     $manager->persist($user);
+        //     $users[] = $user;
+        // }
 
 
         // Utilisateurs
         $admin = new User();
         $admin
-            ->setEmail('admin@admin.fr')
+            ->setEmail('stephane@babicz.fr')
             ->setRoles(['ROLE_ADMIN'])
             ->setPassword($this->passwordEncoder->encodePassword($admin, 'admin'))
-            ->setFirstname($faker->firstName)
-            ->setLastname($faker->lastName)
+            ->setFirstname('Stéphane')
+            ->setLastname('Babicz')
             ->setIsActive(true)
             ->setCreatedAt(new \Datetime)
             ->setUpdatedAt(new \Datetime)
