@@ -67,7 +67,7 @@
             <!-- Citation Section -->
             <section id="about" class="container-fluid p-0 text-center py-3 mt-5">
                 <!-- Section heading -->
-                <h2 class="titre h2-responsive font-weight-bold my-5">Qui sommes-nous ?</h2>
+                <h2 class="titre h2-responsive font-weight-bold">Qui sommes-nous ?</h2>
                 <div class="wrapper-carousel-fix">
                     <!-- Carousel Wrapper -->
                     <div id="carousel-example-1" class="carousel no-flex testimonial-carousel slide carousel-fade" data-ride="carousel"
@@ -78,13 +78,12 @@
                         <div class="carousel-item active">
                             <div class="testimonial">
                                 <!--Content-->
-                                <p class="m-5 font-weight-lighter font-italic">
-                                <i class="fas fa-quote-left"></i>Ynovagroup est un groupement créé par des pharmaciens de votre région qui connaissent vos problématiques et les rencontrent tous les jours.
+                                <p class="m-5 font-weight-lighter font-italic">Ynovagroup est un groupement créé par des pharmaciens de votre région qui connaissent vos problématiques et les rencontrent tous les jours.
                                 </p>
-                                <p class="m-5 font-weight-lighter font-italic">
-                                Nous sommes composés d'une équipe pluridisciplinaire de pharmaciens et de professionnels du secteur pharmaceutique.
-                                <br>
-                                Notre souhait : être présents à vos côtés au quotidien pour relever les défis de l'officine.
+                                <p class="m-5 font-weight-lighter font-italic">Nous sommes composés d'une équipe pluridisciplinaire de pharmaciens et de professionnels du secteur pharmaceutique.
+                                </p>
+                                <p class="m-5 font-weight-lighter font-italic">Notre souhait : être présents à vos côtés au quotidien pour relever les défis de l'officine.
+                                </p>
                             <!--Avatar-->
                                 <div class="avatar mx-auto">
                                 {% if theme.picture is defined %}
@@ -110,7 +109,11 @@
                             Vous préservez votre indépendance professionnelle
                         </p>
                     </div>
-                    <img class="valeurs-logo reveal-1" src="{{ asset('images/ynovagroup_logo.png') }}" alt="">
+                     {% if theme.picture is defined %}
+                        <img class="valeurs-logo reveal-2" id="{{ current == 'home'? 'ephemeride' : 'logo'}}" src="{{ vich_uploader_asset(theme, 'pictureFile') }}"  alt="">
+                    {% else %}
+                        <img class="valeurs-logo reveal-2" src="{{ asset('images/ynovagroup_logo.png') }}" alt="">
+                    {% endif %}
                 </div>
             </div>  
             <!-- Satisfaction -->
@@ -123,7 +126,11 @@
                             Votre confiance est notre préoccupation
                         </p>
                     </div>
-                     <img class="valeurs-logo reveal-2" src="{{ asset('images/ynovagroup_logo.png') }}" alt="">
+                     {% if theme.picture is defined %}
+                        <img class="valeurs-logo reveal-2" id="{{ current == 'home'? 'ephemeride' : 'logo'}}" src="{{ vich_uploader_asset(theme, 'pictureFile') }}"  alt="">
+                    {% else %}
+                        <img class="valeurs-logo reveal-2" src="{{ asset('images/ynovagroup_logo.png') }}" alt="">
+                    {% endif %}
                 </div>
             </div>  
             <!-- Soutien -->
@@ -136,7 +143,11 @@
                             Toujours à vos côtés pour une relation pérenne
                         </p>
                     </div>
-                     <img class="valeurs-logo reveal-3" src="{{ asset('images/ynovagroup_logo.png') }}" alt="">
+                     {% if theme.picture is defined %}
+                        <img class="valeurs-logo reveal-2" id="{{ current == 'home'? 'ephemeride' : 'logo'}}" src="{{ vich_uploader_asset(theme, 'pictureFile') }}"  alt="">
+                    {% else %}
+                        <img class="valeurs-logo reveal-2" src="{{ asset('images/ynovagroup_logo.png') }}" alt="">
+                    {% endif %}
                 </div>
             </div>  
             <!-- Engagement -->
@@ -149,7 +160,11 @@
                             Notre équipe s'engage dans une démarche proactive de qualité
                         </p>
                     </div>
-                     <img class="valeurs-logo reveal-4" src="{{ asset('images/ynovagroup_logo.png') }}" alt="">
+                     {% if theme.picture is defined %}
+                        <img class="valeurs-logo reveal-2" id="{{ current == 'home'? 'ephemeride' : 'logo'}}" src="{{ vich_uploader_asset(theme, 'pictureFile') }}"  alt="">
+                    {% else %}
+                        <img class="valeurs-logo reveal-2" src="{{ asset('images/ynovagroup_logo.png') }}" alt="">
+                    {% endif %}
                 </div>
             </div> 
             <!-- Partage -->
@@ -162,7 +177,11 @@
                             Échange et communication, facteurs clés de synergie
                         </p>
                     </div>
-                     <img class="valeurs-logo reveal-5" src="{{ asset('images/ynovagroup_logo.png') }}" alt="">
+                     {% if theme.picture is defined %}
+                        <img class="valeurs-logo reveal-2" id="{{ current == 'home'? 'ephemeride' : 'logo'}}" src="{{ vich_uploader_asset(theme, 'pictureFile') }}"  alt="">
+                    {% else %}
+                        <img class="valeurs-logo reveal-2" src="{{ asset('images/ynovagroup_logo.png') }}" alt="">
+                    {% endif %}
                 </div>
             </div>  
             <!-- Excellence -->
@@ -175,7 +194,11 @@
                             L'expertise de professionnel entièrement à votre service
                         </p>
                     </div>
-                     <img class="valeurs-logo reveal-6" src="{{ asset('images/ynovagroup_logo.png') }}" alt="">
+                     {% if theme.picture is defined %}
+                        <img class="valeurs-logo reveal-2" id="{{ current == 'home'? 'ephemeride' : 'logo'}}" src="{{ vich_uploader_asset(theme, 'pictureFile') }}"  alt="">
+                    {% else %}
+                        <img class="valeurs-logo reveal-2" src="{{ asset('images/ynovagroup_logo.png') }}" alt="">
+                    {% endif %}
                 </div>
             </div>
             </section>
@@ -190,24 +213,24 @@
                 <div class="container-fluid p-0 text-center m-5">
                 <h2 class="titre-objectifs text-center h1-responsive font-weight-bold m-5">Nos objectifs</h2>
                     <div class="panel">
-                        <div class="panel-box m-5">
-                            <div class="panel-box-text m-5">
+                        <div class="panel-box">
+                            <div class="panel-box-text m-3">
                                 <h4 class="h4-responsive font-weight-bold">
                                     <i class="far fa-check-square fa-1x"></i>
                                     La relation au patient-client
                                 </h4>
-                                <ul class="font-weight-lighter m-5">
+                                <ul class="font-weight-lighter">
                                     <li>Capter de nouveaux clients</li>
                                     <li>Fidéliser la clientèle</li>
                                     <li>Augmenter le panier moyen</li>
                                 </ul>
                             </div>
-                            <div class="panel-box-text m-5">
+                            <div class="panel-box-text m-3">
                                <h4 class="h4-responsive font-weight-bold">
                                     <i class="far fa-check-square fa-1x"></i>
                                     La politique commerciale
                                 </h4>
-                                <ul class="font-weight-lighter m-5">
+                                <ul class="font-weight-lighter">
                                     <li>Définir votre stratégie commerciale</li>
                                     <li>Rendrez votre espace de vente plus attractif</li>
                                     <li>Maximiser le potentiel de votre référencement produit</li>
@@ -218,24 +241,24 @@
                     </div>
                     <div class="panel">
                         <div class="panel-box">
-                            <div class="panel-box-text m-5">
+                            <div class="panel-box-text m-3">
                                 <h4 class="h4-responsive font-weight-bold">
                                     <i class="far fa-check-square fa-1x"></i>
                                     L'optimisation des achats
                                 </h4>
-                                <ul class="font-weight-lighter m-5">
+                                <ul class="font-weight-lighter">
                                     <li>Accords grossistes à des conditions préférentielles</li>
                                     <li>Accords génériqueurs attractifs</li>
                                     <li>Achats VIP</li>
                                     <li>Laboratoires partenaires parmi les leaders</li>
                                 </ul>
                             </div>
-                            <div class="panel-box-text m-5">
+                            <div class="panel-box-text m-3">
                                 <h4 class="h4-responsive font-weight-bold">
                                     <i class="far fa-check-square fa-1x"></i>
                                     La formation de l'équipe officinale
                                 </h4>
-                                <ul class="font-weight-lighter m-5">
+                                <ul class="font-weight-lighter">
                                     <li>Accompagnement au quotidien</li>
                                     <li>Formation en équipe</li>
                                     <li>Mise à disposition de fiches pratiques</li>
