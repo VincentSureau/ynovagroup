@@ -21,7 +21,7 @@
         <!-- M A I N  S E C T I O N -->
         <main class="main container-fluid p-0">
             <!-- Citation Actu -->
-            {{ if articles is not empty }}
+            {% if articles is not empty %}
             <section id="actu" class="container-fluid p-0 text-center py-3">
                 <!-- Section heading -->
                 <h2 class="titre font-weight-bold my-5">Les dernières actualités</h2>
@@ -64,7 +64,7 @@
             </div>
 <!-- fin du carousel -->
             </section>
-            {{ endif }}
+            {% endif %}
                         
             <!-- Citation Section -->
             <section id="about" class="container-fluid p-0 text-center py-3 mt-5">
