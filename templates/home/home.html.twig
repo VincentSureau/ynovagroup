@@ -30,34 +30,45 @@
                 <div class="bd-example">
                     <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
                         <ol class="carousel-indicators">
-                        <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
-                        <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
-                        <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+                        {% for i in 1..articles|length %}
+                        <li data-target="#carouselExampleCaptions" data-slide-to="{{ i }}" class="{{ i == 1 ? 'active' }}"></li>
+                        {% endfor %}
                         </ol>
                         <div class="carousel-inner carousel-article-wrapper">
                         {% for post in articles %}
                         <div class="carousel-item {{ (loop.first) ? 'active' }}">
-                            <div class="card mb-3 bg-white">
+                            <div class="card mb-3" style="background:#abe8b863; border: none">
                                 {% if post.picture is not null %}
                                     <img class="card-img-top" style="max-height: 400px" src="{{ vich_uploader_asset(post, 'pictureFile') }}" alt="{{ post.title|default('illustration de l\'article') }}" />
                                 {% endif %}
-                                <div class="card-body">
+                                <div class="card-body" style="background:#abe8b863;">
                                     <h3 class="card-title">{{post.title}}</h3>
-                                    <p class="card-text">{{ post.content|striptags|truncate(600, true) }}</p>
                                     <p class="card-text">
-                                        <button class="btn btn-success button-actu m-5">
-                                            <a href="{{ path('blog_single', {'slug': post.slug}) }}">Lire la suite</a>
-                                        </button>
+                                        {{ post.content|striptags|truncate(600, true) }}
+                                        <br/>
+                                        <a class="btn btn-success button-actu m-2" href="{{ path('blog_single', {'slug': post.slug}) }}">
+                                            Lire la suite
+                                        </a>
                                     </p>
-                                    <p class="card-text"><small class="text-muted">Posté le {{post.createdAt|date("d/m/y")}} par 
+                                    {# <p class="card-text"><small class="text-muted">Posté le {{post.createdAt|date("d/m/y")}} par 
                                     <cite title="auteur">
                                         {{ attribute(post.author, '__toString') is defined ? post.author.__toString : post.rssfeedname|default('-') }}
-                                    </cite></small></p>
+                                    </cite></small></p> #}
                                 </div>
                             </div>
                         </div>
                         {% endfor %}
                         </div>
+                        {% if articles|length > 1 %}
+                        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                        {% endif %}
                  </div>
                 {# <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
