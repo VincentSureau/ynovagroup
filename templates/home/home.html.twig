@@ -31,7 +31,7 @@
                     <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
                         <ol class="carousel-indicators">
                         {% for i in 1..articles|length %}
-                        <li data-target="#carouselExampleCaptions" data-slide-to="{{ i }}" class="{{ i == 1 ? 'active' }}"></li>
+                        <li data-target="#carouselExampleCaptions" data-slide-to="{{ i - 1 }}" class="{{ i == 1 ? 'active' }}"></li>
                         {% endfor %}
                         </ol>
                         <div class="carousel-inner carousel-article-wrapper">
