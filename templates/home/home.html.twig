@@ -35,8 +35,8 @@
                         <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
                         </ol>
                         <div class="carousel-inner carousel-article-wrapper">
-                        <div class="carousel-item active">
                         {% for post in articles %}
+                        <div class="carousel-item {{ (loop.first) ? active}}">
                             {% if post.picture is not null %}
                                 <img class="d-block w-100" src="{{ vich_uploader_asset(post, 'pictureFile') }}" alt="{{ post.title|default("illustration de l\‘article") }}" />
                             {% endif %}
@@ -48,8 +48,8 @@
                             <button class="btn btn-success button-actu m-5">
                                 <a href="{{ path('blog_single', {'slug': post.slug}) }}">Lire la suite</a>
                             </button>
-                            {% endfor %}
-                            </div>
+                        </div>
+                        {% endfor %}
                         </div>
                  </div>
                 {# <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
