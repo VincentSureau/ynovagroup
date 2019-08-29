@@ -34,7 +34,7 @@
                         <li data-target="#carouselArticles" data-slide-to="{{ i - 1 }}" class="{{ i == 1 ? 'active' }}"></li>
                         {% endfor %}
                         </ol>
-                        <div class="carousel-inner carousel-article-wrapper">
+                        <div class="carousel-inner carousel-article-wrapper mx-auto" style="max-width: 600px;">
                         {% for post in articles %}
                         <div class="carousel-item {{ (loop.first) ? 'active' }}">
                             <div class="card mb-3">
