@@ -19,7 +19,7 @@
             </section>
         </header>
         <!-- M A I N  S E C T I O N -->
-        <main class="main container-fluid p-0">
+        <main class="main container p-0">
             <!-- Citation Actu -->
             {% if articles is not empty %}
             <section id="actu" class="container-fluid p-0 text-center py-3">
@@ -37,17 +37,24 @@
                         <div class="carousel-inner carousel-article-wrapper">
                         {% for post in articles %}
                         <div class="carousel-item {{ (loop.first) ? 'active' }}">
-                            {% if post.picture is not null %}
-                                <img class="d-block w-100" src="{{ vich_uploader_asset(post, 'pictureFile') }}" alt="{{ post.title|default("illustration de l\‘article") }}" />
-                            {% endif %}
-                            <div class="carousel-caption carousel-article d-none d-md-block">
-                                <span class="badge badge-light">Posté le {{post.createdAt|date("d/m/y")}}</span>
-                            <h5 class="font-weight-bold h3 m-5">{{post.title}}</h5>
-                            <p>{{ post.content|striptags|truncate(600, true) }}</p>
-                            {# <p>{{ post.content }}</p> #}
-                            <button class="btn btn-success button-actu m-5">
-                                <a href="{{ path('blog_single', {'slug': post.slug}) }}">Lire la suite</a>
-                            </button>
+                            <div class="card mb-3 bg-white">
+                                {% if post.picture is not null %}
+                                    <img class="card-img-top" style="max-height: 400px" src="{{ vich_uploader_asset(post, 'pictureFile') }}" alt="{{ post.title|default('illustration de l\'article') }}" />
+                                {% endif %}
+                                <div class="card-body">
+                                    <h3 class="card-title">{{post.title}}</h3>
+                                    <p class="card-text">{{ post.content|striptags|truncate(600, true) }}</p>
+                                    <p class="card-text">
+                                        <button class="btn btn-success button-actu m-5">
+                                            <a href="{{ path('blog_single', {'slug': post.slug}) }}">Lire la suite</a>
+                                        </button>
+                                    </p>
+                                    <p class="card-text"><small class="text-muted">Posté le {{post.createdAt|date("d/m/y")}} par 
+                                    <cite title="auteur">
+                                        {{ attribute(post.author, '__toString') is defined ? post.author.__toString : post.rssfeedname|default('-') }}
+                                    </cite></small></p>
+                                </div>
+                            </div>
                         </div>
                         {% endfor %}
                         </div>
