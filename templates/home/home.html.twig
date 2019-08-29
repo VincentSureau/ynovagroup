@@ -45,10 +45,12 @@
                                     <h3 class="card-title">{{post.title}}</h3>
                                     <p class="card-text">
                                         {{ post.content|striptags|truncate(600, true) }}
+                                        {% if post.content|striptags|length > 600 %}
                                         <br/>
                                         <a class="btn btn-success button-actu m-2" href="{{ path('blog_single', {'slug': post.slug}) }}">
                                             Lire la suite
                                         </a>
+                                        {% endif %}
                                     </p>
                                     {# <p class="card-text"><small class="text-muted">Posté le {{post.createdAt|date("d/m/y")}} par 
                                     <cite title="auteur">
