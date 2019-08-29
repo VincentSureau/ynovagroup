@@ -36,7 +36,7 @@
                         </ol>
                         <div class="carousel-inner carousel-article-wrapper">
                         {% for post in articles %}
-                        <div class="carousel-item {{ (loop.first) ? active}}">
+                        <div class="carousel-item {{ (loop.first) ? 'active' }}">
                             {% if post.picture is not null %}
                                 <img class="d-block w-100" src="{{ vich_uploader_asset(post, 'pictureFile') }}" alt="{{ post.title|default("illustration de l\‘article") }}" />
                             {% endif %}
