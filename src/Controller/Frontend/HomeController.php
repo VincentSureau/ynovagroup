@@ -56,7 +56,7 @@ class HomeController extends AbstractController
             $message = (new \Swift_Message('Message en provenance du site Ynovagroup.com'))
                 ->setFrom($data['email'])
                 // set the real adresse once ine production mode
-                ->setTo('hello@vincent-sureau.fr')
+                ->setTo('contact@ynovagroup.com')
                 // ->setTo('contact@ynovagroup.com')
                 ->setBody($content, 'text/html');
             ;
