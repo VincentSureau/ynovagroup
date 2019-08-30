@@ -1,6 +1,6 @@
-<div class="card-deck my-5">
+<div class="card-deck my-5 justify-content-center">
     {% for post in articles %}
-    <div class="card mx-auto" style="max-width:600px;">
+    <div class="card" style="max-width:600px;">
         {% if post.picture is not null %}
         <img src="{{ vich_uploader_asset(post, 'pictureFile') }}" class="card-img-top" alt="{{ post.title }}">
         {% endif %}
