@@ -7,7 +7,7 @@
         <div class="card-body bg-light">
             <h5 class="card-title text-center">{{ post.title|default('') }}</h5>
             <div class="card-text text-center">
-                {{ post.content }}
+                {{ post.content|raw }}
             </div>
             <p class="card-text">
                 <small class="text-muted">Posté le {{post.createdAt|date("d/m/y")}} par 
