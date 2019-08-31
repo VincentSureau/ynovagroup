@@ -112,7 +112,7 @@
                      {% if theme.picture is defined %}
                         <img class="valeurs-logo reveal-2" id="{{ current == 'home'? 'ephemeride' : 'logo'}}" src="{{ vich_uploader_asset(theme, 'pictureFile') }}"  alt="">
                     {% else %}
-                        <img class="valeurs-logo reveal-2" src="{{ asset('build/ynovagroup_logo.png') }}" alt="">
+                        <img class="valeurs-logo reveal-2" src="{{ asset('build/ynovagroup_logo.png') }}" id="ephemeride" alt="">
                     {% endif %}
                 </div>
             </div>  

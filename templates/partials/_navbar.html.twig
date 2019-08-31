@@ -5,7 +5,7 @@
         {% if theme.picture is defined %}
             <img id="{{ current == 'home'? 'ephemeride' : 'logo'}}" src="{{ vich_uploader_asset(theme, 'pictureFile') }}"  alt="">
         {% else %}
-            <span>Ynovagroup</span>
+            <span id="ephemeride">Ynovagroup</span>
         {% endif %}
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
