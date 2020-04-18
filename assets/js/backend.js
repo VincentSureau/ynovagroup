@@ -7,17 +7,6 @@
 
 // any CSS you require will output into a single css file (app.css in this case)
 // Need jQuery? Install it with "yarn add jquery", then uncomment to require it.
-const $ = require('jquery');
-require('bootstrap');
-
-var dt = require('datatables.net');
-import bsCustomFileInput from 'bs-custom-file-input';
-import select2 from 'select2';
-
-$.fn.DataTable = dt;
-$.fn.select2 = select2;
-
-import Swup from 'swup';
 require('../css/backend.scss');
 
 function init() {
