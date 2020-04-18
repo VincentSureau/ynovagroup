@@ -8,19 +8,27 @@
 <!-- Partenaires -->
 <div id="partner" class="container p-0">
     <main class="container-fluid mt-5">
-    <h1 class="h2 mt-3 text-center">Nos partenaires</h1>
-    <section id="partenaires">
-        {% for partner in partners %}
-            <div class="partenaire">
-                <img src="{{ vich_uploader_asset(partner, 'imageFile') }}" alt="{{ company.name|default('image du paternaire') }}" />
-            <a class="btn btn-success {{ (partner.link is null)? 'disabled' }}" href="{{ partner.link|default('#') }}">{{ partner.name|default('lien') }}</a>
-        </div>
-        {% else %}
-            <div class="partenaire">
-                <p>Aucun partenaire n'est enregistré pour le moment.</p>
-            </div>
-        {% endfor %}
-    </section>
+        <h1 class="h2 mt-3 text-center">Nos partenaires</h1>
+        <section id="partenaires">
+            {% for deck in partners|batch(3) %}
+                <div class="card-deck">
+                    {% for partner in deck %}
+                        <div class="card">
+                            <div class="card-body">
+                                <img src="{{ vich_uploader_asset(partner, 'imageFile') }}" alt="{{ company.name|default('image du paternaire') }}" />                    
+                            </div>
+                            <div class="card-footer text-center">
+                                <a class="btn btn-success {{ (partner.link is null)? 'disabled' }}" href="{{ partner.link|default('#') }}">{{ partner.name|default('lien') }}</a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div class="partenaire">
+                    <p>Aucun partenaire n'est enregistré pour le moment.</p>
+                </div>
+            {% endfor %}
+        </section>
     </main>
 </div>
 

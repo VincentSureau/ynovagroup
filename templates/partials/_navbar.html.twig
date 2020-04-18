@@ -1,159 +1,157 @@
 <!-- Navigation with a burger menu -->
-<header class="header py-5">
-    <nav id="nav" class="navbar fixed-top navbar-expand-lg navbar-light bg-white">
-        <a class="navbar-brand" href="{{ current == 'home'? '#' : path('home') }}">
-        {% if theme.picture is defined %}
-            <img id="{{ current == 'home'? 'ephemeride' : 'logo'}}" src="{{ vich_uploader_asset(theme, 'pictureFile') }}"  alt="">
-        {% else %}
-            <span>Ynovagroup</span>
-        {% endif %}
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mx-auto">
-                {% if maintenance == true %}
+<nav id="nav" class="navbar fixed-top navbar-expand-lg navbar-light bg-white  d-flex justify-content-between">
+    <a class="navbar-brand" href="{{ current == 'home'? '#' : path('home') }}">
+    {% if theme.picture is defined %}
+        <img id="{{ current == 'home'? 'ephemeride' : 'logo'}}" src="{{ vich_uploader_asset(theme, 'pictureFile') }}"  alt="">
+    {% else %}
+        <span id="ephemeride">Ynovagroup</span>
+    {% endif %}
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto d-flex align-items-center">
+            {% if maintenance == true %}
 
-                {% elseif current == 'home' %}
-                    <li class="nav-item {{ current == 'home'? 'active'}}">
-                        <a class="nav-link" href="#">Accueil</a>
-                    </li>
+            {% elseif current == 'home' %}
+                <li class="nav-item {{ current == 'home'? 'active'}}">
+                    <a class="nav-link" href="#">Accueil</a>
+                </li>
 
-                    {# dropdown menu in lg only #}
-                    <li class="nav-item dropdown d-none d-lg-block d-xl-none">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Le groupement
+                {# dropdown menu in lg only #}
+                <li class="nav-item dropdown d-none d-lg-block d-xl-none">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Le groupement
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#about">Qui sommes-nous ?</a>
+                        <a class="dropdown-item" href="#valeurs">Nos valeurs</a>
+                        <a class="dropdown-item" href="#difference">Notre différence</a>
+                        <a class="dropdown-item" href="#objectifs">Nos objectifs</a>
+                    </div>
+                </li>
+                {# end dropdown menu in lg only #}
+
+                {# distinct links in small and xl only #}
+                <li class="nav-item d-md-none d-xl-block">
+                    <a class="nav-link" href="#about">Qui sommes-nous ?</a>
+                </li>
+                <li class="nav-item d-md-none d-xl-block">
+                    <a class="nav-link" href="#valeurs">Nos valeurs</a>
+                </li>
+                <li class="nav-item d-md-none d-xl-block">
+                    <a class="nav-link" href="#difference">Notre différence</a>
+                </li>
+                <li class="nav-item d-md-none d-xl-block">
+                    <a class="nav-link" href="#objectifs">Nos objectifs</a>
+                </li>
+                <li class="nav-item d-md-none d-xl-block">
+                    <a class="nav-link" href="#contact">Contact</a>
+                </li>
+                {# end distinct links in small and xl only #}
+            {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('home') }}">Accueil</a>
+                </li>
+
+                {# dropdown menu in lg only #}
+                <li class="nav-item dropdown d-none d-lg-block d-xl-none">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Le groupement
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{ path('home') }}#about">Qui sommes-nous ?</a>
+                        <a class="dropdown-item" href="{{ path('home') }}#valeurs">Nos valeurs</a>
+                        <a class="dropdown-item" href="{{ path('home') }}#difference">Notre différence</a>
+                        <a class="dropdown-item" href="{{ path('home') }}#objectifs">Nos objectifs</a>
+                    </div>
+                </li>
+                {# end dropdown menu in lg only #}
+
+                {# distinct links in small and xl only #}
+                <li class="nav-item d-md-none d-xl-block">
+                    <a class="nav-link" href="{{ path('home') }}#about">Qui sommes-nous ?</a>
+                </li>
+                <li class="nav-item d-md-none d-xl-block">
+                    <a class="nav-link" href="{{ path('home') }}#valeurs">Nos valeurs</a>
+                </li>
+                <li class="nav-item d-md-none d-xl-block">
+                    <a class="nav-link" href="{{ path('home') }}#difference">Notre différence</a>
+                </li>
+                <li class="nav-item d-md-none d-xl-block">
+                    <a class="nav-link" href="{{ path('home') }}#objectifs">Nos objectifs</a>
+                </li>
+                {# distinct links in small and xl only #}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('home') }}#contact">Contact</a>
+                </li>
+            {% endif %}
+
+            {% if maintenance == true %}
+                {% if is_granted('ROLE_BUSINESS')%}
+                    <li class="nav-item adherent">
+                        <a class="nav-link btn btn-primary adherent-btn btn-sm text-white" href="{{ path('backend_notification') }}">
+                        Accès back office
+                        <i class="fas fa-sign-in-alt"></i>
                         </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#about">Qui sommes-nous ?</a>
-                            <a class="dropdown-item" href="#valeurs">Nos valeurs</a>
-                            <a class="dropdown-item" href="#difference">Notre différence</a>
-                            <a class="dropdown-item" href="#objectifs">Nos objectifs</a>
-                        </div>
                     </li>
-                    {# end dropdown menu in lg only #}
-
-                    {# distinct links in small and xl only #}
-                    <li class="nav-item d-md-none d-xl-block">
-                        <a class="nav-link" href="#about">Qui sommes-nous ?</a>
+                    <li class="nav-item adherent">
+                        <a class="nav-link btn btn-success adherent-btn btn-sm text-white" href="{{ path('app_logout') }}">
+                        Déconnexion
+                        <i class="far fa-paper-plane"></i>
+                        </a>
                     </li>
-                    <li class="nav-item d-md-none d-xl-block">
-                        <a class="nav-link" href="#valeurs">Nos valeurs</a>
-                    </li>
-                    <li class="nav-item d-md-none d-xl-block">
-                        <a class="nav-link" href="#difference">Notre différence</a>
-                    </li>
-                    <li class="nav-item d-md-none d-xl-block">
-                        <a class="nav-link" href="#objectifs">Nos objectifs</a>
-                    </li>
-                    <li class="nav-item d-md-none d-xl-block">
-                        <a class="nav-link" href="#contact">Contact</a>
-                    </li>
-                    {# end distinct links in small and xl only #}
                 {% else %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ path('home') }}">Accueil</a>
-                    </li>
-
-                    {# dropdown menu in lg only #}
-                    <li class="nav-item dropdown d-none d-lg-block d-xl-none">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Le groupement
+                    <li class="nav-item adherent">
+                        <a class="nav-link login-btn btn btn-success adherent-btn btn-sm text-white" href="{{ path('app_login') }}">
+                            <i></i>
+                            Connexion
+                            <i class="fas fa-sign-in-alt"></i>
                         </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{ path('home') }}#about">Qui sommes-nous ?</a>
-                            <a class="dropdown-item" href="{{ path('home') }}#valeurs">Nos valeurs</a>
-                            <a class="dropdown-item" href="{{ path('home') }}#difference">Notre différence</a>
-                            <a class="dropdown-item" href="{{ path('home') }}#objectifs">Nos objectifs</a>
-                        </div>
-                    </li>
-                    {# end dropdown menu in lg only #}
-
-                    {# distinct links in small and xl only #}
-                    <li class="nav-item d-md-none d-xl-block">
-                        <a class="nav-link" href="{{ path('home') }}#about">Qui sommes-nous ?</a>
-                    </li>
-                    <li class="nav-item d-md-none d-xl-block">
-                        <a class="nav-link" href="{{ path('home') }}#valeurs">Nos valeurs</a>
-                    </li>
-                    <li class="nav-item d-md-none d-xl-block">
-                        <a class="nav-link" href="{{ path('home') }}#difference">Notre différence</a>
-                    </li>
-                    <li class="nav-item d-md-none d-xl-block">
-                        <a class="nav-link" href="{{ path('home') }}#objectifs">Nos objectifs</a>
-                    </li>
-                    {# distinct links in small and xl only #}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ path('home') }}#contact">Contact</a>
                     </li>
                 {% endif %}
-
-                {% if maintenance == true %}
-                    {% if is_granted('ROLE_BUSINESS')%}
-                        <li class="nav-item adherent">
-                            <a class="nav-link btn btn-primary adherent-btn btn-sm text-white" href="{{ path('backend_notification') }}">
-                            Accès back office
-                            <i class="fas fa-sign-in-alt"></i>
-                            </a>
-                        </li>
-                        <li class="nav-item adherent">
-                            <a class="nav-link btn btn-success adherent-btn btn-sm text-white" href="{{ path('app_logout') }}">
-                            Déconnexion
-                            <i class="far fa-paper-plane"></i>
-                            </a>
-                        </li>
-                    {% else %}
-                        <li class="nav-item adherent">
-                            <a class="nav-link login-btn btn btn-success adherent-btn btn-sm text-white" href="{{ path('app_login') }}">
-                                <i></i>
-                                Connexion
-                                <i class="fas fa-sign-in-alt"></i>
-                            </a>
-                        </li>
-                    {% endif %}
+            {% else %}
+                <li class="nav-item">
+                    <a class="nav-link {{ current == 'partenaires'? 'active'}}" href="{{ path('partenaires') }}">Partenaires</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ current == 'blog'? 'active'}}" href="{{ path('blog') }}">Actualités</a>
+                </li>
+                {% if is_granted('ROLE_BUSINESS')%}
+                    <li class="nav-item adherent">
+                        <a class="nav-link btn btn-primary adherent-btn btn-sm text-white" href="{{ path('backend_notification') }}">
+                        Accès back office
+                        <i class="fas fa-sign-in-alt"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item adherent">
+                        <a class="nav-link btn btn-success adherent-btn btn-sm text-white" href="{{ path('app_logout') }}">
+                        Déconnexion
+                        <i class="far fa-paper-plane"></i>
+                        </a>
+                    </li>
+                {% elseif is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                    <li class="nav-item adherent">
+                        <a class="nav-link login-btn btn btn-primary adherent-btn btn-sm text-white" href="{{ path('profil') }}">
+                            <i></i>
+                            Mon Espace
+                            <i class="far fa-user"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item adherent">
+                        <a class="nav-link btn btn-danger adherent-btn btn-sm text-white" href="{{ path('app_logout') }}">Déconnexion</a>
+                    </li>
                 {% else %}
-                    <li class="nav-item">
-                        <a class="nav-link {{ current == 'partenaires'? 'active'}}" href="{{ path('partenaires') }}">Partenaires</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link {{ current == 'blog'? 'active'}}" href="{{ path('blog') }}">Actualités</a>
-                    </li>
-                    {% if is_granted('ROLE_BUSINESS')%}
-                        <li class="nav-item adherent">
-                            <a class="nav-link btn btn-primary adherent-btn btn-sm text-white" href="{{ path('backend_notification') }}">
-                            Accès back office
+                    <li class="nav-item adherent">
+                        <a class="nav-link login-btn btn btn-success adherent-btn btn-sm text-white" href="{{ path('app_login') }}">
+                            <i></i>
+                            Espace Adhérent
                             <i class="fas fa-sign-in-alt"></i>
-                            </a>
-                        </li>
-                        <li class="nav-item adherent">
-                            <a class="nav-link btn btn-success adherent-btn btn-sm text-white" href="{{ path('app_logout') }}">
-                            Déconnexion
-                            <i class="far fa-paper-plane"></i>
-                            </a>
-                        </li>
-                    {% elseif is_granted('IS_AUTHENTICATED_REMEMBERED') %}
-                        <li class="nav-item adherent">
-                            <a class="nav-link login-btn btn btn-primary adherent-btn btn-sm text-white" href="{{ path('profil') }}">
-                                <i></i>
-                                Mon Espace
-                                <i class="far fa-user"></i>
-                            </a>
-                        </li>
-                        <li class="nav-item adherent">
-                            <a class="nav-link btn btn-danger adherent-btn btn-sm text-white" href="{{ path('app_logout') }}">Déconnexion</a>
-                        </li>
-                    {% else %}
-                        <li class="nav-item adherent">
-                            <a class="nav-link login-btn btn btn-success adherent-btn btn-sm text-white" href="{{ path('app_login') }}">
-                                <i></i>
-                                Espace Adhérent
-                                <i class="fas fa-sign-in-alt"></i>
-                            </a>
-                        </li>
-                    {% endif %}
+                        </a>
+                    </li>
                 {% endif %}
-            </ul>
-        </div>
-    </nav>
-</header>
+            {% endif %}
+        </ul>
+    </div>
+</nav>

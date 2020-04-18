@@ -1,0 +1,94 @@
+/* imports */
+@import 'bootstrap';
+
+/* Fonts */
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,700&display=swap');
+@import "@fortawesome/fontawesome-free/css/all";
+@import "datatables.net-bs4/css/dataTables.bootstrap4";
+
+/* Navigation Adhérents Button */
+
+:root {
+    --box-shadow-lg: 0 7px 14px 0 rgba(59,64,94,0.1),0 3px 6px 0 rgba(0,0,0,0.07);
+    --green-color : #28a645 ;
+    --green-hover-color : #218838 ;
+}
+
+* {
+    font-family: 'Montserrat', sans-serif;
+}
+
+#nav {
+    display: flex;
+    justify-content: center;
+}
+
+.adherent {
+    justify-self: end;
+}
+
+.nav-item {
+    margin: 0 5px;
+}
+
+.nav-link:hover:not(.adherent-btn) ,
+.nav-link:active:not(.adherent-btn)  {
+    color: var(--green-hover-color)!important;
+}
+
+/* Navigation Underline Hover effect */
+
+
+body {
+    background-color: rgb(248, 249, 250);
+}
+
+.table {
+    width: auto;
+}
+
+.vich-file a, .vich-file a:visited,
+.link-green, .link-green:visited,
+.page-link, .page-link:visited {
+    color: var(--green-color);
+}
+
+.vich-file a:active, .vich-file a:hover,
+.link-green:active, .link-green:hover,
+.page-link:active, .page-link:hover {
+    color: var(--green-hover-color);
+}
+
+.page-item.active .page-link {
+    background-color: var(--green-hover-color);
+    border-color: var(--green-hover-color);
+}
+
+.transition-fade {
+  transition: 0.4s;
+  opacity: 1;
+}
+
+html.is-animating .transition-fade {
+  opacity: 0;
+}
+
+:root {
+    --ck-z-default: 100;
+    --ck-z-modal: calc( var(--ck-z-default) + 999 );
+}
+
+.card {
+    box-shadow: var(--box-shadow-lg);
+}
+
+/* Needed for select2 responsiveness */
+
+.select2-selection { 
+    overflow: hidden; 
+}
+
+.select2-selection__rendered { 
+    white-space: normal;
+    word-break: break-all;
+}
