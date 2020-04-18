@@ -8,8 +8,11 @@
 // any CSS you require will output into a single css file (app.css in this case)
 // Need jQuery? Install it with "yarn add jquery", then uncomment to require it.
 const $ = require('jquery');
-const DataTable = require('datatables.net-bs4');
 require('bootstrap');
+
+var dt = require('datatables.net');
+$.fn.DataTable = dt;
+
 import Swup from 'swup';
 require('../css/backend.scss');
 import bsCustomFileInput from 'bs-custom-file-input';
