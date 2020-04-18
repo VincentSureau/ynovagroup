@@ -539,7 +539,6 @@ function init() {
     }
 
     function formatState(state) {
-        console.log(state)
         if (state.element.dataset.read == "true") {
             return $(`<span>${state.text} <i class="fas fa-check text-success"></i></span>`);
         }

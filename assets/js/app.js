@@ -22,24 +22,24 @@ function topFunction() {
 };
 
 
-function scrollFunction() {
-    if (document.body.scrollTop > 1800 || document.documentElement.scrollTop > 1800) {
-        document.getElementById("myBtn").style.display = "block";
-    } else {
-        document.getElementById("myBtn").style.display = "none";
-    }
-}
+// function scrollFunction() {
+//     if (document.body.scrollTop > 1800 || document.documentElement.scrollTop > 1800) {
+//         document.getElementById("myBtn").style.display = "block";
+//     } else {
+//         document.getElementById("myBtn").style.display = "none";
+//     }
+// }
 
 
 // // SCROLL FN NAV
-// window.onscroll = function () { scrollFunction() };
+window.onscroll = function () { scrollFunction() };
 
-// function scrollFunction() {
-//     if (document.body.scrollTop > 900 || document.documentElement.scrollTop > 900) {
-//         document.getElementById("ephemeride").style.width = "220px";
-//         document.getElementById("ephemeride").style.height = "80px";
-//     }
-// }
+function scrollFunction() {
+    if (document.body.scrollTop > 900 || document.documentElement.scrollTop > 900) {
+        document.getElementById("ephemeride").style.width = "220px";
+        document.getElementById("ephemeride").style.height = "80px";
+    }
+}
 
 
 // PARALLAX IMAGE ON HOMEPAGE
@@ -83,7 +83,6 @@ $(window).scroll(function () {
     }
 });
 
-console.log(window.onscroll);
 $('.carousel').carousel()
 
 // display file name in bootstrap file inputs
