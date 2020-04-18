@@ -48,7 +48,7 @@ Encore
     .enableVersioning(Encore.isProduction())
 
     // enables @babel/preset-env polyfills
-    .configureBabel(() => {}, {
+    .configureBabel(() => { }, {
         useBuiltIns: 'usage',
         corejs: 3
     })
@@ -84,6 +84,6 @@ Encore
         // only copy files matching this pattern
         //pattern: /\.(png|jpg|jpeg)$/
     })
-;
+    ;
 
 module.exports = Encore.getWebpackConfig();

@@ -1,6 +1,6 @@
 <!-- Navigation with a burger menu -->
 <header class="header py-5">
-    <nav id="nav" class="navbar fixed-top navbar-expand-lg navbar-light bg-white">
+    <nav id="nav" class="navbar fixed-top navbar-expand-lg navbar-light bg-white  d-flex justify-content-between">
         <a class="navbar-brand" href="{{ current == 'home'? '#' : path('home') }}">
         {% if theme.picture is defined %}
             <img id="{{ current == 'home'? 'ephemeride' : 'logo'}}" src="{{ vich_uploader_asset(theme, 'pictureFile') }}"  alt="">
@@ -12,7 +12,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mx-auto">
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
                 {% if maintenance == true %}
 
                 {% elseif current == 'home' %}

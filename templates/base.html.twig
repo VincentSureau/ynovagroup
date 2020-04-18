@@ -1,21 +1,23 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>Ynovagroup | {% block title %}{% endblock %}</title>
-        <link rel="icon" href="{{ asset('build/favicon.ico') }}" />
-        {{ encore_entry_link_tags('app') }}
-        {% block stylesheets %}{% endblock %}
-    </head>
-    <body>
-    {% if current is not defined %}
-        {% set current = null %}
-    {% endif %}
-        {{ render(controller(
+	<head>
+		<meta charset="UTF-8">
+		<title>Ynovagroup |
+			{% block title %}{% endblock %}
+		</title>
+		<link rel="icon" href="{{ asset('build/favicon.ico') }}"/>
+		{{ encore_entry_link_tags('app') }}
+		{% block stylesheets %}{% endblock %}
+	</head>
+	<body>
+		{% if current is not defined %}
+			{% set current = null %}
+		{% endif %}
+		{{ render(controller(
             'App\\Controller\\Frontend\\NavbarController::index',
             { 'current': current }
         )) }}
-        <div class="content">
+		<div class="content"> 
             {% block body %}{% endblock %}
         </div>
         {% include('partials/_footer.html.twig') %}
