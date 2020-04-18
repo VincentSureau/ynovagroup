@@ -528,34 +528,35 @@ td > a > i:hover {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-}
-.partenaire {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 250px;
-    height: auto;
-    margin: 2rem 2rem;
-}
 
-.partenaire > img {
-    width: 150px;
-    height: auto;
-}
+    .card {
+        border: none;
 
-.partenaire > a {
-    margin: 1rem 0;
-    padding: .3rem .3rem;
-}
+        .card-body {
+            justify-content: center;
+            align-items: center;
 
-.partenaire > a:hover {
-    background-color: white;
-    color: var(--green);
-    border: 1px solid var(--green);
-    margin: 1rem 0;
-    padding: .3rem .3rem;
-}
+            img {
+                width: 150px;
+                height: auto;
+            }
+        }
 
+        .card-footer {
+            background: none;
+            border: none;
+
+            a {
+                &:hover {
+                    background-color: white;
+                    color: var(--green);
+                    border: 1px solid var(--green);
+                }
+            }
+        }
+
+    }
+}
 
 .content {
     background-color: white;
