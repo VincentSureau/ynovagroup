@@ -1,0 +1,14 @@
+{% block captcha_widget %}
+	{% spaceless %}
+
+        <div class="form-group row">
+            <div class="col-3 p-0 pr-1">
+                <img src="{{ captcha_code }}" title="captcha" class="img-fluid" style="width:100%;height:100%;"/>            
+            </div>
+            <div class="col-9 p-0 pl-1">
+		        {{ form_widget(form) }}
+            </div>
+        </div>
+
+	{% endspaceless %}
+{% endblock %}

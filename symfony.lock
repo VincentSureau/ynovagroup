@@ -127,6 +127,12 @@
     "gedmo/doctrine-extensions": {
         "version": "v2.4.39"
     },
+    "gregwar/captcha": {
+        "version": "v1.1.8"
+    },
+    "gregwar/captcha-bundle": {
+        "version": "v2.1.2"
+    },
     "hoa/compiler": {
         "version": "3.17.08.08"
     },

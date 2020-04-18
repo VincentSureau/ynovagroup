@@ -9,6 +9,7 @@
         "easycorp/easyadmin-bundle": "^2.1",
         "friendsofsymfony/rest-bundle": "^2.5",
         "gedmo/doctrine-extensions": "^2.4",
+        "gregwar/captcha-bundle": "^2.1",
         "jms/serializer-bundle": "^3.4",
         "knplabs/knp-paginator-bundle": "^4.0",
         "lexik/maintenance-bundle": "^2.1",

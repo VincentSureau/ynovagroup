@@ -9,7 +9,7 @@
         <header class="header">
             <!-- H E R O  S E C T I O N -->
             <section id="hero" src="{{ asset('build/ynovagroup_hero.jpg') }}" class="jumbotron-fluid container-fluid text-center img-fluid">
-                <div class="jumbotron-fluid container-fluid text-center">
+                <div class="jumbotron-fluid text-center">
                     <h1 class="display-4 text-uppercase">Ynovagroup</h1>
                     <p class="lead">Nous sommes LE groupement de pharmaciens indépendants</p>
                     <p class="lead">
@@ -41,7 +41,7 @@
                             {% endif %}
                             <div class="carousel-caption carousel-article d-none d-md-block">
                                 <span class="badge badge-light">Posté le {{post.createdAt|date("d/m/y")}}</span>
-                            <h5 class="font-weight-bold h3 m-5">{{post.title}}</h5>
+                            <h5 class="font-weight-bold h3 p-5">{{post.title}}</h5>
                             <p>{{ post.content|striptags|truncate(600, true) }}</p>
                             {# <p>{{ post.content }}</p> #}
                             <button class="btn btn-success button-actu m-5">
@@ -78,11 +78,11 @@
                         <div class="carousel-item active">
                             <div class="testimonial">
                                 <!--Content-->
-                                <p class="m-5 font-weight-lighter font-italic">Ynovagroup est un groupement créé par des pharmaciens de votre région qui connaissent vos problématiques et les rencontrent tous les jours.
+                                <p class="p-5 font-weight-lighter font-italic">Ynovagroup est un groupement créé par des pharmaciens de votre région qui connaissent vos problématiques et les rencontrent tous les jours.
                                 </p>
-                                <p class="m-5 font-weight-lighter font-italic">Nous sommes composés d'une équipe pluridisciplinaire de pharmaciens et de professionnels du secteur pharmaceutique.
+                                <p class="p-5 font-weight-lighter font-italic">Nous sommes composés d'une équipe pluridisciplinaire de pharmaciens et de professionnels du secteur pharmaceutique.
                                 </p>
-                                <p class="m-5 font-weight-lighter font-italic">Notre souhait : être présents à vos côtés au quotidien pour relever les défis de l'officine.
+                                <p class="p-5 font-weight-lighter font-italic">Notre souhait : être présents à vos côtés au quotidien pour relever les défis de l'officine.
                                 </p>
                             <!--Avatar-->
                                 <div class="avatar mx-auto">
@@ -103,9 +103,9 @@
                 <h2 class="titre-valeurs text-center h2-responsive font-weight-bold my-5">Nos valeurs</h2>
                 <div class="valeurs">
                     <img class="valeurs-img" src="{{ asset('build/respect.png') }}" alt="" width="250" height="250">
-                    <div class="valeurs-text m-5">
+                    <div class="valeurs-text p-5">
                         <h3 class="valeurs-text-title text-uppercase">Respect</h3>
-                            <p class="m-5 font-weight-lighter font-italic">
+                            <p class="p-5 font-weight-lighter font-italic">
                             Vous préservez votre indépendance professionnelle
                         </p>
                     </div>
@@ -120,9 +120,9 @@
             <div class="container-fluid p-0 text-center my-5">
                 <div class="valeurs">
                 <img class="valeurs-img" src="{{ asset('build/smile.png') }}" alt="" width="250" height="250">
-                    <div class="valeurs-text m-5">
+                    <div class="valeurs-text p-5">
                         <h3 class="valeurs-text-title text-uppercase">Satisfaction</h3>
-                            <p class="m-5 font-weight-lighter font-italic">
+                            <p class="p-5 font-weight-lighter font-italic">
                             Votre confiance est notre préoccupation
                         </p>
                     </div>
@@ -137,9 +137,9 @@
             <div class="container-fluid p-0 text-center my-5">
                 <div class="valeurs">
                     <img class="valeurs-img" src="{{ asset('build/information.png') }}" alt="" width="250" height="250">
-                    <div class="valeurs-text m-5">
+                    <div class="valeurs-text p-5">
                         <h3 class="valeurs-text-title text-uppercase">Soutien</h3>
-                            <p class="m-5 font-weight-lighter font-italic">
+                            <p class="p-5 font-weight-lighter font-italic">
                             Toujours à vos côtés pour une relation pérenne
                         </p>
                     </div>
@@ -154,9 +154,9 @@
             <div class="container-fluid p-0 text-center my-5">
                 <div class="valeurs">
                     <img class="valeurs-img" src="{{ asset('build/network.png') }}" alt="" width="250" height="250">
-                    <div class="valeurs-text m-5">
+                    <div class="valeurs-text p-5">
                         <h3 class="valeurs-text-title text-uppercase">Engagement</h3>
-                            <p class="m-5 font-weight-lighter font-italic">
+                            <p class="p-5 font-weight-lighter font-italic">
                             Notre équipe s'engage dans une démarche proactive de qualité
                         </p>
                     </div>
@@ -171,9 +171,9 @@
             <div class="container-fluid p-0 text-center my-5">
                 <div class="valeurs">
                     <img class="valeurs-img" src="{{ asset('build/share.png') }}" alt="" width="250" height="250">
-                    <div class="valeurs-text m-5">
+                    <div class="valeurs-text p-5">
                         <h3 class="valeurs-text-title text-uppercase">Partage</h3>
-                            <p class="m-5 font-weight-lighter font-italic">
+                            <p class="p-5 font-weight-lighter font-italic">
                             Échange et communication, facteurs clés de synergie
                         </p>
                     </div>
@@ -188,9 +188,9 @@
             <div class="container-fluid p-0 text-center my-5">
                 <div class="valeurs">
                     <img class="valeurs-img" src="{{ asset('build/review.png') }}" alt="" width="250" height="250">
-                    <div class="valeurs-text m-5">
+                    <div class="valeurs-text p-5">
                         <h3 class="valeurs-text-title text-uppercase">Excellence</h3>
-                            <p class="m-5 font-weight-lighter font-italic">
+                            <p class="p-5 font-weight-lighter font-italic">
                             L'expertise de professionnel entièrement à votre service
                         </p>
                     </div>
@@ -210,8 +210,8 @@
             </section>
             <!-- N O S  O B J E C T I F S -->
             <section id="objectifs">
-                <div class="container-fluid p-0 text-center m-5">
-                <h2 class="titre-objectifs text-center h1-responsive font-weight-bold m-5">Nos objectifs</h2>
+                <div class="container-fluid p-0 text-center p-5">
+                <h2 class="titre-objectifs text-center h1-responsive font-weight-bold p-5">Nos objectifs</h2>
                     <div class="panel">
                         <div class="panel-box">
                             <div class="panel-box-text m-3">
