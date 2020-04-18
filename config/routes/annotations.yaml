@@ -1,3 +1,11 @@
+controllers:
+    resource: ../../src/Controller/Frontend/
+    type: annotation
+
+kernel:
+    resource: ../../src/Kernel.php
+    type: annotation
+ 
 backend:
     resource: ../../src/Controller/Backend/
     prefix: /backend
@@ -8,8 +16,3 @@ api:
     resource: ../../src/Controller/Api/
     name_prefix: api_
     type: annotation
-    
-controllers:
-    resource: ../../src/Controller/Frontend/
-    type: annotation
-

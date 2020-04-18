@@ -1,5 +1,6 @@
 doctrine:
     dbal:
+<<<<<<< HEAD
         # configure these for your database server
         driver: 'pdo_mysql'
         server_version: 'mariadb-10.1.38'
@@ -8,10 +9,16 @@ doctrine:
             charset: utf8
             collate: utf8_unicode_ci
 
+=======
+>>>>>>> master
         url: '%env(resolve:DATABASE_URL)%'
+
+        # IMPORTANT: You MUST configure your server version,
+        # either here or in the DATABASE_URL env var (see .env file)
+        server_version: '5.7'
     orm:
         auto_generate_proxy_classes: true
-        naming_strategy: doctrine.orm.naming_strategy.underscore
+        naming_strategy: doctrine.orm.naming_strategy.underscore_number_aware
         auto_mapping: true
         mappings:
             App:
