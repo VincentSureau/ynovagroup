@@ -539,6 +539,10 @@ td > a > i:hover {
     flex-wrap: wrap;
     justify-content: center;
 
+    .card-deck {
+        width: 100%;
+    }
+
     .card {
         border: none;
 
