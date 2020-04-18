@@ -11,12 +11,14 @@ const $ = require('jquery');
 require('bootstrap');
 
 var dt = require('datatables.net');
+import bsCustomFileInput from 'bs-custom-file-input';
+import select2 from 'select2';
+
 $.fn.DataTable = dt;
+$.fn.select2 = select2;
 
 import Swup from 'swup';
 require('../css/backend.scss');
-import bsCustomFileInput from 'bs-custom-file-input';
-import select2 from 'select2';
 
 function init() {
     swup.cache.empty()
